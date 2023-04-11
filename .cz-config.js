@@ -17,23 +17,20 @@ module.exports = {
     { value: 'wip', name: 'wip:      开发中' }
   ],
   scopes: [
-    ['components', '组件相关'],
-    ['hooks', 'hook 相关'],
-    ['utils', 'utils 相关'],
-    ['element-ui', '对 element-ui 的调整'],
-    ['styles', '样式相关'],
-    ['deps', '项目依赖'],
-    ['config', '配置相关'],
-    ['other', '其他修改'],
-    ['*', '全局修改'],
-    // 如果选择 custom，后面会让你再输入一个自定义的 scope。也可以不设置此项，把后面的 allowCustomScopes 设置为 true
-    ['custom', '以上都不是？我要自定义']
-  ].map(([name, description]) => {
-    return {
-      name,
-      name: `${name.padEnd(30)} (${description})`
-    }
+    { name: 'components', description: '组件相关' },
+    { name: 'hooks', description: 'hook 相关' },
+    { name: 'utils', description: 'utils 相关' },
+    { name: 'element-ui', description: '对 element-ui 的调整' },
+    { name: 'styles', description: '样式相关' },
+    { name: 'deps', description: '项目依赖' },
+    { name: 'config', description: '配置相关' },
+    { name: 'other', description: '其他修改' },
+    { name: '*', description: '全局修改' },
+    { name: 'custom', description: '以上都不是？我要自定义' }
+  ].map(({ name, description }) => {
+    return { name: `${name.padEnd(30)} (${description})` }
   }),
+
   // 步骤消息提示
   messages: {
     type: '确保本次提交遵循规范！\n选择你要提交的类型:',
