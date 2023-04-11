@@ -1,34 +1,55 @@
-'use strict';
 module.exports = {
   types: [
-    { value: 'feat', name: '新增：新增功能、页面' },
-    { value: 'fix', name: 'bug：修复某个bug' },
-    { value: 'docs', name: '文档：修改增加文档、注释' },
-    { value: 'style', name: '格式：不影响代码运行的变动、空格、格式化等等' },
-    { value: 'ui', name: 'ui修改：布局、css样式等等' },
-    { value: 'hotfix', name: 'bug：修复线上紧急bug' },
-    { value: 'build', name: '测试：添加一个测试' },
-    { value: 'refactor', name: '重构：代码重构，未新增任何功能和修复任何bug' },
-    { value: 'revert', name: '回滚：代码回退到某个版本节点' },
-    { value: 'perf', name: '优化：提升性能、用户体验等' },
-    { value: 'ci', name: '自动化构建：对CI/CD配置文件和脚本的更改' },
-    { value: 'chore', name: '其他修改：不修改src目录或测试文件的修改' },
-    { value: 'test', name: '测试：包括单元测试、集成测试' },
-    { value: 'update', name: '更新：普通更新' },
+    { value: 'feat', name: 'feat:     新增功能' },
+    { value: 'fix', name: 'fix:      修复 bug' },
+    { value: 'docs', name: 'docs:     文档更新' },
+    { value: 'style', name: 'style:    代码格式（不影响功能，例如空格、分号等格式修正）' },
+    { value: 'refactor', name: 'refactor: 代码重构（不包括 bug 修复、功能新增）' },
+    { value: 'perf', name: 'perf:     性能优化' },
+    { value: 'test', name: 'test:     增加测试' },
+    {
+      value: 'build',
+      name: 'build:    构建流程、外部依赖变更（如升级 npm 包、修改 webpack 配置等）'
+    },
+    { value: 'ci', name: 'ci:       修改 CI 配置、脚本' },
+    { value: 'chore', name: 'chore:    对构建过程或辅助工具和库的更改（不影响源文件、测试用例）' },
+    { value: 'revert', name: 'revert:   回滚 commit' },
+    { value: 'wip', name: 'wip:      开发中' }
   ],
-  // 交互提示信息
+  scopes: [
+    ['components', '组件相关'],
+    ['hooks', 'hook 相关'],
+    ['utils', 'utils 相关'],
+    ['element-ui', '对 element-ui 的调整'],
+    ['styles', '样式相关'],
+    ['deps', '项目依赖'],
+    ['config', '配置相关'],
+    ['other', '其他修改'],
+    ['*', '全局修改'],
+    // 如果选择 custom，后面会让你再输入一个自定义的 scope。也可以不设置此项，把后面的 allowCustomScopes 设置为 true
+    ['custom', '以上都不是？我要自定义']
+  ].map(([name, description]) => {
+    return {
+      name,
+      name: `${name.padEnd(30)} (${description})`
+    }
+  }),
+  // 步骤消息提示
   messages: {
-    type: '选择一种你的提交类型：',
-    scope: '选择一个影响范围（可选）:',
-    customScope: '表示此更改的范围：',
-    subject: '短说明：\n',
-    body: '长说明，使用"|"符号换行（可选）：\n',
-    breaking: '非兼容性说明（可选）：\n',
-    footer: '关闭的issue，例如：#31, #34（可选）：\n',
-    confirmCommit: '确定提交说明?（yes/no）',
+    type: '确保本次提交遵循规范！\n选择你要提交的类型:',
+    scope: '\n选择一个scope(可选):',
+    customScope: '请输入修改范围(可选):',
+    subject: '请输入变更描述(必填):',
+    body: '填写更加详细的变更描述(可选):',
+    breaking: '非兼容性说明 (可选):\n',
+    footer: '请输入要关闭的 ISSUES(可选):',
+    confirmCommit: '确认提交？(Y/N)'
   },
+  // 允许自定义范围
   allowCustomScopes: true,
-  // 设置选择了那些type，才询问 breaking message
-  allowBreakingChanges: ['feat', 'fix', 'ui', 'hotfix', 'update', 'perf'],
-  subjectLimit: 100,
-};
+  // 要跳过的问题
+  skipQuestions: ['footer'],
+  allowBreakingChanges: ['feat', 'fix'],
+  // subject文字默认值是72
+  subjectLimit: 100
+}
