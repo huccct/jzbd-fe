@@ -27,9 +27,7 @@ module.exports = {
     { name: 'other', description: '其他修改' },
     { name: '*', description: '全局修改' },
     { name: 'custom', description: '以上都不是？我要自定义' }
-  ].map(({ name, description }) => {
-    return { name: `${name.padEnd(30)} (${description})` }
-  }),
+  ],
 
   // 步骤消息提示
   messages: {
@@ -48,5 +46,6 @@ module.exports = {
   skipQuestions: ['footer'],
   allowBreakingChanges: ['feat', 'fix'],
   // subject文字默认值是72
-  subjectLimit: 100
+  subjectLimit: 100,
+  commitMessageFormat: '{{type}}({{scope}}): {{subject}}'
 }
