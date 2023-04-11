@@ -6,7 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "commit": "git-cz",
+    "prepare": "husky install"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -23,11 +25,16 @@
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "commitizen": "^4.3.0",
+    "commitlint-config-cz": "^0.13.3",
     "cypress": "^9.7.0",
+    "cz-customizable": "^7.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.1",
     "prettier": "^2.4.1",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
@@ -65,5 +72,13 @@
     "extends": [
       "prettier"
     ]
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
   }
 }
