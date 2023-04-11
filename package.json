@@ -52,5 +52,18 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "semi": true,
+    "trailingComma": "all"
+  },
+  "eslint": {
+    "extends": [
+      "prettier"
+    ]
+  }
 }
