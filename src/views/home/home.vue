@@ -1,18 +1,20 @@
 <template>
   <div class="box">
-    <header>
-      <navigation-bar></navigation-bar>
-      <div class="slider-box">
-        <Slider />
-      </div>
-      <div class="h-btn">
-        <el-button type="primary"> EXPLORE A NEW WORLD TOGETHER </el-button>
-      </div>
-      <div class="h-content">
-        <span>提供一条龙的运营孵化体系</span><br />
-        <span>协助企业高质量发展</span>
-      </div>
-    </header>
+    <el-container>
+      <el-header>
+        <div class="slider-box">
+          <Slider />
+        </div>
+        <div class="h-btn">
+          <el-button type="primary"> EXPLORE A NEW WORLD TOGETHER </el-button>
+        </div>
+        <div class="h-content">
+          <span>提供一条龙的运营孵化体系</span><br />
+          <span>协助企业高质量发展</span>
+        </div>
+      </el-header>
+      <el-main> </el-main>
+    </el-container>
   </div>
 </template>
 

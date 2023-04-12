@@ -10,15 +10,16 @@
         mode="horizontal"
         text-color="#ccc"
         active-text-color="#01a6ff"
+        :router="true"
         @select="handleSelect"
       >
-        <el-menu-item index="1">首页</el-menu-item>
-        <el-menu-item index="2">园区服务</el-menu-item>
-        <el-menu-item index="3">企业风采</el-menu-item>
-        <el-menu-item index="4">厚德创客港</el-menu-item>
-        <el-menu-item index="5">招商合作</el-menu-item>
-        <el-menu-item index="6">政策发布</el-menu-item>
-        <el-menu-item index="7">联系我们</el-menu-item>
+        <el-menu-item index="/">首页</el-menu-item>
+        <el-menu-item index="/service">园区服务</el-menu-item>
+        <el-menu-item index="/enterprise-storm">企业风采</el-menu-item>
+        <el-menu-item index="/maker-port">厚德创客港</el-menu-item>
+        <el-menu-item index="/cooperation">招商合作</el-menu-item>
+        <el-menu-item index="/policy-release">政策发布</el-menu-item>
+        <el-menu-item index="/contact">联系我们</el-menu-item>
       </el-menu>
       <div class="right-fix">
         <el-divider />
@@ -32,12 +33,21 @@ export default {
   name: 'navigation',
   data() {
     return {
-      activeIndex: '1'
+      activeIndex: '/'
     };
+  },
+  created() {
+    //生命周期获取index并赋值
+    let index = localStorage.getItem('index');
+    if (index) {
+      this.activeIndex = index;
+    }
   },
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
+      //存储index的值
+      localStorage.setItem('index', key);
     }
   }
 };
@@ -64,7 +74,7 @@ export default {
     position: absolute;
     top: 38px;
     right: 0;
-    width: 130px;
+    width: 140px;
   }
 }
 
