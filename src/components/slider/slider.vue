@@ -1,10 +1,16 @@
 <template>
-  <div class="slider" :style="{ width: sliderWidth + 'px', height: sliderHeight + 'px' }">
+  <div
+    class="slider"
+    :style="{ width: sliderWidth + 'px', height: sliderHeight + 'px' }"
+    @mouseenter="enter"
+    @mouseleave="leave"
+  >
     <div
+      ref="sw"
       class="slider-wrapper"
       :style="{
         transform: 'translateX(' + offset + 'px)',
-        width: items.length * sliderWidth + 'px'
+        width: (items.length + 1) * sliderWidth + 'px'
       }"
     >
       <div
@@ -56,7 +62,7 @@ export default {
       if (this.autoPlay) {
         this.timer = setInterval(() => {
           this.next();
-        }, 1000);
+        }, 1500);
       }
     },
     stopAutoPlay() {
@@ -66,17 +72,24 @@ export default {
     next() {
       this.currentIndex = (this.currentIndex + 1) % this.items.length;
       this.offset = -this.currentIndex * this.sliderWidth;
-      this.stopAutoPlay();
     },
+
     prev() {
       this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
       this.offset = -this.currentIndex * this.sliderWidth;
-      this.stopAutoPlay();
     },
     handleControlClick(index) {
       this.currentIndex = index;
       this.offset = -this.currentIndex * this.sliderWidth;
       this.stopAutoPlay();
+    },
+    enter() {
+      this.timer && clearInterval(this.timer);
+    },
+    leave() {
+      if (this.autoPlay) {
+        this.startAutoPlay();
+      }
     }
   }
 };
