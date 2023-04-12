@@ -7,9 +7,20 @@
 -->
 <template>
   <div id="app">
+    <navigation-bar />
     <router-view />
+    <Bottom />
   </div>
 </template>
+
+<script>
+import NavigationBar from '@/components/navigation/navigation.vue';
+import Bottom from '@/components/bottom/bottom.vue';
+export default {
+  name: 'App',
+  components: { NavigationBar, Bottom }
+};
+</script>
 
 <style lang="scss">
 * {
