@@ -1,17 +1,20 @@
+<!--
+ * @Description: Stay hungry，Stay foolish
+ * @Author: Huccct
+ * @Date: 2023-04-11 10:37:48
+ * @LastEditors: Huccct
+ * @LastEditTime: 2023-04-11 19:29:28
+-->
 <template>
   <div id="app">
-    <nav>
-      <el-row>
-        <el-button>默认按钮</el-button>
-        <el-button type="primary">主要按钮</el-button>
-        <el-button type="success">成功按钮</el-button>
-        <el-button type="info">信息按钮</el-button>
-        <el-button type="warning">警告按钮</el-button>
-        <el-button type="danger">危险按钮</el-button>
-      </el-row>
-    </nav>
     <router-view />
   </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+</style>
