@@ -71,17 +71,18 @@ export default {
 .left {
   display: flex;
   align-items: center;
-  padding-top: 28px;
+  padding-top: 18px;
   padding-left: 320px;
 }
 
 .right {
-  padding-right: 120px;
+  padding-right: 320px;
+  padding-top: 43px;
   &-fix {
     position: absolute;
-    top: 38px;
+    top: 60px;
     right: 0;
-    width: 140px;
+    width: 340px;
   }
 }
 
