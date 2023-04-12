@@ -1,3 +1,10 @@
+<!--
+ * @Description: Stay hungry，Stay foolish
+ * @Author: Huccct
+ * @Date: 2023-04-12 09:59:54
+ * @LastEditors: Huccct
+ * @LastEditTime: 2023-04-12 17:03:22
+-->
 <template>
   <div class="box">
     <div class="left">
@@ -65,7 +72,7 @@ export default {
   display: flex;
   align-items: center;
   padding-top: 28px;
-  padding-left: 180px;
+  padding-left: 320px;
 }
 
 .right {

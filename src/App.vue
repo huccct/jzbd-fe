@@ -3,13 +3,13 @@
  * @Author: Huccct
  * @Date: 2023-04-11 10:37:48
  * @LastEditors: Huccct
- * @LastEditTime: 2023-04-11 19:29:28
+ * @LastEditTime: 2023-04-12 18:02:23
 -->
 <template>
   <div id="app">
     <navigation-bar />
     <router-view />
-    <Bottom />
+    <!-- <Bottom /> -->
   </div>
 </template>
 
