@@ -33,12 +33,11 @@ export default {
 
 <style lang="scss" scoped>
 .foot-menu {
-  position: absolute;
+  position: relative;
   margin: 0 auto;
   color: #fff;
   width: 100%;
   left: 0;
-  height: 190px;
   line-height: 90px;
   text-align: center;
 }
@@ -48,14 +47,13 @@ export default {
 .divider {
   width: 100%;
   position: absolute;
-  left: 0;
-  bottom: 0;
+  bottom: 48px;
 }
 .footer-content-bottom span {
   color: #666666;
   font-size: 12px;
   position: absolute;
-  bottom: -35px;
+  bottom: 10px;
   left: 0;
   right: 0;
   margin: 0 auto;

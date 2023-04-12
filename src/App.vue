@@ -9,7 +9,9 @@
   <div id="app">
     <navigation-bar />
     <router-view />
-    <!-- <Bottom /> -->
+    <div class="footer">
+      <!-- <Bottom /> -->
+    </div>
   </div>
 </template>
 

@@ -106,7 +106,7 @@ export default {
   }
   .slider-arrows {
     position: absolute;
-    top: 38%;
+    top: 436px;
     z-index: 1;
     left: 0;
     right: 0;
