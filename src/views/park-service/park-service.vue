@@ -194,11 +194,11 @@ export default {
   z-index: -1;
   top: 0;
   left: 0;
-  width: 1920px;
+  width: 100%;
   height: 1000px;
   img {
     width: 100%;
-    height: 1000px;
+    height: 100%;
   }
 }
 
@@ -328,6 +328,7 @@ export default {
       div {
         position: relative;
         top: -15px;
+        left: 0;
         margin-left: 415px;
         img {
           height: 30px;

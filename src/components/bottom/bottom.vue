@@ -36,16 +36,16 @@ export default {
   position: relative;
   margin: 0 auto;
   color: #fff;
-  width: 100%;
+  width: 100% !important;
   left: 0;
   line-height: 90px;
   text-align: center;
 }
 .footer-content-top img {
-  width: 100%;
+  width: 100% !important;
 }
 .divider {
-  width: 100%;
+  width: 100% !important;
   position: absolute;
   bottom: 48px;
 }

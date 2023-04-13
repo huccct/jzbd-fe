@@ -7,11 +7,17 @@
 -->
 <template>
   <div id="app">
-    <navigation-bar />
-    <router-view />
-    <div class="footer">
-      <!-- <Bottom /> -->
-    </div>
+    <el-container>
+      <el-header>
+        <navigation-bar />
+      </el-header>
+      <el-main>
+        <router-view />
+      </el-main>
+      <el-footer>
+        <Bottom />
+      </el-footer>
+    </el-container>
   </div>
 </template>
 
@@ -29,5 +35,8 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+.el-footer {
+  padding: 0 !important;
 }
 </style>
