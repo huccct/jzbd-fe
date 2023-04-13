@@ -33,29 +33,33 @@ export default {
 
 <style lang="scss" scoped>
 .foot-menu {
-  position: relative;
+  position: absolute;
   margin: 0 auto;
   color: #fff;
-  width: 100%;
-  left: 0;
-  line-height: 90px;
+  height: 247px;
+  width: 100% !important;
   text-align: center;
 }
 .footer-content-top img {
-  width: 100%;
+  width: 100% !important;
 }
 .divider {
-  width: 100%;
-  position: absolute;
+  width: 100% !important;
+  position: relative;
   bottom: 48px;
+}
+.footer-content-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
 }
 .footer-content-bottom span {
   color: #666666;
   font-size: 12px;
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+}
+.el-divider {
+  margin: 0 !important;
 }
 </style>

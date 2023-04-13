@@ -9,9 +9,9 @@
   <div id="app">
     <navigation-bar />
     <router-view />
-    <div class="footer">
-      <!-- <Bottom /> -->
-    </div>
+    <el-footer>
+      <Bottom />
+    </el-footer>
   </div>
 </template>
 
@@ -29,5 +29,15 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.el-footer {
+  padding: 0 !important;
+}
+.el-main {
+  padding: 0 !important;
+}
+.el-header {
+  padding: 0 !important;
 }
 </style>
