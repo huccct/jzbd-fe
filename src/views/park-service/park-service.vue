@@ -156,6 +156,7 @@
 </template>
 
 <script>
+import DevicePixelRatio from '@/utils/devicePixelRatio';
 import NavigationBar from '@/components/navigation/navigation.vue';
 import Slider from '@/components/slider/slider.vue';
 export default {
@@ -171,6 +172,10 @@ export default {
   },
 
   mounted() {},
+
+  created() {
+    new DevicePixelRatio().init();
+  },
 
   methods: {}
 };
@@ -281,7 +286,7 @@ export default {
     width: 1920px;
     .service-content_one-contentbg {
       position: absolute;
-      margin-top: -40px;
+      // margin-top: -10px;
       width: 1920px;
       img {
         width: 100%;
