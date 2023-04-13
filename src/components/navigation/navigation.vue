@@ -28,9 +28,9 @@
         <el-menu-item index="/policy-release">政策发布</el-menu-item>
         <el-menu-item index="/contact">联系我们</el-menu-item>
       </el-menu>
-      <div class="right-fix">
+      <!-- <div class="right-fix">
         <el-divider />
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -87,7 +87,13 @@ export default {
 }
 
 .el-menu {
+  border-bottom: none !important;
   background-color: transparent !important;
+  &::after {
+    width: 150%;
+    content: '';
+    border: 1px solid #e6e6e6;
+  }
 }
 
 .el-menu-item {
