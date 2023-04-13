@@ -12,6 +12,7 @@
         <span>协助企业高质量发展</span>
       </div>
     </div>
+    <div class="main"></div>
   </div>
 </template>
 
@@ -25,13 +26,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.header {
+  position: relative;
+  margin-top: -65px;
+  width: 100%;
+}
+
 .slider-box {
-  position: absolute;
-  z-index: -1;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
 }
 
 .h-btn {
@@ -59,5 +64,13 @@ export default {
     line-height: 70px;
     letter-spacing: 12px;
   }
+}
+
+.main {
+  position: relative;
+  margin-top: 0;
+  width: 100%;
+  height: 1000px;
+  background-color: #ccc;
 }
 </style>

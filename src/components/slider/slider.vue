@@ -48,7 +48,7 @@ export default {
       currentIndex: 0,
       offset: 0,
       sliderWidth: 1920,
-      sliderHeight: 1000,
+      sliderHeight: 991,
       timer: null,
       autoPlay: true
     };
