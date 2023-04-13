@@ -1,11 +1,5 @@
 <!--
  * @Author: hayyot
- * @Date: 2023-04-13 08:20:38
- * @Description: 铁沸物
- * @FilePath: \jzbd-fe\src\views\park-service\park-service.vue
--->
-<!--
- * @Author: hayyot
  * @Date: 2023-04-12 15:00:08
  * @Description: 铁沸物
  * @FilePath: \jzbd-fe\src\views\park-service\park-service.vue
@@ -27,6 +21,7 @@
       </div>
     </div>
     <div>
+      <!-- Service content -->
       <div class="service-content_one">
         <div class="service-content_one-topic">
           <div>
@@ -63,12 +58,11 @@
             <span>政策申报</span>
           </div>
           <div class="service-content_one-contenth3">
-            <img src="http://114.116.21.170:9000/photo/service/%E7%9B%B4%E7%BA%BF%203@2x.png" />
+            <img
+              class="contenth3-img1"
+              src="http://114.116.21.170:9000/photo/service/%E7%9B%B4%E7%BA%BF%203@2x.png"
+            />
             <div>
-              <img
-                src="http://114.116.21.170:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
-                alt=""
-              />
               <img
                 src="http://114.116.21.170:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
                 alt=""
@@ -120,12 +114,11 @@
             <span>科技成果评价</span>
           </div>
           <div class="service-content_one-contenth3">
-            <img src="http://114.116.21.170:9000/photo/service/%E7%9B%B4%E7%BA%BF%203@2x.png" />
+            <img
+              class="contenth3-img1"
+              src="http://114.116.21.170:9000/photo/service/%E7%9B%B4%E7%BA%BF%203@2x.png"
+            />
             <div>
-              <img
-                src="http://114.116.21.170:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
-                alt=""
-              />
               <img
                 src="http://114.116.21.170:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
                 alt=""
@@ -157,6 +150,7 @@
           </div>
         </div>
       </div>
+      <div class="service-content_one-contenth2"></div>
     </div>
   </div>
 </template>
@@ -195,7 +189,7 @@ export default {
   z-index: -1;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 1920px;
   height: 1000px;
   img {
     width: 100%;
@@ -284,11 +278,11 @@ export default {
   }
   .service-content_one-content {
     margin-top: 85px;
-    width: 100%;
+    width: 1920px;
     .service-content_one-contentbg {
       position: absolute;
-      margin-bottom: 50px;
-      width: 100%;
+      margin-top: -40px;
+      width: 1920px;
       img {
         width: 100%;
       }
@@ -319,10 +313,12 @@ export default {
     }
     .service-content_one-contenth3 {
       height: 1px;
-      width: 100%;
+      width: 1920px;
       margin-top: 68px;
-      :nth-child(1) {
+      .contenth3-img1 {
         position: absolute;
+        // width: 100%;
+        width: 1920px;
       }
       div {
         position: relative;
@@ -336,6 +332,7 @@ export default {
       }
     }
     .service-content_one-contenth4 {
+      margin-top: 38px;
       margin-left: 396px;
       span {
         font-family: AvantGardeITCbyBT-Book-Regular;
