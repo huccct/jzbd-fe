@@ -3,7 +3,7 @@
  * @Author: Huccct
  * @Date: 2023-04-12 09:59:54
  * @LastEditors: Huccct
- * @LastEditTime: 2023-04-12 17:03:22
+ * @LastEditTime: 2023-04-13 09:01:55
 -->
 <template>
   <div class="box">
@@ -28,9 +28,6 @@
         <el-menu-item index="/policy-release">政策发布</el-menu-item>
         <el-menu-item index="/contact">联系我们</el-menu-item>
       </el-menu>
-      <!-- <div class="right-fix">
-        <el-divider />
-      </div> -->
     </div>
   </div>
 </template>
@@ -78,19 +75,13 @@ export default {
 .right {
   padding-right: 320px;
   padding-top: 43px;
-  &-fix {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 340px;
-  }
 }
 
 .el-menu {
   border-bottom: none !important;
   background-color: transparent !important;
   &::after {
-    width: 150%;
+    width: 148%;
     content: '';
     border: 1px solid #e6e6e6;
   }

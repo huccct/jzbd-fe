@@ -14,7 +14,7 @@
       }"
     >
       <div
-        v-for="(item, index) in items"
+        v-for="(item, index) in items.slice(1)"
         :key="index"
         class="slider-item"
         :style="{ width: sliderWidth + 'px' }"
@@ -24,14 +24,14 @@
     </div>
     <div class="slider-arrows">
       <span class="slider-arrow slider-arrow-prev" @click="prev">
-        <img src="" class="fas fa-chevron-left" />
+        <img src="http://114.116.21.170:9000/photo/aleft.png" class="fas fa-chevron-left" />
       </span>
       <span class="slider-arrow slider-arrow-next" @click="next">
-        <img src="" class="fas fa-chevron-right" />
+        <img src="http://114.116.21.170:9000/photo/aright.png" class="fas fa-chevron-right" />
       </span>
     </div>
     <div class="slider-index1">{{ (currentIndex + 1).toString().padStart(2, '0') }}</div>
-    <div class="slider-index2">/{{ items.length.toString().padStart(2, '0') }}</div>
+    <div class="slider-index2">/{{ (items.length - 1).toString().padStart(2, '0') }}</div>
   </div>
 </template>
 
@@ -47,7 +47,7 @@ export default {
       ],
       currentIndex: 0,
       offset: 0,
-      sliderWidth: 1900,
+      sliderWidth: 1920,
       sliderHeight: 1000,
       timer: null,
       autoPlay: true
@@ -55,6 +55,11 @@ export default {
   },
   mounted() {
     this.sliderWidth = this.$el.parentNode.offsetWidth;
+
+    // Duplicate the last item and insert it at the beginning
+    const lastItem = this.items[this.items.length - 1];
+    this.items.unshift(lastItem);
+
     this.startAutoPlay();
   },
   methods: {
@@ -70,13 +75,26 @@ export default {
       this.timer = null;
     },
     next() {
-      this.currentIndex = (this.currentIndex + 1) % this.items.length;
+      this.currentIndex = (this.currentIndex + 1) % (this.items.length - 1);
       this.offset = -this.currentIndex * this.sliderWidth;
+
+      if (this.currentIndex === 0) {
+        // Reset to the first item after the duplicate item
+        setTimeout(() => {
+          this.offset = 0;
+        }, 500);
+      }
     },
 
     prev() {
-      this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
-      this.offset = -this.currentIndex * this.sliderWidth;
+      if (this.currentIndex === 0) {
+        // Jump to the duplicate last item before the first item
+        this.currentIndex = this.items.length - 1;
+        this.offset = -this.currentIndex * this.sliderWidth;
+      } else {
+        this.currentIndex = (this.currentIndex - 1) % (this.items.length - 1);
+        this.offset = -this.currentIndex * this.sliderWidth;
+      }
     },
     handleControlClick(index) {
       this.currentIndex = index;
@@ -125,10 +143,6 @@ export default {
     right: 0;
     .slider-arrow {
       display: inline-block;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.3);
       cursor: pointer;
       transition: background-color 0.5s ease;
       &.slider-arrow-prev {
@@ -136,9 +150,6 @@ export default {
       }
       &.slider-arrow-next {
         float: right;
-      }
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.5);
       }
       &:disabled {
         cursor: not-allowed;
