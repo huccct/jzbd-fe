@@ -1,10 +1,16 @@
 <template>
-  <div class="slider" :style="{ width: sliderWidth + 'px', height: sliderHeight + 'px' }">
+  <div
+    class="slider"
+    :style="{ width: sliderWidth + 'px', height: sliderHeight + 'px' }"
+    @mouseenter="enter"
+    @mouseleave="leave"
+  >
     <div
+      ref="sw"
       class="slider-wrapper"
       :style="{
         transform: 'translateX(' + offset + 'px)',
-        width: items.length * sliderWidth + 'px'
+        width: (items.length + 1) * sliderWidth + 'px'
       }"
     >
       <div
@@ -16,23 +22,16 @@
         <img :src="item.src" alt="" />
       </div>
     </div>
-    <!-- <div class="slider-controls">
-      <span
-        class="slider-control"
-        v-for="(item, index) in items"
-        :key="index"
-        :class="{ active: index === currentIndex }"
-        @click="handleControlClick(index)"
-      ></span>
-    </div> -->
     <div class="slider-arrows">
       <span class="slider-arrow slider-arrow-prev" @click="prev">
-        <i class="fas fa-chevron-left"></i>
+        <img src="" class="fas fa-chevron-left" />
       </span>
       <span class="slider-arrow slider-arrow-next" @click="next">
-        <i class="fas fa-chevron-right"></i>
+        <img src="" class="fas fa-chevron-right" />
       </span>
     </div>
+    <div class="slider-index1">{{ (currentIndex + 1).toString().padStart(2, '0') }}</div>
+    <div class="slider-index2">/{{ items.length.toString().padStart(2, '0') }}</div>
   </div>
 </template>
 
@@ -63,7 +62,7 @@ export default {
       if (this.autoPlay) {
         this.timer = setInterval(() => {
           this.next();
-        }, 3000);
+        }, 1500);
       }
     },
     stopAutoPlay() {
@@ -73,17 +72,24 @@ export default {
     next() {
       this.currentIndex = (this.currentIndex + 1) % this.items.length;
       this.offset = -this.currentIndex * this.sliderWidth;
-      this.stopAutoPlay();
     },
+
     prev() {
       this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
       this.offset = -this.currentIndex * this.sliderWidth;
-      this.stopAutoPlay();
     },
     handleControlClick(index) {
       this.currentIndex = index;
       this.offset = -this.currentIndex * this.sliderWidth;
       this.stopAutoPlay();
+    },
+    enter() {
+      this.timer && clearInterval(this.timer);
+    },
+    leave() {
+      if (this.autoPlay) {
+        this.startAutoPlay();
+      }
     }
   }
 };
@@ -111,31 +117,12 @@ export default {
       object-fit: cover;
     }
   }
-  .slider-controls {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-  }
-
-  .slider-control {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin: 0 6px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.5s ease;
-    &.active {
-      background-color: #333;
-    }
-  }
   .slider-arrows {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 436px;
     z-index: 1;
+    left: 0;
+    right: 0;
     .slider-arrow {
       display: inline-block;
       width: 30px;
@@ -144,21 +131,11 @@ export default {
       background-color: rgba(255, 255, 255, 0.3);
       cursor: pointer;
       transition: background-color 0.5s ease;
-      i {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: #fff;
-      }
       &.slider-arrow-prev {
-        left: 20px;
-        i {
-          transform: translate(-50%, -50%) rotate(180deg);
-        }
+        float: left;
       }
       &.slider-arrow-next {
-        right: 20px;
+        float: right;
       }
       &:hover {
         background-color: rgba(255, 255, 255, 0.5);
@@ -167,12 +144,29 @@ export default {
         cursor: not-allowed;
         background-color: rgba(0, 0, 0, 0.1);
       }
-      svg {
-        width: 20px;
-        height: 20px;
-        fill: #fff;
-      }
     }
+  }
+  .slider-index1 {
+    position: absolute;
+    top: 254px;
+    right: 386px;
+    color: rgba(255, 255, 255);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-left: 10px;
+    font-size: 60px;
+    z-index: 1;
+  }
+  .slider-index2 {
+    position: absolute;
+    top: 259px;
+    right: 317px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 36px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-left: 10px;
+    z-index: 1;
   }
 }
 </style>

@@ -1,14 +1,21 @@
+<!--
+ * @Description: Stay hungry，Stay foolish
+ * @Author: Huccct
+ * @Date: 2023-04-12 11:36:59
+ * @LastEditors: Huccct
+ * @LastEditTime: 2023-04-12 17:49:30
+-->
 <template>
   <div class="foot-menu">
-    <el-footer>
-      <div class="footer-content-top"></div>
-      <div class="divider">
-        <el-divider></el-divider>
-      </div>
-      <div class="footer-content-bottom">
-        <span>{{ companyInfo }}</span>
-      </div>
-    </el-footer>
+    <div class="footer-content-top">
+      <img src="http://114.116.21.170:9000/photo/bottom.png" alt="" />
+    </div>
+    <div class="divider">
+      <el-divider></el-divider>
+    </div>
+    <div class="footer-content-bottom">
+      <span>{{ companyInfo }}</span>
+    </div>
   </div>
 </template>
 
@@ -26,27 +33,27 @@ export default {
 
 <style lang="scss" scoped>
 .foot-menu {
-  position: absolute;
-  bottom: 0;
+  position: relative;
   margin: 0 auto;
   color: #fff;
   width: 100%;
-  background-color: rgba(136, 136, 136, 0.48);
-  height: 190px;
+  left: 0;
   line-height: 90px;
   text-align: center;
+}
+.footer-content-top img {
+  width: 100%;
 }
 .divider {
   width: 100%;
   position: absolute;
-  left: 0;
-  bottom: 0;
+  bottom: 48px;
 }
 .footer-content-bottom span {
-  color: #fff;
-  font-size: 14px;
-  position: relative;
-  bottom: -135px;
+  color: #666666;
+  font-size: 12px;
+  position: absolute;
+  bottom: 10px;
   left: 0;
   right: 0;
   margin: 0 auto;

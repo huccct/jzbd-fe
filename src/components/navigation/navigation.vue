@@ -1,3 +1,10 @@
+<!--
+ * @Description: Stay hungry，Stay foolish
+ * @Author: Huccct
+ * @Date: 2023-04-12 09:59:54
+ * @LastEditors: Huccct
+ * @LastEditTime: 2023-04-12 17:03:22
+-->
 <template>
   <div class="box">
     <div class="left">
@@ -21,9 +28,9 @@
         <el-menu-item index="/policy-release">政策发布</el-menu-item>
         <el-menu-item index="/contact">联系我们</el-menu-item>
       </el-menu>
-      <div class="right-fix">
+      <!-- <div class="right-fix">
         <el-divider />
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -64,22 +71,29 @@ export default {
 .left {
   display: flex;
   align-items: center;
-  padding-top: 28px;
-  padding-left: 180px;
+  padding-top: 18px;
+  padding-left: 320px;
 }
 
 .right {
-  padding-right: 120px;
+  padding-right: 320px;
+  padding-top: 43px;
   &-fix {
     position: absolute;
-    top: 38px;
+    top: 60px;
     right: 0;
-    width: 140px;
+    width: 340px;
   }
 }
 
 .el-menu {
+  border-bottom: none !important;
   background-color: transparent !important;
+  &::after {
+    width: 150%;
+    content: '';
+    border: 1px solid #e6e6e6;
+  }
 }
 
 .el-menu-item {
