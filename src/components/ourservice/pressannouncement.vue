@@ -17,16 +17,18 @@
     </div>
     <div class="pa-content">
       <div class="pa-content_left">
-        <img
-          src="http://114.116.21.170:9000/photo/service/a546ff9406d87b46a9a7dbad6bb84b91e8860ae12028d-CUQjrp.png"
-          alt=""
-        />
+        <div>
+          <img
+            src="http://114.116.21.170:9000/photo/service/a546ff9406d87b46a9a7dbad6bb84b91e8860ae12028d-CUQjrp.png"
+          />
+          <div>2022-12-18</div>
+        </div>
         <p>高新区举办政府项目精准谋划与平台公司合规...</p>
         <hr />
         <p>
           近日，记者在高新区资阳石油钢管有限公司了解到，今年国家管网重点工程已经保供完成，正在进行社会市场管线的生产工作...
         </p>
-        <button>详情>></button>
+        <button @click="$router.push('/cooperation')">详情>></button>
       </div>
       <div class="pa-content_right">
         <div class="pa-content_right1">
@@ -92,7 +94,9 @@ export default {
   name: 'JzbdFePressannouncement',
 
   data() {
-    return {};
+    return {
+      list_data: [{}]
+    };
   },
 
   mounted() {},
@@ -106,7 +110,8 @@ export default {
   background-image: url('http://114.116.21.170:9000/photo/service/%E8%B7%AF%E5%BE%84%2069.png');
   background-repeat: no-repeat;
   height: 965px;
-  width: 1900px;
+  width: 100%;
+  min-width: 1900px;
   .pa-bg {
     position: absolute;
     z-index: -1;
@@ -153,6 +158,21 @@ export default {
       margin-top: 85px;
       margin-left: 320px;
       width: 538px;
+      div:nth-child(1) {
+        div {
+          position: relative;
+          top: -54px;
+          line-height: 50px;
+          vertical-align: middle;
+          text-align: center;
+          height: 50px;
+          width: 200px;
+          font-size: 24px;
+          font-weight: 400;
+          color: #ffffff;
+          background-color: #00a6ff;
+        }
+      }
       p:nth-child(2) {
         height: 26px;
         width: 521px;
@@ -181,9 +201,15 @@ export default {
         border-radius: 5px 5px 5px 5px;
         background-color: #00a6ff;
       }
+      button:hover {
+        background-color: #66b1ff;
+        cursor: pointer;
+      }
     }
     .pa-content_right {
       // background-color: #cdcdcd;
+      position: relative;
+      top: -55px;
       display: inline-block;
       width: 800px;
       margin-left: 20px;
