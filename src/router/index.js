@@ -1,3 +1,9 @@
+/*
+ * @Author: hayyot
+ * @Date: 2023-04-13 08:20:38
+ * @Description: 铁沸物
+ * @FilePath: \jzbd-fe\src\router\index.js
+ */
 import home from '@/views/home/home.vue';
 import ParkService from '@/views/park-service/park-service.vue';
 import EnterpriseStorm from '@/views/enterprise-storm/enterprise-storm.vue';
@@ -7,12 +13,14 @@ import PolicyRelease from '@/views/policy-release/policy-release.vue';
 import Contact from '@/views/contact/contact.vue';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Serviceinformation from '@/views/park-service/information/information.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   { path: '/', component: home },
   { path: '/service', component: ParkService },
+  { path: '/service/information', component: Serviceinformation },
   { path: '/enterprise-storm', component: EnterpriseStorm },
   { path: '/maker-port', component: MakerPort },
   { path: '/cooperation', component: Cooperation },

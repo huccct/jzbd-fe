@@ -28,7 +28,7 @@
         <p>
           近日，记者在高新区资阳石油钢管有限公司了解到，今年国家管网重点工程已经保供完成，正在进行社会市场管线的生产工作...
         </p>
-        <button @click="$router.push('/cooperation')">详情>></button>
+        <button @click="$router.push('/service/information').catch(err => err)">详情>></button>
       </div>
       <div class="pa-content_right">
         <div class="pa-content_right1">
@@ -159,8 +159,15 @@ export default {
       margin-left: 320px;
       width: 538px;
       div:nth-child(1) {
+        img {
+          z-index: 0;
+          // position: absolute;
+        }
         div {
+          float: none;
           position: relative;
+          z-index: 100;
+          // top: 100px;
           top: -54px;
           line-height: 50px;
           vertical-align: middle;
@@ -174,6 +181,8 @@ export default {
         }
       }
       p:nth-child(2) {
+        position: relative;
+        top: -54px;
         height: 26px;
         width: 521px;
         margin-top: 20px;
@@ -183,7 +192,13 @@ export default {
         font-size: 20px;
         color: #333333;
       }
+      hr:nth-child(3) {
+        position: relative;
+        top: -54px;
+      }
       p:nth-child(4) {
+        position: relative;
+        top: -54px;
         width: 538px;
         height: 48px;
         margin-top: 20px;
@@ -194,6 +209,8 @@ export default {
         color: #666666;
       }
       button {
+        position: relative;
+        top: -54px;
         border: none;
         height: 40px;
         width: 100px;
@@ -209,12 +226,12 @@ export default {
     .pa-content_right {
       // background-color: #cdcdcd;
       position: relative;
-      top: -55px;
+      top: -100px;
       display: inline-block;
       width: 800px;
       margin-left: 20px;
       .pa-content_right1 {
-        margin-bottom: 40px;
+        margin-bottom: 25px;
         // background: #606669;
         height: 110px;
         display: inline-block;
