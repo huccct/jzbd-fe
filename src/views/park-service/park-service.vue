@@ -13,10 +13,10 @@
       <div class="head-content">
         <span>OUR SERVICE</span>
         <span>园区服务</span>
-        <span
-          >胶州市正加快建设上合组织地方经贸合作示范区，全力打造
-          “一带一路”国际合作新平台，把胶州历史性地推到国家对外开放的战略前沿。</span
-        >
+        <span>
+          胶州市正加快建设上合组织地方经贸合作示范区，全力打造
+          “一带一路”国际合作新平台，把胶州历史性地推到国家对外开放的战略前沿。
+        </span>
         <button class="head-content_contactus">联系我们</button>
       </div>
     </div>
