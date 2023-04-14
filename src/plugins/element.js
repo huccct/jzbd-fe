@@ -10,7 +10,9 @@ import {
   Footer,
   Header,
   Main,
-  Col
+  Col,
+  Carousel,
+  CarouselItem,
 } from 'element-ui';
 
 Vue.use(Button);
@@ -24,3 +26,5 @@ Vue.use(Footer);
 Vue.use(Header);
 Vue.use(Main);
 Vue.use(Col);
+Vue.use(Carousel);
+Vue.use(CarouselItem)
