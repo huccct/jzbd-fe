@@ -13,11 +13,11 @@
       <div class="head-content">
         <span>OUR SERVICE</span>
         <span>园区服务</span>
-        <span>
-          胶州市正加快建设上合组织地方经贸合作示范区，全力打造
-          “一带一路”国际合作新平台，把胶州历史性地推到国家对外开放的战略前沿。
-        </span>
-        <button class="head-content_contactus">联系我们</button>
+        <span
+          >胶州市正加快建设上合组织地方经贸合作示范区，全力打造
+          “一带一路”国际合作新平台，把胶州历史性地推到国家对外开放的战略前沿。</span
+        >
+        <button class="head-content_contactus" @click="$router.push('/contact')">联系我们</button>
       </div>
     </div>
     <div>
@@ -150,12 +150,15 @@
           </div>
         </div>
       </div>
-      <div class="service-content_one-contenth2"></div>
+      <Pressannouncement style="margin-top: 84px"></Pressannouncement>
+      <!-- <div class="service-content_one-contenth2"></div> -->
     </div>
   </div>
 </template>
 
 <script>
+// import DevicePixelRatio from '@/utils/devicePixelRatio';
+import Pressannouncement from '@/components/ourservice/pressannouncement.vue';
 import NavigationBar from '@/components/navigation/navigation.vue';
 import Slider from '@/components/slider/slider.vue';
 export default {
@@ -163,7 +166,8 @@ export default {
 
   components: {
     NavigationBar,
-    Slider
+    Slider,
+    Pressannouncement
   },
 
   data() {
@@ -172,28 +176,55 @@ export default {
 
   mounted() {},
 
+  created() {
+    // new DevicePixelRatio().init();
+    // let t = window.devicePixelRatio   // 获取下载的缩放 125% -> 1.25    150% -> 1.5
+    // if (!!window.ActiveXObject || "ActiveXObject" in window) {
+    //   if (t != 1) {
+    //     // 如果在笔记本中用IE浏览器打开 则弹出提示
+    //     alert('您的设备对显示进行放大导致页面显示不完全,请调整后打开/或用其他浏览器')
+    //   }
+    // } else {
+    //   if (t != 1) {   // 如果进行了缩放，也就是不是1
+    //     let c = document.querySelector('body')
+    //     c.style.zoom = -0.60 * t + 1.55;   // 就去修改页面的缩放比例，这个公式我自己算的，不准确，勉强。
+    //   }
+    // }
+  },
+
   methods: {}
 };
 </script>
 
 <style lang="scss" scoped>
+* {
+  margin: 0px;
+  padding: 0px;
+  // text-align: center;
+}
 .service-box {
   width: 100%;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  text-align: left;
 }
 .service-elheader {
   display: block;
   height: 1000px;
+  text-align: left;
+  // background-image: url('http://114.116.21.170:9000/photo/service/%E7%BB%84%2075.png');
 }
 .service-sliderbox {
   position: absolute;
   z-index: -1;
   top: 0;
   left: 0;
-  width: 1920px;
+  width: 100%;
   height: 1000px;
   img {
     width: 100%;
-    height: 1000px;
+    height: 100%;
   }
 }
 
@@ -238,6 +269,10 @@ export default {
     font-weight: 400;
     font-family: Microsoft YaHei-Regular;
   }
+  .head-content_contactus:hover {
+    background-color: #66b1ff;
+    cursor: pointer;
+  }
 }
 .service-content_one {
   margin-top: 107px;
@@ -278,11 +313,11 @@ export default {
   }
   .service-content_one-content {
     margin-top: 85px;
-    width: 1920px;
+    width: 100%;
     .service-content_one-contentbg {
       position: absolute;
-      margin-top: -40px;
-      width: 1920px;
+      // margin-top: -10px;
+      width: 1900px;
       img {
         width: 100%;
       }
@@ -313,16 +348,17 @@ export default {
     }
     .service-content_one-contenth3 {
       height: 1px;
-      width: 1920px;
+      width: 1900px;
       margin-top: 68px;
       .contenth3-img1 {
         position: absolute;
         // width: 100%;
-        width: 1920px;
+        width: 1900px;
       }
       div {
         position: relative;
         top: -15px;
+        left: 0;
         margin-left: 415px;
         img {
           height: 30px;
