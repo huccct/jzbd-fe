@@ -208,7 +208,8 @@ export default {
 
 <style lang="scss" scoped>
 .box {
-  width: 1920px;
+  min-width: 1900px;
+  width: 100%;
   height: 2997px;
   padding: 0;
   position: relative;
@@ -220,12 +221,14 @@ export default {
     color: #ffffff;
   }
   .home {
-    width: 1920px;
+    width: 100%;
+    min-width: 1900px;
     height: 1000px;
     position: absolute;
     z-index: -1;
     top: 0px;
     left: 0;
+    background-repeat: no-repeat;
     background-image: url('http://114.116.21.170:9000/photo/cooperation1.png');
     .h-content {
       position: relative;
@@ -389,7 +392,8 @@ export default {
   .data {
     z-index: -2;
     position: relative;
-    width: 1920px;
+    width: 100%;
+    min-width: 1900px;
     height: 1354px;
     top: 670px;
     left: 0px;
@@ -547,7 +551,8 @@ export default {
     position: absolute;
     // top: 2173px;
     top: 2020px;
-    width: 1920px;
+    width: 100%;
+    min-width: 1900px;
     height: 1000px;
     border-radius: 0px 0px 0px 0px;
     .d-head {
