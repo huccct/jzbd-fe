@@ -123,10 +123,12 @@ export default {
   &::after {
     content: '';
     position: absolute;
-    top: 15px;
+    top: 13px;
     left: 47px;
     width: 80px;
-    border: 2px solid #cdcdcd;
+    // border: 2px solid #cdcdcd;
+    height: 2px;
+    background-color: #cdcdcd;
   }
   & > .titlf {
     width: 33px;
