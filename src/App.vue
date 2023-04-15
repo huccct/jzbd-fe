@@ -16,11 +16,18 @@
 </template>
 
 <script>
+import DevicePixelRatio from '@/utils/devicePixelRatio';
 import NavigationBar from '@/components/navigation/navigation.vue';
 import Bottom from '@/components/bottom/bottom.vue';
 export default {
   name: 'App',
-  components: { NavigationBar, Bottom }
+  components: { NavigationBar, Bottom },
+  data() {
+    return {};
+  },
+  created() {
+    new DevicePixelRatio().init();
+  }
 };
 </script>
 
