@@ -317,7 +317,8 @@ export default {
     .service-content_one-contentbg {
       position: absolute;
       // margin-top: -10px;
-      width: 1900px;
+      // width: 1900px;
+      width: 100%;
       img {
         width: 100%;
       }
@@ -348,12 +349,14 @@ export default {
     }
     .service-content_one-contenth3 {
       height: 1px;
-      width: 1900px;
+      // width: 1900px;
+      width: 100%;
       margin-top: 68px;
       .contenth3-img1 {
         position: absolute;
         // width: 100%;
-        width: 1900px;
+        // width: 1900px;
+        width: 100%;
       }
       div {
         position: relative;
