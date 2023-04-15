@@ -20,7 +20,8 @@
     <div class="introduce">
       <div class="text">
         <span>01</span>
-        <span>&emsp;———&emsp;IntroductiontothePark</span><br />
+        <span>&emsp;———&emsp;</span>
+        <span>IntroductiontothePark</span><br />
         <div>厚德创客港</div>
         <br />
         <div>产业园区介绍</div>
@@ -72,7 +73,8 @@
     <div class="service">
       <div class="service-text">
         <span>02</span>
-        <span>&emsp;———&emsp;IntroductiontothePark</span><br />
+        <span>&emsp;———&emsp;</span>
+        <span>IntroductiontothePark</span><br />
         <div>园区服务内容</div>
         <div>
           <ul>
@@ -109,7 +111,7 @@
         indicator-position="none"
       >
         <el-carousel-item v-for="item in src2" :key="item">
-          <img class="ser-img" :src="item" :alt="item" style="height: 800px" />
+          <img class="ser-img" :src="item" :alt="item" style="height: 900px" />
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -150,77 +152,81 @@ export default {
 
 <style lang="scss" scoped>
 .box {
-  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin-top: -65px;
+  padding: 0;
+}
 
-  .m-btn {
-    position: relative;
-    top: -780px;
-    left: 250px;
+.m-btn {
+  position: relative;
+  top: -780px;
+  left: 250px;
 
-    .m-btn-ex {
-      font-size: 14px;
-      font-weight: bolder;
-    }
-  }
-
-  .m-btn-us {
-    position: absolute;
-    top: 600px;
-    left: 250px;
-
-    .btn-us {
-      width: 200px;
-      height: 60px;
-      font-weight: bold;
-      font-size: 18px;
-    }
-  }
-
-  .m-content {
-    position: absolute;
-    top: 390px;
-    left: 250px;
-
-    .title {
-      color: #333333;
-      letter-spacing: 12px;
-      font-size: 65px;
-      font-weight: bolder;
-    }
-
-    .content {
-      position: absolute;
-      padding-top: 20px;
-      width: 540px;
-      color: rgba(0, 0, 0, 0.2);
-      font-size: 18px;
-      font-family: 'Microsoft YaHei UI', serif;
-      font-weight: bold;
-    }
-  }
-
-  .slider-box {
-    position: relative;
-    z-index: -1;
-    top: -70px;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  .m-btn-ex {
+    font-size: 14px;
+    font-weight: bolder;
   }
 }
 
+.m-btn-us {
+  position: absolute;
+  top: 600px;
+  left: 250px;
+
+  .btn-us {
+    width: 200px;
+    height: 60px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
+
+.m-content {
+  position: absolute;
+  top: 390px;
+  left: 250px;
+
+  .title {
+    color: #333333;
+    letter-spacing: 12px;
+    font-size: 65px;
+    font-weight: bolder;
+  }
+
+  .content {
+    position: absolute;
+    padding-top: 20px;
+    width: 540px;
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    font-family: 'Microsoft YaHei UI', serif;
+    font-weight: bold;
+  }
+}
+
+.slider-box {
+  position: relative;
+  z-index: -1;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .introduce {
-  width: 85%;
-  height: 800px;
+  width: 80%;
+  height: 900px;
   position: absolute;
   margin-top: 40px;
   left: 330px;
 
   .text {
     color: black;
-    width: 40%;
+    width: 42%;
     height: 100%;
     margin-top: 150px;
+    margin-left: -30px;
 
     div {
       margin-top: 20px;
@@ -230,28 +236,35 @@ export default {
       color: #00a6ff;
       font-size: 25px;
       margin-bottom: 50px;
+      font-weight: bolder;
     }
 
     span:nth-child(2) {
+      color: #cdcdcd;
+      font-size: 20px;
+      font-weight: lighter;
+    }
+
+    span:nth-child(3) {
       color: #cdcdcd;
       font-size: 25px;
       font-weight: bolder;
     }
 
-    div:nth-child(4) {
+    div:nth-child(5) {
       color: #333333;
       font-size: 50px;
       font-weight: bolder;
     }
 
-    div:nth-child(6) {
+    div:nth-child(7) {
       margin-top: -10px;
       color: #000000;
       font-size: 30px;
       font-weight: bolder;
     }
 
-    div:nth-child(8) {
+    div:nth-child(9) {
       color: #bdb4b4;
       font-size: 16px;
       font-weight: bold;
@@ -262,7 +275,7 @@ export default {
   .data {
     position: absolute;
     padding-top: 70px;
-    left: -80px;
+    left: -110px;
 
     table {
       font-weight: bolder;
@@ -295,12 +308,14 @@ export default {
       }
     }
   }
+
   .img {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 50%;
-    right: 0;
+    right: -50px;
+    margin-left: 60px;
 
     .icon {
       position: relative;
@@ -338,7 +353,7 @@ export default {
   height: 800px;
   position: relative;
   margin-top: 55%;
-  margin-bottom: 140px;
+  margin-bottom: 240px;
   right: -50px;
   left: 0;
 
@@ -354,6 +369,7 @@ export default {
     }
 
     span:nth-child(1) {
+      font-weight: bolder;
       color: #00a6ff;
       font-size: 25px;
       margin-bottom: 50px;
@@ -361,16 +377,22 @@ export default {
 
     span:nth-child(2) {
       color: #cdcdcd;
+      font-size: 20px;
+      font-weight: lighter;
+    }
+
+    span:nth-child(3) {
+      color: #cdcdcd;
       font-size: 25px;
       font-weight: bolder;
     }
 
-    div:nth-child(4) {
+    div:nth-child(5) {
       font-size: 50px;
       font-weight: bolder;
     }
 
-    div:nth-child(5) {
+    div:nth-child(6) {
       font-weight: bold;
       font-size: 18px;
       color: rgba(255, 255, 255, 0.8);
@@ -399,7 +421,7 @@ export default {
     width: 50%;
     background: #00a6ff;
     right: 0;
-    bottom: -80px;
+    bottom: -180px;
     border-radius: 50px 0 0 0;
 
     div {
@@ -439,7 +461,7 @@ export default {
     width: 180px;
     height: 80px;
     text-align: center;
-    top: 90%;
+    top: 98%;
     left: 15%;
 
     .icon-left {
