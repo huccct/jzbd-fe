@@ -20,7 +20,7 @@ Vue.use(VueRouter);
 const routes = [
   { path: '/', component: home },
   { path: '/service', component: ParkService },
-  { path: '/service/information', component: Serviceinformation },
+  { path: '/service/information/:id', component: Serviceinformation },
   { path: '/enterprise-storm', component: EnterpriseStorm },
   { path: '/maker-port', component: MakerPort },
   { path: '/cooperation', component: Cooperation },
