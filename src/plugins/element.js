@@ -17,7 +17,8 @@ import {
   Header,
   Main,
   Col,
-  Breadcrumb
+  Breadcrumb,
+  BreadcrumbItem
 } from 'element-ui';
 
 Vue.use(Button);
@@ -32,3 +33,4 @@ Vue.use(Header);
 Vue.use(Main);
 Vue.use(Col);
 Vue.use(Breadcrumb);
+Vue.use(BreadcrumbItem);
