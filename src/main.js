@@ -9,9 +9,16 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import './plugins/element.js';
+
+import * as API from '@/api';
+import '@/mock';
 Vue.config.productionTip = false;
 new Vue({
   router,
   store,
+  beforeCreate() {
+    Vue.prototype.$bus = this;
+    Vue.prototype.$API = API;
+  },
   render: h => h(App)
 }).$mount('#app');

@@ -1,5 +1,6 @@
-import get from './http';
+// import get from './http';
 // import post from './http';
+import mockRequests from './mockHttp';
 
 // 测试
-export const reqTest = () => get(``);
+export const reqTest = () => mockRequests.get(`/test`);

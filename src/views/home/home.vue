@@ -196,6 +196,9 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    this.$store.dispatch('Test');
   }
 };
 </script>
