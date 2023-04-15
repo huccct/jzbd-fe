@@ -150,7 +150,7 @@
           </div>
         </div>
       </div>
-      <Pressannouncement style="margin-top: 84px"></Pressannouncement>
+      <Pressannouncement style="margin-top: 84px; margin-bottom: 100px"></Pressannouncement>
       <!-- <div class="service-content_one-contenth2"></div> -->
     </div>
   </div>
