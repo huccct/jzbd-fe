@@ -90,6 +90,10 @@ export default {
     return {};
   },
 
+  created() {
+    document.documentElement.scrollTop = 0;
+  },
+
   mounted() {},
 
   methods: {}

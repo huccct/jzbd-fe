@@ -3,6 +3,7 @@
  */
 import axios from 'axios';
 import nprogress from 'nprogress';
+import 'nprogress/nprogress.css';
 import QS from 'qs';
 import { Message } from 'element-ui';
 import store from '../store/index';

@@ -1,7 +1,7 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-04-15 22:46:14
+ * @LastEditTime: 2023-04-15 23:01:00
  * @LastEditors: 袁十一
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
@@ -46,12 +46,10 @@
         </div>
       </div>
       <div class="contract-map">
-        <img
-          src="https://restapi.amap.com/v3/staticmap?location=120.095191
-        ,36.165253&zoom=12&size=1280%2A484&markers=-1,http://114.116.21.170:9000/photo/contract/l
-        ocation-2.png,0:120.095191,36.165253&key=900b95537e99785a8b0d415ee9160fd1"
+        <!-- <img
+          src="https://restapi.amap.com/v3/staticmap?location=120.095191,36.165253&zoom=12&size=1280%2A484&markers=-1,http://114.116.21.170:9000/photo/contract/location-2.png,0:120.095191,36.165253&key=900b95537e99785a8b0d415ee9160fd1"
           alt=""
-        />
+        /> -->
       </div>
     </div>
   </div>
@@ -158,6 +156,7 @@ export default {};
 */
 .contract {
   width: 100%;
+  // min-width: 1902px;
 }
 .contract .contract-header {
   display: block;
@@ -165,12 +164,15 @@ export default {};
   padding-top: 268px;
 }
 .sliderbox {
-  width: 1920px;
+  // width: 1902px;
   height: 1000px;
   position: absolute;
   z-index: -1;
   left: 0;
   top: 0;
+  img {
+    width: 100%;
+  }
 }
 .text {
   width: 1271px;

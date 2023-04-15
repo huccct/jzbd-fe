@@ -99,7 +99,7 @@ export default {
   z-index: -1;
   top: 0;
   left: 0;
-  min-width: 1900px;
+  // min-width: 1900px;
   width: 100%;
   height: 1000px;
   img {
