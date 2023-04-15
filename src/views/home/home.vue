@@ -5,7 +5,7 @@
         <Slider />
       </div>
       <div class="h-btn">
-        <el-button type="primary"> EXPLORE A NEW WORLD TOGETHER </el-button>
+        <el-button type="primary"> EXPLORE A NEW WORLD TOGETHER</el-button>
       </div>
       <div class="h-content">
         <span>提供一条龙的运营孵化体系</span>
@@ -196,6 +196,9 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    this.$store.dispatch('Test');
   }
 };
 </script>
@@ -212,7 +215,8 @@ export default {
     position: relative;
     top: 0;
     left: 0;
-    width: 1920px;
+    width: 100%;
+    // min-width: 1900px;
   }
 
   .h-btn {
@@ -227,6 +231,7 @@ export default {
     left: 320px;
     width: 984px;
     height: 70px;
+
     span {
       display: block;
       float: left;
@@ -241,10 +246,12 @@ export default {
       letter-spacing: 12px;
     }
   }
+
   .d-head {
     // width: 1920px;
     display: flex;
     position: relative;
+
     span {
       position: relative;
       top: 107px;
@@ -257,6 +264,7 @@ export default {
       color: #007dc0;
       line-height: 30px;
     }
+
     .l {
       position: absolute;
       top: 119px;
@@ -267,6 +275,7 @@ export default {
       border-radius: 0px 0px 0px 0px;
       opacity: 1;
     }
+
     span:nth-child(3) {
       position: absolute;
       top: 107px;
@@ -279,6 +288,7 @@ export default {
       color: #cdcdcd;
       line-height: 30px;
     }
+
     .d-title {
       span {
         position: absolute;
@@ -293,6 +303,7 @@ export default {
         line-height: 50px;
       }
     }
+
     .d-title2 {
       span {
         position: absolute;
@@ -307,11 +318,13 @@ export default {
         line-height: 24px;
       }
     }
+
     .d-text {
       position: absolute;
       top: 263px;
       width: 648px;
       height: 184px;
+
       span {
         font-size: 16px;
         font-family: Microsoft YaHei-Regular, Microsoft YaHei;
@@ -321,23 +334,28 @@ export default {
       }
     }
   }
+
   .basic {
     position: relative;
     margin-top: 0;
-    width: 1920px;
+    width: 100%;
+    // min-width: 1900px;
     height: 900px;
     background: #ffffff;
     border-radius: 0px 0px 0px 0px;
+
     .d-bg {
       z-index: -1;
 
       img {
         position: absolute;
         top: 166px;
-        width: 1920px;
+        width: 100%;
+        // width: 1900px;
         height: 600px;
       }
     }
+
     span {
       // -webkit-background-clip: text;
       // -webkit-text-fill-color: transparent;
@@ -348,18 +366,21 @@ export default {
       left: 1030px;
       top: 240px;
       display: flex;
+
       .img-left {
         width: 90px;
         height: 80px;
         background: #00a6ff;
         border-radius: 40px 0px 0px 40px;
         opacity: 0.4;
+
         img {
           position: absolute;
           left: 36px;
           top: 26px;
         }
       }
+
       .img-right {
         z-index: 10;
         // width: 90px;
@@ -374,11 +395,18 @@ export default {
         // }
       }
     }
+
     .d-img {
       position: absolute;
-      left: 1120px;
+      // width: auto;
+      // width: 700px;
+      left: 1100px;
       top: 100px;
+      img {
+        width: 798px;
+      }
     }
+
     .d-btn {
       position: absolute;
       left: 320px;
@@ -389,6 +417,7 @@ export default {
       border-radius: 5px 5px 5px 5px;
       opacity: 1;
       display: flex;
+
       span {
         position: absolute;
         top: 13px;
@@ -401,9 +430,11 @@ export default {
         color: #ffffff;
         line-height: 20px;
       }
+
       div {
         top: 20px;
         left: 115px;
+
         .d-btn-up {
           position: absolute;
           top: 14px;
@@ -414,6 +445,7 @@ export default {
           opacity: 1;
           transform: rotate(135deg);
         }
+
         .d-btn-down {
           position: absolute;
           top: 21px;
@@ -427,18 +459,23 @@ export default {
       }
     }
   }
+
   .pollcy {
-    width: 1920px;
+    width: 100%;
+    // width: 1900px;
     height: 828px;
     background-image: url('http://114.116.21.170:9000/photo/home7.png');
     background-size: 100% 100%;
+
     .p-img {
       position: absolute;
       top: 2172px;
       left: 320px;
       z-index: 2;
+
       .p-imglist {
         display: flex;
+
         li {
           // display: flex;
           list-style: none;
@@ -450,6 +487,7 @@ export default {
         top: 386px;
         left: 50px;
         display: flex;
+
         .p-cimglast {
           width: 18px;
           height: 18px;
@@ -459,11 +497,13 @@ export default {
           margin-right: 10px;
           border-radius: 100%;
         }
+
         .p-cimglastadd {
           opacity: 1;
         }
       }
     }
+
     .p-changeimg {
       position: absolute;
       left: 910px;
@@ -477,14 +517,17 @@ export default {
       background: #ffffff;
       border-radius: 0px 0px 0px 0px;
       opacity: 1;
+
       .p-cilist {
         position: absolute;
         left: 910px;
         width: 370px;
+
         .p-cidiv {
           height: 110px;
           padding: 0;
           margin: 0;
+
           .p-title {
             display: flex;
 
@@ -497,6 +540,7 @@ export default {
               background: #d5e0ee;
               border-radius: 2px 2px 2px 2px;
               opacity: 1;
+
               span {
                 margin-left: 5px;
                 margin-top: 3px;
@@ -509,9 +553,11 @@ export default {
                 line-height: 18px;
               }
             }
+
             .p-cinumberadd {
               background: #00a6ff;
             }
+
             .title {
               margin-top: 10px;
               margin-right: 10px;
@@ -524,10 +570,12 @@ export default {
               font-weight: 400;
               color: #333333;
               line-height: 18px;
+
               span {
                 white-space: nowrap;
               }
             }
+
             .name {
               // margin-left: 93px;
               // margin-top: -18px;
@@ -541,6 +589,7 @@ export default {
               line-height: 18px;
             }
           }
+
           .text {
             margin-left: 35px;
             margin-top: 10px;
@@ -552,6 +601,7 @@ export default {
             color: #999999;
             line-height: 18px;
           }
+
           .timer {
             margin-left: 310px;
             margin-top: -6px;
@@ -563,6 +613,7 @@ export default {
             color: #999999;
             line-height: 18px;
           }
+
           .p-ciactivity {
             position: absolute;
             width: 10px;
@@ -570,24 +621,30 @@ export default {
             margin-top: -110px;
             margin-left: 360px;
           }
+
           .p-ciactivityadd {
             background-image: url('http://114.116.21.170:9000/photo/home6.png');
           }
         }
+
         .p-cidivadd {
           background-color: #ebf4ff;
         }
       }
     }
   }
+
   .excellent {
-    width: 1920px;
+    width: 100%;
+    // width: 1900px;
     height: 1050px;
+
     .d-head {
       span {
         width: auto;
       }
     }
+
     .e-show {
       position: relative;
       top: 267px;
@@ -601,17 +658,20 @@ export default {
       display: flex;
       -webkit-flex-wrap: wrap;
       flex-wrap: wrap;
+
       .e-div {
         // position: relative;
         width: 320px;
         height: 320px;
         position: relative;
+
         .text {
           position: absolute;
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%);
           text-align: center;
+
           span {
             width: auto;
             height: 24px;
@@ -621,6 +681,7 @@ export default {
             color: #333333;
             line-height: 24px;
           }
+
           p {
             margin-top: 22px;
             text-align: start;

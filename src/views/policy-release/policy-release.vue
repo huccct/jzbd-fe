@@ -18,7 +18,7 @@
         </div>
         <div class="description">
           <div class="deslf">政策信息</div>
-          <div class="desrg">更多政策>></div>
+          <div class="desrg" @click="$router.push(`/policy-release/more-policies`)">更多政策>></div>
         </div>
         <div class="policeInfoMain">
           <div class="topImg">
@@ -86,9 +86,18 @@
         </div>
         <div class="description">企业信息</div>
         <!-- 表单区域 -->
-        <div class="enterpriseInfoForm">123</div>
+        <!-- <div class="enterpriseInfoForm">123</div> -->
+        <div class="success">
+          <img
+            src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/success.png"
+            alt=""
+          />
+          <div class="success_des">提交成功！</div>
+          <div class="jump">页面自动 跳转 等待时间：3秒</div>
+        </div>
       </div>
     </div>
+    <div style="height: 100px"></div>
   </div>
 </template>
 
@@ -114,10 +123,12 @@ export default {
   &::after {
     content: '';
     position: absolute;
-    top: 15px;
+    top: 13px;
     left: 47px;
     width: 80px;
-    border: 2px solid #cdcdcd;
+    // border: 2px solid #cdcdcd;
+    height: 2px;
+    background-color: #cdcdcd;
   }
   & > .titlf {
     width: 33px;
@@ -247,7 +258,7 @@ export default {
         font-family: Microsoft YaHei-Bold, Microsoft YaHei;
         font-weight: bold;
         color: #0e7fdb;
-        // line-height: 0px;
+        cursor: pointer;
       }
     }
     & .container > .policeInfoMain {
@@ -378,6 +389,31 @@ export default {
     & .container > .enterpriseInfoForm {
       margin-top: 80px;
       margin-left: 204px;
+    }
+    & > .container > .success {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      & > div {
+        flex: 1;
+      }
+      & > .success_des {
+        font-size: 40px;
+        font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+        font-weight: 400;
+        color: #333333;
+        line-height: 32px;
+        margin-top: 31px;
+        margin-bottom: 40px;
+      }
+      & > .jump {
+        font-size: 18px;
+        font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+        font-weight: 400;
+        color: #333333;
+        line-height: 32px;
+      }
     }
   }
 }

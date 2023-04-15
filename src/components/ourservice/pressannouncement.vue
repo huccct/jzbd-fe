@@ -113,7 +113,7 @@ export default {
   background-repeat: no-repeat;
   height: 965px;
   width: 100%;
-  min-width: 1900px;
+  // min-width: 1900px;
   .pa-bg {
     position: absolute;
     z-index: -1;
