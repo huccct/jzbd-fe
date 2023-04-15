@@ -2,7 +2,7 @@
  * @Author: hayyot
  * @Date: 2023-04-12 15:00:08
  * @Description: 铁沸物
- * @FilePath: \jzbd-fe\src\views\park-service\park-service.vue
+ * @FilePath: \jzbd-fe\src\views\enterprise-storm\enterprise-storm.vue
 -->
 <template>
   <div class="enterprise-box">
@@ -55,6 +55,7 @@
           </div>
         </div>
       </div>
+      <div style="margin-bottom: 200px"></div>
     </div>
   </div>
 </template>
@@ -98,7 +99,8 @@ export default {
   z-index: -1;
   top: 0;
   left: 0;
-  width: 1920px;
+  min-width: 1900px;
+  width: 100%;
   height: 1000px;
   img {
     width: 100%;
