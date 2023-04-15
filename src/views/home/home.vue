@@ -2,7 +2,7 @@
   <div class="box">
     <div class="header">
       <div class="slider-box">
-        <Slider/>
+        <Slider />
       </div>
       <div class="h-btn">
         <el-button type="primary"> EXPLORE A NEW WORLD TOGETHER</el-button>
@@ -14,7 +14,7 @@
     </div>
     <div class="basic">
       <div class="d-bg">
-        <img src="http://114.116.21.170:9000/photo/home4.png" alt=""/>
+        <img src="http://114.116.21.170:9000/photo/home4.png" alt="" />
       </div>
       <div class="d-head">
         <span>01</span>
@@ -27,27 +27,27 @@
           <span>青岛上合企业创新产业园</span>
         </div>
         <div class="d-text">
-          <span>
-            青岛上合企业创新产业园是胶州湾发展集团围绕上合示范区建设总体方案，重点打造的科技
+          <span
+            >青岛上合企业创新产业园是胶州湾发展集团围绕上合示范区建设总体方案，重点打造的科技
             企业孵化园区，地理位置优越，交通便利，15分钟车程即可到达西海岸新区和青岛主城区。
             项目总投资约2亿元，建筑面积约5.2万平方米，目前已建成含办公区的工业厂房10栋（包含
             6座单层厂房和4座双层厂房），同时为逐步打造国家级孵化器和青岛市级标杆孵化器，园区
             正在建设6000平方米的办公楼，办公楼建成后，园区将彻底实现从单一的厂房租赁到创客空
             间、孵化器、加速器、专业园区完整产业生态链。园区2019-2020年先后年获评青岛市中小
-            企业产业园和胶州市级孵化器，2022年将努力争创青岛市级孵化器。
-          </span>
+            企业产业园和胶州市级孵化器，2022年将努力争创青岛市级孵化器。</span
+          >
         </div>
       </div>
       <div class="d-changeimg">
         <div class="img-left">
-          <img src="http://114.116.21.170:9000/photo/home2.png" alt=""/>
+          <img src="http://114.116.21.170:9000/photo/home2.png" alt="" />
         </div>
         <div class="img-right">
-          <img src="http://114.116.21.170:9000/photo/home3.png" alt=""/>
+          <img src="http://114.116.21.170:9000/photo/home3.png" alt="" />
         </div>
       </div>
       <div class="d-img">
-        <img src="http://114.116.21.170:9000/photo/home1.png" alt=""/>
+        <img src="http://114.116.21.170:9000/photo/home1.png" alt="" />
       </div>
       <div class="d-btn">
         <span>加入我们</span>
@@ -68,7 +68,7 @@
       </div>
       <div class="p-img">
         <ul v-for="(list, index) in Policynews" :key="index" class="p-imglist">
-          <img :src="list.img"/>
+          <img :src="list.img" />
         </ul>
         <div class="p-imglast">
           <div class="p-cimglast"></div>
@@ -94,7 +94,7 @@
             <div class="text">
               <span>{{ list.text }}</span>
             </div>
-            <br/>
+            <br />
             <div class="timer">
               <span>{{ list.timer }}</span>
             </div>
@@ -114,7 +114,7 @@
       </div>
       <div class="e-show">
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home8.png" alt=""/>
+          <img src="http://114.116.21.170:9000/photo/home8.png" alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -123,7 +123,7 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home10.png" alt=""/>
+          <img src="http://114.116.21.170:9000/photo/home10.png" alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -138,7 +138,7 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home9.png" alt=""/>
+          <img src="http://114.116.21.170:9000/photo/home9.png" alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -149,7 +149,7 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home11.png" alt=""/>
+          <img src="http://114.116.21.170:9000/photo/home11.png" alt="" />
         </div>
       </div>
     </div>
@@ -162,7 +162,7 @@ import Slider from '@/components/slider/slider.vue';
 
 export default {
   name: 'home',
-  components: {NavigationBar, Slider},
+  components: { NavigationBar, Slider },
   data() {
     return {
       Policynews: [
