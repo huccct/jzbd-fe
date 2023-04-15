@@ -1,8 +1,8 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-04-14 15:59:29
- * @LastEditors: 袁十一
+ * @LastEditTime: 2023-04-15 20:27:37
+ * @LastEditors: Please set LastEditors
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
  * 初心不变，意志坚定
@@ -154,6 +154,7 @@ export default {};
 */
 .contract {
   width: 100%;
+  min-width: 1902px;
 }
 .contract .contract-header {
   display: block;
@@ -161,12 +162,15 @@ export default {};
   padding-top: 268px;
 }
 .sliderbox {
-  width: 1920px;
+  width: 1902px;
   height: 1000px;
   position: absolute;
   z-index: -1;
   left: 0;
   top: 0;
+  img {
+    width: 100%;
+  }
 }
 .text {
   width: 1271px;
