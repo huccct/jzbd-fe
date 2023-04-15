@@ -1,9 +1,3 @@
-/*
- * @Author: hayyot
- * @Date: 2023-04-13 08:20:38
- * @Description: 铁沸物
- * @FilePath: \jzbd-fe\src\plugins\element.js
- */
 import Vue from 'vue';
 import {
   Button,
@@ -17,7 +11,8 @@ import {
   Header,
   Main,
   Col,
-  Breadcrumb
+  Carousel,
+  CarouselItem,
 } from 'element-ui';
 
 Vue.use(Button);
@@ -31,4 +26,5 @@ Vue.use(Footer);
 Vue.use(Header);
 Vue.use(Main);
 Vue.use(Col);
-Vue.use(Breadcrumb);
+Vue.use(Carousel);
+Vue.use(CarouselItem)
