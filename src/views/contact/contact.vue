@@ -1,7 +1,7 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-04-14 15:59:29
+ * @LastEditTime: 2023-04-15 22:46:14
  * @LastEditors: 袁十一
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
@@ -46,8 +46,12 @@
         </div>
       </div>
       <div class="contract-map">
-        <img src="http://114.116.21.170:9000/photo/contract/map.png" alt="" />
-        <img class="logo-1" src="http://114.116.21.170:9000/photo/contract/location-2.png" alt="" />
+        <img
+          src="https://restapi.amap.com/v3/staticmap?location=120.095191
+        ,36.165253&zoom=12&size=1280%2A484&markers=-1,http://114.116.21.170:9000/photo/contract/l
+        ocation-2.png,0:120.095191,36.165253&key=900b95537e99785a8b0d415ee9160fd1"
+          alt=""
+        />
       </div>
     </div>
   </div>
