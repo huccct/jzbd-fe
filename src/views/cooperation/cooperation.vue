@@ -208,7 +208,7 @@ export default {
 
 <style lang="scss" scoped>
 .box {
-  min-width: 1900px;
+  // min-width: 1900px;
   width: 100%;
   height: 2997px;
   padding: 0;
@@ -222,7 +222,7 @@ export default {
   }
   .home {
     width: 100%;
-    min-width: 1900px;
+    // min-width: 1900px;
     height: 1000px;
     position: absolute;
     z-index: -1;
@@ -393,7 +393,7 @@ export default {
     z-index: -2;
     position: relative;
     width: 100%;
-    min-width: 1900px;
+    // min-width: 1900px;
     height: 1354px;
     top: 670px;
     left: 0px;
@@ -552,7 +552,7 @@ export default {
     // top: 2173px;
     top: 2020px;
     width: 100%;
-    min-width: 1900px;
+    // min-width: 1900px;
     height: 1000px;
     border-radius: 0px 0px 0px 0px;
     .d-head {

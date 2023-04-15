@@ -215,7 +215,8 @@ export default {
     position: relative;
     top: 0;
     left: 0;
-    min-width: 1900px;
+    width: 100%;
+    // min-width: 1900px;
   }
 
   .h-btn {
@@ -338,7 +339,7 @@ export default {
     position: relative;
     margin-top: 0;
     width: 100%;
-    min-width: 1900px;
+    // min-width: 1900px;
     height: 900px;
     background: #ffffff;
     border-radius: 0px 0px 0px 0px;
@@ -349,7 +350,8 @@ export default {
       img {
         position: absolute;
         top: 166px;
-        width: 1900px;
+        width: 100%;
+        // width: 1900px;
         height: 600px;
       }
     }
@@ -396,8 +398,13 @@ export default {
 
     .d-img {
       position: absolute;
+      // width: auto;
+      // width: 700px;
       left: 1100px;
       top: 100px;
+      img {
+        width: 798px;
+      }
     }
 
     .d-btn {
@@ -454,7 +461,8 @@ export default {
   }
 
   .pollcy {
-    width: 1900px;
+    width: 100%;
+    // width: 1900px;
     height: 828px;
     background-image: url('http://114.116.21.170:9000/photo/home7.png');
     background-size: 100% 100%;
@@ -628,7 +636,7 @@ export default {
 
   .excellent {
     width: 100%;
-    width: 1900px;
+    // width: 1900px;
     height: 1050px;
 
     .d-head {
