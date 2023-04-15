@@ -9,6 +9,7 @@ module.exports = {
     'vue/multi-word-component-names': 0,
     'no-console': 'off',
     'no-debugger': 'off',
+    'vue/no-parsing-error': [2, { 'x-invalid-end-tag': false }],
     'vue/no-use-v-if-with-v-for': 'error',
     'vue/require-prop-types': 'error',
     'vue/require-default-prop': 'error',

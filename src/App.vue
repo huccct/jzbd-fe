@@ -2,14 +2,16 @@
  * @Description: Stay hungry，Stay foolish
  * @Author: Huccct
  * @Date: 2023-04-11 10:37:48
- * @LastEditors: Huccct
- * @LastEditTime: 2023-04-11 19:29:28
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-04-13 09:18:09
 -->
 <template>
   <div id="app">
     <navigation-bar />
     <router-view />
-    <Bottom />
+    <el-footer>
+      <Bottom />
+    </el-footer>
   </div>
 </template>
 
@@ -27,5 +29,15 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.el-footer {
+  padding: 0 !important;
+}
+.el-main {
+  padding: 0 !important;
+}
+.el-header {
+  padding: 0 !important;
 }
 </style>
