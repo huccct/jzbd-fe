@@ -9,6 +9,8 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import './plugins/element.js';
+import Breadcrumb from 'element-ui';
+Vue.use(Breadcrumb);
 Vue.config.productionTip = false;
 new Vue({
   router,

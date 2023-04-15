@@ -11,8 +11,6 @@ import {
   Header,
   Main,
   Col,
-  Breadcrumb,
-  BreadcrumbItem,
   Carousel,
   CarouselItem
 } from 'element-ui';
@@ -28,7 +26,5 @@ Vue.use(Footer);
 Vue.use(Header);
 Vue.use(Main);
 Vue.use(Col);
-Vue.use(Breadcrumb);
-Vue.use(BreadcrumbItem);
 Vue.use(Carousel);
 Vue.use(CarouselItem);

@@ -10,7 +10,6 @@ import EnterpriseStorm from '@/views/enterprise-storm/enterprise-storm.vue';
 import MakerPort from '@/views/maker-port/maker-port.vue';
 import Cooperation from '@/views/cooperation/cooperation.vue';
 import PolicyRelease from '@/views/policy-release/policy-release.vue';
-import MorePolicies from '@/views/policy-release/more-policies.vue';
 import Contact from '@/views/contact/contact.vue';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
@@ -26,7 +25,6 @@ const routes = [
   { path: '/maker-port', component: MakerPort },
   { path: '/cooperation', component: Cooperation },
   { path: '/policy-release', component: PolicyRelease },
-  { path: '/policy-release/more-policies', component: MorePolicies },
   { path: '/contact', component: Contact }
 ];
 

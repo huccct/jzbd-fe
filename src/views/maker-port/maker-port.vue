@@ -151,61 +151,61 @@ export default {
 <style lang="scss" scoped>
 .box {
   width: 100%;
-}
 
-.slider-box {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+  .m-btn {
+    position: relative;
+    top: -780px;
+    left: 250px;
 
-.m-btn {
-  position: absolute;
-  top: 300px;
-  left: 250px;
-
-  .m-btn-ex {
-    font-size: 14px;
-    font-weight: bolder;
-  }
-}
-
-.m-btn-us {
-  position: absolute;
-  top: 600px;
-  left: 250px;
-
-  .btn-us {
-    width: 200px;
-    height: 60px;
-    font-weight: bold;
-    font-size: 18px;
-  }
-}
-
-.m-content {
-  position: absolute;
-  top: 390px;
-  left: 250px;
-
-  .title {
-    color: #333333;
-    letter-spacing: 12px;
-    font-size: 65px;
-    font-weight: bolder;
+    .m-btn-ex {
+      font-size: 14px;
+      font-weight: bolder;
+    }
   }
 
-  .content {
+  .m-btn-us {
     position: absolute;
-    padding-top: 20px;
-    width: 540px;
-    color: rgba(0, 0, 0, 0.2);
-    font-size: 18px;
-    font-family: 'Microsoft YaHei UI', serif;
-    font-weight: bold;
+    top: 600px;
+    left: 250px;
+
+    .btn-us {
+      width: 200px;
+      height: 60px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  }
+
+  .m-content {
+    position: absolute;
+    top: 390px;
+    left: 250px;
+
+    .title {
+      color: #333333;
+      letter-spacing: 12px;
+      font-size: 65px;
+      font-weight: bolder;
+    }
+
+    .content {
+      position: absolute;
+      padding-top: 20px;
+      width: 540px;
+      color: rgba(0, 0, 0, 0.2);
+      font-size: 18px;
+      font-family: 'Microsoft YaHei UI', serif;
+      font-weight: bold;
+    }
+  }
+
+  .slider-box {
+    position: relative;
+    z-index: -1;
+    top: -70px;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -213,14 +213,14 @@ export default {
   width: 85%;
   height: 800px;
   position: absolute;
-  margin-top: 60%;
-  right: -50px;
+  margin-top: 40px;
+  left: 330px;
 
   .text {
     color: black;
     width: 40%;
     height: 100%;
-    margin-top: 100px;
+    margin-top: 150px;
 
     div {
       margin-top: 20px;
@@ -336,8 +336,9 @@ export default {
 .service {
   width: 1920px;
   height: 800px;
-  position: absolute;
-  margin-top: 115%;
+  position: relative;
+  margin-top: 55%;
+  margin-bottom: 140px;
   right: -50px;
   left: 0;
 
