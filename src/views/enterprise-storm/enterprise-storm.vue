@@ -80,29 +80,120 @@
                 ...</span
               >
             </div>
-            <button class="white-outline-button">查看更多>></button>
+            <button
+              class="white-outline-button"
+              @click="$router.push(`/enterprise-storm/more-enterprise`)"
+            >
+              查看更多>>
+            </button>
           </div>
         </div>
       </div>
-      <div style="margin-bottom: 200px"></div>
+      <!-- <div style="margin-bottom: 200px"></div> -->
     </div>
+    <div class="company">
+      <div class="company_one companyFlex_one">
+        <img
+          src="http://114.116.21.170:9000/photo/enterprise-storm/b85f95bceb38f3b6e19d24d403fc4579c71de2a11a42b6-QNYxT0@2x.png"
+          alt=""
+        />
+        <div class="title">青岛能蜂电气有限公司</div>
+        <div class="des">
+          青岛能蜂电气有限公司，主营信息系统集成服务、云计算装备技术服务、智能控制系统集成、新兴能源技术研发等...
+        </div>
+        <div class="phone">
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
+          <span class="phone_des">联系方式：</span>
+          <span>0532-1231234</span>
+        </div>
+        <div class="classification">
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 60@2x.png" alt="" />
+          <span class="classification_des">主营产品：</span>
+          <span>技术咨询、技术服务、技术开发...</span>
+        </div>
+        <div class="honor">
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 61@2x.png" alt="" />
+          <span class="honor_des">荣誉奖项：</span>
+          <span>先进企业、先进个人、先进技术...</span>
+        </div>
+        <button class="see_more">查看更多>></button>
+      </div>
+      <div class="company_two companyFlex_two">
+        <img
+          src="http://114.116.21.170:9000/photo/enterprise-storm/a9fe24f218db5f518329ac5c27bf18396d4b4af569a5a-7kTeNM_fw1200@2x.png"
+          alt=""
+        />
+        <div class="title">青岛格林维尔环保技术有限公司</div>
+        <div class="des">
+          青岛格林维尔环保技术有限公司，主营信息系统集成服务、云计算装备技术服务、智能控制系统集成、新兴能源技术研发等...
+        </div>
+        <div class="phone">
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
+          <span class="phone_des">联系方式：</span>
+          <span>0532-1231234</span>
+        </div>
+        <div class="classification">
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 60@2x.png" alt="" />
+          <span class="classification_des">主营产品：</span>
+          <span>技术咨询、技术服务、技术开发...</span>
+        </div>
+        <div class="honor">
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 61@2x.png" alt="" />
+          <span class="honor_des">荣誉奖项：</span>
+          <span>先进企业、先进个人、先进技术...</span>
+        </div>
+        <button class="see_more">查看更多>></button>
+      </div>
+      <div class="company_three companyFlex_three">
+        <img
+          src="http://114.116.21.170:9000/photo/enterprise-storm/250e2e981b27b0dc2abc26a0d8fe1c13623fa8656c556-YlG1Qm_fw1200@2x.png"
+          alt=""
+        />
+        <div class="title">同方工业青岛分公司</div>
+        <div class="des">
+          同方工业青岛分公司，主营信息系统集成服务、云计算装备技术服务、智能控制系统集成、新兴能源技术研发等...
+        </div>
+        <div class="phone">
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
+          <span class="phone_des">联系方式：</span>
+          <span>0532-1231234</span>
+        </div>
+        <div class="classification">
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 60@2x.png" alt="" />
+          <span class="classification_des">主营产品：</span>
+          <span>技术咨询、技术服务、技术开发......</span>
+        </div>
+        <div class="honor">
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 61@2x.png" alt="" />
+          <span class="honor_des">荣誉奖项：</span>
+          <span>先进企业、先进个人、先进技术...</span>
+        </div>
+        <button class="see_more">查看更多>></button>
+      </div>
+    </div>
+    <button class="see_more_last">查看更多</button>
   </div>
 </template>
 
 <script>
 import DevicePixelRatio from '@/utils/devicePixelRatio';
-import NavigationBar from '@/components/navigation/navigation.vue';
-import Slider from '@/components/slider/slider.vue';
 export default {
-  name: 'JzbdFeParkService',
-
-  components: {
-    NavigationBar,
-    Slider
-  },
+  name: 'JzbdFeEnterpriseStorm',
+  components: {},
 
   data() {
-    return {};
+    return {
+      form: {
+        name: '',
+        region: '',
+        date1: '',
+        date2: '',
+        delivery: false,
+        type: [],
+        resource: '',
+        desc: ''
+      }
+    };
   },
 
   mounted() {},
@@ -117,6 +208,7 @@ export default {
 
 <style lang="scss" scoped>
 .enterprise-box {
+  position: relative;
   width: 100%;
 }
 .enterprise-elheader {
@@ -381,8 +473,296 @@ export default {
     font-size: 24px;
     margin-top: 612px;
     margin-left: 652px;
+    cursor: pointer;
   }
 }
+.company {
+  padding-left: 7px;
+  margin: 0 auto;
+  width: 1280px;
+  margin-top: 25px;
+  margin-bottom: 240px;
+  display: flex;
+  & > .companyFlex_one {
+    width: 410px;
+    height: 580px;
+    background: #ffffff;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1608);
+    border-radius: 0px 0px 0px 0px;
+    opacity: 1;
+    margin-right: 25px;
+    display: flex;
+    flex-direction: column;
+    & img {
+      width: 100%;
+      object-fit: cover;
+    }
+    & > .title {
+      width: 200px;
+      height: 20px;
+      font-size: 20px;
+      font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+      font-weight: 700;
+      color: #333333;
+      margin-left: 20px;
+      margin-top: 28px;
+    }
+    & > .des {
+      width: 358px;
+      height: 63px;
+      font-size: 16px;
+      font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+      font-weight: 400;
+      color: #333333;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+    & > .phone {
+      margin-top: 22px;
+      padding-left: 20px;
+      display: flex;
+      align-items: center;
+      & > img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
+      & > .phone_des {
+        margin: 0 10px;
+      }
+    }
+    & > .classification {
+      margin-top: 10px;
+      padding-left: 20px;
+      display: flex;
+      align-items: center;
+      & > img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
+      & > .classification_des {
+        margin: 0 10px;
+      }
+    }
+    & > .honor {
+      margin-top: 10px;
+      padding-left: 20px;
+      display: flex;
+      align-items: center;
+      & > img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
+      & > .honor_des {
+        margin: 0 10px;
+      }
+    }
+    & > .see_more {
+      color: white;
+      height: 35px;
+      width: 120px;
+      background-color: #00a6ff;
+      border: none;
+      font-size: 16px;
+      font-weight: 400;
+      font-family: Microsoft YaHei-Regular;
+      margin-top: 22px;
+      margin-left: 20px;
+    }
+  }
+  & > .companyFlex_two {
+    width: 410px;
+    height: 580px;
+    background: #ffffff;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1608);
+    border-radius: 0px 0px 0px 0px;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 25px;
+    & img {
+      width: 100%;
+      object-fit: cover;
+    }
+    & > .title {
+      width: 280px;
+      height: 20px;
+      font-size: 20px;
+      font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+      font-weight: 700;
+      color: #333333;
+      margin-left: 20px;
+      margin-top: 28px;
+    }
+    & > .des {
+      width: 358px;
+      height: 63px;
+      font-size: 16px;
+      font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+      font-weight: 400;
+      color: #333333;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+    & > .phone {
+      margin-top: 22px;
+      padding-left: 20px;
+      display: flex;
+      align-items: center;
+      & > img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
+      & > .phone_des {
+        margin: 0 10px;
+      }
+    }
+    & > .classification {
+      margin-top: 10px;
+      padding-left: 20px;
+      display: flex;
+      align-items: center;
+      & > img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
+      & > .classification_des {
+        margin: 0 10px;
+      }
+    }
+    & > .honor {
+      margin-top: 10px;
+      padding-left: 20px;
+      display: flex;
+      align-items: center;
+      & > img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
+      & > .honor_des {
+        margin: 0 10px;
+      }
+    }
+    & > .see_more {
+      color: white;
+      height: 35px;
+      width: 120px;
+      background-color: #00a6ff;
+      border: none;
+      font-size: 16px;
+      font-weight: 400;
+      font-family: Microsoft YaHei-Regular;
+      margin-top: 22px;
+      margin-left: 20px;
+    }
+  }
+  & > .companyFlex_three {
+    width: 410px;
+    height: 580px;
+    background: #ffffff;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1608);
+    border-radius: 0px 0px 0px 0px;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    & img {
+      width: 100%;
+      object-fit: cover;
+    }
+    & > .title {
+      width: 280px;
+      height: 20px;
+      font-size: 20px;
+      font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+      font-weight: 700;
+      color: #333333;
+      margin-left: 20px;
+      margin-top: 28px;
+    }
+    & > .des {
+      width: 358px;
+      height: 63px;
+      font-size: 16px;
+      font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+      font-weight: 400;
+      color: #333333;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+    & > .phone {
+      margin-top: 22px;
+      padding-left: 20px;
+      display: flex;
+      align-items: center;
+      & > img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
+      & > .phone_des {
+        margin: 0 10px;
+      }
+    }
+    & > .classification {
+      margin-top: 10px;
+      padding-left: 20px;
+      display: flex;
+      align-items: center;
+      & > img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
+      & > .classification_des {
+        margin: 0 10px;
+      }
+    }
+    & > .honor {
+      margin-top: 10px;
+      padding-left: 20px;
+      display: flex;
+      align-items: center;
+      & > img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
+      & > .honor_des {
+        margin: 0 10px;
+      }
+    }
+    & > .see_more {
+      color: white;
+      height: 35px;
+      width: 120px;
+      background-color: #00a6ff;
+      border: none;
+      font-size: 16px;
+      font-weight: 400;
+      font-family: Microsoft YaHei-Regular;
+      margin-top: 22px;
+      margin-left: 20px;
+    }
+  }
+}
+.see_more_last {
+  width: 300px;
+  height: 80px;
+  background-color: #00a6ff;
+  color: #fff;
+  border: 2px solid #fff;
+  font-size: 30px;
+  cursor: pointer;
+  position: absolute;
+  left: 810px;
+  bottom: -120px;
+}
+
 .enterprise-content_two-img {
   img {
     position: absolute;

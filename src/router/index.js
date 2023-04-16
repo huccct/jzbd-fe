@@ -7,6 +7,7 @@
 import home from '@/views/home/home.vue';
 import ParkService from '@/views/park-service/park-service.vue';
 import EnterpriseStorm from '@/views/enterprise-storm/enterprise-storm.vue';
+import MoreEnterprise from '@/views/enterprise-storm/more-enterprise.vue';
 import MakerPort from '@/views/maker-port/maker-port.vue';
 import Cooperation from '@/views/cooperation/cooperation.vue';
 import PolicyRelease from '@/views/policy-release/policy-release.vue';
@@ -27,7 +28,8 @@ const routes = [
   { path: '/cooperation', component: Cooperation },
   { path: '/policy-release', component: PolicyRelease },
   { path: '/policy-release/more-policies', component: MorePolicies },
-  { path: '/contact', component: Contact }
+  { path: '/contact', component: Contact },
+  { path: '/enterprise-storm/more-enterprise', component: MoreEnterprise }
 ];
 
 const router = new VueRouter({
