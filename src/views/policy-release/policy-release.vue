@@ -106,7 +106,6 @@
                 :show-file-list="false"
                 :http-request="uploadFiles"
                 action="https://jsonplaceholder.typicode.com/posts/"
-                :on-remove="handleRemove"
                 :file-list="fileList"
               >
                 <div slot="trigger" class="uploadInfo_wrapped">
@@ -117,15 +116,17 @@
                         alt=""
                       />
                       <div class="upload_rg">
-                        <div class="fileName">{{ item.name }}</div>
+                        <div class="fileName">{{ item.name }}{{ item.progressPercent }}</div>
                         <el-progress
-                          v-if="progressPercent === 100"
+                          v-if="item.progressPercent !== 100"
                           style="width: 260px; height: 6px"
                           :percentage="item.progressPercent"
                           color="#00CC06"
                           :show-text="false"
                         />
-                        <div v-else class="fileSize">{{ filterS(item.size) }}</div>
+                        <div v-else class="fileSize">
+                          {{ filterS(item.size) }}
+                        </div>
                       </div>
                     </div>
                   </template>
@@ -162,7 +163,6 @@
 </template>
 
 <script>
-import { post } from '@/api/http';
 import axios from 'axios';
 import { filterSize } from '@/utils/sizeConversion';
 
@@ -186,19 +186,33 @@ export default {
     onSubmit() {
       console.log('submit!');
     },
-    handleRemove(file, fileList) {
-      console.log(file, fileList);
-    },
     uploadFiles(param) {
-      console.log('par', param);
       const file = param.file;
+      file.progressPercent = 0;
+      console.log(file);
       this.uploadInfo.push(file);
       const formData = new FormData();
       formData.append('file', file);
       axios
         .post(
           'http://127.0.0.1:4523/m1/2574207-0-default/companyinfo/companyinfo/t/upload/minio',
-          formData
+          formData,
+          {
+            onUploadProgress: progress => {
+              // 格式化成百分数
+
+              this.uploadInfo = this.uploadInfo.map(item => {
+                item === file &&
+                  (item.progressPercent = Math.floor((progress.loaded / progress.total) * 100));
+                return item;
+              });
+              console.log(this.uploadInfo, file.progressPercent);
+
+              // this.uploadInfo = JSON.parse(JSON.stringify(this.uploadInfo));
+
+              // console.log(this.uploadInfo);
+            }
+          }
         )
         .then(res => {
           console.log('res', res);
