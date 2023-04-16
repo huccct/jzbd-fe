@@ -17,7 +17,9 @@ import {
   CarouselItem,
   Form,
   FormItem,
-  Input
+  Input,
+  Upload,
+  Progress
 } from 'element-ui';
 
 Vue.use(Button);
@@ -38,3 +40,5 @@ Vue.use(CarouselItem);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Input);
+Vue.use(Upload);
+Vue.use(Progress);
