@@ -526,7 +526,7 @@ contain
         width: 699px;
         display: flex;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
         & > img {
           width: 25.4px;
           height: 29.3px;
@@ -538,7 +538,7 @@ contain
           display: flex;
           flex-direction: column;
           justify-content: center;
-          align-items: start;
+          align-items: flex-start;
           & > .fileName {
             margin-top: 2px;
             height: 21px;
