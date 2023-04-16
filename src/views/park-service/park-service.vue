@@ -20,7 +20,7 @@
         <button class="head-content_contactus" @click="$router.push('/contact')">联系我们</button>
       </div>
     </div>
-    <div>
+    <div style="min-width: 1700px">
       <!-- Service content -->
       <div class="service-content_one">
         <div class="service-content_one-topic">

@@ -21,19 +21,52 @@
           <img
             src="http://114.116.21.170:9000/photo/service/a546ff9406d87b46a9a7dbad6bb84b91e8860ae12028d-CUQjrp.png"
           />
+          <div>{{ list_data2.createTime }}</div>
+        </div>
+        <p @click="$router.push('/service/information/' + list_data2.newsId).catch(err => err)">
+          {{ list_data2.newsTitle }}
+        </p>
+        <hr />
+        <p @click="$router.push('/service/information/' + list_data2.newsId).catch(err => err)">
+          {{ list_data2.newsTitle }}>
+          {{ list_data2.remark }}
+        </p>
+        <!-- <div>
+          <img
+            src="http://114.116.21.170:9000/photo/service/a546ff9406d87b46a9a7dbad6bb84b91e8860ae12028d-CUQjrp.png"
+          />
           <div>2022-12-18</div>
         </div>
         <p>高新区举办政府项目精准谋划与平台公司合规...</p>
         <hr />
         <p>
           近日，记者在高新区资阳石油钢管有限公司了解到，今年国家管网重点工程已经保供完成，正在进行社会市场管线的生产工作...
-        </p>
+        </p> -->
         <button @click="$router.push('/service/information/' + 10).catch(err => err)">
           详情>>
         </button>
       </div>
       <div class="pa-content_right">
-        <div class="pa-content_right1">
+        <div v-for="item in list_data.slice(1)" :key="item.newsId" class="pa-content_right1">
+          <div>
+            <span @click="$router.push('/service/information/' + item.newsId).catch(err => err)">{{
+              item.createTime.slice(5, 10).replace('-', '/')
+            }}</span>
+            <span @click="$router.push('/service/information/' + item.newsId).catch(err => err)">{{
+              item.createTime.slice(0, 4)
+            }}</span>
+          </div>
+          <div></div>
+          <div>
+            <p @click="$router.push('/service/information/' + item.newsId).catch(err => err)">
+              {{ item.newsTitle }}
+            </p>
+            <p @click="$router.push('/service/information/' + item.newsId).catch(err => err)">
+              {{ item.remark }}
+            </p>
+          </div>
+        </div>
+        <!-- <div class="pa-content_right1">
           <div>
             <span>12/18</span>
             <span>2022</span>
@@ -65,18 +98,7 @@
             <p>高新区举办特色金融产品专题推介会</p>
             <p>近日，记者在高新区资阳石油钢管有限公司了解到，今年国家管网重点工程已经保供完成。</p>
           </div>
-        </div>
-        <div class="pa-content_right1">
-          <div>
-            <span>12/18</span>
-            <span>2022</span>
-          </div>
-          <div></div>
-          <div>
-            <p>高新区举办特色金融产品专题推介会</p>
-            <p>近日，记者在高新区资阳石油钢管有限公司了解到，今年国家管网重点工程已经保供完成。</p>
-          </div>
-        </div>
+        </div> -->
         <!-- <div class="pa-content_right1">
           <p class="pa-content_right_topic">12/18</p>
         </div>
@@ -92,16 +114,30 @@
 </template>
 
 <script>
+import { getAllList } from '@/api/park-service';
+
 export default {
   name: 'JzbdFePressannouncement',
 
   data() {
     return {
-      list_data: [{}]
+      list_data: [],
+      list_data2: {}
     };
   },
 
-  mounted() {},
+  created() {
+    getAllList({
+      pageNum: 1,
+      pageSize: 5
+    }).then(res => {
+      console.log(res.rows);
+      this.list_data = res.rows;
+      this.list_data2 = res.rows[0];
+      this.list_data2.createTime = res.rows[0].createTime.slice(0, 10);
+      console.log(this.list_data2);
+    });
+  },
 
   methods: {}
 };
@@ -185,8 +221,15 @@ export default {
       p:nth-child(2) {
         position: relative;
         top: -54px;
+        cursor: pointer;
         height: 26px;
         width: 521px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        // -webkit-line-clamp: 1;
+        // -webkit-box-orient: vertical;
+        // display: -webkit-box;
         margin-top: 20px;
         margin-bottom: 20px;
         font-family: Microsoft YaHei-Bold;
@@ -199,9 +242,15 @@ export default {
         top: -54px;
       }
       p:nth-child(4) {
+        cursor: pointer;
         position: relative;
         top: -54px;
         width: 538px;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
         height: 48px;
         margin-top: 20px;
         margin-bottom: 20px;
@@ -274,6 +323,11 @@ export default {
         div:nth-child(3) {
           display: inline-block;
           :nth-child(1) {
+            width: 556px;
+            cursor: pointer;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             font-size: 20px;
             font-weight: 700;
             color: #333333;
@@ -282,6 +336,10 @@ export default {
           :nth-child(2) {
             margin-top: 20px;
             width: 556px;
+            cursor: pointer;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             font-size: 18px;
             font-weight: 400;
             color: #666666;

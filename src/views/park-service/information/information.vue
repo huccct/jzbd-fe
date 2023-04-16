@@ -33,17 +33,19 @@
           <img
             src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2080.png"
             alt=""
+            @click="beforee()"
           />
-          <span>上合新区发出首张个体工商户经营者变更营业执照</span>
+          <span>{{ data_list.Now.newsTitle }}</span>
           <img
             src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2081.png"
             alt=""
+            @click="next()"
           />
         </div>
         <div class="sic-middle-topic2">
-          <span>来源：市监分局</span>
-          <span>时间：2022-12-30</span>
-          <span>浏览量：111次</span>
+          <span>来源：{{ data_list.Now.newsSource }}</span>
+          <span>时间：{{ data_list.Now.createTime }}</span>
+          <span>浏览量：{{ data_list.Now.pageViews }}</span>
           <span
             >分享：<img
               src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2043.png"
@@ -53,8 +55,8 @@
           /></span>
         </div>
         <hr style="margin-top: 22px" />
-        <div class="sic-middle-content">
-          <p>
+        <div class="sic-middle-content" v-html="this.data_list.Now.specificContent">
+          <!-- <p>
             12月30日，上合新区发出首张个体工商户经营者变更营业执照。个体工商户谢女士在上合新区市场监管窗口申请办理个体工商户经营者变更登记，用了不到半个小时的时间就完成了相关办理手续。她拿着现场颁发的营业执照表示：“现在太方便了，这么短时间就能变更到经营者了，实在是太省心省时了。”
           </p>
           <img
@@ -63,17 +65,27 @@
           />
           <p>
             《促进个体工商户发展条例》的实施，首次将个体工商户经营者变更办理流程由“一注一开”模式调整为直接申请办理经营者变更登记，进一步简化了个体工商户变更流程，有效满足了个体工商户经营权的转让需求，有利于个体工商户的可持续发展。下一步，市监分局将加大宣传力度，向个体工商户充分宣传解读《促进个体户发展条例》，切实加强政策知晓度和惠及面，为个体工商户提供更加高效便捷的登记服务，进一步激发市场活力，营造为高新区良好的营商环境。
-          </p>
+          </p> -->
         </div>
         <div class="sic-middle-bottom">
           <span
-            >上一篇：<span style="color: #00a6ff; cursor: pointer"
-              >高新区举办特色金融产品专题推介会</span
+            >上一篇：<span
+              style="color: #00a6ff; cursor: pointer"
+              @click="
+                $router.push('/service/information/' + data_list.Before.newsId).catch(err => err);
+                $router.go(0);
+              "
+              >{{ data_list.Before.newsTitle }}</span
             ></span
           >
           <span
-            >下一篇：<span style="color: #00a6ff; cursor: pointer"
-              >高新区：抓住时间窗口 抢订单拓市场</span
+            >下一篇：<span
+              style="color: #00a6ff; cursor: pointer"
+              @click="
+                $router.push('/service/information/' + data_list.After.newsId).catch(err => err);
+                $router.go(0);
+              "
+              >{{ data_list.After.newsTitle }}111</span
             ></span
           >
         </div>
@@ -83,20 +95,47 @@
 </template>
 
 <script>
+import { getOneList } from '@/api/park-service';
 export default {
   name: 'JzbdFeInformation',
 
   data() {
-    return {};
-  },
-
-  created() {
-    document.documentElement.scrollTop = 0;
+    return {
+      content_id: '',
+      data_list: []
+    };
   },
 
   mounted() {},
 
-  methods: {}
+  beforeCreate() {
+    document.documentElement.scrollTop = 0;
+    this.content_id = this.$route.params.id;
+    // this.getList()
+    getOneList(this.content_id).then(res => {
+      console.log(res);
+      this.data_list = res.data;
+      console.log(this.data_list);
+    });
+  },
+
+  methods: {
+    next() {
+      this.$router.push('/service/information/' + this.data_list.After.newsId).catch(err => err);
+      location.reload();
+    },
+    beforee() {
+      this.$router.push('/service/information/' + this.data_list.Before.newsId).catch(err => err);
+      location.reload();
+    },
+    async getList() {
+      await getOneList(this.content_id).then(res => {
+        console.log(res);
+        this.data_list = res.data;
+        console.log(this.data_list);
+      });
+    }
+  }
 };
 </script>
 
@@ -131,7 +170,7 @@ export default {
     }
   }
 }
-.si-content {
+::v-deep .si-content {
   margin-top: 8px;
   display: inline-block;
   width: 1280px;
