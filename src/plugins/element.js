@@ -14,7 +14,10 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   Carousel,
-  CarouselItem
+  CarouselItem,
+  Form,
+  FormItem,
+  Input
 } from 'element-ui';
 
 Vue.use(Button);
@@ -32,3 +35,6 @@ Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
 Vue.use(Carousel);
 Vue.use(CarouselItem);
+Vue.use(Form);
+Vue.use(FormItem);
+Vue.use(Input);
