@@ -216,13 +216,14 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    // min-width: 1900px;
+    height: 1000px;
   }
 
   .h-btn {
     position: absolute;
     top: 350px;
     left: 320px;
+    z-index: 2;
   }
 
   .h-content {
@@ -231,6 +232,7 @@ export default {
     left: 320px;
     width: 984px;
     height: 70px;
+    z-index: 2;
 
     span {
       display: block;
