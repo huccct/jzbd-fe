@@ -41,9 +41,10 @@ export default {
     return {
       items: [
         { src: 'http://114.116.21.170:9000/photo/slider1.png' },
-        { src: 'http://114.116.21.170:9000/photo/slider1.png' },
-        { src: 'http://114.116.21.170:9000/photo/slider1.png' },
-        { src: 'http://114.116.21.170:9000/photo/slider1.png' }
+        { src: 'http://114.116.21.170:9000/photo/slider2.png' },
+        { src: 'http://114.116.21.170:9000/photo/slider3.png' },
+        { src: 'http://114.116.21.170:9000/photo/slider4.png' },
+        { src: 'http://114.116.21.170:9000/photo/slider5.png' }
       ],
       currentIndex: 0,
       offset: 0,
@@ -159,24 +160,23 @@ export default {
   }
   .slider-index1 {
     position: absolute;
-    top: 254px;
-    right: 386px;
-    color: rgba(255, 255, 255);
-    padding: 4px 10px;
-    border-radius: 4px;
-    margin-left: 10px;
-    font-size: 60px;
+    line-height: 60px;
+    font-family: D-DIN-Bold, D-DIN;
+    font-size: 72px;
+    font-weight: 700;
+    top: 300px;
+    right: 384px;
+    color: #ffffff;
     z-index: 1;
   }
   .slider-index2 {
     position: absolute;
-    top: 259px;
-    right: 317px;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 36px;
-    padding: 4px 10px;
-    border-radius: 4px;
-    margin-left: 10px;
+    top: 300px;
+    right: 303px;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 42px;
+    color: #ffffff;
     z-index: 1;
   }
 }
