@@ -198,7 +198,7 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch('Test', 1);
+    this.$store.dispatch('Test');
   }
 };
 </script>
@@ -216,7 +216,7 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    height: 1000px;
+    // min-width: 1900px;
   }
 
   .h-btn {
@@ -365,7 +365,7 @@ export default {
 
     .d-changeimg {
       position: absolute;
-      left: 1030px;
+      left: 1010px;
       top: 240px;
       display: flex;
 
@@ -385,16 +385,6 @@ export default {
 
       .img-right {
         z-index: 10;
-        // width: 90px;
-        // height: 80px;
-        // background: #00a6ff;
-        // border-radius: 40px 0px 0px 40px;
-        // opacity: 0.4;
-        // img {
-        //   position: absolute;
-        //   left: 36px;
-        //   top: 26px;
-        // }
       }
     }
 
@@ -649,31 +639,33 @@ export default {
 
     .e-show {
       position: relative;
-      top: 267px;
-      left: 320px;
-      width: 1280px;
-      height: 640px;
-      // background-color: red;
+      top: 258px;
+      left: 308px;
+      width: 1304px;
+      height: 664px;
+      background-size: 100%;
       background-image: url('http://114.116.21.170:9000/photo/home12.png');
-      // background-size: 1280px 640px;
-      display: -webkit-flex;
       display: flex;
-      -webkit-flex-wrap: wrap;
       flex-wrap: wrap;
-
+      text-align: center;
+      align-content: flex-start;
       .e-div {
-        // position: relative;
+        padding: -10px;
         width: 320px;
         height: 320px;
         position: relative;
-
+        left: 12px;
+        top: 9px;
+        img {
+          width: 320px;
+          height: 320px;
+        }
         .text {
           position: absolute;
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%);
           text-align: center;
-
           span {
             width: auto;
             height: 24px;
