@@ -14,7 +14,8 @@
     </div>
     <div class="basic">
       <div class="d-bg">
-        <img src="http://114.116.21.170:9000/photo/home4.png" alt="" />
+        <img src="http://114.116.21.170:9000/photo/home4.png"
+             alt="" />
       </div>
       <div class="d-head">
         <span>01</span>
@@ -27,27 +28,28 @@
           <span>青岛上合企业创新产业园</span>
         </div>
         <div class="d-text">
-          <span
-            >青岛上合企业创新产业园是胶州湾发展集团围绕上合示范区建设总体方案，重点打造的科技
+          <span>青岛上合企业创新产业园是胶州湾发展集团围绕上合示范区建设总体方案，重点打造的科技
             企业孵化园区，地理位置优越，交通便利，15分钟车程即可到达西海岸新区和青岛主城区。
             项目总投资约2亿元，建筑面积约5.2万平方米，目前已建成含办公区的工业厂房10栋（包含
             6座单层厂房和4座双层厂房），同时为逐步打造国家级孵化器和青岛市级标杆孵化器，园区
             正在建设6000平方米的办公楼，办公楼建成后，园区将彻底实现从单一的厂房租赁到创客空
             间、孵化器、加速器、专业园区完整产业生态链。园区2019-2020年先后年获评青岛市中小
-            企业产业园和胶州市级孵化器，2022年将努力争创青岛市级孵化器。</span
-          >
+            企业产业园和胶州市级孵化器，2022年将努力争创青岛市级孵化器。</span>
         </div>
       </div>
       <div class="d-changeimg">
         <div class="img-left">
-          <img src="http://114.116.21.170:9000/photo/home2.png" alt="" />
+          <img src="http://114.116.21.170:9000/photo/home2.png"
+               alt="" />
         </div>
         <div class="img-right">
-          <img src="http://114.116.21.170:9000/photo/home3.png" alt="" />
+          <img src="http://114.116.21.170:9000/photo/home3.png"
+               alt="" />
         </div>
       </div>
       <div class="d-img">
-        <img src="http://114.116.21.170:9000/photo/home1.png" alt="" />
+        <img src="http://114.116.21.170:9000/photo/home1.png"
+             alt="" />
       </div>
       <div class="d-btn">
         <span>加入我们</span>
@@ -67,7 +69,9 @@
         </div>
       </div>
       <div class="p-img">
-        <ul v-for="(list, index) in Policynews" :key="index" class="p-imglist">
+        <ul v-for="(list, index) in Policynews"
+            :key="index"
+            class="p-imglist">
           <img :src="list.img" />
         </ul>
         <div class="p-imglast">
@@ -79,7 +83,9 @@
       </div>
       <div class="p-changeimg">
         <div class="p-cilist">
-          <div v-for="(list, index) in Policynews" :key="index" class="p-cidiv">
+          <div v-for="(list, index) in Policynews"
+               :key="index"
+               class="p-cidiv">
             <div class="p-title">
               <div class="p-cinumber">
                 <span>{{ index + 1 }}</span>
@@ -114,7 +120,8 @@
       </div>
       <div class="e-show">
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home8.png" alt="" />
+          <img src="http://114.116.21.170:9000/photo/home8.png"
+               alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -123,7 +130,8 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home10.png" alt="" />
+          <img src="http://114.116.21.170:9000/photo/home10.png"
+               alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -138,7 +146,8 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home9.png" alt="" />
+          <img src="http://114.116.21.170:9000/photo/home9.png"
+               alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -149,7 +158,8 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home11.png" alt="" />
+          <img src="http://114.116.21.170:9000/photo/home11.png"
+               alt="" />
         </div>
       </div>
     </div>
@@ -163,7 +173,7 @@ import Slider from '@/components/slider/slider.vue';
 export default {
   name: 'home',
   components: { NavigationBar, Slider },
-  data() {
+  data () {
     return {
       Policynews: [
         {
@@ -197,8 +207,8 @@ export default {
       ]
     };
   },
-  mounted() {
-    this.$store.dispatch('Test', 1);
+  mounted () {
+    this.$store.dispatch('Test');
   }
 };
 </script>
@@ -216,14 +226,13 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    height: 1000px;
+    // min-width: 1900px;
   }
 
   .h-btn {
     position: absolute;
     top: 350px;
     left: 320px;
-    z-index: 2;
   }
 
   .h-content {
@@ -232,7 +241,6 @@ export default {
     left: 320px;
     width: 984px;
     height: 70px;
-    z-index: 2;
 
     span {
       display: block;
@@ -365,7 +373,7 @@ export default {
 
     .d-changeimg {
       position: absolute;
-      left: 1030px;
+      left: 1010px;
       top: 240px;
       display: flex;
 
@@ -385,16 +393,6 @@ export default {
 
       .img-right {
         z-index: 10;
-        // width: 90px;
-        // height: 80px;
-        // background: #00a6ff;
-        // border-radius: 40px 0px 0px 40px;
-        // opacity: 0.4;
-        // img {
-        //   position: absolute;
-        //   left: 36px;
-        //   top: 26px;
-        // }
       }
     }
 
@@ -649,31 +647,33 @@ export default {
 
     .e-show {
       position: relative;
-      top: 267px;
-      left: 320px;
-      width: 1280px;
-      height: 640px;
-      // background-color: red;
+      top: 258px;
+      left: 308px;
+      width: 1304px;
+      height: 664px;
+      background-size: 100%;
       background-image: url('http://114.116.21.170:9000/photo/home12.png');
-      // background-size: 1280px 640px;
-      display: -webkit-flex;
       display: flex;
-      -webkit-flex-wrap: wrap;
       flex-wrap: wrap;
-
+      text-align: center;
+      align-content: flex-start;
       .e-div {
-        // position: relative;
+        padding: -10px;
         width: 320px;
         height: 320px;
         position: relative;
-
+        left: 12px;
+        top: 9px;
+        img {
+          width: 320px;
+          height: 320px;
+        }
         .text {
           position: absolute;
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%);
           text-align: center;
-
           span {
             width: auto;
             height: 24px;
