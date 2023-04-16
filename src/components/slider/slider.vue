@@ -1,27 +1,20 @@
 <template>
-  <div
-    class="slider"
-    :style="{ width: sliderWidth + 'px', height: sliderHeight + 'px' }"
-    @mouseenter="enter"
-    @mouseleave="leave"
-  >
-    <div
-      ref="sw"
-      class="slider-wrapper"
-      :style="{
-        transform: 'translateX(' + offset + 'px)',
-        width: (items.length + 1) * sliderWidth + 'px'
-      }"
+  <div class="slider">
+    <el-carousel
+      ref="carousel"
+      :height="height"
+      :interval="3000"
+      arrow-direction="none"
+      :indicator-position="'none'"
+      :arrow-prev-icon="prevArrow"
+      :arrow-next-icon="nextArrow"
+      :arrow="'never'"
+      @change="handleCarouselChange"
     >
-      <div
-        v-for="(item, index) in items.slice(1)"
-        :key="index"
-        class="slider-item"
-        :style="{ width: sliderWidth + 'px' }"
-      >
+      <el-carousel-item v-for="item in items" :key="item.id">
         <img :src="item.src" alt="" />
-      </div>
-    </div>
+      </el-carousel-item>
+    </el-carousel>
     <div class="slider-arrows">
       <span class="slider-arrow slider-arrow-prev" @click="prev">
         <img src="http://114.116.21.170:9000/photo/aleft.png" class="fas fa-chevron-left" />
@@ -31,7 +24,7 @@
       </span>
     </div>
     <div class="slider-index1">{{ (currentIndex + 1).toString().padStart(2, '0') }}</div>
-    <div class="slider-index2">/{{ (items.length - 1).toString().padStart(2, '0') }}</div>
+    <div class="slider-index2">/{{ items.length.toString().padStart(2, '0') }}</div>
   </div>
 </template>
 
@@ -40,144 +33,80 @@ export default {
   data() {
     return {
       items: [
-        { src: 'http://114.116.21.170:9000/photo/slider1.png' },
-        { src: 'http://114.116.21.170:9000/photo/slider1.png' },
-        { src: 'http://114.116.21.170:9000/photo/slider1.png' },
-        { src: 'http://114.116.21.170:9000/photo/slider1.png' }
+        { id: 1, src: 'http://114.116.21.170:9000/photo/slider1.png' },
+        { id: 2, src: 'http://114.116.21.170:9000/photo/slider2.png' },
+        { id: 3, src: 'http://114.116.21.170:9000/photo/slider3.png' },
+        { id: 4, src: 'http://114.116.21.170:9000/photo/slider4.png' },
+        { id: 5, src: 'http://114.116.21.170:9000/photo/slider5.png' }
       ],
-      currentIndex: 0,
-      offset: 0,
-      sliderWidth: 1920,
-      sliderHeight: 991,
-      timer: null,
-      autoPlay: true
+      height: '1000px',
+      currentIndex: 0
     };
   },
-  mounted() {
-    this.sliderWidth = this.$el.parentNode.offsetWidth;
-
-    // Duplicate the last item and insert it at the beginning
-    const lastItem = this.items[this.items.length - 1];
-    this.items.unshift(lastItem);
-
-    this.startAutoPlay();
+  computed: {
+    prevArrow() {
+      return `<img src="http://114.116.21.170:9000/photo/aleft.png">`;
+    },
+    nextArrow() {
+      return `<img src="http://114.116.21.170:9000/photo/aright.png">`;
+    }
   },
   methods: {
-    startAutoPlay() {
-      if (this.autoPlay) {
-        this.timer = setInterval(() => {
-          this.next();
-        }, 1500);
-      }
-    },
-    stopAutoPlay() {
-      clearInterval(this.timer);
-      this.timer = null;
+    handleCarouselChange(index) {
+      this.currentIndex = index;
     },
     next() {
-      this.currentIndex = (this.currentIndex + 1) % (this.items.length - 1);
-      this.offset = -this.currentIndex * this.sliderWidth;
-
-      if (this.currentIndex === 0) {
-        // Reset to the first item after the duplicate item
-        setTimeout(() => {
-          this.offset = 0;
-        }, 500);
-      }
+      this.$refs.carousel.next();
     },
-
     prev() {
-      if (this.currentIndex === 0) {
-        // Jump to the duplicate last item before the first item
-        this.currentIndex = this.items.length - 1;
-        this.offset = -this.currentIndex * this.sliderWidth;
-      } else {
-        this.currentIndex = (this.currentIndex - 1) % (this.items.length - 1);
-        this.offset = -this.currentIndex * this.sliderWidth;
-      }
-    },
-    handleControlClick(index) {
-      this.currentIndex = index;
-      this.offset = -this.currentIndex * this.sliderWidth;
-      this.stopAutoPlay();
-    },
-    enter() {
-      this.timer && clearInterval(this.timer);
-    },
-    leave() {
-      if (this.autoPlay) {
-        this.startAutoPlay();
-      }
+      this.$refs.carousel.prev();
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.slider {
-  position: relative;
-  overflow: hidden;
-  .slider-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: all 0.5s ease;
-  }
-  .slider-item {
+.slider-index1 {
+  position: absolute;
+  line-height: 60px;
+  font-family: D-DIN-Bold, D-DIN;
+  font-size: 72px;
+  font-weight: 700;
+  top: 300px;
+  right: 384px;
+  color: #ffffff;
+  z-index: 2;
+}
+.slider-index2 {
+  position: absolute;
+  top: 300px;
+  right: 303px;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 42px;
+  color: #ffffff;
+  z-index: 2;
+}
+.slider-arrows {
+  position: absolute;
+  top: 436px;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  .slider-arrow {
     display: inline-block;
-    width: 100%;
-    vertical-align: top;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+    &.slider-arrow-prev {
+      float: left;
     }
-  }
-  .slider-arrows {
-    position: absolute;
-    top: 436px;
-    z-index: 1;
-    left: 0;
-    right: 0;
-    .slider-arrow {
-      display: inline-block;
-      cursor: pointer;
-      transition: background-color 0.5s ease;
-      &.slider-arrow-prev {
-        float: left;
-      }
-      &.slider-arrow-next {
-        float: right;
-      }
-      &:disabled {
-        cursor: not-allowed;
-        background-color: rgba(0, 0, 0, 0.1);
-      }
+    &.slider-arrow-next {
+      float: right;
     }
-  }
-  .slider-index1 {
-    position: absolute;
-    top: 254px;
-    right: 386px;
-    color: rgba(255, 255, 255);
-    padding: 4px 10px;
-    border-radius: 4px;
-    margin-left: 10px;
-    font-size: 60px;
-    z-index: 1;
-  }
-  .slider-index2 {
-    position: absolute;
-    top: 259px;
-    right: 317px;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 36px;
-    padding: 4px 10px;
-    border-radius: 4px;
-    margin-left: 10px;
-    z-index: 1;
+    &:disabled {
+      cursor: not-allowed;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
   }
 }
 </style>

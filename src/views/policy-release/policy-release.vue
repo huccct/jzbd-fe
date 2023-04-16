@@ -86,15 +86,32 @@
         </div>
         <div class="description">企业信息</div>
         <!-- 表单区域 -->
-        <!-- <div class="enterpriseInfoForm">123</div> -->
-        <div class="success">
+        <div class="enterpriseInfoForm">
+          <el-form ref="form" :model="form" label-width="90px" :label-position="labelPosition">
+            <el-form-item label="企业名称:">
+              <el-input v-model="form.name" placeholder="请输入企业名称"></el-input>
+            </el-form-item>
+            <el-form-item label="联系人:">
+              <el-input v-model="form.name" placeholder="请输入联系人"></el-input>
+            </el-form-item>
+            <el-form-item label="联系方式:">
+              <el-input v-model="form.name" placeholder="请输入联系方式"></el-input>
+            </el-form-item>
+
+            <el-form-item>
+              <el-button type="primary" @click="onSubmit">立即创建</el-button>
+              <el-button>取消</el-button>
+            </el-form-item>
+          </el-form>
+        </div>
+        <!-- <div class="success">
           <img
             src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/success.png"
             alt=""
           />
           <div class="success_des">提交成功！</div>
           <div class="jump">页面自动 跳转 等待时间：3秒</div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div style="height: 100px"></div>
@@ -104,10 +121,31 @@
 <script>
 export default {
   name: 'JzbdFePolicyRelease',
-  components: {}
+  components: {},
+  data() {
+    return {
+      form: {
+        name: '',
+        region: '',
+        date1: '',
+        date2: '',
+        delivery: false,
+        type: [],
+        resource: '',
+        desc: ''
+      },
+      labelPosition: 'left'
+    };
+  },
+  methods: {
+    onSubmit() {
+      console.log('submit!');
+    }
+  }
 };
 </script>
 
+contain
 <style scoped lang="scss">
 * {
   margin: 0;
@@ -123,10 +161,12 @@ export default {
   &::after {
     content: '';
     position: absolute;
-    top: 15px;
+    top: 13px;
     left: 47px;
     width: 80px;
-    border: 2px solid #cdcdcd;
+    // border: 2px solid #cdcdcd;
+    height: 2px;
+    background-color: #cdcdcd;
   }
   & > .titlf {
     width: 33px;
@@ -159,7 +199,7 @@ export default {
     margin-top: -65px;
     background: url('http://114.116.21.170:9000/photo/police/上合产业园网站_slices/VCG41N1163690562.png')
       no-repeat;
-    background-size: contain;
+    background-size: cover;
     & > .textWrapped {
       // margin-top: 413px;
       // margin-left: 320px;
@@ -364,6 +404,7 @@ export default {
   & > .enterpriseInfo {
     height: 850px;
     background: url(http://114.116.21.170:9000/photo/police/上合产业园网站_slices/bg.png) no-repeat;
+    background-size: cover;
     padding-top: 100px;
     & .container > .title {
       width: 440px;
@@ -387,6 +428,14 @@ export default {
     & .container > .enterpriseInfoForm {
       margin-top: 80px;
       margin-left: 204px;
+      width: 814px;
+      ::v-deep .el-input {
+        width: 699px;
+        height: 50px;
+      }
+      ::v-deep .el-form-item__label {
+        font-size: 16px;
+      }
     }
     & > .container > .success {
       display: flex;
