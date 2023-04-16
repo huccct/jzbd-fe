@@ -4,8 +4,8 @@ const state = {};
 const mutations = {};
 
 const actions = {
-  async Test() {
-    let res = await reqTest();
+  async Test(newId) {
+    let res = await reqTest(newId);
     console.log(res);
   }
 };

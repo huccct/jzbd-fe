@@ -52,35 +52,6 @@
               <span>0532-123123</span>
             </div>
             <div class="border"></div>
-            <div class="classification">
-              <img
-                src="http://114.116.21.170:9000/photo/enterprise-storm/%E7%BB%84%2069@2x.png"
-                alt=""
-              />
-            </div>
-            <div class="project">
-              <span>主营产品</span>
-              <span
-                >计算及测量仪器制造；计算及测量仪器销售； 机械设备销售；<br />
-                机械设备研发；<br />
-                ...</span
-              >
-            </div>
-            <div class="border1"></div>
-            <div class="trophy">
-              <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 70@2x.png" alt="" />
-            </div>
-            <div class="honor">
-              <span>荣誉奖项</span>
-              <span
-                >年度优秀企业；<br />
-                先进技术；<br />
-                胶州市龙头企业；<br />
-                先进团队奖；<br />
-                ...</span
-              >
-            </div>
-            <button class="white-outline-button">查看更多>></button>
           </div>
         </div>
       </div>
@@ -304,83 +275,6 @@ export default {
     border: 1px solid #ffffff;
     margin-top: 408px;
     margin-left: 807px;
-  }
-  .border1 {
-    position: absolute;
-    width: 0px;
-    height: 150px;
-    border: 1px solid #ffffff;
-    margin-top: 408px;
-    margin-left: 1060px;
-  }
-  .classification {
-    position: absolute;
-    width: 41px;
-    height: 41px;
-    margin-top: 382px;
-    margin-left: 914px;
-  }
-  .trophy {
-    position: absolute;
-    width: 41px;
-    height: 41px;
-    margin-top: 382px;
-    margin-left: 1145px;
-  }
-  .project {
-    :nth-child(1) {
-      position: absolute;
-      width: 96px;
-      height: 24px;
-      font-size: 24px;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 24px;
-      margin-top: 437px;
-      margin-left: 887px;
-    }
-    :nth-child(2) {
-      position: absolute;
-      width: 160px;
-      height: 96px;
-      font-size: 16px;
-      color: #f2f2f2;
-      margin-top: 478px;
-      margin-left: 855px;
-    }
-  }
-  .honor {
-    :nth-child(1) {
-      position: absolute;
-      width: 96px;
-      height: 24px;
-      font-size: 24px;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 24px;
-      margin-top: 437px;
-      margin-left: 1117px;
-    }
-    :nth-child(2) {
-      position: absolute;
-      width: 128px;
-      height: 96px;
-      font-size: 16px;
-      color: #f2f2f2;
-      margin-top: 478px;
-      margin-left: 1102px;
-    }
-  }
-  .white-outline-button {
-    position: absolute;
-    width: 180px;
-    height: 60px;
-    background-color: transparent;
-    color: #fff;
-    border: 2px solid #fff;
-    font-size: 24px;
-    margin-top: 612px;
-    margin-left: 652px;
   }
 }
 .enterprise-content_two-img {
