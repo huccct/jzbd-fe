@@ -5,21 +5,34 @@
  * @FilePath: \jzbd-fe\src\store\service.js
  */
 import { getAllList, getOneList } from '@/api/park-service';
-const state = {};
+const state = {
+  allList_data: [],
+  oneList_data: []
+};
 
-const mutations = {};
+const mutations = {
+  AllList(state, searchList) {
+    state.searchList = searchList;
+  }
+};
 
 const actions = {
-  async GetAllList() {
-    let res = await getAllList();
+  async GetAllList({ commit }) {
+    let res = await getAllList({ pageNum: 1, pageSize: 10 });
     console.log(res);
+    commit('AllList', res.rows);
   },
   async GetOneList() {
     let res = await getOneList();
     console.log(res);
+    // state.oneList_data = res.data
   }
 };
-const getters = {};
+const getters = {
+  RAllList(state) {
+    return state.allList_data || [];
+  }
+};
 export default {
   state,
   mutations,

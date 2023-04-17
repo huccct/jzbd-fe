@@ -55,8 +55,8 @@
           /></span>
         </div>
         <hr style="margin-top: 22px" />
-        <div class="sic-middle-content" v-html="this.data_list.Now.specificContent">
-          <!-- <p>
+        <div class="sic-middle-content" v-html="this.data_list.Now.specificContent"></div>
+        <!-- <p>
             12月30日，上合新区发出首张个体工商户经营者变更营业执照。个体工商户谢女士在上合新区市场监管窗口申请办理个体工商户经营者变更登记，用了不到半个小时的时间就完成了相关办理手续。她拿着现场颁发的营业执照表示：“现在太方便了，这么短时间就能变更到经营者了，实在是太省心省时了。”
           </p>
           <img
@@ -66,7 +66,7 @@
           <p>
             《促进个体工商户发展条例》的实施，首次将个体工商户经营者变更办理流程由“一注一开”模式调整为直接申请办理经营者变更登记，进一步简化了个体工商户变更流程，有效满足了个体工商户经营权的转让需求，有利于个体工商户的可持续发展。下一步，市监分局将加大宣传力度，向个体工商户充分宣传解读《促进个体户发展条例》，切实加强政策知晓度和惠及面，为个体工商户提供更加高效便捷的登记服务，进一步激发市场活力，营造为高新区良好的营商环境。
           </p> -->
-        </div>
+
         <div class="sic-middle-bottom">
           <span
             >上一篇：<span
@@ -75,7 +75,7 @@
                 $router.push('/service/information/' + data_list.Before.newsId).catch(err => err);
                 $router.go(0);
               "
-              >{{ data_list.Before.newsTitle }}</span
+              >{{ data_list.Before != null ? data_list.Before.newsTitle : '空' }}</span
             ></span
           >
           <span
@@ -85,7 +85,7 @@
                 $router.push('/service/information/' + data_list.After.newsId).catch(err => err);
                 $router.go(0);
               "
-              >{{ data_list.After.newsTitle }}111</span
+              >{{ data_list.After != null ? data_list.After.newsTitle : '空' }}</span
             ></span
           >
         </div>
@@ -95,7 +95,9 @@
 </template>
 
 <script>
-import { getOneList } from '@/api/park-service';
+import { getAllList, getOneList } from '@/api/park-service';
+import { mapGetters, mapState } from 'vuex';
+import { computed } from 'vue';
 export default {
   name: 'JzbdFeInformation',
 
@@ -106,7 +108,13 @@ export default {
     };
   },
 
-  mounted() {},
+  mounted() {
+    console.log(this.$store.getters.RAllList);
+    // this.$store.getters.RAllList;
+    getAllList({ pageNum: 1, pageSize: 10 }).then(res => {
+      console.log(res.rows);
+    });
+  },
 
   beforeCreate() {
     document.documentElement.scrollTop = 0;
