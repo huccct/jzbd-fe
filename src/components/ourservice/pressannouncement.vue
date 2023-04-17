@@ -145,7 +145,7 @@ export default {
 .pa-box {
   background-image: url('http://114.116.21.170:9000/photo/service/%E8%B7%AF%E5%BE%84%2069.png');
   background-repeat: no-repeat;
-  height: 965px;
+  height: 1165px;
   width: 100%;
   // min-width: 1900px;
   .pa-bg {
