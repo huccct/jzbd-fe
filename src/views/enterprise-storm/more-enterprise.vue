@@ -77,12 +77,73 @@
         <div>产品与服务</div>
       </div>
       <div class="product-details">
-        <div class="product-details_one">
+        <div class="product-details_one left">
           <span>01</span>
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 124@2x.png" alt="" />
+          <span>测量仪器制造</span>
+          <span>测量仪器制造测量仪器制造测量仪器制造</span>
+        </div>
+        <div class="product-details_one center">
+          <span>02</span>
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 125@2x.png" alt="" />
+          <span>测量仪器销售</span>
+          <span>测量仪器制造测量仪器制造测量仪器制造</span>
+        </div>
+        <div class="product-details_one">
+          <span>03</span>
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 126@2x.png" alt="" />
+          <span>机械设备研发</span>
+          <span>测量仪器制造测量仪器制造测量仪器制造</span>
+        </div>
+        <div class="product-details_one left_one">
+          <span>04</span>
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 127@2x.png" alt="" />
+          <span>技术服务</span>
+          <span>测量仪器制造测量仪器制造测量仪器制造</span>
+        </div>
+        <div class="product-details_one center_one">
+          <span>05</span>
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 128@2x.png" alt="" />
+          <span>技术推广</span>
+          <span>测量仪器制造测量仪器制造测量仪器制造</span>
+        </div>
+        <div class="product-details_one right_one">
+          <span>06</span>
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 129@2x.png" alt="" />
+          <span>技术开发</span>
+          <span>测量仪器制造测量仪器制造测量仪器制造</span>
         </div>
       </div>
     </div>
-    <div class="service"></div>
+    <div class="contact_us">
+      <div class="text">
+        <span>03</span>
+        <span>&emsp;———&emsp;</span>
+        <span>Contact us</span><br />
+        <div>联系我们</div>
+      </div>
+      <div class="box-bgc">
+        <div class="bgc_img-one">
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 106@2x.png" alt="" />
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 107@2x.png" alt="" />
+        </div>
+        <div class="address">
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 108@2x.png" alt="" />
+          <span class="address_des-one">地&nbsp;&nbsp;&nbsp;址：</span>
+          <span class="address_des-two">山东省青岛市胶州市上合示范区闽江路60号</span>
+        </div>
+        <div class="phone address">
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 109@2x.png" alt="" />
+          <span class="address_des-one">电&nbsp;&nbsp;&nbsp;话：</span>
+          <span class="address_des-two">0532-123456</span>
+        </div>
+        <div class="email address">
+          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 110@2x.png" alt="" />
+          <span class="address_des-one">邮&nbsp;&nbsp;&nbsp;箱：</span>
+          <span class="address_des-two">123456789@163.com</span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -397,27 +458,173 @@ export default {
   }
   & > .product-details {
     display: flex;
-    & > .product-details_one {
+    flex-wrap: wrap;
+    & > .left {
+      margin-right: 163px;
       margin-left: 320px;
-      & > span:nth-child(1) {
-        width: 68px;
-        height: 60px;
-        font-size: 60px;
-        font-family: AvantGardeITCbyBT-Book-Regular, AvantGardeITCbyBT-Book;
-        font-weight: 400;
-        color: #d8dee2;
-      }
+    }
+    & > .center {
+      margin-right: 163px;
+    }
+    & > .left_one {
+      margin-top: 107px;
+      margin-right: 163px;
+      margin-left: 320px;
+    }
+    & > .center_one {
+      margin-top: 107px;
+      margin-right: 163px;
+    }
+    & > .right_one {
+      margin-top: 107px;
     }
   }
 }
-.service {
+.contact_us {
   background: #eff8ff;
   width: 1920px;
-  height: 800px;
-  position: relative;
-  margin-top: 55%;
+  height: 859px;
   margin-bottom: 240px;
-  right: -50px;
-  left: 0;
+  & > .text {
+    position: absolute;
+    font-size: 30px;
+    margin-top: 87px;
+    margin-left: 320px;
+    & > span:nth-child(1) {
+      width: 37px;
+      height: 30px;
+      font-size: 30px;
+      font-family: DIN-Bold-Regular, DIN-Bold;
+      font-weight: 400;
+      color: #007dc0;
+    }
+    & > span:nth-child(2) {
+      width: 80px;
+      height: 2px;
+      color: #cdcdcd;
+      border-radius: 0px 0px 0px 0px;
+    }
+    & > span:nth-child(3) {
+      width: 318px;
+      height: 30px;
+      font-size: 30px;
+      font-family: DIN-Bold-Regular, DIN-Bold;
+      font-weight: 400;
+      color: #cdcdcd;
+    }
+    & > div {
+      margin-top: 34px;
+      width: 250px;
+      height: 50px;
+      font-size: 50px;
+      font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+      font-weight: 700;
+      color: #333333;
+    }
+  }
+  & > .box-bgc {
+    position: absolute;
+    width: 1920px;
+    height: 532px;
+    background: #00a6ff;
+    margin-top: 327px;
+    & > .bgc_img-one {
+      & > img {
+        position: absolute;
+        width: 652px;
+        height: 266px;
+        object-fit: contain;
+        margin-left: 320px;
+        margin-top: -41px;
+      }
+      & > img:nth-child(2) {
+        position: absolute;
+        width: 378px;
+        height: 197px;
+        object-fit: contain;
+        margin-left: 594px;
+        margin-top: 255px;
+      }
+    }
+    & > .phone {
+      margin-top: 51px;
+    }
+    & > .email {
+      margin-top: 51px;
+    }
+  }
+}
+.address {
+  margin-top: 146px;
+  padding-left: 1012px;
+  display: flex;
+  align-items: center;
+  & > img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+  }
+  & > .address_des-one {
+    width: 83px;
+    height: 24px;
+    font-size: 24px;
+    font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+    font-weight: 700;
+    color: #ffffff;
+    margin-left: 20px;
+    margin-right: 30px;
+  }
+  & > .address_des-two {
+    width: 384px;
+    height: 20px;
+    font-size: 20px;
+    font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+    font-weight: 400;
+    color: #ffffff;
+  }
+}
+.product-details_one {
+  margin-right: 320px;
+  & > span:nth-child(1) {
+    position: absolute;
+    display: block;
+    margin-top: 74px;
+    width: 68px;
+    height: 60px;
+    font-size: 60px;
+    font-family: AvantGardeITCbyBT-Book-Regular, AvantGardeITCbyBT-Book;
+    font-weight: 400;
+    color: #d8dee2;
+    margin-right: 10px;
+  }
+  & > img {
+    width: 95px;
+    height: 82px;
+    object-fit: contain;
+    margin-top: 74px;
+    margin-left: 78px;
+  }
+  & > span:nth-child(3) {
+    display: block;
+    width: 180px;
+    height: 30px;
+    font-size: 30px;
+    font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+    font-weight: 700;
+    color: #333333;
+    margin-top: 36px;
+    margin-left: 78px;
+    margin-bottom: 28px;
+  }
+  & > span:nth-child(4) {
+    display: block;
+    width: 240px;
+    height: 55px;
+    font-size: 24px;
+    font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+    font-weight: 400;
+    color: #666666;
+    margin-left: 78px;
+  }
 }
 </style>
