@@ -1,3 +1,9 @@
+/*
+ * @Author: hayyot
+ * @Date: 2023-04-15 20:17:03
+ * @Description: 铁沸物
+ * @FilePath: \jzbd-fe\src\api\http.js
+ */
 /**axios封装
  * 请求拦截、相应拦截、错误统一处理
  */
