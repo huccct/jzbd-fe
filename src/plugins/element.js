@@ -19,7 +19,8 @@ import {
   FormItem,
   Input,
   Upload,
-  Progress
+  Progress,
+  Message
 } from 'element-ui';
 
 Vue.use(Button);
@@ -42,3 +43,4 @@ Vue.use(FormItem);
 Vue.use(Input);
 Vue.use(Upload);
 Vue.use(Progress);
+Vue.use(Message);

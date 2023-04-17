@@ -107,6 +107,7 @@
                 :http-request="uploadFiles"
                 action="https://jsonplaceholder.typicode.com/posts/"
                 :file-list="fileList"
+                accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
               >
                 <div slot="trigger" class="uploadInfo_wrapped">
                   <template>
@@ -116,13 +117,14 @@
                         alt=""
                       />
                       <div class="upload_rg">
-                        <div class="fileName">{{ item.name }}{{ item.progressPercent }}</div>
+                        <div class="fileName">{{ item.name }}</div>
                         <el-progress
                           v-if="item.progressPercent !== 100"
                           style="width: 260px; height: 6px"
                           :percentage="item.progressPercent"
                           color="#00CC06"
                           :show-text="false"
+                          :auto-upload="false"
                         />
                         <div v-else class="fileSize">
                           {{ filterS(item.size) }}
@@ -186,10 +188,22 @@ export default {
     onSubmit() {
       console.log('submit!');
     },
+    // beforeUpload(file) {
+    //   console.log('fl', file);
+    //   const isLimit = file.size / 1024 / 1024 < 10;
+    //   if (!isLimit) {
+    //     this.$message.error('文件不能超过10M！');
+    //     return;
+    //   }
+    // },
     uploadFiles(param) {
+      console.log(param);
       const file = param.file;
+      if (file.size >= 10485760) {
+        this.$message.error('文件不能超过10M！');
+        return;
+      }
       file.progressPercent = 0;
-      console.log(file);
       this.uploadInfo.push(file);
       const formData = new FormData();
       formData.append('file', file);
@@ -200,13 +214,12 @@ export default {
           {
             onUploadProgress: progress => {
               // 格式化成百分数
-
               this.uploadInfo = this.uploadInfo.map(item => {
                 item === file &&
                   (item.progressPercent = Math.floor((progress.loaded / progress.total) * 100));
                 return item;
               });
-              console.log(this.uploadInfo, file.progressPercent);
+              // console.log(this.uploadInfo, file.progressPercent);
 
               // this.uploadInfo = JSON.parse(JSON.stringify(this.uploadInfo));
 
@@ -221,6 +234,25 @@ export default {
     filterS(size) {
       return filterSize(size);
     }
+    // imageChange(file, fileList) {
+    //   const isImage =
+    //     file.raw.type == 'image/png' ||
+    //     file.raw.type == 'image/jpg' ||
+    //     file.raw.type == 'image/jpeg';
+    //   const isLt5M = file.size < 1024 * 1024 * 5;
+    //   if (!isImage) {
+    //     this.$message.error('上传只能是png,jpg,jpeg格式!');
+    //   }
+    //   if (!isLt5M) {
+    //     this.$message.error('上传图片大小不能超过 5MB!');
+    //   }
+
+    //   if (isImage && isLt5M) {
+    //     this.uploadFile = file.raw || null;
+    //   } else {
+    //     fileList.splice(-1, 1);
+    //   }
+    // }
   }
 };
 </script>
