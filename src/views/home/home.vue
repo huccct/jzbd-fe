@@ -198,7 +198,7 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch('Test');
+    // this.$store.dispatch('Test');
   }
 };
 </script>

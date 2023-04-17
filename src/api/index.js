@@ -6,4 +6,4 @@ import { get, post } from './http';
 // export const reqTest = () => mockRequests.get(`/test`);
 
 // 本地mock测试
-export const reqTest = newId => get(`/news/news/t/${newId}`, newId);
+// export const reqTest = newId => get(`/news/news/t/${newId}`, newId);
