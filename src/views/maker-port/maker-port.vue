@@ -374,7 +374,7 @@ export default {
   height: 800px;
   position: relative;
   margin-top: 55%;
-  margin-bottom: 240px;
+  margin-bottom: 340px;
   right: -50px;
   left: 0;
 
