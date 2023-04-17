@@ -42,7 +42,7 @@ export default {
   },
   created() {
     //生命周期获取index并赋值
-    let index = localStorage.getItem('index');
+    let index = sessionStorage.getItem('index');
     if (index) {
       this.activeIndex = index;
     }
@@ -51,7 +51,7 @@ export default {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
       //存储index的值
-      localStorage.setItem('index', key);
+      sessionStorage.setItem('index', key);
     }
   }
 };
@@ -60,11 +60,12 @@ export default {
 <style lang="scss" scoped>
 .box {
   position: relative;
+  width: 100%;
   height: 65px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1;
+  z-index: 99;
 }
 
 .left {
@@ -75,8 +76,9 @@ export default {
 }
 
 .right {
+  width: 978px;
   padding-right: 320px;
-  padding-top: 43px;
+  padding-top: 23px;
 }
 
 .el-menu {

@@ -1,8 +1,8 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-04-15 20:51:25
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-04-15 23:31:10
+ * @LastEditors: 袁十一
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
  * 初心不变，意志坚定
@@ -46,8 +46,10 @@
         </div>
       </div>
       <div class="contract-map">
-        <img src="http://114.116.21.170:9000/photo/contract/map.png" alt="" />
-        <img class="logo-1" src="http://114.116.21.170:9000/photo/contract/location-2.png" alt="" />
+        <img
+          src="https://restapi.amap.com/v3/staticmap?location=120.095191,36.165253&zoom=12&size=1280%2A484&markers=-1,http://114.116.21.170:9000/photo/contract/location-2.png,0:120.095191,36.165253&key=900b95537e99785a8b0d415ee9160fd1"
+          alt=""
+        />
       </div>
     </div>
   </div>
@@ -137,13 +139,8 @@ export default {};
   margin-bottom: 100px;
   position: relative;
 }
-.contract-map .logo-1 {
-  position: absolute;
-  z-index: 2;
-  left: 634px;
-  top: 318px;
-  height: 60px;
-  width: 60px;
+.contract-map img {
+  width: 1280px;
 }
 /*
 主内容区容器结束

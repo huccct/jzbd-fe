@@ -10,11 +10,11 @@ import store from '../store/index';
 
 // 环境的切换
 if (process.env.NODE_ENV == 'development') {
-  axios.defaults.baseURL = '/api';
+  axios.defaults.baseURL = 'http://127.0.0.1:4523/m1/2574207-0-default';
 } else if (process.env.NODE_ENV == 'debug') {
   axios.defaults.baseURL = '';
 } else if (process.env.NODE_ENV == 'production') {
-  axios.defaults.baseURL = 'http://api.123dailu.com/';
+  axios.defaults.baseURL = '';
 }
 
 // 请求超时时间

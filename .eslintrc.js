@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: ['plugin:vue/essential', 'eslint:recommended'],
   rules: {
+    'no-unused-vars': 'off',
     'vue/no-unused-components': 'off',
     'vue/multi-word-component-names': 0,
     'no-console': 'off',

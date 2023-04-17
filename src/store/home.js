@@ -1,13 +1,13 @@
-import { reqTest } from '@/api';
+// import { reqTest } from '@/api';
 const state = {};
 
 const mutations = {};
 
 const actions = {
-  async Test() {
-    let res = await reqTest();
-    console.log(res);
-  }
+  // async Test(newId) {
+  //   let res = await reqTest(newId);
+  //   console.log(res);
+  // }
 };
 const getters = {};
 export default {
