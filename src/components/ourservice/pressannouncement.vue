@@ -112,7 +112,7 @@
 </template>
 
 <script>
-import { getAllList } from '@/api/park-service';
+import { getAllList } from '@/api/modules/park-service';
 
 export default {
   name: 'JzbdFePressannouncement',

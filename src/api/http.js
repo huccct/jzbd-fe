@@ -1,9 +1,3 @@
-/*
- * @Author: hayyot
- * @Date: 2023-04-15 20:17:03
- * @Description: 铁沸物
- * @FilePath: \jzbd-fe\src\api\http.js
- */
 /**axios封装
  * 请求拦截、相应拦截、错误统一处理
  */
@@ -61,14 +55,16 @@ axios.interceptors.response.use(
         case 404:
           Message({
             message: '网络请求不存在',
-            duration: 1500
+            duration: 1500,
+            showClose: true
           });
           break;
         // 其他错误，直接抛出错误提示
         default:
           Message({
             message: error.response.data.message,
-            duration: 1500
+            duration: 1500,
+            showClose: true
           });
       }
       return Promise.reject(error.response);

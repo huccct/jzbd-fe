@@ -95,7 +95,7 @@
 </template>
 
 <script>
-import { getAllList, getOneList } from '@/api/park-service';
+import { getAllList, getOneList } from '@/api/modules/park-service';
 import { mapGetters, mapState } from 'vuex';
 import { computed } from 'vue';
 export default {

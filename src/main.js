@@ -11,9 +11,10 @@ import store from './store';
 import './plugins/element.js';
 
 import * as API from '@/api';
-import '@/mock';
+// import '@/mock';
 import { Message } from 'element-ui';
 Vue.config.productionTip = false;
+
 new Vue({
   router,
   store,
