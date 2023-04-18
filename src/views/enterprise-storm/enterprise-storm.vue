@@ -119,13 +119,13 @@
         </div>
         <button class="see_more">查看更多>></button>
       </div>
-      <div class="company_two companyFlex_two">
+      <div class="company_two companyFlex_one">
         <img
           src="http://114.116.21.170:9000/photo/enterprise-storm/a9fe24f218db5f518329ac5c27bf18396d4b4af569a5a-7kTeNM_fw1200@2x.png"
           alt=""
         />
         <div class="title">青岛格林维尔环保技术有限公司</div>
-        <span class="company_two-number">03</span>
+        <span class="company_one-number">03</span>
         <div class="des">
           青岛格林维尔环保技术有限公司，主营信息系统集成服务、云计算装备技术服务、智能控制系统集成、新兴能源技术研发等...
         </div>
@@ -146,13 +146,13 @@
         </div>
         <button class="see_more">查看更多>></button>
       </div>
-      <div class="company_three companyFlex_three">
+      <div class="company_three companyFlex_one">
         <img
           src="http://114.116.21.170:9000/photo/enterprise-storm/250e2e981b27b0dc2abc26a0d8fe1c13623fa8656c556-YlG1Qm_fw1200@2x.png"
           alt=""
         />
         <div class="title">同方工业青岛分公司</div>
-        <span class="company_three-number">04</span>
+        <span class="company_one-number">04</span>
         <div class="des">
           同方工业青岛分公司，主营信息系统集成服务、云计算装备技术服务、智能控制系统集成、新兴能源技术研发等...
         </div>
@@ -486,310 +486,6 @@ export default {
   margin-top: 25px;
   margin-bottom: 240px;
   display: flex;
-  & > .companyFlex_one {
-    width: 410px;
-    height: 580px;
-    background: #ffffff;
-    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1608);
-    border-radius: 0px 0px 0px 0px;
-    opacity: 1;
-    margin-right: 25px;
-    display: flex;
-    flex-direction: column;
-    & img {
-      width: 100%;
-      object-fit: cover;
-    }
-    & > .title {
-      width: 200px;
-      height: 20px;
-      font-size: 20px;
-      font-family: Microsoft YaHei-Bold, Microsoft YaHei;
-      font-weight: 700;
-      color: #333333;
-      margin-left: 20px;
-      margin-top: 28px;
-    }
-    & > .company_one-number {
-      position: absolute;
-      margin-top: 300px;
-      margin-left: 305px;
-      width: 112px;
-      height: 96px;
-      font-size: 90px;
-      font-family: Microsoft YaHei-Bold, Microsoft YaHei;
-      font-weight: 700;
-      color: #cdcdcd;
-      opacity: 30%;
-    }
-    & > .des {
-      width: 358px;
-      height: 63px;
-      font-size: 16px;
-      font-family: Microsoft YaHei-Regular, Microsoft YaHei;
-      font-weight: 400;
-      color: #333333;
-      margin-top: 20px;
-      margin-left: 20px;
-      z-index: 1;
-    }
-    & > .phone {
-      margin-top: 22px;
-      padding-left: 20px;
-      display: flex;
-      align-items: center;
-      & > img {
-        width: 20px;
-        height: 20px;
-        object-fit: cover;
-      }
-      & > .phone_des {
-        margin: 0 10px;
-      }
-    }
-    & > .classification {
-      margin-top: 10px;
-      padding-left: 20px;
-      display: flex;
-      align-items: center;
-      & > img {
-        width: 20px;
-        height: 20px;
-        object-fit: cover;
-      }
-      & > .classification_des {
-        margin: 0 10px;
-      }
-    }
-    & > .honor {
-      margin-top: 10px;
-      padding-left: 20px;
-      display: flex;
-      align-items: center;
-      & > img {
-        width: 20px;
-        height: 20px;
-        object-fit: cover;
-      }
-      & > .honor_des {
-        margin: 0 10px;
-      }
-    }
-    & > .see_more {
-      color: white;
-      height: 35px;
-      width: 120px;
-      background-color: #00a6ff;
-      border: none;
-      font-size: 16px;
-      font-weight: 400;
-      font-family: Microsoft YaHei-Regular;
-      margin-top: 22px;
-      margin-left: 20px;
-    }
-  }
-  & > .companyFlex_two {
-    width: 410px;
-    height: 580px;
-    background: #ffffff;
-    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1608);
-    border-radius: 0px 0px 0px 0px;
-    opacity: 1;
-    display: flex;
-    flex-direction: column;
-    margin-right: 25px;
-    & img {
-      width: 100%;
-      object-fit: cover;
-    }
-    & > .title {
-      width: 280px;
-      height: 20px;
-      font-size: 20px;
-      font-family: Microsoft YaHei-Bold, Microsoft YaHei;
-      font-weight: 700;
-      color: #333333;
-      margin-left: 20px;
-      margin-top: 28px;
-    }
-    & > .des {
-      width: 358px;
-      height: 63px;
-      font-size: 16px;
-      font-family: Microsoft YaHei-Regular, Microsoft YaHei;
-      font-weight: 400;
-      color: #333333;
-      margin-top: 20px;
-      margin-left: 20px;
-      z-index: 1;
-    }
-    & > .company_two-number {
-      position: absolute;
-      margin-top: 300px;
-      margin-left: 305px;
-      width: 112px;
-      height: 96px;
-      font-size: 90px;
-      font-family: Microsoft YaHei-Bold, Microsoft YaHei;
-      font-weight: 700;
-      color: #cdcdcd;
-      opacity: 30%;
-    }
-    & > .phone {
-      margin-top: 22px;
-      padding-left: 20px;
-      display: flex;
-      align-items: center;
-      & > img {
-        width: 20px;
-        height: 20px;
-        object-fit: cover;
-      }
-      & > .phone_des {
-        margin: 0 10px;
-      }
-    }
-    & > .classification {
-      margin-top: 10px;
-      padding-left: 20px;
-      display: flex;
-      align-items: center;
-      & > img {
-        width: 20px;
-        height: 20px;
-        object-fit: cover;
-      }
-      & > .classification_des {
-        margin: 0 10px;
-      }
-    }
-    & > .honor {
-      margin-top: 10px;
-      padding-left: 20px;
-      display: flex;
-      align-items: center;
-      & > img {
-        width: 20px;
-        height: 20px;
-        object-fit: cover;
-      }
-      & > .honor_des {
-        margin: 0 10px;
-      }
-    }
-    & > .see_more {
-      color: white;
-      height: 35px;
-      width: 120px;
-      background-color: #00a6ff;
-      border: none;
-      font-size: 16px;
-      font-weight: 400;
-      font-family: Microsoft YaHei-Regular;
-      margin-top: 22px;
-      margin-left: 20px;
-    }
-  }
-  & > .companyFlex_three {
-    width: 410px;
-    height: 580px;
-    background: #ffffff;
-    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1608);
-    border-radius: 0px 0px 0px 0px;
-    opacity: 1;
-    display: flex;
-    flex-direction: column;
-    & img {
-      width: 100%;
-      object-fit: cover;
-    }
-    & > .title {
-      width: 280px;
-      height: 20px;
-      font-size: 20px;
-      font-family: Microsoft YaHei-Bold, Microsoft YaHei;
-      font-weight: 700;
-      color: #333333;
-      margin-left: 20px;
-      margin-top: 28px;
-    }
-    & > .des {
-      width: 358px;
-      height: 63px;
-      font-size: 16px;
-      font-family: Microsoft YaHei-Regular, Microsoft YaHei;
-      font-weight: 400;
-      color: #333333;
-      margin-top: 20px;
-      margin-left: 20px;
-    }
-    & > .company_three-number {
-      position: absolute;
-      margin-top: 300px;
-      margin-left: 305px;
-      width: 112px;
-      height: 96px;
-      font-size: 90px;
-      font-family: Microsoft YaHei-Bold, Microsoft YaHei;
-      font-weight: 700;
-      color: #cdcdcd;
-      opacity: 30%;
-    }
-    & > .phone {
-      margin-top: 22px;
-      padding-left: 20px;
-      display: flex;
-      align-items: center;
-      & > img {
-        width: 20px;
-        height: 20px;
-        object-fit: cover;
-      }
-      & > .phone_des {
-        margin: 0 10px;
-      }
-    }
-    & > .classification {
-      margin-top: 10px;
-      padding-left: 20px;
-      display: flex;
-      align-items: center;
-      & > img {
-        width: 20px;
-        height: 20px;
-        object-fit: cover;
-      }
-      & > .classification_des {
-        margin: 0 10px;
-      }
-    }
-    & > .honor {
-      margin-top: 10px;
-      padding-left: 20px;
-      display: flex;
-      align-items: center;
-      & > img {
-        width: 20px;
-        height: 20px;
-        object-fit: cover;
-      }
-      & > .honor_des {
-        margin: 0 10px;
-      }
-    }
-    & > .see_more {
-      color: white;
-      height: 35px;
-      width: 120px;
-      background-color: #00a6ff;
-      border: none;
-      font-size: 16px;
-      font-weight: 400;
-      font-family: Microsoft YaHei-Regular;
-      margin-top: 22px;
-      margin-left: 20px;
-    }
-  }
 }
 .see_more_last {
   width: 300px;
@@ -811,6 +507,108 @@ export default {
     height: 750px;
     margin-left: 100px;
     margin-top: -88px;
+  }
+}
+.companyFlex_one {
+  width: 410px;
+  height: 580px;
+  background: #ffffff;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1608);
+  border-radius: 0px 0px 0px 0px;
+  opacity: 1;
+  margin-right: 25px;
+  display: flex;
+  flex-direction: column;
+  & img {
+    width: 100%;
+    object-fit: cover;
+  }
+  & > .title {
+    width: 280px;
+    height: 20px;
+    font-size: 20px;
+    font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+    font-weight: 700;
+    color: #333333;
+    margin-left: 20px;
+    margin-top: 28px;
+  }
+  & > .company_one-number {
+    position: absolute;
+    margin-top: 300px;
+    margin-left: 290px;
+    width: 112px;
+    height: 96px;
+    font-size: 90px;
+    font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+    font-weight: 700;
+    color: #cdcdcd;
+    opacity: 30%;
+  }
+  & > .des {
+    width: 358px;
+    height: 63px;
+    font-size: 16px;
+    font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+    font-weight: 400;
+    color: #333333;
+    margin-top: 20px;
+    margin-left: 20px;
+    z-index: 1;
+  }
+  & > .phone {
+    margin-top: 22px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    & > img {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+    }
+    & > .phone_des {
+      margin: 0 10px;
+    }
+  }
+  & > .classification {
+    margin-top: 10px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    & > img {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+    }
+    & > .classification_des {
+      margin: 0 10px;
+    }
+  }
+  & > .honor {
+    margin-top: 10px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    & > img {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+    }
+    & > .honor_des {
+      margin: 0 10px;
+    }
+  }
+  & > .see_more {
+    color: white;
+    height: 35px;
+    width: 120px;
+    background-color: #00a6ff;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Microsoft YaHei-Regular;
+    margin-top: 22px;
+    margin-left: 20px;
   }
 }
 </style>
