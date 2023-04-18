@@ -38,18 +38,29 @@
         </div>
       </div>
       <div class="d-changeimg">
-        <div class="img-left">
+        <div class="img-left"
+             @click="arrowClick('prev')">
           <img src="http://114.116.21.170:9000/photo/home2.png"
                alt="" />
         </div>
-        <div class="img-right">
+        <div class="img-right"
+             @click="arrowClick('next')">
           <img src="http://114.116.21.170:9000/photo/home3.png"
                alt="" />
         </div>
       </div>
       <div class="d-img">
-        <img src="http://114.116.21.170:9000/photo/home1.png"
-             alt="" />
+        <el-carousel height="600px"
+                     :autoplay="false"
+                     indicator-position="none"
+                     arrow="never"
+                     ref="cardShow">
+          <el-carousel-item v-for="(list, index) in Basicimg"
+                            :key="index">
+            <img class="imgshow"
+                 :src="list.img">
+          </el-carousel-item>
+        </el-carousel>
       </div>
       <div class="d-btn">
         <span>加入我们</span>
@@ -69,23 +80,41 @@
         </div>
       </div>
       <div class="p-img">
-        <ul v-for="(list, index) in Policynews"
-            :key="index"
-            class="p-imglist">
-          <img :src="list.img" />
+        <ul class="p-imglist">
+          <el-carousel height="440px"
+                       :autoplay="false"
+                       indicator-position="outside"
+                       arrow="never"
+                       ref="imglistid">
+            <el-carousel-item v-for="(list, index) in Policynews"
+                              :key="index">
+              <div class="p-imglistdiv">
+                <img :src="list.img">
+                <div class="p-imglistdivdiv">
+                  <div class="title">
+                    <p>{{list.title}}</p>
+                  </div>
+                  <div class="l"></div>
+                  <div class="name">
+                    <p>{{list.name}}</p>
+                  </div>
+                  <div class="text">
+                    <p>{{list.text}}</p>
+                  </div>
+                </div>
+              </div>
+
+            </el-carousel-item>
+          </el-carousel>
         </ul>
-        <div class="p-imglast">
-          <div class="p-cimglast"></div>
-          <div class="p-cimglast p-cimglastadd"></div>
-          <div class="p-cimglast"></div>
-          <div class="p-cimglast"></div>
-        </div>
       </div>
       <div class="p-changeimg">
         <div class="p-cilist">
           <div v-for="(list, index) in Policynews"
                :key="index"
-               class="p-cidiv">
+               class="p-cidiv"
+               tabIndex="1"
+               @click="cilist(index)">
             <div class="p-title">
               <div class="p-cinumber">
                 <span>{{ index + 1 }}</span>
@@ -180,36 +209,94 @@ export default {
           img: 'http://114.116.21.170:9000/photo/home5.png',
           title: '[资讯]',
           name: '现代商用汽车(中国)有限公司',
-          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
+          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企，是全球五大汽车企业之现代汽车集团商用车海外第一研发及制造基地。',
           timer: '12-30'
         },
         {
-          img: '',
+          img: 'http://114.116.21.170:9000/photo/home5.png',
           title: '[公告]',
           name: '现代商用汽车(中国)有限公司',
           text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
           timer: '12-30'
         },
         {
-          img: '',
+          img: 'http://114.116.21.170:9000/photo/home5.png',
           title: '[通知]',
           name: '现代商用汽车(中国)有限公司',
           text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
           timer: '12-30'
         },
         {
-          img: '',
+          img: 'http://114.116.21.170:9000/photo/home5.png',
           title: '[行业动态]',
           name: '现代商用汽车(中国)有限公司',
           text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
           timer: '12-30'
         }
-      ]
+      ],
+      Basicimg: [{
+        img: "http://114.116.21.170:9000/photo/home1.png"
+      },
+      {
+        img: "http://114.116.21.170:9000/photo/home1.1.png"
+      },
+      {
+        img: "http://114.116.21.170:9000/photo/home1.2.png"
+      },
+      {
+        img: "http://114.116.21.170:9000/photo/home1.3.png"
+      },
+      {
+        img: "http://114.116.21.170:9000/photo/home1.4.png"
+      },
+      {
+        img: "http://114.116.21.170:9000/photo/home1.5.png"
+      },
+      {
+        img: "http://114.116.21.170:9000/photo/home1.6.png"
+      },
+
+      ],
+      Basicimgpage: 0,
     };
+
+  },
+  methods: {
+    arrowClick (val) {
+      if (val == 'next') {
+        if (this.Basicimgpage != this.Basicimg.length - 1) {
+          this.$refs.cardShow.next();
+          this.Basicimgpage++;
+        }
+      } else {
+        if (this.Basicimgpage != 0) {
+          this.Basicimgpage--;
+          this.$refs.cardShow.prev();
+        }
+      }
+      if (this.Basicimgpage == 0) {
+        document.getElementsByClassName('img-left')[0].style.opacity = 0.4;
+        document.getElementsByClassName('img-right')[0].style.opacity = 1;
+      }
+      else if (this.Basicimgpage == this.Basicimg.length - 1) {
+        document.getElementsByClassName('img-left')[0].style.opacity = 1;
+        document.getElementsByClassName('img-right')[0].style.opacity = 0.4;
+      }
+      else {
+        document.getElementsByClassName('img-left')[0].style.opacity = 1;
+        document.getElementsByClassName('img-right')[0].style.opacity = 1;
+      }
+      console.log(this.Basicimgpage);
+    },
+    cilist (index) {
+      console.log(index);
+      this.$refs.imglistid.setActiveItem(index)
+    }
   },
   mounted () {
     this.$store.dispatch('Test');
-  }
+    document.getElementsByClassName('p-cidiv')[0].focus();
+  },
 };
 </script>
 
@@ -366,11 +453,6 @@ export default {
       }
     }
 
-    span {
-      // -webkit-background-clip: text;
-      // -webkit-text-fill-color: transparent;
-    }
-
     .d-changeimg {
       position: absolute;
       left: 1010px;
@@ -398,13 +480,10 @@ export default {
 
     .d-img {
       position: absolute;
-      // width: auto;
-      // width: 700px;
+      width: 800px;
+      height: 600px;
       left: 1100px;
       top: 100px;
-      img {
-        width: 798px;
-      }
     }
 
     .d-btn {
@@ -474,11 +553,63 @@ export default {
       z-index: 2;
 
       .p-imglist {
-        display: flex;
-
-        li {
-          // display: flex;
-          list-style: none;
+        position: relative;
+        // top: 100px;
+        width: 910px;
+        height: 440px;
+        .p-imglistdiv {
+          .p-imglistdivdiv {
+            position: absolute;
+            top: 0px;
+            left: 50px;
+            .title {
+              position: absolute;
+              top: 66px;
+              p {
+                width: 200px;
+                height: 34px;
+                font-size: 34px;
+                font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+                font-weight: 400;
+                color: #ffffff;
+                line-height: 34px;
+              }
+            }
+            .name {
+              position: absolute;
+              top: 141px;
+              p {
+                white-space: nowrap;
+                width: auto;
+                height: 34px;
+                font-size: 34px;
+                font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+                font-weight: 400;
+                color: #ffffff;
+                line-height: 34px;
+              }
+            }
+            .l {
+            }
+            .text {
+              position: absolute;
+              top: 277px;
+              p {
+                width: 619px;
+                height: 52px;
+                font-size: 20px;
+                font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+                font-weight: 400;
+                color: #ffffff;
+                line-height: 26px;
+              }
+            }
+          }
+        }
+        img {
+          z-index: 0;
+          width: 100%;
+          height: auto;
         }
       }
 
@@ -487,20 +618,7 @@ export default {
         top: 386px;
         left: 50px;
         display: flex;
-
-        .p-cimglast {
-          width: 18px;
-          height: 18px;
-          background: #ffffff;
-          opacity: 0.5;
-          border: 1px solid #707070;
-          margin-right: 10px;
-          border-radius: 100%;
-        }
-
-        .p-cimglastadd {
-          opacity: 1;
-        }
+        z-index: 3;
       }
     }
 
@@ -621,14 +739,15 @@ export default {
             margin-top: -110px;
             margin-left: 360px;
           }
-
-          .p-ciactivityadd {
-            background-image: url('http://114.116.21.170:9000/photo/home6.png');
-          }
         }
 
-        .p-cidivadd {
+        .p-cidiv:focus {
+          // border: 2px solid red;
           background-color: #ebf4ff;
+          outline: none;
+          .p-ciactivity {
+            background-image: url('http://114.116.21.170:9000/photo/home6.png');
+          }
         }
       }
     }
@@ -699,5 +818,20 @@ export default {
       }
     }
   }
+}
+::v-deep .el-carousel__indicators {
+  position: absolute;
+  bottom: 23px;
+  left: 50px;
+}
+::v-deep .el-carousel__button {
+  width: 18px;
+  height: 18px;
+  background: white;
+  opacity: 0.5;
+  border: 1px solid #707070;
+  margin-right: 10px;
+  border-radius: 100%;
+  margin-left: -7px;
 }
 </style>
