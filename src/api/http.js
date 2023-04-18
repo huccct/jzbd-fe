@@ -10,7 +10,7 @@ import store from '../store/index';
 
 // 环境的切换
 if (process.env.NODE_ENV == 'development') {
-  axios.defaults.baseURL = 'http://127.0.0.1:4523/m1/2574207-0-default';
+  axios.defaults.baseURL = 'http://114.116.18.241:8080';
 } else if (process.env.NODE_ENV == 'debug') {
   axios.defaults.baseURL = '';
 } else if (process.env.NODE_ENV == 'production') {
