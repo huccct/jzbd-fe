@@ -89,18 +89,64 @@
         <div class="enterpriseInfoForm">
           <el-form ref="form" :model="form" label-width="90px" :label-position="labelPosition">
             <el-form-item label="企业名称:">
-              <el-input v-model="form.name" placeholder="请输入企业名称"></el-input>
+              <el-input v-model="form.enterpriseName" placeholder="请输入企业名称"></el-input>
             </el-form-item>
             <el-form-item label="联系人:">
               <el-input v-model="form.name" placeholder="请输入联系人"></el-input>
             </el-form-item>
             <el-form-item label="联系方式:">
-              <el-input v-model="form.name" placeholder="请输入联系方式"></el-input>
+              <el-input v-model="form.ContactInformation" placeholder="请输入联系方式"></el-input>
             </el-form-item>
-
+            <el-form-item label="添加附件:">
+              <el-upload
+                ref="upload"
+                class="upload_policy"
+                multiple
+                :limit="3"
+                :show-file-list="false"
+                :http-request="uploadFiles"
+                action="https://jsonplaceholder.typicode.com/posts/"
+                :file-list="fileList"
+                accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
+              >
+                <div slot="trigger" class="uploadInfo_wrapped">
+                  <template>
+                    <div v-for="(item, index) in uploadInfo" :key="index" class="uploadInfo">
+                      <img
+                        src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/附件.png"
+                        alt=""
+                      />
+                      <div class="upload_rg">
+                        <div class="fileName">{{ item.name }}</div>
+                        <el-progress
+                          v-if="item.progressPercent !== 100"
+                          style="width: 260px; height: 6px"
+                          :percentage="item.progressPercent"
+                          color="#00CC06"
+                          :show-text="false"
+                          :auto-upload="false"
+                        />
+                        <div v-else class="fileSize">
+                          {{ filterS(item.size) }}
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                  <div style="display: flex; margin-top: 19px">
+                    <img
+                      src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/附件.png"
+                      alt=""
+                    />
+                    <div class="chooseFiles">选取文件</div>
+                  </div>
+                </div>
+                <div slot="tip" class="el-upload__tip">
+                  请上传 大小不超过 10MB 格式为：rar、zip、jpg、png、pdf、ppt 的文件
+                </div>
+              </el-upload>
+            </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="onSubmit">立即创建</el-button>
-              <el-button>取消</el-button>
+              <el-button type="primary" @click="onSubmit">提交</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -114,11 +160,14 @@
         </div> -->
       </div>
     </div>
-    <div style="height: 100px"></div>
+    <div style="height: 160px"></div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import { filterSize } from '@/utils/sizeConversion';
+
 export default {
   name: 'JzbdFePolicyRelease',
   components: {},
@@ -126,21 +175,84 @@ export default {
     return {
       form: {
         name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
+        enterpriseName: '',
+        ContactInformation: ''
       },
-      labelPosition: 'left'
+      fileList: [],
+      labelPosition: 'left',
+      uploadInfo: [],
+      progressPercent: 0
     };
   },
   methods: {
     onSubmit() {
       console.log('submit!');
+    },
+    // beforeUpload(file) {
+    //   console.log('fl', file);
+    //   const isLimit = file.size / 1024 / 1024 < 10;
+    //   if (!isLimit) {
+    //     this.$message.error('文件不能超过10M！');
+    //     return;
+    //   }
+    // },
+    uploadFiles(param) {
+      console.log(param);
+      const file = param.file;
+      if (file.size >= 10485760) {
+        this.$message.error('文件不能超过10M！');
+        return;
+      }
+      file.progressPercent = 0;
+      this.uploadInfo.push(file);
+      const formData = new FormData();
+      formData.append('file', file);
+      axios
+        .post(
+          'http://127.0.0.1:4523/m1/2574207-0-default/companyinfo/companyinfo/t/upload/minio',
+          formData,
+          {
+            onUploadProgress: progress => {
+              // 格式化成百分数
+              this.uploadInfo = this.uploadInfo.map(item => {
+                item === file &&
+                  (item.progressPercent = Math.floor((progress.loaded / progress.total) * 100));
+                return item;
+              });
+              // console.log(this.uploadInfo, file.progressPercent);
+
+              // this.uploadInfo = JSON.parse(JSON.stringify(this.uploadInfo));
+
+              // console.log(this.uploadInfo);
+            }
+          }
+        )
+        .then(res => {
+          console.log('res', res);
+        });
+    },
+    filterS(size) {
+      return filterSize(size);
     }
+    // imageChange(file, fileList) {
+    //   const isImage =
+    //     file.raw.type == 'image/png' ||
+    //     file.raw.type == 'image/jpg' ||
+    //     file.raw.type == 'image/jpeg';
+    //   const isLt5M = file.size < 1024 * 1024 * 5;
+    //   if (!isImage) {
+    //     this.$message.error('上传只能是png,jpg,jpeg格式!');
+    //   }
+    //   if (!isLt5M) {
+    //     this.$message.error('上传图片大小不能超过 5MB!');
+    //   }
+
+    //   if (isImage && isLt5M) {
+    //     this.uploadFile = file.raw || null;
+    //   } else {
+    //     fileList.splice(-1, 1);
+    //   }
+    // }
   }
 };
 </script>
@@ -435,6 +547,57 @@ contain
       }
       ::v-deep .el-form-item__label {
         font-size: 16px;
+      }
+      & .uploadInfo_wrapped {
+        display: flex;
+        flex-direction: column;
+        & .chooseFiles {
+          margin-left: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 78px;
+          height: 30px;
+          border-radius: 10px 10px 10px 10px;
+          opacity: 1;
+          border: 1px solid #0e7fdb;
+          font-size: 14px;
+          font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+          font-weight: 400;
+          color: #0e7fdb;
+        }
+      }
+      .uploadInfo {
+        margin-top: 19px;
+        width: 699px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        & > img {
+          width: 25.4px;
+          height: 29.3px;
+          object-fit: cover;
+        }
+        & > .upload_rg {
+          flex: 1;
+          margin-left: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          & > .fileName {
+            margin-top: 2px;
+            height: 21px;
+            line-height: normal;
+            font-size: 14px;
+          }
+          & > .fileSize {
+            height: 21px;
+            line-height: normal;
+            font-size: 12px;
+            color: #666666;
+          }
+        }
       }
     }
     & > .container > .success {

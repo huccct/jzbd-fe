@@ -10,11 +10,11 @@ import store from '../store/index';
 
 // 环境的切换
 if (process.env.NODE_ENV == 'development') {
-  axios.defaults.baseURL = 'http://127.0.0.1:4523/m1/2574207-0-default';
+  axios.defaults.baseURL = 'http://114.116.18.241:8080';
 } else if (process.env.NODE_ENV == 'debug') {
   axios.defaults.baseURL = '';
 } else if (process.env.NODE_ENV == 'production') {
-  axios.defaults.baseURL = '';
+  axios.defaults.baseURL = 'http://114.116.18.241:8080';
 }
 
 // 请求超时时间
@@ -55,14 +55,16 @@ axios.interceptors.response.use(
         case 404:
           Message({
             message: '网络请求不存在',
-            duration: 1500
+            duration: 1500,
+            showClose: true
           });
           break;
         // 其他错误，直接抛出错误提示
         default:
           Message({
             message: error.response.data.message,
-            duration: 1500
+            duration: 1500,
+            showClose: true
           });
       }
       return Promise.reject(error.response);
