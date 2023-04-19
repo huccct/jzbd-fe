@@ -53,6 +53,7 @@
           :autoplay="false"
           indicator-position="none"
           arrow="never"
+          class="my-carousel"
         >
           <el-carousel-item v-for="(list, index) in Basicimg" :key="index">
             <img class="imgshow" :src="list.img" />
@@ -475,7 +476,7 @@ export default {
         background: #00a6ff;
         border-radius: 40px 0px 0px 40px;
         opacity: 0.4;
-
+        cursor: pointer;
         img {
           position: absolute;
           left: 36px;
@@ -484,6 +485,7 @@ export default {
       }
 
       .img-right {
+        cursor: pointer;
         z-index: 10;
       }
     }
@@ -655,7 +657,7 @@ export default {
           height: 110px;
           padding: 0;
           margin: 0;
-
+          cursor: pointer;
           .p-title {
             display: flex;
 

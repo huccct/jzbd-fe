@@ -61,16 +61,16 @@ export default {
       this.isAnimating = true;
       setTimeout(() => {
         this.isAnimating = false;
-      }, 500);
+      }, 300);
       this.currentIndex = index;
     },
     next: debounce(function () {
       console.log('111');
       this.$refs.carousel.next();
-    }, 500),
+    }, 300),
     prev: debounce(function () {
       this.$refs.carousel.prev();
-    }, 500)
+    }, 300)
   }
 };
 </script>
