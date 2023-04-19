@@ -14,7 +14,8 @@
     </div>
     <div class="basic">
       <div class="d-bg">
-        <img src="http://114.116.21.170:9000/photo/home4.png" alt="" />
+        <img src="http://114.116.21.170:9000/photo/home4.png"
+             alt="" />
       </div>
       <div class="d-head">
         <span>01</span>
@@ -27,27 +28,39 @@
           <span>青岛上合企业创新产业园</span>
         </div>
         <div class="d-text">
-          <span
-            >青岛上合企业创新产业园是胶州湾发展集团围绕上合示范区建设总体方案，重点打造的科技
+          <span>青岛上合企业创新产业园是胶州湾发展集团围绕上合示范区建设总体方案，重点打造的科技
             企业孵化园区，地理位置优越，交通便利，15分钟车程即可到达西海岸新区和青岛主城区。
             项目总投资约2亿元，建筑面积约5.2万平方米，目前已建成含办公区的工业厂房10栋（包含
             6座单层厂房和4座双层厂房），同时为逐步打造国家级孵化器和青岛市级标杆孵化器，园区
             正在建设6000平方米的办公楼，办公楼建成后，园区将彻底实现从单一的厂房租赁到创客空
             间、孵化器、加速器、专业园区完整产业生态链。园区2019-2020年先后年获评青岛市中小
-            企业产业园和胶州市级孵化器，2022年将努力争创青岛市级孵化器。</span
-          >
+            企业产业园和胶州市级孵化器，2022年将努力争创青岛市级孵化器。</span>
         </div>
       </div>
       <div class="d-changeimg">
-        <div class="img-left">
-          <img src="http://114.116.21.170:9000/photo/home2.png" alt="" />
+        <div class="img-left"
+             @click="arrowClick('prev')">
+          <img src="http://114.116.21.170:9000/photo/home2.png"
+               alt="" />
         </div>
-        <div class="img-right">
-          <img src="http://114.116.21.170:9000/photo/home3.png" alt="" />
+        <div class="img-right"
+             @click="arrowClick('next')">
+          <img src="http://114.116.21.170:9000/photo/home3.png"
+               alt="" />
         </div>
       </div>
       <div class="d-img">
-        <img src="http://114.116.21.170:9000/photo/home1.png" alt="" />
+        <el-carousel height="600px"
+                     :autoplay="false"
+                     indicator-position="none"
+                     arrow="never"
+                     ref="cardShow">
+          <el-carousel-item v-for="(list, index) in Basicimg"
+                            :key="index">
+            <img class="imgshow"
+                 :src="list.img">
+          </el-carousel-item>
+        </el-carousel>
       </div>
       <div class="d-btn">
         <span>加入我们</span>
@@ -67,19 +80,41 @@
         </div>
       </div>
       <div class="p-img">
-        <ul v-for="(list, index) in Policynews" :key="index" class="p-imglist">
-          <img :src="list.img" />
+        <ul class="p-imglist">
+          <el-carousel height="440px"
+                       :autoplay="false"
+                       indicator-position="outside"
+                       arrow="never"
+                       ref="imglistid">
+            <el-carousel-item v-for="(list, index) in Policynews"
+                              :key="index">
+              <div class="p-imglistdiv">
+                <img :src="list.img">
+                <div class="p-imglistdivdiv">
+                  <div class="title">
+                    <p>{{list.title}}</p>
+                  </div>
+                  <div class="l"></div>
+                  <div class="name">
+                    <p>{{list.name}}</p>
+                  </div>
+                  <div class="text">
+                    <p>{{list.text}}</p>
+                  </div>
+                </div>
+              </div>
+
+            </el-carousel-item>
+          </el-carousel>
         </ul>
-        <div class="p-imglast">
-          <div class="p-cimglast"></div>
-          <div class="p-cimglast p-cimglastadd"></div>
-          <div class="p-cimglast"></div>
-          <div class="p-cimglast"></div>
-        </div>
       </div>
       <div class="p-changeimg">
         <div class="p-cilist">
-          <div v-for="(list, index) in Policynews" :key="index" class="p-cidiv">
+          <div v-for="(list, index) in Policynews"
+               :key="index"
+               class="p-cidiv"
+               tabIndex="1"
+               @click="cilist(index)">
             <div class="p-title">
               <div class="p-cinumber">
                 <span>{{ index + 1 }}</span>
@@ -114,7 +149,8 @@
       </div>
       <div class="e-show">
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home8.png" alt="" />
+          <img src="http://114.116.21.170:9000/photo/home8.png"
+               alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -123,7 +159,8 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home10.png" alt="" />
+          <img src="http://114.116.21.170:9000/photo/home10.png"
+               alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -138,7 +175,8 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home9.png" alt="" />
+          <img src="http://114.116.21.170:9000/photo/home9.png"
+               alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -149,7 +187,8 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home11.png" alt="" />
+          <img src="http://114.116.21.170:9000/photo/home11.png"
+               alt="" />
         </div>
       </div>
     </div>
@@ -163,43 +202,101 @@ import Slider from '@/components/slider/slider.vue';
 export default {
   name: 'home',
   components: { NavigationBar, Slider },
-  data() {
+  data () {
     return {
       Policynews: [
         {
           img: 'http://114.116.21.170:9000/photo/home5.png',
           title: '[资讯]',
           name: '现代商用汽车(中国)有限公司',
-          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
+          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企，是全球五大汽车企业之现代汽车集团商用车海外第一研发及制造基地。',
           timer: '12-30'
         },
         {
-          img: '',
+          img: 'http://114.116.21.170:9000/photo/home5.png',
           title: '[公告]',
           name: '现代商用汽车(中国)有限公司',
           text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
           timer: '12-30'
         },
         {
-          img: '',
+          img: 'http://114.116.21.170:9000/photo/home5.png',
           title: '[通知]',
           name: '现代商用汽车(中国)有限公司',
           text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
           timer: '12-30'
         },
         {
-          img: '',
+          img: 'http://114.116.21.170:9000/photo/home5.png',
           title: '[行业动态]',
           name: '现代商用汽车(中国)有限公司',
           text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
           timer: '12-30'
         }
-      ]
+      ],
+      Basicimg: [{
+        img: "http://114.116.21.170:9000/photo/home1.png"
+      },
+      {
+        img: "http://114.116.21.170:9000/photo/home1.1.png"
+      },
+      {
+        img: "http://114.116.21.170:9000/photo/home1.2.png"
+      },
+      {
+        img: "http://114.116.21.170:9000/photo/home1.3.png"
+      },
+      {
+        img: "http://114.116.21.170:9000/photo/home1.4.png"
+      },
+      {
+        img: "http://114.116.21.170:9000/photo/home1.5.png"
+      },
+      {
+        img: "http://114.116.21.170:9000/photo/home1.6.png"
+      },
+
+      ],
+      Basicimgpage: 0,
     };
+
   },
-  mounted() {
-    // this.$store.dispatch('Test');
-  }
+  methods: {
+    arrowClick (val) {
+      if (val == 'next') {
+        if (this.Basicimgpage != this.Basicimg.length - 1) {
+          this.$refs.cardShow.next();
+          this.Basicimgpage++;
+        }
+      } else {
+        if (this.Basicimgpage != 0) {
+          this.Basicimgpage--;
+          this.$refs.cardShow.prev();
+        }
+      }
+      if (this.Basicimgpage == 0) {
+        document.getElementsByClassName('img-left')[0].style.opacity = 0.4;
+        document.getElementsByClassName('img-right')[0].style.opacity = 1;
+      }
+      else if (this.Basicimgpage == this.Basicimg.length - 1) {
+        document.getElementsByClassName('img-left')[0].style.opacity = 1;
+        document.getElementsByClassName('img-right')[0].style.opacity = 0.4;
+      }
+      else {
+        document.getElementsByClassName('img-left')[0].style.opacity = 1;
+        document.getElementsByClassName('img-right')[0].style.opacity = 1;
+      }
+      console.log(this.Basicimgpage);
+    },
+    cilist (index) {
+      console.log(index);
+      this.$refs.imglistid.setActiveItem(index)
+    }
+  },
+  mounted () {
+    this.$store.dispatch('Test');
+    document.getElementsByClassName('p-cidiv')[0].focus();
+  },
 };
 </script>
 
@@ -223,7 +320,6 @@ export default {
     position: absolute;
     top: 350px;
     left: 320px;
-    z-index: 2;
   }
 
   .h-content {
@@ -232,7 +328,6 @@ export default {
     left: 320px;
     width: 984px;
     height: 70px;
-    z-index: 2;
 
     span {
       display: block;
@@ -358,11 +453,6 @@ export default {
       }
     }
 
-    span {
-      // -webkit-background-clip: text;
-      // -webkit-text-fill-color: transparent;
-    }
-
     .d-changeimg {
       position: absolute;
       left: 1010px;
@@ -390,13 +480,10 @@ export default {
 
     .d-img {
       position: absolute;
-      // width: auto;
-      // width: 700px;
+      width: 800px;
+      height: 600px;
       left: 1100px;
       top: 100px;
-      img {
-        width: 798px;
-      }
     }
 
     .d-btn {
@@ -466,11 +553,63 @@ export default {
       z-index: 2;
 
       .p-imglist {
-        display: flex;
-
-        li {
-          // display: flex;
-          list-style: none;
+        position: relative;
+        // top: 100px;
+        width: 910px;
+        height: 440px;
+        .p-imglistdiv {
+          .p-imglistdivdiv {
+            position: absolute;
+            top: 0px;
+            left: 50px;
+            .title {
+              position: absolute;
+              top: 66px;
+              p {
+                width: 200px;
+                height: 34px;
+                font-size: 34px;
+                font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+                font-weight: 400;
+                color: #ffffff;
+                line-height: 34px;
+              }
+            }
+            .name {
+              position: absolute;
+              top: 141px;
+              p {
+                white-space: nowrap;
+                width: auto;
+                height: 34px;
+                font-size: 34px;
+                font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+                font-weight: 400;
+                color: #ffffff;
+                line-height: 34px;
+              }
+            }
+            .l {
+            }
+            .text {
+              position: absolute;
+              top: 277px;
+              p {
+                width: 619px;
+                height: 52px;
+                font-size: 20px;
+                font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+                font-weight: 400;
+                color: #ffffff;
+                line-height: 26px;
+              }
+            }
+          }
+        }
+        img {
+          z-index: 0;
+          width: 100%;
+          height: auto;
         }
       }
 
@@ -479,20 +618,7 @@ export default {
         top: 386px;
         left: 50px;
         display: flex;
-
-        .p-cimglast {
-          width: 18px;
-          height: 18px;
-          background: #ffffff;
-          opacity: 0.5;
-          border: 1px solid #707070;
-          margin-right: 10px;
-          border-radius: 100%;
-        }
-
-        .p-cimglastadd {
-          opacity: 1;
-        }
+        z-index: 3;
       }
     }
 
@@ -613,14 +739,15 @@ export default {
             margin-top: -110px;
             margin-left: 360px;
           }
-
-          .p-ciactivityadd {
-            background-image: url('http://114.116.21.170:9000/photo/home6.png');
-          }
         }
 
-        .p-cidivadd {
+        .p-cidiv:focus {
+          // border: 2px solid red;
           background-color: #ebf4ff;
+          outline: none;
+          .p-ciactivity {
+            background-image: url('http://114.116.21.170:9000/photo/home6.png');
+          }
         }
       }
     }
@@ -691,5 +818,20 @@ export default {
       }
     }
   }
+}
+::v-deep .el-carousel__indicators {
+  position: absolute;
+  bottom: 23px;
+  left: 50px;
+}
+::v-deep .el-carousel__button {
+  width: 18px;
+  height: 18px;
+  background: white;
+  opacity: 0.5;
+  border: 1px solid #707070;
+  margin-right: 10px;
+  border-radius: 100%;
+  margin-left: -7px;
 }
 </style>
