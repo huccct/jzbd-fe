@@ -4,9 +4,9 @@
       <img src="http://114.116.21.170:9000/photo/maker-port/%E7%BB%841.png" alt="组1" />
     </div>
     <div class="m-btn">
-      <el-button class="m-btn-ex" type="primary" plain disabled
-        >EXPLORE A NEW WORLD TOGETHER</el-button
-      >
+      <el-button class="m-btn-ex" type="primary" plain disabled>
+        EXPLORE A NEW WORLD TOGETHER
+      </el-button>
     </div>
     <div class="m-content">
       <span class="title">厚德创客港</span><br />
@@ -59,13 +59,13 @@
         </div>
         <el-carousel
           ref="img"
-          interval="4000"
+          :interval="4000"
           height="800px"
           arrow="never"
           indicator-position="none"
         >
-          <el-carousel-item v-for="item in src" :key="item">
-            <img :src="item" :alt="item" style="height: 800px" />
+          <el-carousel-item v-for="item in src" :key="item.id">
+            <img :src="item.src" :alt="item.id" style="height: 800px" />
           </el-carousel-item>
         </el-carousel>
       </div>
@@ -105,13 +105,13 @@
       </div>
       <el-carousel
         ref="img2"
-        interval="4000"
+        :interval="4000"
         height="1000px"
         arrow="never"
         indicator-position="none"
       >
-        <el-carousel-item v-for="item in src2" :key="item">
-          <img class="ser-img" :src="item" :alt="item" style="height: 900px" />
+        <el-carousel-item v-for="item in src2" :key="item.id">
+          <img class="ser-img" :src="item.src" :alt="item.id" style="height: 900px" />
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -123,15 +123,36 @@ export default {
   data() {
     return {
       src: [
-        'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2242.png',
-        'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2223.png',
-        'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2242.png',
-        'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2223.png'
+        {
+          id: 1,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2242.png'
+        },
+        {
+          id: 2,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2223.png'
+        },
+        {
+          id: 3,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2242.png'
+        },
+        {
+          id: 4,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2223.png'
+        }
       ],
       src2: [
-        'http://114.116.21.170:9000/photo/maker-port/%E7%BB%842.png',
-        'http://114.116.21.170:9000/photo/maker-port/%E7%BB%843.png',
-        'http://114.116.21.170:9000/photo/maker-port/%E7%BB%844.png'
+        {
+          id: 1,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%BB%842.png'
+        },
+        {
+          id: 2,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%BB%843.png'
+        },
+        {
+          id: 3,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%BB%844.png'
+        }
       ],
       prev() {
         this.$refs.img.prev();
@@ -353,7 +374,7 @@ export default {
   height: 800px;
   position: relative;
   margin-top: 55%;
-  margin-bottom: 240px;
+  margin-bottom: 340px;
   right: -50px;
   left: 0;
 

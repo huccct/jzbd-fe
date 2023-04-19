@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { debounce } from 'lodash';
 export default {
   data() {
     return {
@@ -40,7 +41,8 @@ export default {
         { id: 5, src: 'http://114.116.21.170:9000/photo/slider5.png' }
       ],
       height: '1000px',
-      currentIndex: 0
+      currentIndex: 0,
+      isAnimating: false
     };
   },
   computed: {
@@ -53,14 +55,22 @@ export default {
   },
   methods: {
     handleCarouselChange(index) {
+      if (this.isAnimating) {
+        return;
+      }
+      this.isAnimating = true;
+      setTimeout(() => {
+        this.isAnimating = false;
+      }, 500);
       this.currentIndex = index;
     },
-    next() {
+    next: debounce(function () {
+      console.log('111');
       this.$refs.carousel.next();
-    },
-    prev() {
+    }, 500),
+    prev: debounce(function () {
       this.$refs.carousel.prev();
-    }
+    }, 500)
   }
 };
 </script>

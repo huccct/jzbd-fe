@@ -4,7 +4,7 @@
  * @Description: 铁沸物
  * @FilePath: \jzbd-fe\src\store\service.js
  */
-import { getAllList, getOneList } from '@/api/park-service';
+import { getAllList, getOneList } from '@/api/modules/park-service';
 const state = {
   allList_data: [],
   oneList_data: []
