@@ -14,8 +14,7 @@
     </div>
     <div class="basic">
       <div class="d-bg">
-        <img src="http://114.116.21.170:9000/photo/home4.png"
-             alt="" />
+        <img src="http://114.116.21.170:9000/photo/home4.png" alt="" />
       </div>
       <div class="d-head">
         <span>01</span>
@@ -28,37 +27,35 @@
           <span>青岛上合企业创新产业园</span>
         </div>
         <div class="d-text">
-          <span>青岛上合企业创新产业园是胶州湾发展集团围绕上合示范区建设总体方案，重点打造的科技
+          <span
+            >青岛上合企业创新产业园是胶州湾发展集团围绕上合示范区建设总体方案，重点打造的科技
             企业孵化园区，地理位置优越，交通便利，15分钟车程即可到达西海岸新区和青岛主城区。
             项目总投资约2亿元，建筑面积约5.2万平方米，目前已建成含办公区的工业厂房10栋（包含
             6座单层厂房和4座双层厂房），同时为逐步打造国家级孵化器和青岛市级标杆孵化器，园区
             正在建设6000平方米的办公楼，办公楼建成后，园区将彻底实现从单一的厂房租赁到创客空
             间、孵化器、加速器、专业园区完整产业生态链。园区2019-2020年先后年获评青岛市中小
-            企业产业园和胶州市级孵化器，2022年将努力争创青岛市级孵化器。</span>
+            企业产业园和胶州市级孵化器，2022年将努力争创青岛市级孵化器。</span
+          >
         </div>
       </div>
       <div class="d-changeimg">
-        <div class="img-left"
-             @click="arrowClick('prev')">
-          <img src="http://114.116.21.170:9000/photo/home2.png"
-               alt="" />
+        <div class="img-left" @click="arrowClick('prev')">
+          <img src="http://114.116.21.170:9000/photo/home2.png" alt="" />
         </div>
-        <div class="img-right"
-             @click="arrowClick('next')">
-          <img src="http://114.116.21.170:9000/photo/home3.png"
-               alt="" />
+        <div class="img-right" @click="arrowClick('next')">
+          <img src="http://114.116.21.170:9000/photo/home3.png" alt="" />
         </div>
       </div>
       <div class="d-img">
-        <el-carousel height="600px"
-                     :autoplay="false"
-                     indicator-position="none"
-                     arrow="never"
-                     ref="cardShow">
-          <el-carousel-item v-for="(list, index) in Basicimg"
-                            :key="index">
-            <img class="imgshow"
-                 :src="list.img">
+        <el-carousel
+          ref="cardShow"
+          height="600px"
+          :autoplay="false"
+          indicator-position="none"
+          arrow="never"
+        >
+          <el-carousel-item v-for="(list, index) in Basicimg" :key="index">
+            <img class="imgshow" :src="list.img" />
           </el-carousel-item>
         </el-carousel>
       </div>
@@ -81,40 +78,42 @@
       </div>
       <div class="p-img">
         <ul class="p-imglist">
-          <el-carousel height="440px"
-                       :autoplay="false"
-                       indicator-position="outside"
-                       arrow="never"
-                       ref="imglistid">
-            <el-carousel-item v-for="(list, index) in Policynews"
-                              :key="index">
+          <el-carousel
+            ref="imglistid"
+            height="440px"
+            :autoplay="false"
+            indicator-position="outside"
+            arrow="never"
+          >
+            <el-carousel-item v-for="(list, index) in Policynews" :key="index">
               <div class="p-imglistdiv">
-                <img :src="list.img">
+                <img :src="list.img" />
                 <div class="p-imglistdivdiv">
                   <div class="title">
-                    <p>{{list.title}}</p>
+                    <p>{{ list.title }}</p>
                   </div>
                   <div class="l"></div>
                   <div class="name">
-                    <p>{{list.name}}</p>
+                    <p>{{ list.name }}</p>
                   </div>
                   <div class="text">
-                    <p>{{list.text}}</p>
+                    <p>{{ list.text }}</p>
                   </div>
                 </div>
               </div>
-
             </el-carousel-item>
           </el-carousel>
         </ul>
       </div>
       <div class="p-changeimg">
         <div class="p-cilist">
-          <div v-for="(list, index) in Policynews"
-               :key="index"
-               class="p-cidiv"
-               tabIndex="1"
-               @click="cilist(index)">
+          <div
+            v-for="(list, index) in Policynews"
+            :key="index"
+            class="p-cidiv"
+            tabIndex="1"
+            @click="cilist(index)"
+          >
             <div class="p-title">
               <div class="p-cinumber">
                 <span>{{ index + 1 }}</span>
@@ -149,8 +148,7 @@
       </div>
       <div class="e-show">
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home8.png"
-               alt="" />
+          <img src="http://114.116.21.170:9000/photo/home8.png" alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -159,8 +157,7 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home10.png"
-               alt="" />
+          <img src="http://114.116.21.170:9000/photo/home10.png" alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -175,8 +172,7 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home9.png"
-               alt="" />
+          <img src="http://114.116.21.170:9000/photo/home9.png" alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -187,8 +183,7 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home11.png"
-               alt="" />
+          <img src="http://114.116.21.170:9000/photo/home11.png" alt="" />
         </div>
       </div>
     </div>
@@ -202,7 +197,7 @@ import Slider from '@/components/slider/slider.vue';
 export default {
   name: 'home',
   components: { NavigationBar, Slider },
-  data () {
+  data() {
     return {
       Policynews: [
         {
@@ -234,35 +229,37 @@ export default {
           timer: '12-30'
         }
       ],
-      Basicimg: [{
-        img: "http://114.116.21.170:9000/photo/home1.png"
-      },
-      {
-        img: "http://114.116.21.170:9000/photo/home1.1.png"
-      },
-      {
-        img: "http://114.116.21.170:9000/photo/home1.2.png"
-      },
-      {
-        img: "http://114.116.21.170:9000/photo/home1.3.png"
-      },
-      {
-        img: "http://114.116.21.170:9000/photo/home1.4.png"
-      },
-      {
-        img: "http://114.116.21.170:9000/photo/home1.5.png"
-      },
-      {
-        img: "http://114.116.21.170:9000/photo/home1.6.png"
-      },
-
+      Basicimg: [
+        {
+          img: 'http://114.116.21.170:9000/photo/home1.png'
+        },
+        {
+          img: 'http://114.116.21.170:9000/photo/home1.1.png'
+        },
+        {
+          img: 'http://114.116.21.170:9000/photo/home1.2.png'
+        },
+        {
+          img: 'http://114.116.21.170:9000/photo/home1.3.png'
+        },
+        {
+          img: 'http://114.116.21.170:9000/photo/home1.4.png'
+        },
+        {
+          img: 'http://114.116.21.170:9000/photo/home1.5.png'
+        },
+        {
+          img: 'http://114.116.21.170:9000/photo/home1.6.png'
+        }
       ],
-      Basicimgpage: 0,
+      Basicimgpage: 0
     };
-
+  },
+  mounted() {
+    document.getElementsByClassName('p-cidiv')[0].focus();
   },
   methods: {
-    arrowClick (val) {
+    arrowClick(val) {
       if (val == 'next') {
         if (this.Basicimgpage != this.Basicimg.length - 1) {
           this.$refs.cardShow.next();
@@ -277,26 +274,20 @@ export default {
       if (this.Basicimgpage == 0) {
         document.getElementsByClassName('img-left')[0].style.opacity = 0.4;
         document.getElementsByClassName('img-right')[0].style.opacity = 1;
-      }
-      else if (this.Basicimgpage == this.Basicimg.length - 1) {
+      } else if (this.Basicimgpage == this.Basicimg.length - 1) {
         document.getElementsByClassName('img-left')[0].style.opacity = 1;
         document.getElementsByClassName('img-right')[0].style.opacity = 0.4;
-      }
-      else {
+      } else {
         document.getElementsByClassName('img-left')[0].style.opacity = 1;
         document.getElementsByClassName('img-right')[0].style.opacity = 1;
       }
       console.log(this.Basicimgpage);
     },
-    cilist (index) {
+    cilist(index) {
       console.log(index);
-      this.$refs.imglistid.setActiveItem(index)
+      this.$refs.imglistid.setActiveItem(index);
     }
-  },
-  mounted () {
-    this.$store.dispatch('Test');
-    document.getElementsByClassName('p-cidiv')[0].focus();
-  },
+  }
 };
 </script>
 
@@ -320,6 +311,7 @@ export default {
     position: absolute;
     top: 350px;
     left: 320px;
+    z-index: 2;
   }
 
   .h-content {
@@ -328,6 +320,7 @@ export default {
     left: 320px;
     width: 984px;
     height: 70px;
+    z-index: 2;
 
     span {
       display: block;
