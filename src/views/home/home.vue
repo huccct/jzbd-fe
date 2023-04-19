@@ -95,13 +95,13 @@
                 <img src="http://114.116.21.170:9000/photo/home5.png" />
                 <div class="p-imglistdivdiv">
                   <div class="title">
-                    <p>[{{ list.policyTitle }}]</p>
+                    <p>[{{ list.label }}]</p>
                   </div>
                   <div class="l">
                     <img src="http://114.116.21.170:9000/photo/home5-.png" alt="" />
                   </div>
                   <div class="name">
-                    <p>{{ list.label }}</p>
+                    <p>{{ list.policyTitle }}</p>
                   </div>
                   <div class="text ellipsis2">
                     <p>{{ list.specificContent.replace(/<([^>]+)>/gi, '') }}</p>
@@ -127,10 +127,10 @@
                 <span>{{ index + 1 }}</span>
               </div>
               <div class="title">
-                <span>[{{ list.policyTitle }}]</span>
+                <span>[{{ list.label }}]</span>
               </div>
               <div class="name">
-                <span>{{ list.label }}</span>
+                <span>{{ list.policyTitle }}</span>
               </div>
             </div>
             <div class="text ellipsis">
