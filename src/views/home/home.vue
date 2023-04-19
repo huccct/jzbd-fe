@@ -39,10 +39,10 @@
         </div>
       </div>
       <div class="d-changeimg">
-        <div class="img-left" @click="arrowClick('prev')">
+        <div ref="imgleft" class="img-left" @click="arrowClick('prev')">
           <img src="http://114.116.21.170:9000/photo/home2.png" alt="" />
         </div>
-        <div class="img-right" @click="arrowClick('next')">
+        <div ref="imgright" class="img-right" @click="arrowClick('next')">
           <img src="http://114.116.21.170:9000/photo/home3.png" alt="" />
         </div>
       </div>
@@ -260,14 +260,18 @@ export default {
         }
       }
       if (this.Basicimgpage == 0) {
-        document.getElementsByClassName('img-left')[0].style.opacity = 0.4;
-        document.getElementsByClassName('img-right')[0].style.opacity = 1;
+        this.$refs.imgleft.style.opacity = 0.4;
+        this.$refs.imgleft.style.cursor = 'no-drop';
+        this.$refs.imgright.style.opacity = 1;
       } else if (this.Basicimgpage == this.Basicimg.length - 1) {
-        document.getElementsByClassName('img-left')[0].style.opacity = 1;
-        document.getElementsByClassName('img-right')[0].style.opacity = 0.4;
+        this.$refs.imgright.style.opacity = 0.4;
+        this.$refs.imgright.style.cursor = 'no-drop';
+        this.$refs.imgleft.style.opacity = 1;
       } else {
-        document.getElementsByClassName('img-left')[0].style.opacity = 1;
-        document.getElementsByClassName('img-right')[0].style.opacity = 1;
+        this.$refs.imgleft.style.opacity = 1;
+        this.$refs.imgright.style.opacity = 1;
+        this.$refs.imgright.style.cursor = 'pointer';
+        this.$refs.imgleft.style.cursor = 'pointer';
       }
     },
     cilist(index) {
@@ -455,7 +459,7 @@ export default {
         background: #00a6ff;
         border-radius: 40px 0px 0px 40px;
         opacity: 0.4;
-        cursor: pointer;
+        cursor: no-drop;
         img {
           position: absolute;
           left: 36px;
