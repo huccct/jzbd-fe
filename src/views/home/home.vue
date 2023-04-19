@@ -473,7 +473,7 @@ export default {
 
     .d-img {
       position: absolute;
-      width: 800px;
+      width: 795px;
       height: 600px;
       left: 1100px;
       top: 100px;
