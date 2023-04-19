@@ -1,2 +1,2 @@
-*.vue  linguist-vendored
-*.js   linguist-vendored
+*.vue  linguist-detectable=true
+*.js   linguist-detectable=true
