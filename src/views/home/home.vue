@@ -53,19 +53,22 @@
           :autoplay="false"
           indicator-position="none"
           arrow="never"
+          class="my-carousel"
         >
           <el-carousel-item v-for="(list, index) in Basicimg" :key="index">
             <img class="imgshow" :src="list.img" />
           </el-carousel-item>
         </el-carousel>
       </div>
-      <div class="d-btn">
-        <span>加入我们</span>
-        <div>
-          <div class="d-btn-up"></div>
-          <div class="d-btn-down"></div>
+      <router-link to="/contact">
+        <div class="d-btn">
+          <span>加入我们</span>
+          <div>
+            <div class="d-btn-up"></div>
+            <div class="d-btn-down"></div>
+          </div>
         </div>
-      </div>
+      </router-link>
     </div>
     <div class="pollcy">
       <div class="d-head">
@@ -110,6 +113,7 @@
           <div
             v-for="(list, index) in Policynews"
             :key="index"
+            ref="cilist"
             class="p-cidiv"
             tabIndex="1"
             @click="cilist(index)"
@@ -126,7 +130,7 @@
               </div>
             </div>
             <div class="text">
-              <span>{{ list.text }}</span>
+              <span>{{ list.text2 }}</span>
             </div>
             <br />
             <div class="timer">
@@ -205,27 +209,32 @@ export default {
           title: '[资讯]',
           name: '现代商用汽车(中国)有限公司',
           text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企，是全球五大汽车企业之现代汽车集团商用车海外第一研发及制造基地。',
+          text2: '',
           timer: '12-30'
         },
         {
           img: 'http://114.116.21.170:9000/photo/home5.png',
           title: '[公告]',
           name: '现代商用汽车(中国)有限公司',
-          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
+
+          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企，是全球五大汽车企业之现代汽车集团商用车海外第一研发及制造基地。',
+          text2: '',
           timer: '12-30'
         },
         {
           img: 'http://114.116.21.170:9000/photo/home5.png',
           title: '[通知]',
           name: '现代商用汽车(中国)有限公司',
-          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
+          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企，是全球五大汽车企业之现代汽车集团商用车海外第一研发及制造基地。',
+          text2: '',
           timer: '12-30'
         },
         {
           img: 'http://114.116.21.170:9000/photo/home5.png',
           title: '[行业动态]',
           name: '现代商用汽车(中国)有限公司',
-          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
+          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企，是全球五大汽车企业之现代汽车集团商用车海外第一研发及制造基地。',
+          text2: '',
           timer: '12-30'
         }
       ],
@@ -256,7 +265,12 @@ export default {
     };
   },
   mounted() {
-    document.getElementsByClassName('p-cidiv')[0].focus();
+    this.$refs.cilist[0].className = 'p-cidiv p-cidivadd';
+    this.Policynews.forEach(e => {
+      let text = e.text.substring(0, 27);
+      text += '...';
+      this.$set(e, 'text2', text);
+    });
   },
   methods: {
     arrowClick(val) {
@@ -286,6 +300,12 @@ export default {
     cilist(index) {
       console.log(index);
       this.$refs.imglistid.setActiveItem(index);
+      this.$refs.cilist.forEach(e => {
+        e.className = 'p-cidiv';
+      });
+      // .className = "p-cidiv"
+      this.$refs.cilist[index].className = 'p-cidiv p-cidivadd';
+      console.log(this.$refs.class);
     }
   }
 };
@@ -458,7 +478,7 @@ export default {
         background: #00a6ff;
         border-radius: 40px 0px 0px 40px;
         opacity: 0.4;
-
+        cursor: pointer;
         img {
           position: absolute;
           left: 36px;
@@ -467,6 +487,7 @@ export default {
       }
 
       .img-right {
+        cursor: pointer;
         z-index: 10;
       }
     }
@@ -638,7 +659,7 @@ export default {
           height: 110px;
           padding: 0;
           margin: 0;
-
+          cursor: pointer;
           .p-title {
             display: flex;
 
@@ -734,7 +755,7 @@ export default {
           }
         }
 
-        .p-cidiv:focus {
+        .p-cidivadd {
           // border: 2px solid red;
           background-color: #ebf4ff;
           outline: none;

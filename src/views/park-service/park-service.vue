@@ -17,7 +17,9 @@
           >胶州市正加快建设上合组织地方经贸合作示范区，全力打造
           “一带一路”国际合作新平台，把胶州历史性地推到国家对外开放的战略前沿。</span
         >
-        <button class="head-content_contactus" @click="$router.push('/contact')">联系我们</button>
+        <el-button type="primary" class="head-content_contactus" @click="$router.push('/contact')"
+          >联系我们</el-button
+        >
       </div>
     </div>
     <div style="min-width: 1700px">
@@ -233,9 +235,7 @@ export default {
   top: 271px;
   left: 320px;
   :nth-child(1) {
-    color: #333333;
     font-size: 24px;
-    font-weight: 700;
     font-family: Microsoft YaHei-Bold;
     // letter-spacing: 12px;
   }
@@ -260,18 +260,11 @@ export default {
   }
   .head-content_contactus {
     margin-top: 87px;
-    color: white;
     height: 58px;
     width: 210px;
-    background-color: #00a6ff;
-    border: none;
     font-size: 24px;
     font-weight: 400;
     font-family: Microsoft YaHei-Regular;
-  }
-  .head-content_contactus:hover {
-    background-color: #66b1ff;
-    cursor: pointer;
   }
 }
 .service-content_one {
