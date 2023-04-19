@@ -60,13 +60,15 @@
           </el-carousel-item>
         </el-carousel>
       </div>
-      <div class="d-btn">
-        <span>加入我们</span>
-        <div>
-          <div class="d-btn-up"></div>
-          <div class="d-btn-down"></div>
+      <router-link to="/contact">
+        <div class="d-btn">
+          <span>加入我们</span>
+          <div>
+            <div class="d-btn-up"></div>
+            <div class="d-btn-down"></div>
+          </div>
         </div>
-      </div>
+      </router-link>
     </div>
     <div class="pollcy">
       <div class="d-head">
