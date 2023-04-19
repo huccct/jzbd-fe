@@ -1,7 +1,2 @@
-* text=auto eol=lf
-*.html linguist-detectable=false
-*.css linguist-detectable=false
-*.scss linguist-detectable=false
-*.js linguist-detectable=true
-*.vue linguist-detectable=true
-.husky/* linguist-vendored
+*.vue  linguist-vendored
+*.js   linguist-vendored
