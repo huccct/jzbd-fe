@@ -241,7 +241,7 @@ export default {
   span:nth-child(1) {
     color: #333333;
     font-size: 24px;
-    font-weight: 700;
+
     font-family: Microsoft YaHei-Bold;
   }
   :nth-child(2) {

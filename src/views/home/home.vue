@@ -39,25 +39,38 @@
         </div>
       </div>
       <div class="d-changeimg">
-        <div class="img-left">
+        <div ref="imgleft" class="img-left" @click="arrowClick('prev')">
           <img src="http://114.116.21.170:9000/photo/home2.png" alt="" />
         </div>
-        <div class="img-right">
+        <div ref="imgright" class="img-right" @click="arrowClick('next')">
           <img src="http://114.116.21.170:9000/photo/home3.png" alt="" />
         </div>
       </div>
       <div class="d-img">
-        <img src="http://114.116.21.170:9000/photo/home1.png" alt="" />
+        <el-carousel
+          ref="cardShow"
+          height="600px"
+          :autoplay="false"
+          indicator-position="none"
+          arrow="never"
+          class="my-carousel"
+        >
+          <el-carousel-item v-for="(list, index) in Basicimg" :key="index">
+            <img class="imgshow" :src="list.img" />
+          </el-carousel-item>
+        </el-carousel>
       </div>
-      <div class="d-btn">
-        <span>加入我们</span>
-        <div>
-          <div class="d-btn-up"></div>
-          <div class="d-btn-down"></div>
+      <router-link to="/contact">
+        <div class="d-btn">
+          <span>加入我们</span>
+          <div>
+            <div class="d-btn-up"></div>
+            <div class="d-btn-down"></div>
+          </div>
         </div>
-      </div>
+      </router-link>
     </div>
-    <div class="pollcy">
+    <div class="policy">
       <div class="d-head">
         <span>02</span>
         <div class="l"></div>
@@ -67,36 +80,65 @@
         </div>
       </div>
       <div class="p-img">
-        <ul v-for="(list, index) in Policynews" :key="index" class="p-imglist">
-          <img :src="list.img" />
+        <ul class="p-imglist">
+          <el-carousel
+            ref="imglistid"
+            height="440px"
+            :autoplay="false"
+            indicator-position="outside"
+            arrow="never"
+            trigger="click"
+            @change="changecilist"
+          >
+            <el-carousel-item v-for="(list, index) in PolicyNews" :key="index">
+              <div class="p-imglistdiv">
+                <img src="http://114.116.21.170:9000/photo/home5.png" />
+                <div class="p-imglistdivdiv">
+                  <div class="title">
+                    <p>[{{ list.label }}]</p>
+                  </div>
+                  <div class="l">
+                    <img src="http://114.116.21.170:9000/photo/home5-.png" alt="" />
+                  </div>
+                  <div class="name">
+                    <p>{{ list.policyTitle }}</p>
+                  </div>
+                  <div class="text ellipsis2">
+                    <p>{{ list.specificContent.replace(/<([^>]+)>/gi, '') }}</p>
+                  </div>
+                </div>
+              </div>
+            </el-carousel-item>
+          </el-carousel>
         </ul>
-        <div class="p-imglast">
-          <div class="p-cimglast"></div>
-          <div class="p-cimglast p-cimglastadd"></div>
-          <div class="p-cimglast"></div>
-          <div class="p-cimglast"></div>
-        </div>
       </div>
       <div class="p-changeimg">
         <div class="p-cilist">
-          <div v-for="(list, index) in Policynews" :key="index" class="p-cidiv">
+          <div
+            v-for="(list, index) in PolicyNews"
+            :key="index"
+            ref="cilist"
+            class="p-cidiv"
+            tabIndex="1"
+            @click="cilist(index)"
+          >
             <div class="p-title">
               <div class="p-cinumber">
                 <span>{{ index + 1 }}</span>
               </div>
               <div class="title">
-                <span>{{ list.title }}</span>
+                <span>[{{ list.label }}]</span>
               </div>
               <div class="name">
-                <span>{{ list.name }}</span>
+                <span>{{ list.policyTitle }}</span>
               </div>
             </div>
-            <div class="text">
-              <span>{{ list.text }}</span>
+            <div class="text ellipsis">
+              <span>{{ list.specificContent.replace(/<([^>]+)>/gi, '') }}</span>
             </div>
             <br />
             <div class="timer">
-              <span>{{ list.timer }}</span>
+              <span>{{ list.creatTime | formatDate }}</span>
             </div>
             <div class="p-ciactivity"></div>
           </div>
@@ -159,46 +201,93 @@
 <script>
 import NavigationBar from '@/components/navigation/navigation.vue';
 import Slider from '@/components/slider/slider.vue';
-
 export default {
   name: 'home',
   components: { NavigationBar, Slider },
+  filters: {
+    formatDate(value) {
+      return value.slice(5); // 返回“04-26”
+    }
+  },
   data() {
     return {
-      Policynews: [
+      PolicyNews: [],
+      Basicimg: [
         {
-          img: 'http://114.116.21.170:9000/photo/home5.png',
-          title: '[资讯]',
-          name: '现代商用汽车(中国)有限公司',
-          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
-          timer: '12-30'
+          img: 'http://114.116.21.170:9000/photo/home1.png'
         },
         {
-          img: '',
-          title: '[公告]',
-          name: '现代商用汽车(中国)有限公司',
-          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
-          timer: '12-30'
+          img: 'http://114.116.21.170:9000/photo/home1.1.png'
         },
         {
-          img: '',
-          title: '[通知]',
-          name: '现代商用汽车(中国)有限公司',
-          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
-          timer: '12-30'
+          img: 'http://114.116.21.170:9000/photo/home1.2.png'
         },
         {
-          img: '',
-          title: '[行业动态]',
-          name: '现代商用汽车(中国)有限公司',
-          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企...',
-          timer: '12-30'
+          img: 'http://114.116.21.170:9000/photo/home1.3.png'
+        },
+        {
+          img: 'http://114.116.21.170:9000/photo/home1.4.png'
+        },
+        {
+          img: 'http://114.116.21.170:9000/photo/home1.5.png'
+        },
+        {
+          img: 'http://114.116.21.170:9000/photo/home1.6.png'
         }
-      ]
+      ],
+      Basicimgpage: 0
     };
   },
-  mounted() {
-    // this.$store.dispatch('Test');
+  async created() {
+    await this.$store.dispatch('home/getNewsPolicy');
+    this.PolicyNews = this.$store.state.home.PolicyNews;
+    console.log(this.PolicyNews);
+    this.$nextTick(() => {
+      this.$refs.cilist[0].className = 'p-cidiv p-cidivadd';
+    });
+  },
+  methods: {
+    arrowClick(val) {
+      if (val == 'next') {
+        if (this.Basicimgpage != this.Basicimg.length - 1) {
+          this.$refs.cardShow.next();
+          this.Basicimgpage++;
+        }
+      } else {
+        if (this.Basicimgpage != 0) {
+          this.Basicimgpage--;
+          this.$refs.cardShow.prev();
+        }
+      }
+      if (this.Basicimgpage == 0) {
+        this.$refs.imgleft.style.opacity = 0.4;
+        this.$refs.imgleft.style.cursor = 'no-drop';
+        this.$refs.imgright.style.opacity = 1;
+      } else if (this.Basicimgpage == this.Basicimg.length - 1) {
+        this.$refs.imgright.style.opacity = 0.4;
+        this.$refs.imgright.style.cursor = 'no-drop';
+        this.$refs.imgleft.style.opacity = 1;
+      } else {
+        this.$refs.imgleft.style.opacity = 1;
+        this.$refs.imgright.style.opacity = 1;
+        this.$refs.imgright.style.cursor = 'pointer';
+        this.$refs.imgleft.style.cursor = 'pointer';
+      }
+    },
+    cilist(index) {
+      this.$refs.imglistid.setActiveItem(index);
+      this.$refs.cilist.forEach(e => {
+        e.className = 'p-cidiv';
+      });
+      // .className = "p-cidiv"
+      this.$refs.cilist[index].className = 'p-cidiv p-cidivadd';
+    },
+    changecilist(index) {
+      this.$refs.cilist.forEach(e => {
+        e.className = 'p-cidiv';
+      });
+      this.$refs.cilist[index].className = 'p-cidiv p-cidivadd';
+    }
   }
 };
 </script>
@@ -358,11 +447,6 @@ export default {
       }
     }
 
-    span {
-      // -webkit-background-clip: text;
-      // -webkit-text-fill-color: transparent;
-    }
-
     .d-changeimg {
       position: absolute;
       left: 1010px;
@@ -375,7 +459,7 @@ export default {
         background: #00a6ff;
         border-radius: 40px 0px 0px 40px;
         opacity: 0.4;
-
+        cursor: no-drop;
         img {
           position: absolute;
           left: 36px;
@@ -384,19 +468,17 @@ export default {
       }
 
       .img-right {
+        cursor: pointer;
         z-index: 10;
       }
     }
 
     .d-img {
       position: absolute;
-      // width: auto;
-      // width: 700px;
+      width: 799px;
+      height: 600px;
       left: 1100px;
       top: 100px;
-      img {
-        width: 798px;
-      }
     }
 
     .d-btn {
@@ -452,7 +534,7 @@ export default {
     }
   }
 
-  .pollcy {
+  .policy {
     width: 100%;
     // width: 1900px;
     height: 828px;
@@ -466,11 +548,65 @@ export default {
       z-index: 2;
 
       .p-imglist {
-        display: flex;
-
-        li {
-          // display: flex;
-          list-style: none;
+        position: relative;
+        // top: 100px;
+        width: 910px;
+        height: 440px;
+        .p-imglistdiv {
+          .p-imglistdivdiv {
+            position: absolute;
+            top: 0px;
+            left: 50px;
+            .title {
+              position: absolute;
+              top: 66px;
+              p {
+                width: 200px;
+                height: 34px;
+                font-size: 34px;
+                font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+                font-weight: 400;
+                color: #ffffff;
+                line-height: 34px;
+              }
+            }
+            .name {
+              position: absolute;
+              top: 141px;
+              p {
+                white-space: nowrap;
+                width: auto;
+                height: 34px;
+                font-size: 34px;
+                font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+                font-weight: 400;
+                color: #ffffff;
+                line-height: 34px;
+              }
+            }
+            .l {
+              position: relative;
+              top: 230px;
+            }
+            .text {
+              position: absolute;
+              top: 277px;
+              p {
+                width: 619px;
+                height: 82px;
+                font-size: 20px;
+                font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+                font-weight: 400;
+                color: #ffffff;
+                line-height: 26px;
+              }
+            }
+          }
+        }
+        img {
+          z-index: 0;
+          width: 100%;
+          height: auto;
         }
       }
 
@@ -479,20 +615,7 @@ export default {
         top: 386px;
         left: 50px;
         display: flex;
-
-        .p-cimglast {
-          width: 18px;
-          height: 18px;
-          background: #ffffff;
-          opacity: 0.5;
-          border: 1px solid #707070;
-          margin-right: 10px;
-          border-radius: 100%;
-        }
-
-        .p-cimglastadd {
-          opacity: 1;
-        }
+        z-index: 3;
       }
     }
 
@@ -519,7 +642,7 @@ export default {
           height: 110px;
           padding: 0;
           margin: 0;
-
+          cursor: pointer;
           .p-title {
             display: flex;
 
@@ -534,7 +657,7 @@ export default {
               opacity: 1;
 
               span {
-                margin-left: 5px;
+                margin-left: 4px;
                 margin-top: 3px;
                 width: 11px;
                 height: 18px;
@@ -544,10 +667,6 @@ export default {
                 color: #ffffff;
                 line-height: 18px;
               }
-            }
-
-            .p-cinumberadd {
-              background: #00a6ff;
             }
 
             .title {
@@ -613,14 +732,23 @@ export default {
             margin-top: -110px;
             margin-left: 360px;
           }
-
-          .p-ciactivityadd {
-            background-image: url('http://114.116.21.170:9000/photo/home6.png');
-          }
         }
 
         .p-cidivadd {
+          // border: 2px solid red;
           background-color: #ebf4ff;
+          outline: none;
+          .p-ciactivity {
+            background-image: url('http://114.116.21.170:9000/photo/home6.png');
+          }
+          .p-title {
+            .p-cinumber {
+              background: #00a6ff;
+              span {
+                color: #ffffff;
+              }
+            }
+          }
         }
       }
     }
@@ -691,5 +819,34 @@ export default {
       }
     }
   }
+}
+::v-deep .el-carousel__indicators {
+  position: absolute;
+  bottom: 23px;
+  left: 50px;
+}
+::v-deep .el-carousel__button {
+  width: 18px;
+  height: 18px;
+  background: white;
+  opacity: 0.5;
+  border: 1px solid #707070;
+  margin-right: 10px;
+  border-radius: 100%;
+  margin-left: -7px;
+}
+.ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ellipsis2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

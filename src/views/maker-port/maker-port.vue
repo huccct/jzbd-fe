@@ -4,9 +4,7 @@
       <img src="http://114.116.21.170:9000/photo/maker-port/%E7%BB%841.png" alt="组1" />
     </div>
     <div class="m-btn">
-      <el-button class="m-btn-ex" type="primary" plain disabled
-        >EXPLORE A NEW WORLD TOGETHER</el-button
-      >
+      <span class="m-btn-ex"> EXPLORE A NEW WORLD TOGETHER </span>
     </div>
     <div class="m-content">
       <span class="title">厚德创客港</span><br />
@@ -20,7 +18,7 @@
     <div class="introduce">
       <div class="text">
         <span>01</span>
-        <span>&emsp;———&emsp;</span>
+        <span>&emsp;——&emsp;</span>
         <span>IntroductiontothePark</span><br />
         <div>厚德创客港</div>
         <br />
@@ -50,22 +48,35 @@
       </div>
       <div class="img">
         <div class="icon">
-          <el-button type="primary" class="icon-left" @click="prev()">
+          <el-button
+            :class="{ op: flag1 }"
+            :disabled="flag1"
+            type="primary"
+            class="icon-left"
+            @click="prev()"
+          >
             <img src="http://114.116.21.170:9000/photo/maker-port/left.png" alt="left" />
           </el-button>
-          <el-button type="primary" class="icon-right" @click="next()">
+          <el-button
+            :class="{ op: !flag1 }"
+            :disabled="!flag1"
+            type="primary"
+            class="icon-right"
+            @click="next()"
+          >
             <img src="http://114.116.21.170:9000/photo/maker-port/right.png" alt="right" />
           </el-button>
         </div>
         <el-carousel
           ref="img"
-          interval="4000"
-          height="800px"
+          :interval="4000"
+          height="870px"
           arrow="never"
           indicator-position="none"
+          @change="change1"
         >
-          <el-carousel-item v-for="item in src" :key="item">
-            <img :src="item" :alt="item" style="height: 800px" />
+          <el-carousel-item v-for="item in src" :key="item.id">
+            <img :src="item.src" :alt="item.id" />
           </el-carousel-item>
         </el-carousel>
       </div>
@@ -73,7 +84,7 @@
     <div class="service">
       <div class="service-text">
         <span>02</span>
-        <span>&emsp;———&emsp;</span>
+        <span>&emsp;——&emsp;</span>
         <span>IntroductiontothePark</span><br />
         <div>园区服务内容</div>
         <div>
@@ -96,22 +107,35 @@
         </div>
       </div>
       <div class="service-icon">
-        <el-button type="primary" class="icon-left" @click="prev2()">
+        <el-button
+          :class="{ op: flag2 }"
+          :disabled="flag2"
+          type="primary"
+          class="icon-left"
+          @click="prev2()"
+        >
           <img src="http://114.116.21.170:9000/photo/maker-port/left.png" alt="left" />
         </el-button>
-        <el-button type="primary" class="icon-right" @click="next2()">
+        <el-button
+          :class="{ op: !flag2 }"
+          :disabled="!flag2"
+          type="primary"
+          class="icon-right"
+          @click="next2()"
+        >
           <img src="http://114.116.21.170:9000/photo/maker-port/right.png" alt="right" />
         </el-button>
       </div>
       <el-carousel
         ref="img2"
-        interval="4000"
+        :interval="4000"
         height="1000px"
         arrow="never"
         indicator-position="none"
+        @change="change2"
       >
-        <el-carousel-item v-for="item in src2" :key="item">
-          <img class="ser-img" :src="item" :alt="item" style="height: 900px" />
+        <el-carousel-item v-for="item in src2" :key="item.id">
+          <img class="ser-img" :src="item.src" :alt="item.id" />
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -122,30 +146,68 @@
 export default {
   data() {
     return {
+      flag1: true,
+      flag2: true,
       src: [
-        'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2242.png',
-        'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2223.png',
-        'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2242.png',
-        'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2223.png'
+        {
+          id: 1,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2242.png'
+        },
+        {
+          id: 2,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2223.png'
+        },
+        {
+          id: 3,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2242.png'
+        },
+        {
+          id: 4,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2223.png'
+        }
       ],
       src2: [
-        'http://114.116.21.170:9000/photo/maker-port/%E7%BB%842.png',
-        'http://114.116.21.170:9000/photo/maker-port/%E7%BB%843.png',
-        'http://114.116.21.170:9000/photo/maker-port/%E7%BB%844.png'
-      ],
-      prev() {
-        this.$refs.img.prev();
-      },
-      next() {
-        this.$refs.img.next();
-      },
-      prev2() {
-        this.$refs.img2.prev();
-      },
-      next2() {
-        this.$refs.img2.next();
-      }
+        {
+          id: 1,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%BB%842.png'
+        },
+        {
+          id: 2,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%BB%843.png'
+        },
+        {
+          id: 3,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%BB%844.png'
+        }
+      ]
     };
+  },
+  method: {},
+  methods: {
+    prev() {
+      this.$refs.img.prev();
+    },
+    next() {
+      this.$refs.img.next();
+    },
+    prev2() {
+      this.$refs.img2.prev();
+    },
+    next2() {
+      this.$refs.img2.next();
+    },
+    change1(e) {
+      // console.log(e)
+      this.flag1 = e % 2 === 0;
+    },
+    change2(e) {
+      // console.log(e)
+      if (e === 0) {
+        this.flag2 = true;
+      } else if (e === 2) {
+        this.flag2 = false;
+      }
+    }
   }
 };
 </script>
@@ -160,49 +222,70 @@ export default {
 }
 
 .m-btn {
-  position: relative;
-  top: -780px;
-  left: 250px;
+  position: absolute;
+  top: 253px;
+  left: 320px;
+  width: 293px;
+  height: 34px;
+  background: #ecf9ff;
+  border-radius: 0 0 0 0;
+  opacity: 1;
+  text-align: center;
 
   .m-btn-ex {
-    font-size: 14px;
-    font-weight: bolder;
+    font-size: 16px;
+    font-family: DIN-Medium-Regular, DIN-Medium;
+    font-weight: 400;
+    color: #00a6ff;
+    line-height: 34px;
   }
 }
 
 .m-btn-us {
   position: absolute;
-  top: 600px;
-  left: 250px;
+  top: 576px;
+  left: 320px;
 
   .btn-us {
-    width: 200px;
-    height: 60px;
-    font-weight: bold;
-    font-size: 18px;
+    width: 210px;
+    height: 58px;
+    background: #00a6ff;
+    border-radius: 4px 4px 4px 4px;
+    opacity: 1;
+    font-size: 16px;
+    font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 16px;
+    letter-spacing: 2px;
   }
 }
 
 .m-content {
   position: absolute;
-  top: 390px;
-  left: 250px;
+  top: 336px;
+  left: 320px;
 
   .title {
     color: #333333;
-    letter-spacing: 12px;
-    font-size: 65px;
-    font-weight: bolder;
+    width: 378px;
+    height: 66px;
+    font-size: 66px;
+    font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+    font-weight: 700;
+    line-height: 66px;
+    letter-spacing: 11px;
   }
 
   .content {
-    position: absolute;
-    padding-top: 20px;
-    width: 540px;
-    color: rgba(0, 0, 0, 0.2);
+    width: 543px;
+    height: 50px;
     font-size: 18px;
-    font-family: 'Microsoft YaHei UI', serif;
-    font-weight: bold;
+    font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+    font-weight: 400;
+    color: #999999;
+    position: absolute;
+    padding-top: 30px;
   }
 }
 
@@ -210,16 +293,16 @@ export default {
   position: relative;
   z-index: -1;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 1920px;
+  height: 1000px;
 }
 
 .introduce {
   width: 80%;
-  height: 900px;
+  height: 870px;
   position: absolute;
-  margin-top: 40px;
-  left: 330px;
+  margin-top: 110px;
+  left: 320px;
 
   .text {
     color: black;
@@ -229,26 +312,33 @@ export default {
     margin-left: -30px;
 
     div {
-      margin-top: 20px;
+      margin-top: 32px;
     }
 
     span:nth-child(1) {
+      width: 33px;
+      height: 30px;
+      font-size: 30px;
+      font-family: DIN-Bold, DIN;
+      font-weight: 700;
       color: #00a6ff;
-      font-size: 25px;
-      margin-bottom: 50px;
-      font-weight: bolder;
+      line-height: 30px;
     }
 
     span:nth-child(2) {
       color: #cdcdcd;
-      font-size: 20px;
+      font-size: 30px;
       font-weight: lighter;
     }
 
     span:nth-child(3) {
+      width: 326px;
+      height: 30px;
+      font-size: 30px;
+      font-family: DIN-Bold, DIN;
+      font-weight: 700;
       color: #cdcdcd;
-      font-size: 25px;
-      font-weight: bolder;
+      line-height: 30px;
     }
 
     div:nth-child(5) {
@@ -265,45 +355,51 @@ export default {
     }
 
     div:nth-child(9) {
-      color: #bdb4b4;
+      width: 641px;
+      height: 212px;
+      color: #666666;
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 500;
       line-height: 30px;
     }
-  }
 
-  .data {
-    position: absolute;
-    padding-top: 70px;
-    left: -110px;
+    .data {
+      position: absolute;
+      padding-top: 70px;
+      left: -110px;
 
-    table {
-      font-weight: bolder;
-      text-align: center;
-      border-collapse: collapse;
+      table {
+        font-weight: bolder;
+        text-align: center;
+        border-collapse: collapse;
+        font-family: Microsoft YaHei-Regular, Microsoft YaHei;
 
-      td {
-        width: 250px;
-        height: 30px;
-      }
+        td {
+          width: 250px;
+          height: 30px;
+        }
 
-      tr:nth-child(1) {
-        font-size: 35px;
+        tr:nth-child(1) {
+          font-size: 40px;
 
-        span {
+          span {
+            font-size: 14px;
+          }
+
+          td:nth-child(2) {
+            border-right: 2px solid #e7e9eb;
+            border-left: 2px solid #e7e9eb;
+          }
+        }
+
+        tr:nth-child(2) {
           font-size: 16px;
-        }
+          color: #333333;
 
-        td:nth-child(2) {
-          border-right: 2px solid #e7e9eb;
-          border-left: 2px solid #e7e9eb;
-        }
-      }
-
-      tr:nth-child(2) {
-        td:nth-child(2) {
-          border-right: 2px solid #e7e9eb;
-          border-left: 2px solid #e7e9eb;
+          td:nth-child(2) {
+            border-right: 2px solid #e7e9eb;
+            border-left: 2px solid #e7e9eb;
+          }
         }
       }
     }
@@ -314,8 +410,7 @@ export default {
     top: 0;
     bottom: 0;
     left: 50%;
-    right: -50px;
-    margin-left: 60px;
+    right: -60px;
 
     .icon {
       position: relative;
@@ -323,16 +418,16 @@ export default {
       display: flex;
       width: 180px;
       height: 80px;
-      top: 200px;
+      top: 220px;
       left: -90px;
       text-align: center;
       line-height: 90px;
+      border-style: none;
 
       .icon-left {
         width: 50%;
         height: 80px;
         background: #00a6ff;
-        opacity: 0.4;
         border-radius: 50px 0 0 50px;
         margin-right: -10px;
       }
@@ -352,8 +447,8 @@ export default {
   width: 1920px;
   height: 800px;
   position: relative;
-  margin-top: 55%;
-  margin-bottom: 240px;
+  margin-top: 65%;
+  margin-bottom: 340px;
   right: -50px;
   left: 0;
 
@@ -362,40 +457,57 @@ export default {
     z-index: 10;
     left: 300px;
     color: white;
-    top: 200px;
+    top: 89px;
 
     div {
-      margin-top: 20px;
+      margin-top: 32px;
     }
 
     span:nth-child(1) {
-      font-weight: bolder;
+      width: 33px;
+      height: 30px;
+      font-size: 30px;
+      font-family: DIN-Bold, DIN;
+      font-weight: 700;
       color: #00a6ff;
-      font-size: 25px;
-      margin-bottom: 50px;
+      line-height: 30px;
     }
 
     span:nth-child(2) {
       color: #cdcdcd;
-      font-size: 20px;
+      font-size: 30px;
       font-weight: lighter;
     }
 
     span:nth-child(3) {
+      width: 366px;
+      height: 30px;
+      font-size: 30px;
+      font-family: DIN-Bold, DIN;
+      font-weight: 700;
       color: #cdcdcd;
-      font-size: 25px;
-      font-weight: bolder;
+      line-height: 30px;
     }
 
     div:nth-child(5) {
+      width: 300px;
+      height: 50px;
       font-size: 50px;
-      font-weight: bolder;
+      font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 50px;
     }
 
     div:nth-child(6) {
-      font-weight: bold;
-      font-size: 18px;
-      color: rgba(255, 255, 255, 0.8);
+      margin-top: 147px;
+      width: 80px;
+      height: 20px;
+      font-size: 20px;
+      font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 20px;
 
       ul {
         list-style-type: none;
@@ -417,35 +529,42 @@ export default {
   .service-box {
     position: absolute;
     z-index: 10;
-    height: 40%;
-    width: 50%;
+    height: 390px;
+    width: 920px;
     background: #00a6ff;
     right: 0;
-    bottom: -180px;
+    bottom: -200px;
     border-radius: 50px 0 0 0;
 
-    div {
-      margin-top: 60px;
-      margin-left: 80px;
+    div:nth-child(1) {
+      margin-top: 70px;
+      margin-left: 90px;
       width: 710px;
       height: 100px;
       font-size: 18px;
+      font-family: Microsoft YaHei-Regular, Microsoft YaHei;
       font-weight: 400;
       color: #ffffff;
-      line-height: 35px;
+      line-height: 32px;
     }
 
     .m-btn-us {
       position: absolute;
-      top: 150px;
-      left: 30px;
+      top: 287px;
+      left: 90px;
 
       .btn-us {
+        width: 210px;
+        height: 58px;
+        background: #ffffff;
+        border-radius: 4px 4px 4px 4px;
+        opacity: 1;
+        font-size: 16px;
+        font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+        font-weight: 700;
         color: #00a6ff;
-        width: 200px;
-        height: 60px;
-        font-weight: bold;
-        font-size: 18px;
+        line-height: 16px;
+        letter-spacing: 2px;
       }
     }
   }
@@ -455,7 +574,7 @@ export default {
   }
 
   .service-icon {
-    position: relative;
+    position: absolute;
     z-index: 10;
     display: flex;
     width: 180px;
@@ -463,12 +582,12 @@ export default {
     text-align: center;
     top: 98%;
     left: 15%;
+    border-style: none;
 
     .icon-left {
       width: 50%;
       height: 80px;
       background: #00a6ff;
-      opacity: 0.4;
       border-radius: 50px 0 0 50px;
       margin-right: -10px;
     }
@@ -481,5 +600,9 @@ export default {
       margin-left: 10px;
     }
   }
+}
+
+.op {
+  opacity: 0.4;
 }
 </style>

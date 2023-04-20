@@ -55,7 +55,12 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  name: 'contact',
+  mounted() {
+    window.scrollTo(0, 0);
+  }
+};
 </script>
 
 <style lang="scss" scoped>
