@@ -154,11 +154,11 @@ export default {
       src: [
         'http://114.116.21.170:9000/photo/enterprise-storm/cd7b1847da60c59f8d2c84459b2613f93ae795f32b51f-7ShcoL_fw1200@2x.png'
       ],
-      src2: [
-        'http://114.116.21.170:9000/photo/maker-port/%E7%BB%842.png',
-        'http://114.116.21.170:9000/photo/maker-port/%E7%BB%843.png',
-        'http://114.116.21.170:9000/photo/maker-port/%E7%BB%844.png'
-      ],
+      // src2: [
+      //   'http://114.116.21.170:9000/photo/maker-port/%E7%BB%842.png',
+      //   'http://114.116.21.170:9000/photo/maker-port/%E7%BB%843.png',
+      //   'http://114.116.21.170:9000/photo/maker-port/%E7%BB%844.png'
+      // ],
       prev() {
         this.$refs.img.prev();
       },
@@ -251,9 +251,9 @@ export default {
 }
 .introduce {
   width: 80%;
-  height: 900px;
+  height: 932px;
   position: absolute;
-  margin-top: 20px;
+  // margin-top: 20px;
   left: 350px;
 
   .text {
@@ -261,7 +261,7 @@ export default {
     width: 42%;
     height: 100%;
     margin-top: 89px;
-    margin-left: -30px;
+    // margin-left: -30px;
 
     div {
       margin-top: 30px;
@@ -384,7 +384,7 @@ export default {
     top: 0;
     bottom: 0;
     left: 50%;
-    right: -50px;
+    right: -30px;
     margin-left: 60px;
 
     .icon {

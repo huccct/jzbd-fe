@@ -17,7 +17,9 @@
           >胶州市正加快建设上合组织地方经贸合作示范区，全力打造“一带一路”国际合作新平台，
           把胶州历史性地推到国家对外开放的战略前沿。</span
         >
-        <button class="head-content_contactus">联系我们</button>
+        <div class="m-btn-us">
+          <el-button class="btn-us" type="primary">联系我们</el-button>
+        </div>
       </div>
     </div>
     <div>
@@ -213,6 +215,7 @@ export default {
 .enterprise-box {
   position: relative;
   width: 100%;
+  margin-top: -65px;
 }
 .enterprise-elheader {
   display: block;
@@ -223,7 +226,6 @@ export default {
   z-index: -1;
   top: 0;
   left: 0;
-  // min-width: 1900px;
   width: 100%;
   height: 1000px;
   img {
@@ -236,12 +238,11 @@ export default {
   position: absolute;
   top: 271px;
   left: 320px;
-  :nth-child(1) {
+  span:nth-child(1) {
     color: #333333;
     font-size: 24px;
     font-weight: 700;
     font-family: Microsoft YaHei-Bold;
-    // letter-spacing: 12px;
   }
   :nth-child(2) {
     padding-top: 27px;
@@ -250,7 +251,6 @@ export default {
     font-size: 66px;
     font-weight: 700;
     font-family: Microsoft YaHei-Bold;
-    // letter-spacing: 12px;
   }
   :nth-child(3) {
     padding-top: 36px;
@@ -260,18 +260,18 @@ export default {
     font-size: 24px;
     font-weight: 400;
     font-family: Microsoft YaHei-Regular;
-    // letter-spacing: 12px;
   }
-  .head-content_contactus {
+  .m-btn-us {
     margin-top: 87px;
-    color: white;
-    height: 58px;
-    width: 210px;
-    background-color: #00a6ff;
-    border: none;
-    font-size: 24px;
-    font-weight: 400;
-    font-family: Microsoft YaHei-Regular;
+    .btn-us {
+      width: 210px;
+      height: 58px;
+      font-size: 24px;
+      font-weight: 400;
+    }
+  }
+  span:nth-child(4) {
+    color: #fff;
   }
 }
 .enterprise-content_one {
@@ -480,12 +480,12 @@ export default {
   }
 }
 .company {
-  padding-left: 7px;
-  margin: 0 auto;
+  margin-left: 320px;
   width: 1280px;
   margin-top: 25px;
   margin-bottom: 240px;
   display: flex;
+  align-content: space-between;
 }
 .see_more_last {
   width: 300px;
@@ -520,7 +520,7 @@ export default {
   display: flex;
   flex-direction: column;
   & img {
-    width: 100%;
+    width: 410px;
     object-fit: cover;
   }
   & > .title {
@@ -536,7 +536,7 @@ export default {
   & > .company_one-number {
     position: absolute;
     margin-top: 300px;
-    margin-left: 290px;
+    margin-left: 302px;
     width: 112px;
     height: 96px;
     font-size: 90px;
