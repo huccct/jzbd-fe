@@ -86,7 +86,7 @@
         </div>
         <div class="description">企业信息</div>
         <!-- 表单区域 -->
-        <div class="enterpriseInfoForm">
+        <div v-if="!isSuccess" class="enterpriseInfoForm">
           <el-form ref="form" :model="form" label-width="90px" :label-position="labelPosition">
             <el-form-item label="企业名称:">
               <el-input v-model="form.enterpriseName" placeholder="请输入企业名称"></el-input>
@@ -98,41 +98,51 @@
               <el-input v-model="form.ContactInformation" placeholder="请输入联系方式"></el-input>
             </el-form-item>
             <el-form-item label="添加附件:">
+              <template>
+                <div v-for="(item, index) in uploadInfo" :key="index" class="uploadInfo">
+                  <img
+                    src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/附件.png"
+                    alt=""
+                  />
+                  <img
+                    class="close"
+                    src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/组_57.png"
+                    alt=""
+                    @click="del(item)"
+                  />
+                  <div class="upload_rg">
+                    <div class="fileName">
+                      {{ item.name }}
+                      <img
+                        v-if="item.progressPercent === 100"
+                        src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/对号（圆圈对号）.png"
+                      />
+                    </div>
+                    <el-progress
+                      v-if="item.progressPercent !== 100"
+                      style="width: 260px; height: 6px"
+                      :percentage="item.progressPercent"
+                      color="#00CC06"
+                      :show-text="false"
+                      :auto-upload="false"
+                    />
+                    <div v-else class="fileSize">
+                      {{ filterS(item.size) }}
+                    </div>
+                  </div>
+                </div>
+              </template>
               <el-upload
                 ref="upload"
                 class="upload_policy"
                 multiple
-                :limit="3"
                 :show-file-list="false"
                 :http-request="uploadFiles"
                 action="https://jsonplaceholder.typicode.com/posts/"
-                :file-list="fileList"
                 accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
               >
                 <div slot="trigger" class="uploadInfo_wrapped">
-                  <template>
-                    <div v-for="(item, index) in uploadInfo" :key="index" class="uploadInfo">
-                      <img
-                        src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/附件.png"
-                        alt=""
-                      />
-                      <div class="upload_rg">
-                        <div class="fileName">{{ item.name }}</div>
-                        <el-progress
-                          v-if="item.progressPercent !== 100"
-                          style="width: 260px; height: 6px"
-                          :percentage="item.progressPercent"
-                          color="#00CC06"
-                          :show-text="false"
-                          :auto-upload="false"
-                        />
-                        <div v-else class="fileSize">
-                          {{ filterS(item.size) }}
-                        </div>
-                      </div>
-                    </div>
-                  </template>
-                  <div style="display: flex; margin-top: 19px">
+                  <div style="display: flex; margin-top: 13px">
                     <img
                       src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/附件.png"
                       alt=""
@@ -146,18 +156,18 @@
               </el-upload>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="onSubmit">提交</el-button>
+              <el-button type="primary" class="submitBtn" @click="onSubmit">提交</el-button>
             </el-form-item>
           </el-form>
         </div>
-        <!-- <div class="success">
+        <div v-else class="success">
           <img
             src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/success.png"
             alt=""
           />
           <div class="success_des">提交成功！</div>
-          <div class="jump">页面自动 跳转 等待时间：3秒</div>
-        </div> -->
+          <div class="jump">页面自动 跳转 等待时间：{{ count }}秒</div>
+        </div>
       </div>
     </div>
     <div style="height: 160px"></div>
@@ -167,7 +177,7 @@
 <script>
 import axios from 'axios';
 import { filterSize } from '@/utils/sizeConversion';
-
+import { uploadCompany, uploadFile } from '@/api/modules/policy';
 export default {
   name: 'JzbdFePolicyRelease',
   components: {},
@@ -181,24 +191,37 @@ export default {
       fileList: [],
       labelPosition: 'left',
       uploadInfo: [],
-      progressPercent: 0
+      file: {},
+      isSuccess: false,
+      count: 3
     };
   },
   methods: {
-    onSubmit() {
-      console.log('submit!');
+    async onSubmit() {
+      const { code } = await uploadCompany({
+        companyName: this.form.enterpriseName,
+        contactsPeople: this.form.name,
+        contactPhone: this.form.ContactInformation,
+        url: this.uploadInfo.map(item => item.url).join(','),
+        status: '0'
+      });
+      if (code === 200) {
+        this.$message.success('提交成功');
+        this.isSuccess = true;
+        const timer = setInterval(() => {
+          this.count--;
+          if (this.count <= 0) {
+            clearInterval(timer);
+            this.$router.push('/');
+          }
+        }, 1000);
+      }
     },
-    // beforeUpload(file) {
-    //   console.log('fl', file);
-    //   const isLimit = file.size / 1024 / 1024 < 10;
-    //   if (!isLimit) {
-    //     this.$message.error('文件不能超过10M！');
-    //     return;
-    //   }
-    // },
-    uploadFiles(param) {
+    async uploadFiles(param) {
       console.log(param);
       const file = param.file;
+      this.file = file;
+      console.log('fi', file);
       if (file.size >= 10485760) {
         this.$message.error('文件不能超过10M！');
         return;
@@ -207,52 +230,43 @@ export default {
       this.uploadInfo.push(file);
       const formData = new FormData();
       formData.append('file', file);
-      axios
-        .post(
-          'http://127.0.0.1:4523/m1/2574207-0-default/companyinfo/companyinfo/t/upload/minio',
-          formData,
-          {
-            onUploadProgress: progress => {
-              // 格式化成百分数
-              this.uploadInfo = this.uploadInfo.map(item => {
-                item === file &&
-                  (item.progressPercent = Math.floor((progress.loaded / progress.total) * 100));
-                return item;
-              });
-              // console.log(this.uploadInfo, file.progressPercent);
-
-              // this.uploadInfo = JSON.parse(JSON.stringify(this.uploadInfo));
-
-              // console.log(this.uploadInfo);
-            }
-          }
-        )
-        .then(res => {
-          console.log('res', res);
-        });
+      const { url } = await uploadFile(formData, {
+        onUploadProgress: progress => {
+          // 格式化成百分数
+          this.uploadInfo = this.uploadInfo.map(item => {
+            item === file &&
+              (item.progressPercent = Math.floor((progress.loaded / progress.total) * 100));
+            return item;
+          });
+        }
+      });
+      file.url = url;
+      // axios
+      //   .post(
+      //     'http://127.0.0.1:4523/m1/2574207-0-default/companyinfo/companyinfo/t/upload/minio',
+      //     formData,
+      //     {
+      //       onUploadProgress: progress => {
+      //         // 格式化成百分数
+      //         this.uploadInfo = this.uploadInfo.map(item => {
+      //           item === file &&
+      //             (item.progressPercent = Math.floor((progress.loaded / progress.total) * 100));
+      //           return item;
+      //         });
+      //       }
+      //     }
+      //   )
+      //   .then(res => {
+      //     file.url = res.data.url;
+      //   });
     },
     filterS(size) {
       return filterSize(size);
+    },
+    del(file) {
+      this.uploadInfo = this.uploadInfo.filter(item => item !== file);
+      console.log(this.uploadInfo);
     }
-    // imageChange(file, fileList) {
-    //   const isImage =
-    //     file.raw.type == 'image/png' ||
-    //     file.raw.type == 'image/jpg' ||
-    //     file.raw.type == 'image/jpeg';
-    //   const isLt5M = file.size < 1024 * 1024 * 5;
-    //   if (!isImage) {
-    //     this.$message.error('上传只能是png,jpg,jpeg格式!');
-    //   }
-    //   if (!isLt5M) {
-    //     this.$message.error('上传图片大小不能超过 5MB!');
-    //   }
-
-    //   if (isImage && isLt5M) {
-    //     this.uploadFile = file.raw || null;
-    //   } else {
-    //     fileList.splice(-1, 1);
-    //   }
-    // }
   }
 };
 </script>
@@ -354,39 +368,6 @@ contain
   }
   & > .policeInfo {
     height: 1303px;
-    // & .container > .title {
-    //   position: relative;
-    //   margin-top: 99px;
-    //   width: 390px;
-    //   display: flex;
-    //   justify-content: space-between;
-    //   &::after {
-    //     content: '';
-    //     position: absolute;
-    //     top: 15px;
-    //     left: 47px;
-    //     width: 80px;
-    //     border: 2px solid #cdcdcd;
-    //   }
-    //   & > .titlf {
-    //     width: 33px;
-    //     height: 36px;
-    //     font-size: 30px;
-    //     font-family: DIN-Bold, DIN;
-    //     font-weight: bold;
-    //     color: #007dc0;
-    //     line-height: 27px;
-    //   }
-    //   & > .titrg {
-    //     width: 249px;
-    //     height: 36px;
-    //     line-height: 32px;
-    //     font-size: 26px;
-    //     font-family: DIN-Bold, DIN;
-    //     font-weight: bold;
-    //     color: #cdcdcd;
-    //   }
-    // }
     & .container > .description {
       margin-top: 20px;
       display: flex;
@@ -568,7 +549,9 @@ contain
         }
       }
       .uploadInfo {
-        margin-top: 19px;
+        z-index: 999;
+        position: relative;
+        // margin-top: 19px;
         width: 699px;
         display: flex;
         align-items: center;
@@ -586,10 +569,18 @@ contain
           justify-content: center;
           align-items: flex-start;
           & > .fileName {
+            width: 100%;
+            display: flex;
             margin-top: 2px;
             height: 21px;
             line-height: normal;
             font-size: 14px;
+            justify-content: space-between;
+            & img {
+              width: 14px;
+              height: 14px;
+              object-fit: cover;
+            }
           }
           & > .fileSize {
             height: 21px;
@@ -598,6 +589,31 @@ contain
             color: #666666;
           }
         }
+        & .close {
+          cursor: pointer;
+          position: absolute;
+          bottom: 3px;
+          left: 19px;
+          width: 14px;
+          height: 14px;
+          background: url('http://114.116.21.170:9000/photo/police/上合产业园网站_slices/组_57.png')
+            no-repeat;
+        }
+        &:nth-child(1) ~ .uploadInfo {
+          margin-top: 19px;
+        }
+      }
+      & .submitBtn {
+        margin-left: 224px;
+        width: 136px;
+        height: 50px;
+        background: #0e7fdb;
+        border-radius: 15px 15px 15px 15px;
+        opacity: 1;
+        font-size: 20px;
+        font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+        font-weight: bold;
+        color: #ffffff;
       }
     }
     & > .container > .success {
