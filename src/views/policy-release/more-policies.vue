@@ -14,29 +14,23 @@
             </el-breadcrumb>
           </div>
           <div class="search">
-            <el-input v-model="iptVal" class="ipt"></el-input>
+            <el-input v-model="iptVal" class="ipt" @input="search"></el-input>
             <el-button type="primary" class="searchBtn">立即查询</el-button>
           </div>
         </div>
         <ul class="list_wrapped">
-          <li v-for="index in 10" :key="index" class="list_item">
-            <div class="title">关于印发青岛市促进航运产业高质量发展15条政策的通知</div>
-            <div class="des">
-              一、鼓励航运企业落户发展。对我市新引进或在我市新设立并实际经营一年以上的独立法人船公司，给予一次性奖励，对上年度在青岛港口完成外贸集装箱装卸量
-              分别超过10万标准箱、20万标准箱和50万标准箱，或完成内贸集装箱装卸量分别超过50万标准箱、100万标准箱和200万标准箱的，分档奖励
-              ...
-            </div>
-            <div class="date">2022-12-29 09:36</div>
+          <li v-for="item in policeInfoList.rows" :key="item.policyId" class="list_item">
+            <div class="title">{{ item.policyTitle }}</div>
+            <div class="des">{{ removeHtmlTags(item.specificContent) }}</div>
+            <div class="date">{{ item.creatTime }}</div>
           </li>
         </ul>
         <div class="pagination">
           <el-pagination
             background
-            :current-page="currentPage4"
-            :page-size="10"
+            :page-size="pageSize"
             layout=" prev, pager, next, jumper"
-            :total="60"
-            @size-change="handleSizeChange"
+            :total="policeInfoList.total"
             @current-change="handleCurrentChange"
           >
           </el-pagination>
@@ -52,15 +46,39 @@ export default {
   data() {
     return {
       iptVal: '',
-      policeInfoList: []
+      policeInfoList: [],
+      pageSize: 3
     };
   },
+  computed: {
+    removeHtmlTags() {
+      return str => str.replace(/<[^>]*>/g, '');
+    }
+  },
   async created() {
-    await this.$store.dispatch('policy/getPolicyInformation');
+    await this.$store.dispatch('policy/getPolicyInformation', {
+      pageNum: 1,
+      pageSize: this.pageSize
+    });
     this.policeInfoList = this.$store.state.policy.PolicyInformation;
     console.log(this.policeInfoList);
   },
-  methods: {}
+  methods: {
+    async search() {
+      await this.$store.dispatch('policy/getPolicyInformation', {
+        policyTitle: this.iptVal
+      });
+      this.policeInfoList = this.$store.state.policy.PolicyInformation;
+    },
+    async handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+      await this.$store.dispatch('policy/getPolicyInformation', {
+        pageNum: val,
+        pageSize: this.pageSize
+      });
+      this.policeInfoList = this.$store.state.policy.PolicyInformation;
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -85,10 +103,9 @@ li {
     background-size: cover;
   }
   & .main {
-    height: 2482px;
     background: url('http://114.116.21.170:9000/photo/police/上合产业园网站_slices/112.png')
       no-repeat;
-    background-position: bottom 568px right 0;
+    background-position: bottom 230px right 0;
     background-size: contain;
     & .header {
       margin-top: 80px;
@@ -120,10 +137,11 @@ li {
       }
     }
     & .list_wrapped {
+      height: 2189px;
       margin-top: 80px;
       & > .list_item {
         border-bottom: 2px solid #f2f2f2;
-        height: 193px;
+        height: 195px;
         display: flex;
         flex-flow: column nowrap;
         justify-content: space-around;
@@ -138,6 +156,11 @@ li {
           font-family: Microsoft YaHei-Regular, Microsoft YaHei;
           font-weight: 400;
           color: #666666;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
         }
         & .date {
           margin-bottom: 30px;
@@ -146,12 +169,17 @@ li {
           font-weight: 400;
           color: #cdcdcd;
         }
+        &:nth-child(1) ~ .list_item {
+          margin-top: 20px;
+        }
       }
     }
     & .pagination {
+      display: flex;
+      justify-content: center;
       width: 594px;
       margin: 0 auto;
-      margin-top: 100px;
+      height: 160px;
       &::v-deep .el-pagination.is-background .el-pager li:not(.disabled).active {
         background-color: #0e7fdb;
       }

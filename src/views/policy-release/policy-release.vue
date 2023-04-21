@@ -28,7 +28,7 @@
             />
           </div>
           <div
-            v-for="item in policeInfoList.slice(0, 4)"
+            v-for="item in policeInfoList.rows.slice(0, 4)"
             :key="item.policyId"
             class="policeInfoBoxLf"
           >
@@ -39,7 +39,7 @@
             <div class="rg">{{ item.policyTitle }}</div>
           </div>
           <div
-            v-for="item in policeInfoList.slice(-5)"
+            v-for="item in policeInfoList.rows.slice(-5)"
             :key="item.policyId"
             class="policeInfoBoxRg"
           >
@@ -183,7 +183,7 @@ export default {
     }
   },
   async created() {
-    await this.$store.dispatch('policy/getPolicyInformation');
+    await this.$store.dispatch('policy/getPolicyInformation', { pageNum: 1, pageSize: 10 });
     this.policeInfoList = this.$store.state.policy.PolicyInformation;
     console.log(this.policeInfoList);
   },
