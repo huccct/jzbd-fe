@@ -38,15 +38,6 @@
             </div>
             <div class="rg">{{ item.policyTitle }}</div>
           </div>
-
-          <!-- <div class="policeInfoBoxLf">
-            <div class="lf">
-              <div class="monthDay">12/29</div>
-              <div class="year">2022</div>
-            </div>
-            <div class="rg">关于组织实施青岛市虚拟现实产业发展行动计划 （2022—2024年）的通知</div>
-          </div> -->
-
           <div
             v-for="item in policeInfoList.slice(-5)"
             :key="item.policyId"
@@ -155,7 +146,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import { filterSize } from '@/utils/sizeConversion';
 import { uploadCompany, uploadFile } from '@/api/modules/policy';
 export default {
