@@ -28,8 +28,8 @@
             />
           </div>
           <div
-            v-for="(item, index) in policeInfoList.slice(0, 4)"
-            :key="index"
+            v-for="item in policeInfoList.slice(0, 4)"
+            :key="item.policyId"
             class="policeInfoBoxLf"
           >
             <div class="lf">
@@ -48,8 +48,8 @@
           </div> -->
 
           <div
-            v-for="(item, index) in policeInfoList.slice(-5)"
-            :key="index"
+            v-for="item in policeInfoList.slice(-5)"
+            :key="item.policyId"
             class="policeInfoBoxRg"
           >
             <div class="top">{{ item.policyTitle }}</div>
