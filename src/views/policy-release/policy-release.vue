@@ -27,53 +27,33 @@
               alt=""
             />
           </div>
-          <div class="policeInfoBoxLf">
+          <div
+            v-for="(item, index) in policeInfoList.slice(0, 4)"
+            :key="index"
+            class="policeInfoBoxLf"
+          >
+            <div class="lf">
+              <div class="monthDay">{{ dateChange(item.creatTime).monthDay }}</div>
+              <div class="year">{{ dateChange(item.creatTime).year }}</div>
+            </div>
+            <div class="rg">{{ item.policyTitle }}</div>
+          </div>
+
+          <!-- <div class="policeInfoBoxLf">
             <div class="lf">
               <div class="monthDay">12/29</div>
               <div class="year">2022</div>
             </div>
             <div class="rg">关于组织实施青岛市虚拟现实产业发展行动计划 （2022—2024年）的通知</div>
-          </div>
-          <div class="policeInfoBoxLf">
-            <div class="lf">
-              <div class="monthDay">12/29</div>
-              <div class="year">2022</div>
-            </div>
-            <div class="rg">关于组织实施青岛市虚拟现实产业发展行动计划 （2022—2024年）的通知</div>
-          </div>
-          <div class="policeInfoBoxLf">
-            <div class="lf">
-              <div class="monthDay">12/29</div>
-              <div class="year">2022</div>
-            </div>
-            <div class="rg">关于组织实施青岛市虚拟现实产业发展行动计划 （2022—2024年）的通知</div>
-          </div>
-          <div class="policeInfoBoxLf">
-            <div class="lf">
-              <div class="monthDay">12/29</div>
-              <div class="year">2022</div>
-            </div>
-            <div class="rg">关于组织实施青岛市虚拟现实产业发展行动计划 （2022—2024年）的通知</div>
-          </div>
-          <div class="policeInfoBoxRg">
-            <div class="top">“532”工程、十条政策支持上合新区发展</div>
-            <div class="bottom">2022-12-29</div>
-          </div>
-          <div class="policeInfoBoxRg">
-            <div class="top">“532”工程、十条政策支持上合新区发展</div>
-            <div class="bottom">2022-12-29</div>
-          </div>
-          <div class="policeInfoBoxRg">
-            <div class="top">“532”工程、十条政策支持上合新区发展</div>
-            <div class="bottom">2022-12-29</div>
-          </div>
-          <div class="policeInfoBoxRg">
-            <div class="top">“532”工程、十条政策支持上合新区发展</div>
-            <div class="bottom">2022-12-29</div>
-          </div>
-          <div class="policeInfoBoxRg">
-            <div class="top">“532”工程、十条政策支持上合新区发展</div>
-            <div class="bottom">2022-12-29</div>
+          </div> -->
+
+          <div
+            v-for="(item, index) in policeInfoList.slice(-5)"
+            :key="index"
+            class="policeInfoBoxRg"
+          >
+            <div class="top">{{ item.policyTitle }}</div>
+            <div class="bottom">{{ item.creatTime }}</div>
           </div>
         </div>
       </div>
@@ -193,8 +173,29 @@ export default {
       uploadInfo: [],
       file: {},
       isSuccess: false,
-      count: 3
+      count: 3,
+      policeInfoList: []
     };
+  },
+  computed: {
+    dateChange() {
+      return date => {
+        let dateArr = date.split('-');
+        let year = dateArr[0];
+        let month = dateArr[1];
+        let day = dateArr[2];
+        let monthDay = month + '/' + day;
+        return {
+          monthDay,
+          year
+        };
+      };
+    }
+  },
+  async created() {
+    await this.$store.dispatch('policy/getPolicyInformation');
+    this.policeInfoList = this.$store.state.policy.PolicyInformation;
+    console.log(this.policeInfoList);
   },
   methods: {
     async onSubmit() {
