@@ -5,10 +5,6 @@ import service from './service';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {},
   modules: {
     home,
     service

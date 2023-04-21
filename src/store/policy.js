@@ -1,15 +1,15 @@
-import { reqNewsPolicy } from '@/api/modules/home';
+import { uploadCompany, policyInformation } from '@/api/modules/policy';
 const state = {
-  PolicyNews: []
+  PolicyInformation: []
 };
 
 const mutations = {};
 
 const actions = {
-  async getNewsPolicy() {
-    let res = await reqNewsPolicy();
+  async getPolicyInformation() {
+    let res = await policyInformation();
     if (res.code === 200) {
-      state.PolicyNews = res.rows;
+      state.PolicyInformation = res.rows;
     } else {
       console.log('err');
     }

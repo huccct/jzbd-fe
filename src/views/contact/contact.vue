@@ -1,7 +1,7 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-04-18 10:28:34
+ * @LastEditTime: 2023-04-21 18:30:25
  * @LastEditors: 袁十一
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
@@ -32,7 +32,7 @@
         <div class="logo">
           <img src="http://114.116.21.170:9000/photo/contract/person.png" alt="" />
           <p class="p1">联系人</p>
-          <p class="p2">{{ contractText.section }} &nbsp;{{ contractText.person }}</p>
+          <p class="p2">{{ contractText.person }}</p>
         </div>
         <div class="logo">
           <img src="http://114.116.21.170:9000/photo/contract/phone.png" alt="" />
@@ -60,10 +60,9 @@ export default {
     return {
       contractText: {
         address: '胶州上合示范区长江路1216号',
-        section: '招商部',
-        person: '张三',
-        phone: '153 1502 0155',
-        email: '15315020155@163.com'
+        person: '黄晓娜',
+        phone: '0532-85279551',
+        email: 'shqycxcyy@163.com'
       }
     };
   }

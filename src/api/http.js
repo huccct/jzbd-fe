@@ -10,18 +10,18 @@ import store from '../store/index';
 
 // 环境的切换
 if (process.env.NODE_ENV == 'development') {
-  axios.defaults.baseURL = 'http://127.0.0.1:4523/m1/2574207-0-default';
+  axios.defaults.baseURL = 'http://114.116.18.241:8080';
 } else if (process.env.NODE_ENV == 'debug') {
   axios.defaults.baseURL = '';
 } else if (process.env.NODE_ENV == 'production') {
-  axios.defaults.baseURL = '';
+  axios.defaults.baseURL = 'http://114.116.18.241:8080';
 }
 
 // 请求超时时间
 axios.defaults.timeout = 10000;
 
 // post请求头
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+// axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 
 // 请求拦截器
 axios.interceptors.request.use(
@@ -95,10 +95,10 @@ export function get(url, params) {
  * @param {String} url [请求的url地址]
  * @param {Object} params [请求时携带的参数]
  */
-export function post(url, params) {
+export function post(url, params, options) {
   return new Promise((resolve, reject) => {
     axios
-      .post(url, QS.stringify(params))
+      .post(url, params, options)
       .then(res => {
         resolve(res.data);
       })

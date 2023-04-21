@@ -12,7 +12,7 @@
     </div>
     <div class="right">
       <el-menu
-        :default-active="activeIndex"
+        :default-active="$route.path"
         class="el-menu-demo"
         mode="horizontal"
         text-color="#ccc"
@@ -42,16 +42,11 @@ export default {
   },
   created() {
     //生命周期获取index并赋值
-    let index = sessionStorage.getItem('index');
-    if (index) {
-      this.activeIndex = index;
-    }
   },
   methods: {
     handleSelect(key, keyPath) {
-      console.log(key, keyPath);
+      this.$router.push(key);
       //存储index的值
-      sessionStorage.setItem('index', key);
     }
   }
 };

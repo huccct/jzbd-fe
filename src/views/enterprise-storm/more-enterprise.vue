@@ -10,7 +10,7 @@
         >致力于成为精密仪器行业<br />发展的
         <span class="content_two-1">领军企业</span>
       </span>
-      <button class="head-content_contactus">联系我们</button>
+      <el-button class="head-content_contactus">联系我们</el-button>
     </div>
     <div class="bg-box">
       <div class="introduce">
