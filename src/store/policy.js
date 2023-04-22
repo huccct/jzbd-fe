@@ -6,10 +6,10 @@ const state = {
 const mutations = {};
 
 const actions = {
-  async getPolicyInformation() {
-    let res = await policyInformation();
+  async getPolicyInformation({ commit }, params) {
+    let res = await policyInformation(params);
     if (res.code === 200) {
-      state.PolicyInformation = res.rows;
+      state.PolicyInformation = res;
     } else {
       console.log('err');
     }

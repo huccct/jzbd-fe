@@ -28,7 +28,7 @@
             />
           </div>
           <div
-            v-for="item in policeInfoList.slice(0, 4)"
+            v-for="item in policeInfoList.rows.slice(0, 4)"
             :key="item.policyId"
             class="policeInfoBoxLf"
           >
@@ -38,17 +38,8 @@
             </div>
             <div class="rg">{{ item.policyTitle }}</div>
           </div>
-
-          <!-- <div class="policeInfoBoxLf">
-            <div class="lf">
-              <div class="monthDay">12/29</div>
-              <div class="year">2022</div>
-            </div>
-            <div class="rg">关于组织实施青岛市虚拟现实产业发展行动计划 （2022—2024年）的通知</div>
-          </div> -->
-
           <div
-            v-for="item in policeInfoList.slice(-5)"
+            v-for="item in policeInfoList.rows.slice(-5)"
             :key="item.policyId"
             class="policeInfoBoxRg"
           >
@@ -155,7 +146,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import { filterSize } from '@/utils/sizeConversion';
 import { uploadCompany, uploadFile } from '@/api/modules/policy';
 export default {
@@ -193,7 +183,7 @@ export default {
     }
   },
   async created() {
-    await this.$store.dispatch('policy/getPolicyInformation');
+    await this.$store.dispatch('policy/getPolicyInformation', { pageNum: 1, pageSize: 10 });
     this.policeInfoList = this.$store.state.policy.PolicyInformation;
     console.log(this.policeInfoList);
   },
