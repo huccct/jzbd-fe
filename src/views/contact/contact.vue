@@ -1,7 +1,7 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-04-15 23:31:10
+ * @LastEditTime: 2023-04-21 18:30:25
  * @LastEditors: 袁十一
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
@@ -27,22 +27,22 @@
         <div class="logo first clearfix">
           <img src="http://114.116.21.170:9000/photo/contract/location.png" alt="" />
           <p class="p1">园区位置</p>
-          <p class="p2">胶州上合示范区长江路1216号</p>
+          <p class="p2">{{ contractText.address }}</p>
         </div>
         <div class="logo">
           <img src="http://114.116.21.170:9000/photo/contract/person.png" alt="" />
           <p class="p1">联系人</p>
-          <p class="p2">招商部&nbsp;张三</p>
+          <p class="p2">{{ contractText.person }}</p>
         </div>
         <div class="logo">
           <img src="http://114.116.21.170:9000/photo/contract/phone.png" alt="" />
           <p class="p1">联系方式</p>
-          <p class="p2">153&nbsp;1502&nbsp;0155</p>
+          <p class="p2">{{ contractText.phone }}</p>
         </div>
         <div class="logo">
           <img src="http://114.116.21.170:9000/photo/contract/email.png" alt="" />
           <p class="p1">邮箱</p>
-          <p class="p2">15315020155@163.com</p>
+          <p class="p2">{{ contractText.email }}</p>
         </div>
       </div>
       <div class="contract-map">
@@ -56,9 +56,15 @@
 </template>
 <script>
 export default {
-  name: 'contact',
-  mounted() {
-    window.scrollTo(0, 0);
+  data() {
+    return {
+      contractText: {
+        address: '胶州上合示范区长江路1216号',
+        person: '黄晓娜',
+        phone: '0532-85279551',
+        email: 'shqycxcyy@163.com'
+      }
+    };
   }
 };
 </script>
