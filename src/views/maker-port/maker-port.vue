@@ -51,19 +51,20 @@
       <div class="img">
         <div class="icon">
           <el-button
-            :class="{ op: flag1 }"
+            :class="{ op: flag_le1 }"
             :disabled="bt_le1"
             type="primary"
-            :autoplay="false"
+            :autofocus="false"
             class="icon-left"
             @click="prev()"
           >
             <img src="http://114.116.21.170:9000/photo/maker-port/left.png" alt="left" />
           </el-button>
           <el-button
-            :class="{ op: !flag1 }"
+            :class="{ op: flag_ri1 }"
             :disabled="bt_ri1"
             type="primary"
+            :autofocus="false"
             class="icon-right"
             @click="next()"
           >
@@ -113,7 +114,7 @@
       </div>
       <div class="service-icon">
         <el-button
-          :class="{ op: flag2 }"
+          :class="{ op: flag_le2 }"
           :disabled="bt_le2"
           type="primary"
           class="icon-left"
@@ -122,7 +123,7 @@
           <img src="http://114.116.21.170:9000/photo/maker-port/left.png" alt="left" />
         </el-button>
         <el-button
-          :class="{ op: !flag2 }"
+          :class="{ op: flag_ri2 }"
           :disabled="bt_ri2"
           type="primary"
           class="icon-right"
@@ -152,12 +153,14 @@
 export default {
   data() {
     return {
-      flag1: true,
+      flag_le1: true,
+      flag_ri1: false,
       bt_le1: true,
       bt_ri1: false,
       bt_le2: true,
       bt_ri2: false,
-      flag2: true,
+      flag_le2: true,
+      flag_ri2: false,
       flag3: 0,
       src: [
         {
@@ -214,14 +217,16 @@ export default {
     change1(e) {
       // console.log(e)
       if (e === 0) {
-        this.flag1 = true;
+        this.flag_le1 = true;
         this.bt_le1 = true;
         this.bt_ri1 = false;
       } else if (e === 2) {
-        this.flag1 = false;
+        this.flag_ri1 = true;
         this.bt_le1 = false;
         this.bt_ri1 = true;
       } else {
+        this.flag_le1 = false;
+        this.flag_ri1 = false;
         this.bt_le1 = false;
         this.bt_ri1 = false;
       }
@@ -229,14 +234,16 @@ export default {
     change2(e) {
       // console.log(e)
       if (e === 0) {
-        this.flag2 = true;
+        this.flag_le2 = true;
         this.bt_le2 = true;
         this.bt_ri2 = false;
       } else if (e === 4) {
-        this.flag2 = false;
+        this.flag_ri2 = true;
         this.bt_le2 = false;
         this.bt_ri2 = true;
       } else {
+        this.flag_le2 = false;
+        this.flag_ri2 = false;
         this.bt_le2 = false;
         this.bt_ri2 = false;
       }
@@ -462,7 +469,6 @@ export default {
       left: -90px;
       text-align: center;
       line-height: 90px;
-      border-style: none;
 
       .icon-left {
         width: 50%;
@@ -470,6 +476,7 @@ export default {
         background: #00a6ff;
         border-radius: 50px 0 0 50px;
         margin-right: -10px;
+        border-style: none;
       }
 
       .icon-right {
@@ -478,6 +485,7 @@ export default {
         background: #00a6ff;
         border-radius: 0 50px 50px 0;
         margin-left: 10px;
+        border-style: none;
       }
     }
   }
@@ -622,7 +630,6 @@ export default {
     text-align: center;
     top: 98%;
     left: 15%;
-    border-style: none;
 
     .icon-left {
       width: 50%;
@@ -630,6 +637,7 @@ export default {
       background: #00a6ff;
       border-radius: 50px 0 0 50px;
       margin-right: -10px;
+      border-style: none;
     }
 
     .icon-right {
@@ -638,6 +646,7 @@ export default {
       background: #00a6ff;
       border-radius: 0 50px 50px 0;
       margin-left: 10px;
+      border-style: none;
     }
   }
 }
