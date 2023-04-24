@@ -414,6 +414,7 @@ contain
         }
       }
       & > .policeInfoBoxLf {
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -453,6 +454,7 @@ contain
         border-top: 2px solid #eff8ff;
       }
       & > .policeInfoBoxRg {
+        cursor: pointer;
         padding-left: 50px;
         display: flex;
         flex-direction: column;
