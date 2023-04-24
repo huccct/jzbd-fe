@@ -38,20 +38,17 @@
               />
             </div>
             <div class="enterprise-message">
-              <span class="name">青岛联盈创科精密仪器有限公司</span>
+              <span class="name">{{ data_list[0].companyCname }}</span>
               <span class="number">01</span>
               <img src="https://s1.ax1x.com/2023/04/13/ppxwB8g.png" alt="" />
-              <span
-                >青岛联盈创科精密仪器有限公司，主营绘图、计算及
-                测量仪器制造，技术服务、技术开发、技术咨询等！</span
-              >
+              <span id="aboutMessage_first">{{ data_list[0].aboutMessage }}</span>
             </div>
             <div class="phone">
               <img src="http://114.116.21.170:9000/photo/enterprise-storm/电话@2x.png" alt="" />
             </div>
             <div class="phonenum">
               <span>联系方式</span>
-              <span>0532-123123</span>
+              <span>{{ data_list[0].contactPhone }}</span>
             </div>
             <div class="border"></div>
             <div class="classification">
@@ -74,17 +71,11 @@
             </div>
             <div class="honor">
               <span>荣誉奖项</span>
-              <span
-                >年度优秀企业；<br />
-                先进技术；<br />
-                胶州市龙头企业；<br />
-                先进团队奖；<br />
-                ...</span
-              >
+              <span>{{ data_list[0].honorMessage }} ...</span>
             </div>
             <button
               class="white-outline-button"
-              @click="$router.push(`/enterprise-storm/more-enterprise`)"
+              @click="$router.push(`/enterprise-storm/more-enterprise/1`)"
             >
               查看更多>>
             </button>
@@ -107,7 +98,7 @@
         <div class="phone">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
           <span class="phone_des">联系方式：</span>
-          <span>0532-1231234</span>
+          <span>{{ data_list[1].contactPhone }}</span>
         </div>
         <div class="classification">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 60@2x.png" alt="" />
@@ -134,7 +125,7 @@
         <div class="phone">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
           <span class="phone_des">联系方式：</span>
-          <span>0532-1231234</span>
+          <span>{{ data_list[2].contactPhone }}</span>
         </div>
         <div class="classification">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 60@2x.png" alt="" />
@@ -161,7 +152,7 @@
         <div class="phone">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
           <span class="phone_des">联系方式：</span>
-          <span>0532-1231234</span>
+          <span>{{ data_list[3].contactPhone }}</span>
         </div>
         <div class="classification">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 60@2x.png" alt="" />
@@ -181,6 +172,7 @@
 </template>
 
 <script>
+import { getEnterpriceAll } from '@/api/modules/enterprice';
 import DevicePixelRatio from '@/utils/devicePixelRatio';
 export default {
   name: 'JzbdFeEnterpriseStorm',
@@ -197,11 +189,17 @@ export default {
         type: [],
         resource: '',
         desc: ''
-      }
+      },
+      data_list: []
     };
   },
 
-  mounted() {},
+  mounted() {
+    getEnterpriceAll().then(res => {
+      console.log(res);
+      this.data_list = res.rows;
+    });
+  },
 
   created() {
     new DevicePixelRatio().init();
@@ -610,5 +608,13 @@ export default {
     margin-top: 22px;
     margin-left: 20px;
   }
+}
+
+#aboutMessage_first {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 </style>

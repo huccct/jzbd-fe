@@ -1,16 +1,18 @@
 <template>
   <div class="box">
     <div class="slider-box">
-      <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 105.png" alt="组1" />
+      <img :src="data_list.companyImg" alt="组1" />
     </div>
     <div class="m-content">
-      <span class="title">青岛联盈创科精密仪器有限公司</span><br />
-      <span class="content_one"> Qingdao Lianying Chuangke Precision Instrument Co., Ltd </span>
-      <span class="content_two"
-        >致力于成为精密仪器行业<br />发展的
-        <span class="content_two-1">领军企业</span>
+      <span class="title">{{ data_list.companyCname }}</span
+      ><br />
+      <span class="content_one">{{ data_list.companyEname }}</span>
+      <span class="content_two">
+        {{ data_list.headline }}
+        <!-- 致力于成为精密仪器行业<br />发展的
+        <span class="content_two-1">领军企业</span> -->
       </span>
-      <el-button class="head-content_contactus">联系我们</el-button>
+      <el-button type="primary" class="head-content_contactus">联系我们</el-button>
     </div>
     <div class="bg-box">
       <div class="introduce">
@@ -20,12 +22,10 @@
           <span>About us</span><br />
           <div>关于我们</div>
           <br />
-          <div>唯实创新·追求卓越·共赢未来</div>
+          <div>{{ data_list.aboutTitle }}</div>
           <br />
           <div>
-            青岛上合企业创新产业园是胶州湾发展集团围绕上合示范区建设总体方案，重点打造的科技企业孵化园区，地理位置优越，交通便利，15分钟车程即可到达西海岸新区和青岛主城区。
-            项目总投资约2亿元，建筑面积约5.2万平方米，目前已建成含办公区的工业厂房10栋（包含6座单层厂房和4座双层厂房），同时为逐步打造国家级孵化器和青岛市级标杆孵化器，园区正在建设6000平方米的办公楼，办公楼建成后，园区将彻底实现从单一的厂房租赁到创客空间、孵化器、加速器、专业园区完整产业生态链。园区2019-2020年先后年获评青岛市中小
-            企业产业园和胶州市级孵化器，2022年将努力争创青岛市级孵化器。
+            {{ data_list.aboutMessage }}
           </div>
           <div class="data">
             <div class="profile">
@@ -57,7 +57,7 @@
           </div>
           <el-carousel
             ref="img"
-            interval="4000"
+            :interval="4000"
             height="750px"
             arrow="never"
             indicator-position="none"
@@ -80,38 +80,38 @@
         <div class="product-details_one left">
           <span>01</span>
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 124@2x.png" alt="" />
-          <span>测量仪器制造</span>
-          <span>测量仪器制造测量仪器制造测量仪器制造</span>
+          <span>{{ data_list.productAndServices[0].productServiceTitle }}</span>
+          <span>{{ data_list.productAndServices[0].productServiceExplain }}</span>
         </div>
         <div class="product-details_one center">
           <span>02</span>
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 125@2x.png" alt="" />
-          <span>测量仪器销售</span>
-          <span>测量仪器制造测量仪器制造测量仪器制造</span>
+          <span>{{ data_list.productAndServices[1].productServiceTitle }}</span>
+          <span>{{ data_list.productAndServices[1].productServiceExplain }}</span>
         </div>
         <div class="product-details_one">
           <span>03</span>
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 126@2x.png" alt="" />
-          <span>机械设备研发</span>
-          <span>测量仪器制造测量仪器制造测量仪器制造</span>
+          <span>{{ data_list.productAndServices[2].productServiceTitle }}</span>
+          <span>{{ data_list.productAndServices[2].productServiceExplain }}</span>
         </div>
         <div class="product-details_one left_one">
           <span>04</span>
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 127@2x.png" alt="" />
-          <span>技术服务</span>
-          <span>测量仪器制造测量仪器制造测量仪器制造</span>
+          <span>{{ data_list.productAndServices[3].productServiceTitle }}</span>
+          <span>{{ data_list.productAndServices[3].productServiceExplain }}</span>
         </div>
         <div class="product-details_one center_one">
           <span>05</span>
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 128@2x.png" alt="" />
-          <span>技术推广</span>
-          <span>测量仪器制造测量仪器制造测量仪器制造</span>
+          <span>{{ data_list.productAndServices[4].productServiceTitle }}</span>
+          <span>{{ data_list.productAndServices[4].productServiceExplain }}</span>
         </div>
         <div class="product-details_one right_one">
           <span>06</span>
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 129@2x.png" alt="" />
-          <span>技术开发</span>
-          <span>测量仪器制造测量仪器制造测量仪器制造</span>
+          <span>{{ data_list.productAndServices[5].productServiceTitle }}</span>
+          <span>{{ data_list.productAndServices[5].productServiceExplain }}</span>
         </div>
       </div>
     </div>
@@ -130,17 +130,17 @@
         <div class="address">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 108@2x.png" alt="" />
           <span class="address_des-one">地&nbsp;&nbsp;&nbsp;址：</span>
-          <span class="address_des-two">山东省青岛市胶州市上合示范区闽江路60号</span>
+          <span class="address_des-two">{{ data_list.contactAddress }}</span>
         </div>
         <div class="phone address">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 109@2x.png" alt="" />
           <span class="address_des-one">电&nbsp;&nbsp;&nbsp;话：</span>
-          <span class="address_des-two">0532-123456</span>
+          <span class="address_des-two">{{ data_list.contactPhone }}</span>
         </div>
         <div class="email address">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 110@2x.png" alt="" />
           <span class="address_des-one">邮&nbsp;&nbsp;&nbsp;箱：</span>
-          <span class="address_des-two">123456789@163.com</span>
+          <span class="address_des-two">{{ data_list.contactEmail }}</span>
         </div>
       </div>
     </div>
@@ -148,10 +148,12 @@
 </template>
 
 <script lang="ts">
+import { getEnterpriceOne } from '@/api/modules/enterprice';
 export default {
   data() {
     return {
       src: [
+        'http://114.116.21.170:9000/photo/enterprise-storm/cd7b1847da60c59f8d2c84459b2613f93ae795f32b51f-7ShcoL_fw1200@2x.png',
         'http://114.116.21.170:9000/photo/enterprise-storm/cd7b1847da60c59f8d2c84459b2613f93ae795f32b51f-7ShcoL_fw1200@2x.png'
       ],
       // src2: [
@@ -170,8 +172,16 @@ export default {
       },
       next2() {
         this.$refs.img2.next();
-      }
+      },
+      data_list: []
     };
+  },
+  async beforeCreate() {
+    //console.log(this.$route.params.id);
+    await getEnterpriceOne(this.$route.params.id).then(res => {
+      // console.log(res);
+      this.data_list = res.data;
+    });
   }
 };
 </script>
@@ -305,7 +315,8 @@ export default {
       color: #666666;
       font-size: 16px;
       font-weight: 400;
-      line-height: 20px;
+      line-height: 26px;
+      font-family: Microsoft YaHei-Regular, Microsoft YaHei;
     }
     .data {
       display: flex;
@@ -524,7 +535,7 @@ export default {
   }
   & > .box-bgc {
     position: absolute;
-    width: 1920px;
+    width: 100%;
     height: 532px;
     background: #00a6ff;
     margin-top: 327px;

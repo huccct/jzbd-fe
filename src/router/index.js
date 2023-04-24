@@ -24,7 +24,7 @@ const routes = [
   { path: '/service', component: ParkService },
   { path: '/service/information/:id', component: Serviceinformation },
   { path: '/enterprise-storm', component: EnterpriseStorm },
-  { path: '/enterprise-storm/more-enterprise', component: MoreEnterprise },
+  { path: '/enterprise-storm/more-enterprise/:id', component: MoreEnterprise },
   { path: '/maker-port', component: MakerPort },
   { path: '/cooperation', component: Cooperation },
   { path: '/policy-release', component: PolicyRelease },
