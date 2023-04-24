@@ -71,8 +71,8 @@ export default {
 }
 
 .right {
-  width: 978px;
-  padding-right: 320px;
+  width: 1078px;
+  padding-right: 220px;
   padding-top: 23px;
 }
 
@@ -80,13 +80,14 @@ export default {
   border-bottom: none !important;
   background-color: transparent !important;
   &::after {
-    width: 148%;
+    width: 125.3%;
     content: '';
     border: 1px solid #e6e6e6;
   }
 }
 
 .el-menu-item {
+  font-size: 18px;
   background-color: transparent !important;
 }
 </style>
