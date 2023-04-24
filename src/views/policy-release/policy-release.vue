@@ -454,7 +454,6 @@ contain
         border-top: 2px solid #eff8ff;
       }
       & > .policeInfoBoxRg {
-        cursor: pointer;
         padding-left: 50px;
         display: flex;
         flex-direction: column;
