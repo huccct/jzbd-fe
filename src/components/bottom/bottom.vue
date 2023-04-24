@@ -14,8 +14,9 @@
       <div class="footer-content-menu">
         <ul>
           <li v-for="(item, index) in govList" :key="index">
-            <span style="font-size: 16px">{{ item.name }}</span>
-            <span><img :src="item.src" alt="" /></span>
+            <a :href="item.src"
+              ><span style="font-size: 16px">{{ item.name }}</span></a
+            >
           </li>
         </ul>
       </div>
@@ -47,28 +48,38 @@ export default {
       govList: [
         {
           id: 1,
-          name: '中国政府网',
-          src: 'http://114.116.21.170:9000/photo/barrow.png'
+          name: '山东省人民政府',
+          src: 'http://www.shandong.gov.cn/'
         },
         {
           id: 2,
-          name: '山东政府网站',
-          src: 'http://114.116.21.170:9000/photo/barrow.png'
+          name: '青岛政务网',
+          src: 'http://www.qingdao.gov.cn/'
         },
         {
           id: 3,
-          name: '市级政府网站',
-          src: 'http://114.116.21.170:9000/photo/barrow.png'
+          name: '胶州政务网',
+          src: 'http://www.jiaozhou.gov.cn/'
         },
         {
           id: 4,
-          name: '省级政府网站',
-          src: 'http://114.116.21.170:9000/photo/barrow.png'
+          name: '青岛市科学技术局 ',
+          src: 'http://qdstc.qingdao.gov.cn/'
         },
         {
           id: 5,
-          name: '其他',
-          src: 'http://114.116.21.170:9000/photo/barrow.png'
+          name: '青岛市工业和信息化局',
+          src: 'http://gxj.qingdao.gov.cn/'
+        },
+        {
+          id: 6,
+          name: '青岛市民营经济发展局',
+          src: 'http://myj.qingdao.gov.cn/'
+        },
+        {
+          id: 7,
+          name: '青岛市人力资源和社会保障局',
+          src: 'https://hrss.qingdao.gov.cn/'
         }
       ]
     };
@@ -97,7 +108,7 @@ export default {
   background: #0e7fdb;
 }
 .footer-content-menu {
-  padding-left: 380px;
+  padding-left: 115px;
 }
 .footer-content-menu ul {
   list-style: none;
@@ -107,25 +118,29 @@ export default {
 .footer-content-menu li {
   display: flex;
   align-items: center;
-  width: 256px;
   font-size: 16px;
+}
+.footer-content-menu li a {
+  text-decoration: none;
+  color: #fff;
 }
 .footer-content-menu li:not(:last-child) span {
   height: 16px;
   line-height: 16px;
 }
 .footer-content-menu li:nth-child(1) span:nth-child(1) {
-  width: 80px;
+  // width: 80px;
+  padding-right: 60px;
   white-space: nowrap;
 }
 .footer-content-menu li:nth-child(2) span:nth-child(1),
 .footer-content-menu li:nth-child(3) span:nth-child(1),
 .footer-content-menu li:nth-child(4) span:nth-child(1) {
-  width: 96px;
+  // width: 96px;
   white-space: nowrap;
 }
 .footer-content-menu li:nth-child(5) span:nth-child(1) {
-  width: 32px;
+  // width: 32px;
   white-space: nowrap;
 }
 .footer-content-menu li:not(:first-child) {
