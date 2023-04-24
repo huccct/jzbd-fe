@@ -2,13 +2,13 @@
  * @Description: Stay hungry，Stay foolish
  * @Author: Huccct
  * @Date: 2023-04-12 11:36:59
- * @LastEditors: Huccct
- * @LastEditTime: 2023-04-12 17:49:30
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-04-24 21:09:42
 -->
 <template>
   <div class="foot-menu">
     <div class="footer-content-bg">
-      <img src="http://114.116.21.170:9000/photo/bottom.png" alt="" />
+      <img src="http://114.116.21.170:9000/photo/%E7%BB%84%2073.png" alt="" />
     </div>
     <div class="footer-content-header">
       <div class="footer-content-menu">
@@ -24,8 +24,8 @@
     <div class="footer-content-main">
       <div class="left">
         <span>联系我们</span>
-        <span>电话：0532-12341234</span>
-        <span>邮箱：15618790211@163.com</span>
+        <span>电话：0532-85279551</span>
+        <span>邮箱：shqycxcyy@163.com</span>
         <span>地址：山东省青岛市胶州上合示范区闽江路60号</span>
       </div>
     </div>

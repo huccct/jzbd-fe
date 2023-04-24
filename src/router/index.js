@@ -24,10 +24,28 @@ Vue.use(VueRouter);
 const routes = [
   { path: '/', component: home },
   { path: '/service', component: ParkService },
-  { path: '/service/list', component: Sercicedetails },
-  { path: '/service/information/:id', component: Serviceinformation },
+  {
+    path: '/service/list',
+    component: Sercicedetails,
+    meta: {
+      keepAlive: true // 不需要缓存
+    }
+  },
+  {
+    path: '/service/information/:id',
+    component: Serviceinformation,
+    meta: {
+      keepAlive: true // 不需要缓存
+    }
+  },
   { path: '/enterprise-storm', component: EnterpriseStorm },
-  { path: '/enterprise-storm/more-enterprise', component: MoreEnterprise },
+  {
+    path: '/enterprise-storm/more-enterprise',
+    component: MoreEnterprise,
+    meta: {
+      keepAlive: true // 不需要缓存
+    }
+  },
   { path: '/maker-port', component: MakerPort },
   { path: '/cooperation', component: Cooperation },
   { path: '/policy-release', component: PolicyRelease },
