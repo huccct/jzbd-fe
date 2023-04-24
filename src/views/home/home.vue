@@ -39,10 +39,10 @@
         </div>
       </div>
       <div class="d-changeimg">
-        <div class="img-left" @click="arrowClick('prev')">
+        <div ref="imgleft" class="img-left" @click="arrowClick('prev')">
           <img src="http://114.116.21.170:9000/photo/home2.png" alt="" />
         </div>
-        <div class="img-right" @click="arrowClick('next')">
+        <div ref="imgright" class="img-right" @click="arrowClick('next')">
           <img src="http://114.116.21.170:9000/photo/home3.png" alt="" />
         </div>
       </div>
@@ -70,7 +70,7 @@
         </div>
       </router-link>
     </div>
-    <div class="pollcy">
+    <div class="policy">
       <div class="d-head">
         <span>02</span>
         <div class="l"></div>
@@ -87,20 +87,24 @@
             :autoplay="false"
             indicator-position="outside"
             arrow="never"
+            trigger="click"
+            @change="changecilist"
           >
-            <el-carousel-item v-for="(list, index) in Policynews" :key="index">
+            <el-carousel-item v-for="(list, index) in PolicyNews" :key="index">
               <div class="p-imglistdiv">
-                <img :src="list.img" />
+                <img src="http://114.116.21.170:9000/photo/home5.png" />
                 <div class="p-imglistdivdiv">
                   <div class="title">
-                    <p>{{ list.title }}</p>
+                    <p>[{{ list.label }}]</p>
                   </div>
-                  <div class="l"></div>
+                  <div class="l">
+                    <img src="http://114.116.21.170:9000/photo/home5-.png" alt="" />
+                  </div>
                   <div class="name">
-                    <p>{{ list.name }}</p>
+                    <p>{{ list.policyTitle }}</p>
                   </div>
-                  <div class="text">
-                    <p>{{ list.text }}</p>
+                  <div class="text ellipsis2">
+                    <p>{{ list.specificContent.replace(/<([^>]+)>/gi, '') }}</p>
                   </div>
                 </div>
               </div>
@@ -111,7 +115,7 @@
       <div class="p-changeimg">
         <div class="p-cilist">
           <div
-            v-for="(list, index) in Policynews"
+            v-for="(list, index) in PolicyNews"
             :key="index"
             ref="cilist"
             class="p-cidiv"
@@ -123,18 +127,18 @@
                 <span>{{ index + 1 }}</span>
               </div>
               <div class="title">
-                <span>{{ list.title }}</span>
+                <span>[{{ list.label }}]</span>
               </div>
               <div class="name">
-                <span>{{ list.name }}</span>
+                <span>{{ list.policyTitle }}</span>
               </div>
             </div>
-            <div class="text">
-              <span>{{ list.text2 }}</span>
+            <div class="text ellipsis">
+              <span>{{ list.specificContent.replace(/<([^>]+)>/gi, '') }}</span>
             </div>
             <br />
             <div class="timer">
-              <span>{{ list.timer }}</span>
+              <span>{{ list.creatTime | formatDate }}</span>
             </div>
             <div class="p-ciactivity"></div>
           </div>
@@ -197,47 +201,17 @@
 <script>
 import NavigationBar from '@/components/navigation/navigation.vue';
 import Slider from '@/components/slider/slider.vue';
-
 export default {
   name: 'home',
   components: { NavigationBar, Slider },
+  filters: {
+    formatDate(value) {
+      return value.slice(5); // 返回“04-26”
+    }
+  },
   data() {
     return {
-      Policynews: [
-        {
-          img: 'http://114.116.21.170:9000/photo/home5.png',
-          title: '[资讯]',
-          name: '现代商用汽车(中国)有限公司',
-          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企，是全球五大汽车企业之现代汽车集团商用车海外第一研发及制造基地。',
-          text2: '',
-          timer: '12-30'
-        },
-        {
-          img: 'http://114.116.21.170:9000/photo/home5.png',
-          title: '[公告]',
-          name: '现代商用汽车(中国)有限公司',
-
-          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企，是全球五大汽车企业之现代汽车集团商用车海外第一研发及制造基地。',
-          text2: '',
-          timer: '12-30'
-        },
-        {
-          img: 'http://114.116.21.170:9000/photo/home5.png',
-          title: '[通知]',
-          name: '现代商用汽车(中国)有限公司',
-          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企，是全球五大汽车企业之现代汽车集团商用车海外第一研发及制造基地。',
-          text2: '',
-          timer: '12-30'
-        },
-        {
-          img: 'http://114.116.21.170:9000/photo/home5.png',
-          title: '[行业动态]',
-          name: '现代商用汽车(中国)有限公司',
-          text: '现代商用汽车（中国）有限公司是中国首家海外独资商用车企，是全球五大汽车企业之现代汽车集团商用车海外第一研发及制造基地。',
-          text2: '',
-          timer: '12-30'
-        }
-      ],
+      PolicyNews: [],
       Basicimg: [
         {
           img: 'http://114.116.21.170:9000/photo/home1.png'
@@ -264,12 +238,12 @@ export default {
       Basicimgpage: 0
     };
   },
-  mounted() {
-    this.$refs.cilist[0].className = 'p-cidiv p-cidivadd';
-    this.Policynews.forEach(e => {
-      let text = e.text.substring(0, 27);
-      text += '...';
-      this.$set(e, 'text2', text);
+  async created() {
+    await this.$store.dispatch('home/getNewsPolicy');
+    this.PolicyNews = this.$store.state.home.PolicyNews;
+    console.log(this.PolicyNews);
+    this.$nextTick(() => {
+      this.$refs.cilist[0].className = 'p-cidiv p-cidivadd';
     });
   },
   methods: {
@@ -286,26 +260,33 @@ export default {
         }
       }
       if (this.Basicimgpage == 0) {
-        document.getElementsByClassName('img-left')[0].style.opacity = 0.4;
-        document.getElementsByClassName('img-right')[0].style.opacity = 1;
+        this.$refs.imgleft.style.opacity = 0.4;
+        this.$refs.imgleft.style.cursor = 'no-drop';
+        this.$refs.imgright.style.opacity = 1;
       } else if (this.Basicimgpage == this.Basicimg.length - 1) {
-        document.getElementsByClassName('img-left')[0].style.opacity = 1;
-        document.getElementsByClassName('img-right')[0].style.opacity = 0.4;
+        this.$refs.imgright.style.opacity = 0.4;
+        this.$refs.imgright.style.cursor = 'no-drop';
+        this.$refs.imgleft.style.opacity = 1;
       } else {
-        document.getElementsByClassName('img-left')[0].style.opacity = 1;
-        document.getElementsByClassName('img-right')[0].style.opacity = 1;
+        this.$refs.imgleft.style.opacity = 1;
+        this.$refs.imgright.style.opacity = 1;
+        this.$refs.imgright.style.cursor = 'pointer';
+        this.$refs.imgleft.style.cursor = 'pointer';
       }
-      console.log(this.Basicimgpage);
     },
     cilist(index) {
-      console.log(index);
       this.$refs.imglistid.setActiveItem(index);
       this.$refs.cilist.forEach(e => {
         e.className = 'p-cidiv';
       });
       // .className = "p-cidiv"
       this.$refs.cilist[index].className = 'p-cidiv p-cidivadd';
-      console.log(this.$refs.class);
+    },
+    changecilist(index) {
+      this.$refs.cilist.forEach(e => {
+        e.className = 'p-cidiv';
+      });
+      this.$refs.cilist[index].className = 'p-cidiv p-cidivadd';
     }
   }
 };
@@ -478,7 +459,7 @@ export default {
         background: #00a6ff;
         border-radius: 40px 0px 0px 40px;
         opacity: 0.4;
-        cursor: pointer;
+        cursor: no-drop;
         img {
           position: absolute;
           left: 36px;
@@ -553,7 +534,7 @@ export default {
     }
   }
 
-  .pollcy {
+  .policy {
     width: 100%;
     // width: 1900px;
     height: 828px;
@@ -604,13 +585,15 @@ export default {
               }
             }
             .l {
+              position: relative;
+              top: 230px;
             }
             .text {
               position: absolute;
               top: 277px;
               p {
                 width: 619px;
-                height: 52px;
+                height: 82px;
                 font-size: 20px;
                 font-family: Microsoft YaHei-Regular, Microsoft YaHei;
                 font-weight: 400;
@@ -674,7 +657,7 @@ export default {
               opacity: 1;
 
               span {
-                margin-left: 5px;
+                margin-left: 4px;
                 margin-top: 3px;
                 width: 11px;
                 height: 18px;
@@ -684,10 +667,6 @@ export default {
                 color: #ffffff;
                 line-height: 18px;
               }
-            }
-
-            .p-cinumberadd {
-              background: #00a6ff;
             }
 
             .title {
@@ -761,6 +740,14 @@ export default {
           outline: none;
           .p-ciactivity {
             background-image: url('http://114.116.21.170:9000/photo/home6.png');
+          }
+          .p-title {
+            .p-cinumber {
+              background: #00a6ff;
+              span {
+                color: #ffffff;
+              }
+            }
           }
         }
       }
@@ -847,5 +834,19 @@ export default {
   margin-right: 10px;
   border-radius: 100%;
   margin-left: -7px;
+}
+.ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ellipsis2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
