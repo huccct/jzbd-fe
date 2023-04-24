@@ -91,7 +91,7 @@
             @change="changecilist"
           >
             <el-carousel-item v-for="(list, index) in PolicyNews.slice(0, 4)" :key="index">
-              <div class="p-imglistdiv" @click="goDetails(list.policyId)">
+              <div class="p-imglistdiv">
                 <img src="http://114.116.21.170:9000/photo/home5.png" />
                 <div class="p-imglistdivdiv">
                   <div class="title">
@@ -108,6 +108,7 @@
                   </div>
                 </div>
               </div>
+              <div class="more" @click="goDetails(list.policyId)"><span>>>详情</span></div>
             </el-carousel-item>
           </el-carousel>
         </ul>
@@ -316,6 +317,8 @@ export default {
 
   .h-btn {
     position: absolute;
+    width: 194px !important;
+    height: 34px !important;
     top: 350px;
     left: 320px;
     z-index: 2;
@@ -552,6 +555,17 @@ export default {
       top: 2172px;
       left: 320px;
       z-index: 2;
+      .more {
+        position: absolute;
+        top: 360px;
+        right: 70px;
+        width: 70px;
+        height: 30px;
+        color: #fff;
+        font-size: 18px;
+        z-index: 2;
+        cursor: pointer;
+      }
 
       .p-imglist {
         position: relative;
