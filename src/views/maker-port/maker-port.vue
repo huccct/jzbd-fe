@@ -52,8 +52,9 @@
         <div class="icon">
           <el-button
             :class="{ op: flag1 }"
-            :disabled="flag1"
+            :disabled="bt_le1"
             type="primary"
+            :autoplay="false"
             class="icon-left"
             @click="prev()"
           >
@@ -61,7 +62,7 @@
           </el-button>
           <el-button
             :class="{ op: !flag1 }"
-            :disabled="!flag1"
+            :disabled="bt_ri1"
             type="primary"
             class="icon-right"
             @click="next()"
@@ -74,6 +75,7 @@
           :interval="4000"
           height="870px"
           arrow="never"
+          :autoplay="false"
           indicator-position="none"
           @change="change1"
         >
@@ -91,11 +93,11 @@
         <div>园区服务内容</div>
         <div>
           <ul>
-            <li @click="setActiveItem(0)">创业培训</li>
-            <li @click="setActiveItem(1)">科技指导</li>
-            <li @click="setActiveItem(2)">软件开发</li>
-            <li @click="setActiveItem(3)">融资众筹</li>
-            <li @click="setActiveItem(4)">项目孵化</li>
+            <li :class="{ liHover: flag3 === 0 }" @click="setActiveItem(0)">创业培训</li>
+            <li :class="{ liHover: flag3 === 1 }" @click="setActiveItem(1)">科技指导</li>
+            <li :class="{ liHover: flag3 === 2 }" @click="setActiveItem(2)">软件开发</li>
+            <li :class="{ liHover: flag3 === 3 }" @click="setActiveItem(3)">融资众筹</li>
+            <li :class="{ liHover: flag3 === 4 }" @click="setActiveItem(4)">项目孵化</li>
           </ul>
         </div>
       </div>
@@ -112,7 +114,7 @@
       <div class="service-icon">
         <el-button
           :class="{ op: flag2 }"
-          :disabled="flag2"
+          :disabled="bt_le2"
           type="primary"
           class="icon-left"
           @click="prev2()"
@@ -121,7 +123,7 @@
         </el-button>
         <el-button
           :class="{ op: !flag2 }"
-          :disabled="!flag2"
+          :disabled="bt_ri2"
           type="primary"
           class="icon-right"
           @click="next2()"
@@ -134,6 +136,7 @@
         :interval="4000"
         height="1000px"
         arrow="never"
+        :autoplay="false"
         indicator-position="none"
         @change="change2"
       >
@@ -150,7 +153,12 @@ export default {
   data() {
     return {
       flag1: true,
+      bt_le1: true,
+      bt_ri1: false,
+      bt_le2: true,
+      bt_ri2: false,
       flag2: true,
+      flag3: 0,
       src: [
         {
           id: 1,
@@ -207,17 +215,32 @@ export default {
       // console.log(e)
       if (e === 0) {
         this.flag1 = true;
+        this.bt_le1 = true;
+        this.bt_ri1 = false;
       } else if (e === 2) {
         this.flag1 = false;
+        this.bt_le1 = false;
+        this.bt_ri1 = true;
+      } else {
+        this.bt_le1 = false;
+        this.bt_ri1 = false;
       }
     },
     change2(e) {
       // console.log(e)
       if (e === 0) {
         this.flag2 = true;
+        this.bt_le2 = true;
+        this.bt_ri2 = false;
       } else if (e === 4) {
         this.flag2 = false;
+        this.bt_le2 = false;
+        this.bt_ri2 = true;
+      } else {
+        this.bt_le2 = false;
+        this.bt_ri2 = false;
       }
+      this.flag3 = e;
     },
     setActiveItem(e) {
       this.$refs.img2.setActiveItem(e);
@@ -621,5 +644,11 @@ export default {
 
 .op {
   opacity: 0.4;
+}
+
+.liHover {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 </style>

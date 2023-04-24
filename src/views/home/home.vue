@@ -5,7 +5,7 @@
         <Slider />
       </div>
       <div class="h-btn">
-        <el-button type="primary"> EXPLORE A NEW WORLD TOGETHER</el-button>
+        <el-button type="primary"> 大众创业、万众创新 </el-button>
       </div>
       <div class="h-content">
         <span>提供一条龙的运营孵化体系</span>
@@ -90,8 +90,8 @@
             trigger="click"
             @change="changecilist"
           >
-            <el-carousel-item v-for="(list, index) in PolicyNews" :key="index">
-              <div class="p-imglistdiv">
+            <el-carousel-item v-for="(list, index) in PolicyNews.slice(0, 4)" :key="index">
+              <div class="p-imglistdiv" @click="goDetails(list.policyId)">
                 <img src="http://114.116.21.170:9000/photo/home5.png" />
                 <div class="p-imglistdivdiv">
                   <div class="title">
@@ -115,7 +115,7 @@
       <div class="p-changeimg">
         <div class="p-cilist">
           <div
-            v-for="(list, index) in PolicyNews"
+            v-for="(list, index) in PolicyNews.slice(0, 4)"
             :key="index"
             ref="cilist"
             class="p-cidiv"
@@ -287,6 +287,12 @@ export default {
         e.className = 'p-cidiv';
       });
       this.$refs.cilist[index].className = 'p-cidiv p-cidivadd';
+    },
+    goDetails(id) {
+      this.$router.push({
+        path: `/policy-release/more-policies/details/${id}`,
+        params: id
+      });
     }
   }
 };
