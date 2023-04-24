@@ -18,7 +18,9 @@
         </div>
         <div class="description">
           <div class="deslf">政策信息</div>
-          <div class="desrg" @click="$router.push(`/policy-release/more-policies`)">更多政策>></div>
+          <div class="desrg" @click="$router.push(`/policy-release/more-policies/list`)">
+            更多政策>>
+          </div>
         </div>
         <div class="policeInfoMain">
           <div class="topImg">
@@ -28,9 +30,10 @@
             />
           </div>
           <div
-            v-for="item in policeInfoList.rows.slice(0, 4)"
+            v-for="item in policeInfoList.rows?.slice(0, 4)"
             :key="item.policyId"
             class="policeInfoBoxLf"
+            @click="goDetails(item.policyId)"
           >
             <div class="lf">
               <div class="monthDay">{{ dateChange(item.creatTime).monthDay }}</div>
@@ -39,9 +42,10 @@
             <div class="rg">{{ item.policyTitle }}</div>
           </div>
           <div
-            v-for="item in policeInfoList.rows.slice(-5)"
+            v-for="item in policeInfoList.rows?.slice(-5)"
             :key="item.policyId"
             class="policeInfoBoxRg"
+            @click="goDetails(item.policyId)"
           >
             <div class="top">{{ item.policyTitle }}</div>
             <div class="bottom">{{ item.creatTime }}</div>
@@ -257,6 +261,12 @@ export default {
     del(file) {
       this.uploadInfo = this.uploadInfo.filter(item => item !== file);
       console.log(this.uploadInfo);
+    },
+    goDetails(id) {
+      this.$router.push({
+        path: `/policy-release/more-policies/details/${id}`,
+        params: id
+      });
     }
   }
 };
