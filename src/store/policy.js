@@ -1,6 +1,7 @@
-import { uploadCompany, policyInformation } from '@/api/modules/policy';
+import { uploadCompany, policyInformation, policyDetailInformation } from '@/api/modules/policy';
 const state = {
-  PolicyInformation: []
+  PolicyInformation: [],
+  policyDetailInformation: []
 };
 
 const mutations = {};
@@ -10,6 +11,14 @@ const actions = {
     let res = await policyInformation(params);
     if (res.code === 200) {
       state.PolicyInformation = res;
+    } else {
+      console.log('err');
+    }
+  },
+  async policyDetailInformation({ commit }, url, params) {
+    let res = await policyDetailInformation(url, params);
+    if (res.code === 200) {
+      state.policyDetailInformation = res.data;
     } else {
       console.log('err');
     }

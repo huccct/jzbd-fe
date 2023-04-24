@@ -3,83 +3,52 @@
     <div class="top"></div>
     <div class="main">
       <div class="container">
-        <div class="header">
-          <div class="bread">
-            <el-breadcrumb separator-class="el-icon-arrow-right">
-              <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-              <el-breadcrumb-item :to="{ path: '/policy-release' }">政策发布</el-breadcrumb-item>
-              <el-breadcrumb-item :to="{ path: '/policy-release/more-policies' }"
-                >更多政策</el-breadcrumb-item
-              >
-            </el-breadcrumb>
-          </div>
-          <div class="search">
-            <el-input v-model="iptVal" class="ipt" @input="search"></el-input>
-            <el-button type="primary" class="searchBtn">立即查询</el-button>
-          </div>
-        </div>
-        <ul class="list_wrapped">
-          <li v-for="item in policeInfoList.rows" :key="item.policyId" class="list_item">
-            <div class="title">{{ item.policyTitle }}</div>
-            <div class="des">{{ removeHtmlTags(item.specificContent) }}</div>
-            <div class="date">{{ item.creatTime }}</div>
-          </li>
-        </ul>
-        <div class="pagination">
-          <el-pagination
-            background
-            :page-size="pageSize"
-            layout=" prev, pager, next, jumper"
-            :total="policeInfoList.total"
-            @current-change="handleCurrentChange"
-          >
-          </el-pagination>
-        </div>
+        <router-view></router-view>
       </div>
     </div>
   </div>
 </template>
 <script>
-export default {
-  name: 'JzbdFeMorePolicies',
-  components: {},
-  data() {
-    return {
-      iptVal: '',
-      policeInfoList: [],
-      pageSize: 3
-    };
-  },
-  computed: {
-    removeHtmlTags() {
-      return str => str.replace(/<[^>]*>/g, '');
-    }
-  },
-  async created() {
-    await this.$store.dispatch('policy/getPolicyInformation', {
-      pageNum: 1,
-      pageSize: this.pageSize
-    });
-    this.policeInfoList = this.$store.state.policy.PolicyInformation;
-    console.log(this.policeInfoList);
-  },
-  methods: {
-    async search() {
-      await this.$store.dispatch('policy/getPolicyInformation', {
-        policyTitle: this.iptVal
-      });
-      this.policeInfoList = this.$store.state.policy.PolicyInformation;
-    },
-    async handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
-      await this.$store.dispatch('policy/getPolicyInformation', {
-        pageNum: val,
-        pageSize: this.pageSize
-      });
-      this.policeInfoList = this.$store.state.policy.PolicyInformation;
-    }
-  }
-};
+// export default {
+//   name: 'JzbdFeMorePolicies',
+//   components: {},
+//   data() {
+//     return {
+//       iptVal: '',
+//       policeInfoList: [],
+//       pageSize: 3
+//     };
+//   },
+//   computed: {
+//     removeHtmlTags() {
+//       return str => str.replace(/<[^>]*>/g, '');
+//     }
+//   },
+//   async created() {
+//     await this.$store.dispatch('policy/getPolicyInformation', {
+//       pageNum: 1,
+//       pageSize: this.pageSize
+//     });
+//     this.policeInfoList = this.$store.state.policy.PolicyInformation;
+//     console.log(this.policeInfoList);
+//   },
+//   methods: {
+//     async search() {
+//       await this.$store.dispatch('policy/getPolicyInformation', {
+//         policyTitle: this.iptVal
+//       });
+//       this.policeInfoList = this.$store.state.policy.PolicyInformation;
+//     },
+//     async handleCurrentChange(val) {
+//       console.log(`当前页: ${val}`);
+//       await this.$store.dispatch('policy/getPolicyInformation', {
+//         pageNum: val,
+//         pageSize: this.pageSize
+//       });
+//       this.policeInfoList = this.$store.state.policy.PolicyInformation;
+//     }
+//   }
+// };
 </script>
 <style lang="scss" scoped>
 ul,

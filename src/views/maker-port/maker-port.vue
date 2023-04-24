@@ -4,16 +4,17 @@
       <img src="http://114.116.21.170:9000/photo/maker-port/%E7%BB%841.png" alt="组1" />
     </div>
     <div class="m-btn">
-      <span class="m-btn-ex"> EXPLORE A NEW WORLD TOGETHER </span>
+      <span class="m-btn-ex"> 大众创业、万众创新 </span>
     </div>
     <div class="m-content">
       <span class="title">厚德创客港</span><br />
       <span class="content">
-        厚德创客港产业园区解决方案以”科技赋能园区，助力产业转型”为愿景目标，打造“服、管、控、营”一体化的智慧产业园区。
+        厚德创客港设立公共服务区配套综合管理服务中心，包含创客管理服务体系、投融资运作体系、
+        线上管理服务体系、专项招商体系、创客文化及导师队伍建设体系等。
       </span>
     </div>
     <div class="m-btn-us">
-      <el-button class="btn-us" type="primary">联系我们</el-button>
+      <el-button class="btn-us" type="primary" @click="toContact">联系我们</el-button>
     </div>
     <div class="introduce">
       <div class="text">
@@ -25,17 +26,18 @@
         <div>产业园区介绍</div>
         <br />
         <div>
-          华为智慧产业园区解决方案以”科技赋能园区，助力产业转型”为愿景目标，基于“平台+生态”的架构，借助5G、物联网、云计算、大数据和人工智能等新ICT技术，
-          实现人、物、事、产业、服务、生活等多维度的联接和融合。通过华为城市赋能云展车参观，华为（苏州）DevCloud创新中心技术工程师就华为软件开发云、
-          城市赋能云、工业互联网等解决方案讲解，使各部门和观展企业进一步了解华为云在大数据、云计算、工业互联网等领域的领先优势，现场互动取得了很好的效果。
-          此次巡展是华为（苏州）DevCloud创新中心举办的一次体验互动性活动，众多园区企业前来参观交流。同时，此次活动也让更多客户认识华为、走近华为。
+          厚德创客港是胶州市积极响应“大众创业、万众创新”的号召，全面落实青岛市实施创新驱动发展战略会议精神，
+          立足青岛市“创新之城、创业之都、创客之岛”的高标定位，统筹全市“三创”资源打造的低成本、全要素、
+          开放式、 便利化的新型科技创新公共服务平台。厚德创客港按照“一核多点”即“1+N”的空间布局思路，
+          依托国家级胶州经济技术开发区已建成的创业大厦、西安交大青岛研究院、中国机械研究总院青岛分院等现有资源，
+          着力打造创客空间、孵化器、创客学院、互联网+、大学生创业基地、创客教育、创客集市、农业创客、众筹资金九大板块。
         </div>
         <div class="data">
           <table>
             <tr>
-              <td>{{ 60 }}+<span>家</span></td>
+              <td>{{ 30 }}+<span>家</span></td>
               <td>{{ 1000 }}<span>万</span></td>
-              <td>{{ 2021 }}<span>年</span></td>
+              <td>{{ 2017 }}<span>年</span></td>
             </tr>
             <tr>
               <td>入驻企业</td>
@@ -85,25 +87,26 @@
       <div class="service-text">
         <span>02</span>
         <span>&emsp;——&emsp;</span>
-        <span>IntroductiontothePark</span><br />
+        <span>Servicecontentofthepark</span><br />
         <div>园区服务内容</div>
         <div>
           <ul>
-            <li>国有土地</li>
-            <li>高标厂房</li>
-            <li>定制厂房</li>
-            <li>集体用地</li>
+            <li @click="setActiveItem(0)">创业培训</li>
+            <li @click="setActiveItem(1)">科技指导</li>
+            <li @click="setActiveItem(2)">软件开发</li>
+            <li @click="setActiveItem(3)">融资众筹</li>
+            <li @click="setActiveItem(4)">项目孵化</li>
           </ul>
         </div>
       </div>
       <div class="service-box">
         <div>
-          厚德创客港解决方案以”科技赋能园区，助力产业转型”为愿景目标，基于“平台+生态”的架构，
-          借助5G、物联网、云计算、大数据和人工智能等新ICT技术，实现人、物、事、产业、服务
-          、生活等多维度的联接和融合。
+          为协助创客团队有效地进行创业活动，青岛厚德创客港依托高校科研院所，调动社会各界资源，协同京东、
+          有住等新兴互联网+企业，设立“京东厚德创客营”和“厚德科技创新服务平台”，为入驻创客提供创业培训、
+          科技指导、软件开发、融资众筹、项目孵化等帮助，为创客团队打造过硬的平台支撑。
         </div>
         <div class="m-btn-us">
-          <el-button class="btn-us">联系我们</el-button>
+          <el-button class="btn-us" @click="toContact">联系我们</el-button>
         </div>
       </div>
       <div class="service-icon">
@@ -151,19 +154,15 @@ export default {
       src: [
         {
           id: 1,
-          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2242.png'
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2223.png'
         },
         {
           id: 2,
-          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2223.png'
-        },
-        {
-          id: 3,
           src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2242.png'
         },
         {
-          id: 4,
-          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2223.png'
+          id: 3,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2243.png'
         }
       ],
       src2: [
@@ -178,6 +177,14 @@ export default {
         {
           id: 3,
           src: 'http://114.116.21.170:9000/photo/maker-port/%E7%BB%844.png'
+        },
+        {
+          id: 4,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%BB%845.png'
+        },
+        {
+          id: 5,
+          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%BB%846.png'
         }
       ]
     };
@@ -198,15 +205,25 @@ export default {
     },
     change1(e) {
       // console.log(e)
-      this.flag1 = e % 2 === 0;
+      if (e === 0) {
+        this.flag1 = true;
+      } else if (e === 2) {
+        this.flag1 = false;
+      }
     },
     change2(e) {
       // console.log(e)
       if (e === 0) {
         this.flag2 = true;
-      } else if (e === 2) {
+      } else if (e === 4) {
         this.flag2 = false;
       }
+    },
+    setActiveItem(e) {
+      this.$refs.img2.setActiveItem(e);
+    },
+    toContact() {
+      this.$router.push('/contact');
     }
   }
 };
@@ -225,7 +242,7 @@ export default {
   position: absolute;
   top: 253px;
   left: 320px;
-  width: 293px;
+  width: 194px;
   height: 34px;
   background: #ecf9ff;
   border-radius: 0 0 0 0;
@@ -500,7 +517,7 @@ export default {
     }
 
     div:nth-child(6) {
-      margin-top: 147px;
+      margin-top: 90px;
       width: 80px;
       height: 20px;
       font-size: 20px;
@@ -513,7 +530,7 @@ export default {
         list-style-type: none;
 
         li {
-          line-height: 80px;
+          line-height: 70px;
           width: 80px;
         }
 
