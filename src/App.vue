@@ -3,10 +3,11 @@
  * @Author: Huccct
  * @Date: 2023-04-11 10:37:48
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-04-13 09:18:09
+ * @LastEditTime: 2023-04-24 21:38:55
 -->
 <template>
   <div id="app">
+    z
     <navigation-bar />
     <router-view />
     <el-footer>
