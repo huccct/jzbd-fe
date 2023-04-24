@@ -126,7 +126,10 @@
                   </div>
                 </div>
                 <div slot="tip" class="el-upload__tip">
-                  请上传 大小不超过 10MB 格式为：rar、zip、jpg、png、pdf、ppt 的文件
+                  请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
+                    style="color: #0e7fdb"
+                    >rar、zip、jpg、png、pdf、ppt 的文件</span
+                  >
                 </div>
               </el-upload>
             </el-form-item>
