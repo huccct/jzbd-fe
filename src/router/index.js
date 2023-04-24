@@ -15,15 +15,16 @@ import MorePolicies from '@/views/policy-release/more-policies.vue';
 import PolicyList from '@/views/policy-release/policy-list.vue';
 import PolicyDetails from '@/views/policy-release/policy-details.vue';
 import Contact from '@/views/contact/contact.vue';
+import Serviceinformation from '@/views/park-service/information/information.vue';
+import Sercicedetails from '@/views/park-service/details/servicedetails.vue';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Serviceinformation from '@/views/park-service/information/information.vue';
-
 Vue.use(VueRouter);
 
 const routes = [
   { path: '/', component: home },
   { path: '/service', component: ParkService },
+  { path: '/service/list', component: Sercicedetails },
   { path: '/service/information/:id', component: Serviceinformation },
   { path: '/enterprise-storm', component: EnterpriseStorm },
   { path: '/enterprise-storm/more-enterprise/:id', component: MoreEnterprise },

@@ -35,7 +35,7 @@
             alt=""
             @click="beforee()"
           />
-          <span>{{ data_list.Now.newsTitle }}</span>
+          <span>{{ now_list.newsTitle }}</span>
           <img
             src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2081.png"
             alt=""
@@ -43,9 +43,9 @@
           />
         </div>
         <div class="sic-middle-topic2">
-          <span>来源：{{ data_list.Now.newsSource }}</span>
-          <span>时间：{{ data_list.Now.createTime }}</span>
-          <span>浏览量：{{ data_list.Now.pageViews }}</span>
+          <span>来源：{{ now_list.newsSource }}</span>
+          <span>时间：{{ now_list.createTime }}</span>
+          <span>浏览量：{{ now_list.pageViews }}</span>
           <span
             >分享：<img
               src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2043.png"
@@ -55,7 +55,7 @@
           /></span>
         </div>
         <hr style="margin-top: 22px" />
-        <div class="sic-middle-content" v-html="this.data_list.Now.specificContent"></div>
+        <div class="sic-middle-content" v-html="this.now_list.specificContent"></div>
         <!-- <p>
             12月30日，上合新区发出首张个体工商户经营者变更营业执照。个体工商户谢女士在上合新区市场监管窗口申请办理个体工商户经营者变更登记，用了不到半个小时的时间就完成了相关办理手续。她拿着现场颁发的营业执照表示：“现在太方便了，这么短时间就能变更到经营者了，实在是太省心省时了。”
           </p>
@@ -104,16 +104,17 @@ export default {
   data() {
     return {
       content_id: '',
-      data_list: []
+      data_list: {},
+      now_list: ''
     };
   },
 
   mounted() {
-    console.log(this.$store.getters.RAllList);
+    // console.log(this.$store.getters.RAllList);
     // this.$store.getters.RAllList;
-    getAllList({ pageNum: 1, pageSize: 10 }).then(res => {
-      console.log(res.rows);
-    });
+    // getAllList({ pageNum: 1, pageSize: 10 }).then(res => {
+    //   console.log(res.rows);
+    // });
   },
 
   beforeCreate() {
@@ -121,9 +122,10 @@ export default {
     this.content_id = this.$route.params.id;
     // this.getList()
     getOneList(this.content_id).then(res => {
-      console.log(res);
+      // console.log(res);
       this.data_list = res.data;
-      console.log(this.data_list);
+      if (res.data.Now != null) this.now_list = res.data.Now;
+      // console.log(this.data_list);
     });
   },
 
@@ -138,9 +140,9 @@ export default {
     },
     async getList() {
       await getOneList(this.content_id).then(res => {
-        console.log(res);
+        // console.log(res);
         this.data_list = res.data;
-        console.log(this.data_list);
+        // console.log(this.data_list);
       });
     }
   }
@@ -246,6 +248,7 @@ export default {
         text-indent: 2em;
       }
       img {
+        text-align: center;
         margin-top: 30px;
         margin-bottom: 30px;
       }
