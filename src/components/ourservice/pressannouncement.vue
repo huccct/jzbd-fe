@@ -42,7 +42,7 @@
         <p>
           近日，记者在高新区资阳石油钢管有限公司了解到，今年国家管网重点工程已经保供完成，正在进行社会市场管线的生产工作...
         </p> -->
-        <button @click="$router.push('/service/information/1').catch(err => err)">详情>></button>
+        <button @click="$router.push('/service/list').catch(err => err)">详情>></button>
       </div>
       <div class="pa-content_right">
         <div v-for="item in list_data.slice(1)" :key="item.newsId" class="pa-content_right1">
@@ -129,11 +129,11 @@ export default {
       pageNum: 1,
       pageSize: 5
     }).then(res => {
-      console.log(res.rows);
+      // console.log(res.rows);
       this.list_data = res.rows;
       this.list_data2 = res.rows[0];
       this.list_data2.createTime = res.rows[0].createTime.slice(0, 10);
-      console.log(this.list_data2);
+      // console.log(this.list_data2);
     });
   },
 
