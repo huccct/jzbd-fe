@@ -218,6 +218,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.el-button:focus {
+  color: none;
+  background-color: none;
+  border-color: none;
+}
 .box {
   max-width: 100%;
   overflow-x: hidden;
@@ -446,7 +451,7 @@ export default {
       .icon-left {
         width: 50%;
         height: 80px;
-        // background: #00a6ff;
+        // background-color: #00a6ff;
         // opacity: 0.4;
         border-radius: 50px 0 0 50px;
         margin-right: -10px;
@@ -455,7 +460,7 @@ export default {
       .icon-right {
         width: 50%;
         height: 80px;
-        // background: #00a6ff;
+        // background-color: #00a6ff;
         border-radius: 0 50px 50px 0;
         margin-left: 10px;
       }
