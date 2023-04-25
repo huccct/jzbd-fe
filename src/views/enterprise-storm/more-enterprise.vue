@@ -63,17 +63,24 @@
         </div>
         <div class="img">
           <div class="icon">
-            <el-button type="primary" class="icon-left" :disabled="cur === 0" @click="prev()">
+            <div
+              ref="leftbtn"
+              type="primary"
+              class="icon-left"
+              :disabled="cur === 0"
+              @click="prev()"
+            >
               <img src="http://114.116.21.170:9000/photo/maker-port/left.png" alt="left" />
-            </el-button>
-            <el-button
+            </div>
+            <div
+              ref="rightbtn"
               type="primary"
               class="icon-right"
               :disabled="cur === src.length - 1"
               @click="next()"
             >
               <img src="http://114.116.21.170:9000/photo/maker-port/right.png" alt="right" />
-            </el-button>
+            </div>
           </div>
           <el-carousel
             ref="img"
@@ -182,23 +189,46 @@ export default {
     return {
       src: [],
       cur: 0,
+      nowpag: 1,
       prev() {
         this.$refs.img.prev();
+        if (this.nowpag > 1) {
+          this.nowpag--;
+        }
       },
       next() {
         this.$refs.img.next();
-      },
-      prev2() {
-        this.$refs.img2.prev();
-      },
-      next2() {
-        this.$refs.img2.next();
+        if (this.nowpag < 3) {
+          this.nowpag++;
+        }
       },
       data_list: [],
       nowData: []
     };
   },
+  watch: {
+    nowpag(newvalue) {
+      // console.log(newvalue);
+      // console.log(this.$refs.leftbtn);
 
+      if (newvalue == 1) {
+        this.$refs.leftbtn.style.opacity = 0.4;
+        this.$refs.leftbtn.style.cursor = 'no-drop';
+        this.$refs.rightbtn.style.opacity = 1;
+        this.$refs.rightbtn.style.cursor = 'pointer';
+      } else if (newvalue == 3) {
+        this.$refs.rightbtn.style.opacity = 0.4;
+        this.$refs.rightbtn.style.cursor = 'no-drop';
+        this.$refs.leftbtn.style.opacity = 1;
+        this.$refs.leftbtn.style.cursor = 'pointer';
+      } else {
+        this.$refs.rightbtn.style.opacity = 1;
+        this.$refs.rightbtn.style.cursor = 'pointer';
+        this.$refs.leftbtn.style.opacity = 1;
+        this.$refs.leftbtn.style.cursor = 'pointer';
+      }
+    }
+  },
   async created() {
     //console.log(this.$route.params.id);
     await getEnterpriceOne(this.$route.params.id).then(res => {
@@ -299,7 +329,6 @@ export default {
   width: 80%;
   height: 932px;
   position: absolute;
-  // margin-top: 20px;
   left: 350px;
 
   .text {
@@ -307,7 +336,6 @@ export default {
     width: 42%;
     height: 100%;
     margin-top: 89px;
-    // margin-left: -30px;
 
     & > div {
       margin-top: 30px;
@@ -452,15 +480,19 @@ export default {
         width: 50%;
         height: 80px;
         // background-color: #00a6ff;
-        // opacity: 0.4;
+        opacity: 0.4;
         border-radius: 50px 0 0 50px;
         margin-right: -10px;
+        background-color: #00a6ff;
+        cursor: no-drop;
       }
 
       .icon-right {
         width: 50%;
         height: 80px;
-        // background-color: #00a6ff;
+        opacity: 1;
+        background-color: #00a6ff;
+        cursor: pointer;
         border-radius: 0 50px 50px 0;
         margin-left: 10px;
       }
