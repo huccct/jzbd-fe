@@ -82,12 +82,12 @@
           <div class="m-left-div">
             <div v-for="(list, index) in Service" :key="index" ref="demodiv" class="m-left-demo">
               <div class="l"></div>
-              <div class="text">
+              <div class="text" @click="changeService(index)">
                 <span>{{ list.title }}</span>
               </div>
             </div>
           </div>
-          <div class="m-left-demo-down" @click="changeService">
+          <div class="m-left-demo-down" @click="changeService(-1)">
             <img src="http://114.116.21.170:9000/photo/cooperation9.png" alt="" />
           </div>
         </div>
@@ -254,7 +254,7 @@ export default {
     },
     homemore(val) {
       if (val == 'industry') {
-        console.log('industry');
+        console.log('');
       } else {
         console.log(111);
         this.$router.push('/park_information/park_information/t/1');
@@ -297,39 +297,62 @@ export default {
       this.$router.push('/park_information/park_information/t/' + id);
     },
 
-    changeService() {
+    changeService(index) {
       let a = this.scrollTop;
-      if (this.Servicenumber + 1 < 10) {
-        this.Servicenumber2 = `0${this.Servicenumber + 1}`;
+      if (index == -1) {
+        if (this.Servicenumber <= this.Service.length - 1) {
+          this.$refs.demodiv[this.Servicenumber - 1].setAttribute('class', 'm-left-demo');
+          this.Servicenumber++;
+          this.$refs.demodiv[this.Servicenumber - 1].setAttribute(
+            'class',
+            'm-left-demo demoactive'
+          );
+          this.showService = {
+            title: this.Service[this.Servicenumber - 1].title,
+            text: this.Service[this.Servicenumber - 1].text
+          };
+          if (this.Servicenumber == 6 || (this.Servicenumber - 6) % 5 == 0) {
+            this.$refs.demodiv[this.Servicenumber - 1].scrollIntoView({
+              behavior: 'instant',
+              inline: 'center'
+            });
+          }
+        } else {
+          this.$refs.demodiv[0].scrollIntoView({
+            behavior: 'instant',
+            inline: 'center'
+          });
+          this.$refs.demodiv[this.Servicenumber - 1].setAttribute('class', 'm-left-demo');
+          this.$refs.demodiv[0].setAttribute('class', 'm-left-demo demoactive');
+          this.Servicenumber = 1;
+          this.Servicenumber2 = `01`;
+          this.showService = {
+            title: this.Service[0].title,
+            text: this.Service[0].text
+          };
+        }
       } else {
-        this.Servicenumber2 = this.Servicenumber + 1;
-      }
-      if (this.Servicenumber <= this.Service.length - 1) {
-        this.$refs.demodiv[this.Servicenumber - 1].setAttribute('class', 'm-left-demo');
-        this.Servicenumber++;
+        this.Servicenumber = index + 1;
+        this.$refs.demodiv.forEach(e => {
+          e.setAttribute('class', 'm-left-demo');
+        });
         this.$refs.demodiv[this.Servicenumber - 1].setAttribute('class', 'm-left-demo demoactive');
         this.showService = {
           title: this.Service[this.Servicenumber - 1].title,
           text: this.Service[this.Servicenumber - 1].text
         };
-
-        this.$refs.demodiv[this.Servicenumber - 1].scrollIntoView({
-          behavior: 'instant',
-          inline: 'center'
-        });
+        if (this.Servicenumber == 6 || (this.Servicenumber - 6) % 5 == 0) {
+          this.$refs.demodiv[this.Servicenumber - 1].scrollIntoView({
+            behavior: 'instant',
+            inline: 'center'
+          });
+        }
+      }
+      console.log(this.Servicenumber);
+      if (this.Servicenumber < 10) {
+        this.Servicenumber2 = `0${this.Servicenumber}`;
       } else {
-        this.$refs.demodiv[0].scrollIntoView({
-          behavior: 'instant',
-          inline: 'center'
-        });
-        this.$refs.demodiv[this.Servicenumber - 1].setAttribute('class', 'm-left-demo');
-        this.$refs.demodiv[0].setAttribute('class', 'm-left-demo demoactive');
-        this.Servicenumber = 1;
-        this.Servicenumber2 = `01`;
-        this.showService = {
-          title: this.Service[0].title,
-          text: this.Service[0].text
-        };
+        this.Servicenumber2 = this.Servicenumber;
       }
       window.scrollTo(a - 1080, a);
     }
@@ -752,6 +775,7 @@ export default {
         height: 420px;
         // background: linear-gradient(180deg, #56e8ff 0%, #57c4ff 100%);
         border-radius: 0px 0px 0px 0px;
+        z-index: 99;
         .m-left-div {
           position: relative;
           top: 18px;
@@ -762,6 +786,8 @@ export default {
             width: 204px;
             height: 45px;
             // margin-top: -20px;
+            cursor: pointer;
+            z-index: 999;
             .text {
               margin-top: 20px;
               span {
@@ -825,9 +851,10 @@ export default {
         width: 100%;
         height: 100%;
         position: absolute;
+        top: 0px;
         background: linear-gradient(180deg, #56e8ff 0%, #57c4ff 100%);
         opacity: 0.2;
-        z-index: 20;
+        z-index: 0;
       }
       .m-demo-right {
         position: absolute;
