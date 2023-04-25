@@ -18,6 +18,7 @@ module.exports = {
     'vue/order-in-components': 'error',
     'vue/attributes-order': 'error',
     'vue/html-indent': ['error', 2],
+    'no-mixed-spaces-and-tabs': 0,
     'vue/html-closing-bracket-newline': [
       'error',
       {

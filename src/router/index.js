@@ -40,7 +40,7 @@ const routes = [
   },
   { path: '/enterprise-storm', component: EnterpriseStorm },
   {
-    path: '/enterprise-storm/more-enterprise',
+    path: '/enterprise-storm/more-enterprise/:id',
     component: MoreEnterprise,
     meta: {
       keepAlive: true // 不需要缓存
