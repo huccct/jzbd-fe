@@ -10,6 +10,7 @@ import EnterpriseStorm from '@/views/enterprise-storm/enterprise-storm.vue';
 import MoreEnterprise from '@/views/enterprise-storm/more-enterprise.vue';
 import MakerPort from '@/views/maker-port/maker-port.vue';
 import Cooperation from '@/views/cooperation/cooperation.vue';
+import CooperationDetails from '@/views/cooperation/cooperationDetails';
 import PolicyRelease from '@/views/policy-release/policy-release.vue';
 import MorePolicies from '@/views/policy-release/more-policies.vue';
 import PolicyList from '@/views/policy-release/policy-list.vue';
@@ -48,6 +49,7 @@ const routes = [
   },
   { path: '/maker-port', component: MakerPort },
   { path: '/cooperation', component: Cooperation },
+  { path: '/park_information/park_information/t/:id', component: CooperationDetails },
   { path: '/policy-release', component: PolicyRelease },
   {
     path: '/policy-release/more-policies',
