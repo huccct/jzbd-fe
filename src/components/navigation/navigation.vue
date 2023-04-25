@@ -2,8 +2,8 @@
  * @Description: Stay hungry，Stay foolish
  * @Author: Huccct
  * @Date: 2023-04-12 09:59:54
- * @LastEditors: Huccct
- * @LastEditTime: 2023-04-13 09:01:55
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-04-24 21:31:53
 -->
 <template>
   <div class="box">
@@ -43,6 +43,9 @@ export default {
   created() {
     //生命周期获取index并赋值
   },
+  mounted() {
+    console.log(this.$route.path);
+  },
   methods: {
     handleSelect(key, keyPath) {
       this.$router.push(key);
@@ -71,22 +74,28 @@ export default {
 }
 
 .right {
+  width: 1078px;
+  padding-right: 220px;
   width: 978px;
-  padding-right: 320px;
+  padding-right: 20px;
   padding-top: 23px;
 }
 
 .el-menu {
+  text-align: center;
+  width: 978px;
   border-bottom: none !important;
   background-color: transparent !important;
   &::after {
-    width: 148%;
+    width: 99.5%;
     content: '';
     border: 1px solid #e6e6e6;
   }
 }
 
 .el-menu-item {
+  width: 120px;
+  font-size: 18px;
   background-color: transparent !important;
 }
 </style>
