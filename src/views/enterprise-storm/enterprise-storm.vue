@@ -18,7 +18,9 @@
           把胶州历史性地推到国家对外开放的战略前沿。</span
         >
         <div class="m-btn-us">
-          <el-button class="btn-us" type="primary">联系我们</el-button>
+          <el-button class="btn-us" type="primary" @click="$router.push(`/contact`)"
+            >联系我们</el-button
+          >
         </div>
       </div>
     </div>
@@ -38,17 +40,17 @@
               />
             </div>
             <div class="enterprise-message">
-              <span class="name">{{ data_list[0].companyCname }}</span>
+              <span class="name">{{ data_list[0]?.companyCname }}</span>
               <span class="number">01</span>
               <img src="https://s1.ax1x.com/2023/04/13/ppxwB8g.png" alt="" />
-              <span id="aboutMessage_first">{{ data_list[0].aboutMessage }}</span>
+              <span id="aboutMessage_first">{{ data_list[0]?.aboutMessage }}</span>
             </div>
             <div class="phone">
               <img src="http://114.116.21.170:9000/photo/enterprise-storm/电话@2x.png" alt="" />
             </div>
             <div class="phonenum">
               <span>联系方式</span>
-              <span>{{ data_list[0].contactPhone }}</span>
+              <span>{{ data_list[0]?.contactPhone }}</span>
             </div>
             <div class="border"></div>
             <div class="classification">
@@ -59,11 +61,7 @@
             </div>
             <div class="project">
               <span>主营产品</span>
-              <span
-                >计算及测量仪器制造；计算及测量仪器销售； 机械设备销售；<br />
-                机械设备研发；<br />
-                ...</span
-              >
+              <span style="margin-left: 887px" class="sl3" v-html="joinStr(0, ';<br/>')"> </span>
             </div>
             <div class="border1"></div>
             <div class="trophy">
@@ -71,7 +69,7 @@
             </div>
             <div class="honor">
               <span>荣誉奖项</span>
-              <span>{{ data_list[0].honorMessage }} ...</span>
+              <span v-html="data_list[0]?.honorMessage.split('；').join(';<br/>')"></span>
             </div>
             <button
               class="white-outline-button"
@@ -85,16 +83,17 @@
       <!-- <div style="margin-bottom: 200px"></div> -->
     </div>
     <div class="company">
-      <div class="company_one companyFlex_one">
-        <img
-          src="http://114.116.21.170:9000/photo/enterprise-storm/b85f95bceb38f3b6e19d24d403fc4579c71de2a11a42b6-QNYxT0@2x.png"
-          alt=""
-        />
-        <div class="title">青岛能蜂电气有限公司</div>
+      <div
+        v-for="(item, index) in data_list.slice(1)"
+        :key="index"
+        class="company_one companyFlex_one"
+      >
+        <img :src="item.companyImg" alt="" />
+        <div class="title">{{ item.companyCname }}</div>
         <div class="des">
-          青岛能蜂电气有限公司，主营信息系统集成服务、云计算装备技术服务、智能控制系统集成、新兴能源技术研发等...
+          {{ item.aboutMessage }}
         </div>
-        <span class="company_one-number">02</span>
+        <span class="company_one-number">{{ '0' + (index + 2) }}</span>
         <div class="phone">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
           <span class="phone_des">联系方式：</span>
@@ -103,68 +102,19 @@
         <div class="classification">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 60@2x.png" alt="" />
           <span class="classification_des">主营产品：</span>
-          <span>技术咨询、技术服务、技术开发...</span>
+          <span class="classification_content">{{ joinStr(index + 1, '、') }}</span>
         </div>
         <div class="honor">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 61@2x.png" alt="" />
           <span class="honor_des">荣誉奖项：</span>
-          <span>先进企业、先进个人、先进技术...</span>
+          <span class="classification_content">{{ data_list[1].honorMessage }}</span>
         </div>
-        <button class="see_more">查看更多>></button>
-      </div>
-      <div class="company_two companyFlex_one">
-        <img
-          src="http://114.116.21.170:9000/photo/enterprise-storm/a9fe24f218db5f518329ac5c27bf18396d4b4af569a5a-7kTeNM_fw1200@2x.png"
-          alt=""
-        />
-        <div class="title">青岛格林维尔环保技术有限公司</div>
-        <span class="company_one-number">03</span>
-        <div class="des">
-          青岛格林维尔环保技术有限公司，主营信息系统集成服务、云计算装备技术服务、智能控制系统集成、新兴能源技术研发等...
-        </div>
-        <div class="phone">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
-          <span class="phone_des">联系方式：</span>
-          <span>{{ data_list[2].contactPhone }}</span>
-        </div>
-        <div class="classification">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 60@2x.png" alt="" />
-          <span class="classification_des">主营产品：</span>
-          <span>技术咨询、技术服务、技术开发...</span>
-        </div>
-        <div class="honor">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 61@2x.png" alt="" />
-          <span class="honor_des">荣誉奖项：</span>
-          <span>先进企业、先进个人、先进技术...</span>
-        </div>
-        <button class="see_more">查看更多>></button>
-      </div>
-      <div class="company_three companyFlex_one">
-        <img
-          src="http://114.116.21.170:9000/photo/enterprise-storm/250e2e981b27b0dc2abc26a0d8fe1c13623fa8656c556-YlG1Qm_fw1200@2x.png"
-          alt=""
-        />
-        <div class="title">同方工业青岛分公司</div>
-        <span class="company_one-number">04</span>
-        <div class="des">
-          同方工业青岛分公司，主营信息系统集成服务、云计算装备技术服务、智能控制系统集成、新兴能源技术研发等...
-        </div>
-        <div class="phone">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
-          <span class="phone_des">联系方式：</span>
-          <span>{{ data_list[3].contactPhone }}</span>
-        </div>
-        <div class="classification">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 60@2x.png" alt="" />
-          <span class="classification_des">主营产品：</span>
-          <span>技术咨询、技术服务、技术开发......</span>
-        </div>
-        <div class="honor">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 61@2x.png" alt="" />
-          <span class="honor_des">荣誉奖项：</span>
-          <span>先进企业、先进个人、先进技术...</span>
-        </div>
-        <button class="see_more">查看更多>></button>
+        <button
+          class="see_more"
+          @click="$router.push(`/enterprise-storm/more-enterprise/${item.companyId}`)"
+        >
+          查看更多>>
+        </button>
       </div>
     </div>
     <button class="see_more_last">查看更多</button>
@@ -190,7 +140,9 @@ export default {
         resource: '',
         desc: ''
       },
-      data_list: []
+      data_list: [],
+      product: '',
+      product1: ''
     };
   },
 
@@ -198,6 +150,7 @@ export default {
     getEnterpriceAll().then(res => {
       console.log(res);
       this.data_list = res.rows;
+      // data_list[1].productAndServices[0].productServiceTitle
     });
   },
 
@@ -205,7 +158,13 @@ export default {
     new DevicePixelRatio().init();
   },
 
-  methods: {}
+  methods: {
+    joinStr(idx, met) {
+      return this.data_list[idx]?.productAndServices
+        ?.map(item => item.productServiceTitle)
+        .join(met);
+    }
+  }
 };
 </script>
 
@@ -553,6 +512,11 @@ export default {
     margin-top: 20px;
     margin-left: 20px;
     z-index: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /*想省略几行就写几*/
+    -webkit-box-orient: vertical;
   }
   & > .phone {
     margin-top: 22px;
@@ -607,6 +571,7 @@ export default {
     font-family: Microsoft YaHei-Regular;
     margin-top: 22px;
     margin-left: 20px;
+    cursor: pointer;
   }
 }
 
@@ -615,6 +580,33 @@ export default {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /*想省略几行就写几*/
+  -webkit-box-orient: vertical;
+}
+.classification_content {
+  width: 236px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /*想省略几行就写几*/
+  -webkit-box-orient: vertical;
+}
+.sl3 {
+  display: block;
+  height: 62px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /*想省略几行就写几*/
   -webkit-box-orient: vertical;
 }
 </style>

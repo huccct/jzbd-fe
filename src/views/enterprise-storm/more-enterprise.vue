@@ -1,18 +1,19 @@
 <template>
   <div class="box">
     <div class="slider-box">
-      <img :src="data_list.companyImg" alt="组1" />
+      <img :src="data_list.companyImg" alt="组1" style="width: 100%; height: 100%" />
     </div>
     <div class="m-content">
       <span class="title">{{ data_list.companyCname }}</span
       ><br />
       <span class="content_one">{{ data_list.companyEname }}</span>
       <span class="content_two">
-        {{ data_list.headline }}
-        <!-- 致力于成为精密仪器行业<br />发展的
-        <span class="content_two-1">领军企业</span> -->
+        {{ data_list.headline?.slice(0, 14)
+        }}<span style="color: #00a6ff">{{ data_list.headline?.slice(-4) }}</span>
       </span>
-      <el-button type="primary" class="head-content_contactus">联系我们</el-button>
+      <el-button type="primary" class="head-content_contactus" @click="$router.push(`/contact`)"
+        >联系我们</el-button
+      >
     </div>
     <div class="bg-box">
       <div class="introduce">
@@ -22,36 +23,55 @@
           <span>About us</span><br />
           <div>关于我们</div>
           <br />
-          <div>{{ data_list.aboutTitle }}</div>
-          <br />
-          <div>
-            {{ data_list.aboutMessage }}
+          <div class="title">{{ data_list.aboutTitle }}</div>
+          <div v-if="cur === 0" class="content_main">
+            <br />
+            <div class="des">
+              {{ data_list.aboutMessage }}
+            </div>
+          </div>
+          <div v-if="cur === 1" class="content_main">
+            <br />
+            <div class="des">
+              {{ data_list.honorMessage }}
+            </div>
+          </div>
+          <div v-if="cur === 2" class="content_main">
+            <br />
+            <div class="des">
+              {{ data_list.cultureMessage }}
+            </div>
           </div>
           <div class="data">
             <div class="profile">
               <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 94@2x.png" alt="" />
-              <span>企业简介</span>
-              <span>Introduction</span>
+              <span :style="{ color: cur === 0 ? '#07a9ff' : '' }">企业简介</span>
+              <span :style="{ color: cur === 0 ? '#07a9ff' : '' }">Introduction</span>
             </div>
             <div class="honor">
               <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 95@2x.png" alt="" />
-              <span>荣誉资质</span>
-              <span>Honorary</span>
+              <span :style="{ color: cur === 1 ? '#07a9ff' : '' }">荣誉资质</span>
+              <span :style="{ color: cur === 1 ? '#07a9ff' : '' }">Honorary</span>
             </div>
             <div class="honor">
               <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 96@2x.png" alt="" />
-              <span>企业文化</span>
-              <span>Culture</span>
+              <span :style="{ color: cur === 2 ? '#07a9ff' : '' }">企业文化</span>
+              <span :style="{ color: cur === 2 ? '#07a9ff' : '' }">Culture</span>
             </div>
           </div>
           <br />
         </div>
         <div class="img">
           <div class="icon">
-            <el-button type="primary" class="icon-left" @click="prev()">
+            <el-button type="primary" class="icon-left" :disabled="cur === 0" @click="prev()">
               <img src="http://114.116.21.170:9000/photo/maker-port/left.png" alt="left" />
             </el-button>
-            <el-button type="primary" class="icon-right" @click="next()">
+            <el-button
+              type="primary"
+              class="icon-right"
+              :disabled="cur === src.length - 1"
+              @click="next()"
+            >
               <img src="http://114.116.21.170:9000/photo/maker-port/right.png" alt="right" />
             </el-button>
           </div>
@@ -61,9 +81,17 @@
             height="750px"
             arrow="never"
             indicator-position="none"
+            :loop="false"
+            :initial-index="cur"
+            :autoplay="false"
+            @change="carousel_change"
           >
             <el-carousel-item v-for="item in src" :key="item">
-              <img :src="item" :alt="item" style="height: 750px" />
+              <img
+                :src="item"
+                :alt="item"
+                style="height: 750px; border-radius: 40px 0px 0px 40px"
+              />
             </el-carousel-item>
           </el-carousel>
         </div>
@@ -76,7 +104,7 @@
         <span>Products and services</span><br />
         <div>产品与服务</div>
       </div>
-      <div class="product-details">
+      <div v-if="data_list.productAndServices" class="product-details">
         <div class="product-details_one left">
           <span>01</span>
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 124@2x.png" alt="" />
@@ -152,15 +180,8 @@ import { getEnterpriceOne } from '@/api/modules/enterprice';
 export default {
   data() {
     return {
-      src: [
-        'http://114.116.21.170:9000/photo/enterprise-storm/cd7b1847da60c59f8d2c84459b2613f93ae795f32b51f-7ShcoL_fw1200@2x.png',
-        'http://114.116.21.170:9000/photo/enterprise-storm/cd7b1847da60c59f8d2c84459b2613f93ae795f32b51f-7ShcoL_fw1200@2x.png'
-      ],
-      // src2: [
-      //   'http://114.116.21.170:9000/photo/maker-port/%E7%BB%842.png',
-      //   'http://114.116.21.170:9000/photo/maker-port/%E7%BB%843.png',
-      //   'http://114.116.21.170:9000/photo/maker-port/%E7%BB%844.png'
-      // ],
+      src: [],
+      cur: 0,
       prev() {
         this.$refs.img.prev();
       },
@@ -173,15 +194,25 @@ export default {
       next2() {
         this.$refs.img2.next();
       },
-      data_list: []
+      data_list: [],
+      nowData: []
     };
   },
-  async beforeCreate() {
+
+  async created() {
     //console.log(this.$route.params.id);
     await getEnterpriceOne(this.$route.params.id).then(res => {
-      // console.log(res);
       this.data_list = res.data;
+      this.src.push(this.data_list.aboutImg, this.data_list.cultureImg, this.data_list.honorImg);
+      console.log(this.data_list);
+
+      // this.src=this.data_list.map(item=>item)
     });
+  },
+  methods: {
+    carousel_change(e) {
+      this.cur = e;
+    }
   }
 };
 </script>
@@ -251,8 +282,8 @@ export default {
   position: relative;
   z-index: -1;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 1920px;
+  height: 1000px;
 }
 .bg-box {
   background: #eff8ff;
@@ -273,7 +304,7 @@ export default {
     margin-top: 89px;
     // margin-left: -30px;
 
-    div {
+    & > div {
       margin-top: 30px;
     }
     span:nth-child(1) {
@@ -302,14 +333,7 @@ export default {
       line-height: 50px;
     }
 
-    div:nth-child(7) {
-      margin-top: 10px;
-      color: #333333;
-      font-size: 24px;
-      font-weight: bolder;
-    }
-
-    div:nth-child(9) {
+    & .des {
       width: 648px;
       height: 184px;
       color: #666666;
@@ -318,7 +342,8 @@ export default {
       line-height: 26px;
       font-family: Microsoft YaHei-Regular, Microsoft YaHei;
     }
-    .data {
+    & .data {
+      margin-top: 76px;
       display: flex;
       justify-content: space-between;
       :nth-child(1) {
@@ -329,7 +354,7 @@ export default {
           margin-left: 5px;
           width: 80px;
           height: 20px;
-          color: #00a6ff;
+          color: #333333;
           font-weight: 700;
         }
         :nth-child(3) {
@@ -337,7 +362,7 @@ export default {
           height: 14px;
           font-size: 14px;
           font-weight: 700;
-          color: #00a6ff;
+          color: #333333;
           line-height: 14px;
         }
       }
@@ -388,6 +413,15 @@ export default {
         }
       }
     }
+    & > .title {
+      width: 310px;
+      height: 24px;
+      font-size: 24px;
+      font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+      font-weight: 700;
+      color: #333333;
+      line-height: 24px;
+    }
   }
 
   .img {
@@ -412,8 +446,8 @@ export default {
       .icon-left {
         width: 50%;
         height: 80px;
-        background: #00a6ff;
-        opacity: 0.4;
+        // background: #00a6ff;
+        // opacity: 0.4;
         border-radius: 50px 0 0 50px;
         margin-right: -10px;
       }
@@ -421,7 +455,7 @@ export default {
       .icon-right {
         width: 50%;
         height: 80px;
-        background: #00a6ff;
+        // background: #00a6ff;
         border-radius: 0 50px 50px 0;
         margin-left: 10px;
       }
@@ -441,7 +475,8 @@ export default {
       font-size: 30px;
       font-family: DIN-Bold-Regular, DIN-Bold;
       font-weight: 400;
-      color: #007dc0;
+      // color: #007dc0;
+      color: #333333;
     }
     & > span:nth-child(2) {
       width: 80px;
