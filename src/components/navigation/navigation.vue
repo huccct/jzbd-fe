@@ -2,8 +2,8 @@
  * @Description: Stay hungry，Stay foolish
  * @Author: Huccct
  * @Date: 2023-04-12 09:59:54
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-04-24 21:31:53
+ * @LastEditors: YuShuXiao 949516815@qq.com
+ * @LastEditTime: 2023-04-25 21:46:25
 -->
 <template>
   <div class="box">
@@ -12,7 +12,7 @@
     </div>
     <div class="right">
       <el-menu
-        :default-active="$route.path"
+        :default-active="'/' + this.$route.path.split('/')[1]"
         class="el-menu-demo"
         mode="horizontal"
         text-color="#ccc"
