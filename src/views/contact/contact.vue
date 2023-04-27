@@ -1,7 +1,7 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-04-21 18:30:25
+ * @LastEditTime: 2023-04-27 20:39:28
  * @LastEditors: 袁十一
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
@@ -47,7 +47,7 @@
       </div>
       <div class="contract-map">
         <img
-          src="https://restapi.amap.com/v3/staticmap?location=120.095191,36.165253&zoom=12&size=1280%2A484&markers=-1,http://114.116.21.170:9000/photo/contract/location-2.png,0:120.095191,36.165253&key=900b95537e99785a8b0d415ee9160fd1"
+          src="https://restapi.amap.com/v3/staticmap?location=120.097285,36.140070&zoom=12&size=1280%2A484&markers=-1,http://114.116.21.170:9000/photo/contract/location-2.png,0:120.095191,36.165253&key=900b95537e99785a8b0d415ee9160fd1"
           alt=""
         />
       </div>
@@ -59,7 +59,7 @@ export default {
   data() {
     return {
       contractText: {
-        address: '胶州上合示范区长江路1216号',
+        address: '山东省青岛市胶州上合示范区闽江路60号',
         person: '黄晓娜',
         phone: '0532-85279551',
         email: 'shqycxcyy@163.com'
