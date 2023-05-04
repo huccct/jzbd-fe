@@ -165,7 +165,6 @@ export default {
     position: absolute;
     top: 0px;
     width: 100%;
-    min-width: 1900px;
     img {
       width: 100%;
     }
@@ -174,7 +173,6 @@ export default {
     position: absolute;
     top: 99px;
     width: 100%;
-    min-width: 1900px;
     img {
       width: 100%;
     }

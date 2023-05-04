@@ -242,7 +242,6 @@ export default {
   async created() {
     await this.$store.dispatch('home/getNewsPolicy');
     this.PolicyNews = this.$store.state.home.PolicyNews;
-    console.log(this.PolicyNews);
     this.$nextTick(() => {
       this.$refs.cilist[0].className = 'p-cidiv p-cidivadd';
     });
@@ -314,11 +313,15 @@ export default {
     width: 100%;
     // min-width: 1900px;
   }
-
+  .el-button--primary {
+    width: 280px !important;
+    height: 46px !important;
+    font-size: 26px;
+  }
   .h-btn {
     position: absolute;
-    width: 194px !important;
-    height: 34px !important;
+    width: 252px !important;
+    height: 44px !important;
     top: 350px;
     left: 320px;
     z-index: 2;

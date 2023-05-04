@@ -4,7 +4,7 @@
       <img src="http://114.116.21.170:9000/photo/maker-port/%E7%BB%841.png" alt="组1" />
     </div>
     <div class="m-btn">
-      <span class="m-btn-ex"> 大众创业、万众创新 </span>
+      <el-button type="primary"> 大众创业、万众创新 </el-button>
     </div>
     <div class="m-content">
       <span class="title">厚德创客港</span><br />
@@ -268,15 +268,17 @@ export default {
   padding: 0;
 }
 
+.el-button--primary {
+  width: 279px;
+  height: 46px;
+  font-size: 26px;
+}
 .m-btn {
   position: absolute;
-  top: 253px;
+  top: 242px;
   left: 320px;
-  width: 194px;
-  height: 34px;
-  background: #ecf9ff;
-  border-radius: 0 0 0 0;
-  opacity: 1;
+  width: 279px;
+  height: 46px;
   text-align: center;
 
   .m-btn-ex {
@@ -296,15 +298,7 @@ export default {
   .btn-us {
     width: 210px;
     height: 58px;
-    background: #00a6ff;
-    border-radius: 4px 4px 4px 4px;
-    opacity: 1;
-    font-size: 16px;
-    font-family: Microsoft YaHei-Bold, Microsoft YaHei;
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 16px;
-    letter-spacing: 2px;
+    font-size: 22px;
   }
 }
 

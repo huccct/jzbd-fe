@@ -362,7 +362,6 @@ export default {
 
 <style lang="scss" scoped>
 .box {
-  min-width: 1900px;
   width: 100%;
   height: 2997px;
   padding: 0;

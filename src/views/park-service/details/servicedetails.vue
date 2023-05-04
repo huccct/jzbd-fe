@@ -43,8 +43,7 @@
       <div class="pagination">
         <el-pagination
           background
-          :page-size="pageSize"
-          layout=" prev, pager, next, jumper"
+          layout="prev, pager, next"
           :total="total"
           @current-change="handleCurrentChange"
         >
@@ -111,7 +110,6 @@ export default {
     position: absolute;
     top: 0px;
     width: 100%;
-    min-width: 1900px;
     img {
       width: 100%;
     }
@@ -120,7 +118,6 @@ export default {
     position: absolute;
     top: 99px;
     width: 100%;
-    min-width: 1900px;
     img {
       width: 100%;
     }
@@ -208,34 +205,5 @@ export default {
   width: 594px;
   margin: 0 auto;
   height: 160px;
-  &::v-deep .el-pagination.is-background .el-pager li:not(.disabled).active {
-    background-color: #0e7fdb;
-  }
-  &::v-deep .el-pager li {
-    background-color: #fff;
-    font-size: 15px;
-    border: 1px solid #666666 !important;
-    border-radius: 8px 8px 8px 8px !important;
-    line-height: 26px;
-  }
-  &::v-deep .btn-next {
-    background-color: #fff;
-    color: #666666;
-    font-size: 15px;
-    border: 1px solid #666666;
-    border-radius: 8px 8px 8px 8px;
-  }
-  &::v-deep .btn-prev {
-    background-color: #fff;
-    color: #666666;
-    font-size: 15px;
-    border: 1px solid #666666;
-    border-radius: 8px 8px 8px 8px;
-  }
-  &::v-deep .el-pagination {
-    font-size: 20px;
-    font-family: Microsoft YaHei-Regular, Microsoft YaHei;
-    font-weight: 400;
-  }
 }
 </style>

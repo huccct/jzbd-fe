@@ -2,8 +2,8 @@
  * @Description: Stay hungry，Stay foolish
  * @Author: Huccct
  * @Date: 2023-04-12 09:59:54
- * @LastEditors: YuShuXiao 949516815@qq.com
- * @LastEditTime: 2023-04-25 21:46:25
+ * @LastEditors: Huccct
+ * @LastEditTime: 2023-05-04 08:30:31
 -->
 <template>
   <div class="box">
@@ -39,12 +39,6 @@ export default {
     return {
       activeIndex: '/'
     };
-  },
-  created() {
-    //生命周期获取index并赋值
-  },
-  mounted() {
-    console.log(this.$route.path);
   },
   methods: {
     handleSelect(key, keyPath) {
