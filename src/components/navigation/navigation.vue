@@ -63,8 +63,12 @@ export default {
 .left {
   display: flex;
   align-items: center;
-  padding-top: 18px;
+  padding-top: 82px;
   padding-left: 320px;
+  img {
+    width: 130px;
+    height: 130px;
+  }
 }
 
 .right {

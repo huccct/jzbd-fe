@@ -9,7 +9,7 @@
         <div class="h-text1"><span>产业优惠政策</span></div>
         <div class="l"></div>
         <div class="h-text2"><span>商务贸易·现代服务·工业制造·持股平台</span></div>
-        <div class="h-btn" @click="homemore('industry')">
+        <div class="h-btn" @click="scrollToAnchor('industry')">
           <span>更多产业</span>
           <div class="h-btn-down">
             <img src="http://114.116.21.170:9000/photo/cooperation4.png" alt="" />
@@ -23,7 +23,7 @@
         <div class="h-text1"><span>园区历史资料</span></div>
         <div class="l"></div>
         <div class="h-text2"><span>发展情况·上市扶持·总部经济·产业扶持</span></div>
-        <div class="h-btn" @click="homemore('details')">
+        <div class="h-btn" @click="scrollToAnchor('material')">
           <span>更多资料</span>
           <div class="h-btn-down">
             <img src="http://114.116.21.170:9000/photo/cooperation4.png" alt="" />
@@ -33,7 +33,7 @@
     </div>
     <div class="data">
       <div class="d-head">
-        <span>01</span>
+        <span id="material">01</span>
         <div class="l"></div>
         <span>Parkinformation</span>
         <div class="d-title">
@@ -70,7 +70,7 @@
     </div>
     <div class="message">
       <div class="d-head">
-        <span>02</span>
+        <span id="industry">02</span>
         <div class="l"></div>
         <span>Service content of the park</span>
         <div class="d-title">
@@ -252,12 +252,10 @@ export default {
       //获取操作元素最顶端到页面顶端的垂直距离
       this.scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
     },
-    homemore(val) {
-      if (val == 'industry') {
-        console.log('');
-      } else {
-        console.log(111);
-        this.$router.push('/park_information/park_information/t/1');
+    scrollToAnchor(anchorId) {
+      const anchorElement = document.getElementById(anchorId);
+      if (anchorElement) {
+        anchorElement.scrollIntoView({ behavior: 'smooth' });
       }
     },
     changepage(val) {

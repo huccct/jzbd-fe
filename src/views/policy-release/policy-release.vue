@@ -7,7 +7,7 @@
           为助推上合新区高质量发展，8月2日下午，海关税务支持上合新区发展政策发布暨战略合作协议签约仪式
           在上合国家客厅举行。在发布会上，青岛海关发布支持上合新区发展的“532工程”，旨在将上合 ...
         </div>
-        <div class="detailBtn">查看详情</div>
+        <div class="detailBtn" @click="toContact">联系我们</div>
       </div>
     </div>
     <div class="policeInfo">
@@ -195,6 +195,9 @@ export default {
     console.log(this.policeInfoList);
   },
   methods: {
+    toContact() {
+      this.$router.push('/contact');
+    },
     async onSubmit() {
       const { code } = await uploadCompany({
         companyName: this.form.enterpriseName,
@@ -210,7 +213,7 @@ export default {
           this.count--;
           if (this.count <= 0) {
             clearInterval(timer);
-            this.$router.push('/');
+            window.location.reload();
           }
         }, 1000);
       }
@@ -355,6 +358,7 @@ contain
         line-height: 30px;
       }
       & > .detailBtn {
+        cursor: pointer;
         margin-top: 144px;
         display: flex;
         align-items: center;
