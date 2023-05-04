@@ -1,8 +1,8 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-04-21 18:30:25
- * @LastEditors: 袁十一
+ * @LastEditTime: 2023-05-04 10:39:53
+ * @LastEditors: Huccct
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
  * 初心不变，意志坚定
@@ -59,7 +59,7 @@ export default {
   data() {
     return {
       contractText: {
-        address: '胶州上合示范区长江路1216号',
+        address: '山东省青岛市胶州上合示范区闽江路60号',
         person: '黄晓娜',
         phone: '0532-85279551',
         email: 'shqycxcyy@163.com'

@@ -50,6 +50,7 @@ export default {
 .main {
   margin-top: 50px;
   height: 2011px;
+  background-image: none !important;
 
   & .article {
     margin-top: 52px;
@@ -57,6 +58,12 @@ export default {
     font-family: Microsoft YaHei-Regular, Microsoft YaHei;
     font-weight: 400;
     color: #333333;
+    &::v-deep p {
+      margin: 10px 0;
+      color: #333333;
+
+      font-size: 28px;
+    }
   }
   & .title {
     font-size: 30px;

@@ -127,6 +127,7 @@ li {
   height: 2189px;
   margin-top: 80px;
   & > .list_item {
+    cursor: pointer;
     border-bottom: 2px solid #f2f2f2;
     height: 195px;
     display: flex;

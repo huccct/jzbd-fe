@@ -2,8 +2,8 @@
  * @Description: Stay hungry，Stay foolish
  * @Author: Huccct
  * @Date: 2023-04-12 09:59:54
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-04-24 21:31:53
+ * @LastEditors: Huccct
+ * @LastEditTime: 2023-05-04 08:30:31
 -->
 <template>
   <div class="box">
@@ -12,7 +12,7 @@
     </div>
     <div class="right">
       <el-menu
-        :default-active="$route.path"
+        :default-active="'/' + this.$route.path.split('/')[1]"
         class="el-menu-demo"
         mode="horizontal"
         text-color="#ccc"
@@ -39,12 +39,6 @@ export default {
     return {
       activeIndex: '/'
     };
-  },
-  created() {
-    //生命周期获取index并赋值
-  },
-  mounted() {
-    console.log(this.$route.path);
   },
   methods: {
     handleSelect(key, keyPath) {
@@ -74,6 +68,8 @@ export default {
 }
 
 .right {
+  width: 1078px;
+  padding-right: 220px;
   width: 978px;
   padding-right: 20px;
   padding-top: 23px;

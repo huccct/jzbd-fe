@@ -17,9 +17,11 @@
           >胶州市正加快建设上合组织地方经贸合作示范区，全力打造“一带一路”国际合作新平台，
           把胶州历史性地推到国家对外开放的战略前沿。</span
         >
-        <el-button type="primary" class="head-content_contactus" @click="$router.push('/contact')"
-          >联系我们</el-button
-        >
+        <div class="m-btn-us">
+          <el-button class="btn-us" type="primary" @click="$router.push(`/contact`)"
+            >联系我们</el-button
+          >
+        </div>
       </div>
     </div>
     <div>
@@ -38,20 +40,17 @@
               />
             </div>
             <div class="enterprise-message">
-              <span class="name">青岛联盈创科精密仪器有限公司</span>
+              <span class="name">{{ data_list[0]?.companyCname }}</span>
               <span class="number">01</span>
               <img src="https://s1.ax1x.com/2023/04/13/ppxwB8g.png" alt="" />
-              <span
-                >青岛联盈创科精密仪器有限公司，主营绘图、计算及
-                测量仪器制造，技术服务、技术开发、技术咨询等！</span
-              >
+              <span id="aboutMessage_first">{{ data_list[0]?.aboutMessage }}</span>
             </div>
             <div class="phone">
               <img src="http://114.116.21.170:9000/photo/enterprise-storm/电话@2x.png" alt="" />
             </div>
             <div class="phonenum">
               <span>联系方式</span>
-              <span>0532-123123</span>
+              <span>{{ data_list[0]?.contactPhone }}</span>
             </div>
             <div class="border"></div>
             <div class="classification">
@@ -62,11 +61,7 @@
             </div>
             <div class="project">
               <span>主营产品</span>
-              <span
-                >计算及测量仪器制造；计算及测量仪器销售； 机械设备销售；<br />
-                机械设备研发；<br />
-                ...</span
-              >
+              <span style="margin-left: 887px" class="sl3" v-html="joinStr(0, ';<br/>')"> </span>
             </div>
             <div class="border1"></div>
             <div class="trophy">
@@ -74,17 +69,11 @@
             </div>
             <div class="honor">
               <span>荣誉奖项</span>
-              <span
-                >年度优秀企业；<br />
-                先进技术；<br />
-                胶州市龙头企业；<br />
-                先进团队奖；<br />
-                ...</span
-              >
+              <span v-html="data_list[0]?.honorMessage.split('；').join(';<br/>')"></span>
             </div>
             <button
               class="white-outline-button"
-              @click="$router.push(`/enterprise-storm/more-enterprise`)"
+              @click="$router.push(`/enterprise-storm/more-enterprise/1`)"
             >
               查看更多>>
             </button>
@@ -94,86 +83,38 @@
       <!-- <div style="margin-bottom: 200px"></div> -->
     </div>
     <div class="company">
-      <div class="company_one companyFlex_one">
-        <img
-          src="http://114.116.21.170:9000/photo/enterprise-storm/b85f95bceb38f3b6e19d24d403fc4579c71de2a11a42b6-QNYxT0@2x.png"
-          alt=""
-        />
-        <div class="title">青岛能蜂电气有限公司</div>
+      <div
+        v-for="(item, index) in data_list.slice(1)"
+        :key="index"
+        class="company_one companyFlex_one"
+      >
+        <img :src="item.companyImg" alt="" />
+        <div class="title">{{ item.companyCname }}</div>
         <div class="des">
-          青岛能蜂电气有限公司，主营信息系统集成服务、云计算装备技术服务、智能控制系统集成、新兴能源技术研发等...
+          {{ item.aboutMessage }}
         </div>
-        <span class="company_one-number">02</span>
+        <span class="company_one-number">{{ '0' + (index + 2) }}</span>
         <div class="phone">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
           <span class="phone_des">联系方式：</span>
-          <span>0532-1231234</span>
+          <span>{{ data_list[1].contactPhone }}</span>
         </div>
         <div class="classification">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 60@2x.png" alt="" />
           <span class="classification_des">主营产品：</span>
-          <span>技术咨询、技术服务、技术开发...</span>
+          <span class="classification_content">{{ joinStr(index + 1, '、') }}</span>
         </div>
         <div class="honor">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 61@2x.png" alt="" />
           <span class="honor_des">荣誉奖项：</span>
-          <span>先进企业、先进个人、先进技术...</span>
+          <span class="classification_content">{{ data_list[1].honorMessage }}</span>
         </div>
-        <button class="see_more">查看更多>></button>
-      </div>
-      <div class="company_two companyFlex_one">
-        <img
-          src="http://114.116.21.170:9000/photo/enterprise-storm/a9fe24f218db5f518329ac5c27bf18396d4b4af569a5a-7kTeNM_fw1200@2x.png"
-          alt=""
-        />
-        <div class="title">青岛格林维尔环保技术有限公司</div>
-        <span class="company_one-number">03</span>
-        <div class="des">
-          青岛格林维尔环保技术有限公司，主营信息系统集成服务、云计算装备技术服务、智能控制系统集成、新兴能源技术研发等...
-        </div>
-        <div class="phone">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
-          <span class="phone_des">联系方式：</span>
-          <span>0532-1231234</span>
-        </div>
-        <div class="classification">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 60@2x.png" alt="" />
-          <span class="classification_des">主营产品：</span>
-          <span>技术咨询、技术服务、技术开发...</span>
-        </div>
-        <div class="honor">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 61@2x.png" alt="" />
-          <span class="honor_des">荣誉奖项：</span>
-          <span>先进企业、先进个人、先进技术...</span>
-        </div>
-        <button class="see_more">查看更多>></button>
-      </div>
-      <div class="company_three companyFlex_one">
-        <img
-          src="http://114.116.21.170:9000/photo/enterprise-storm/250e2e981b27b0dc2abc26a0d8fe1c13623fa8656c556-YlG1Qm_fw1200@2x.png"
-          alt=""
-        />
-        <div class="title">同方工业青岛分公司</div>
-        <span class="company_one-number">04</span>
-        <div class="des">
-          同方工业青岛分公司，主营信息系统集成服务、云计算装备技术服务、智能控制系统集成、新兴能源技术研发等...
-        </div>
-        <div class="phone">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
-          <span class="phone_des">联系方式：</span>
-          <span>0532-1231234</span>
-        </div>
-        <div class="classification">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 60@2x.png" alt="" />
-          <span class="classification_des">主营产品：</span>
-          <span>技术咨询、技术服务、技术开发......</span>
-        </div>
-        <div class="honor">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 61@2x.png" alt="" />
-          <span class="honor_des">荣誉奖项：</span>
-          <span>先进企业、先进个人、先进技术...</span>
-        </div>
-        <button class="see_more">查看更多>></button>
+        <button
+          class="see_more"
+          @click="$router.push(`/enterprise-storm/more-enterprise/${item.companyId}`)"
+        >
+          查看更多>>
+        </button>
       </div>
     </div>
     <button class="see_more_last">查看更多</button>
@@ -181,6 +122,7 @@
 </template>
 
 <script>
+import { getEnterpriceAll } from '@/api/modules/enterprice';
 import DevicePixelRatio from '@/utils/devicePixelRatio';
 export default {
   name: 'JzbdFeEnterpriseStorm',
@@ -197,17 +139,32 @@ export default {
         type: [],
         resource: '',
         desc: ''
-      }
+      },
+      data_list: [],
+      product: '',
+      product1: ''
     };
   },
 
-  mounted() {},
+  mounted() {
+    getEnterpriceAll().then(res => {
+      console.log(res);
+      this.data_list = res.rows;
+      // data_list[1].productAndServices[0].productServiceTitle
+    });
+  },
 
   created() {
     new DevicePixelRatio().init();
   },
 
-  methods: {}
+  methods: {
+    joinStr(idx, met) {
+      return this.data_list[idx]?.productAndServices
+        ?.map(item => item.productServiceTitle)
+        .join(met);
+    }
+  }
 };
 </script>
 
@@ -215,6 +172,7 @@ export default {
 .enterprise-box {
   position: relative;
   width: 100%;
+  margin-top: -65px;
 }
 .enterprise-elheader {
   display: block;
@@ -225,7 +183,6 @@ export default {
   z-index: -1;
   top: 0;
   left: 0;
-  // min-width: 1900px;
   width: 100%;
   height: 1000px;
   img {
@@ -238,11 +195,11 @@ export default {
   position: absolute;
   top: 271px;
   left: 320px;
-  :nth-child(1) {
+  span:nth-child(1) {
+    color: #333333;
     font-size: 24px;
 
     font-family: Microsoft YaHei-Bold;
-    // letter-spacing: 12px;
   }
   :nth-child(2) {
     padding-top: 27px;
@@ -251,7 +208,6 @@ export default {
     font-size: 66px;
     font-weight: 700;
     font-family: Microsoft YaHei-Bold;
-    // letter-spacing: 12px;
   }
   :nth-child(3) {
     padding-top: 36px;
@@ -261,18 +217,18 @@ export default {
     font-size: 24px;
     font-weight: 400;
     font-family: Microsoft YaHei-Regular;
-    // letter-spacing: 12px;
   }
-  .head-content_contactus {
+  .m-btn-us {
     margin-top: 87px;
-    color: white;
-    height: 58px;
-    width: 210px;
-    background-color: #00a6ff;
-    border: none;
-    font-size: 24px;
-    font-weight: 400;
-    font-family: Microsoft YaHei-Regular;
+    .btn-us {
+      width: 210px;
+      height: 58px;
+      font-size: 24px;
+      font-weight: 400;
+    }
+  }
+  span:nth-child(4) {
+    color: #fff;
   }
 }
 .enterprise-content_one {
@@ -481,12 +437,12 @@ export default {
   }
 }
 .company {
-  padding-left: 7px;
-  margin: 0 auto;
+  margin-left: 320px;
   width: 1280px;
   margin-top: 25px;
   margin-bottom: 240px;
   display: flex;
+  align-content: space-between;
 }
 .see_more_last {
   width: 300px;
@@ -521,7 +477,7 @@ export default {
   display: flex;
   flex-direction: column;
   & img {
-    width: 100%;
+    width: 410px;
     object-fit: cover;
   }
   & > .title {
@@ -537,7 +493,7 @@ export default {
   & > .company_one-number {
     position: absolute;
     margin-top: 300px;
-    margin-left: 290px;
+    margin-left: 302px;
     width: 112px;
     height: 96px;
     font-size: 90px;
@@ -556,6 +512,11 @@ export default {
     margin-top: 20px;
     margin-left: 20px;
     z-index: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /*想省略几行就写几*/
+    -webkit-box-orient: vertical;
   }
   & > .phone {
     margin-top: 22px;
@@ -610,6 +571,42 @@ export default {
     font-family: Microsoft YaHei-Regular;
     margin-top: 22px;
     margin-left: 20px;
+    cursor: pointer;
   }
+}
+
+#aboutMessage_first {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /*想省略几行就写几*/
+  -webkit-box-orient: vertical;
+}
+.classification_content {
+  width: 236px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /*想省略几行就写几*/
+  -webkit-box-orient: vertical;
+}
+.sl3 {
+  display: block;
+  height: 62px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /*想省略几行就写几*/
+  -webkit-box-orient: vertical;
 }
 </style>
