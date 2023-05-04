@@ -23,7 +23,7 @@
         <el-breadcrumb class="el-breadcrumb" separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item :to="{ path: '/service' }">园区服务</el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: '/service' }">新闻公告</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/service/list' }">新闻公告</el-breadcrumb-item>
           <el-breadcrumb-item>详情</el-breadcrumb-item>
         </el-breadcrumb>
         <hr />
