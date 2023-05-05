@@ -8,7 +8,7 @@
   <div class="service-box">
     <div class="service-elheader">
       <div class="service-sliderbox">
-        <img src="http://114.116.21.170:9000/photo/service/%E7%BB%84%2075.png" alt="" />
+        <img src="../../assets/our-service/bg.png" alt="" />
       </div>
       <div class="head-content">
         <span>OUR SERVICE</span>

@@ -8,7 +8,7 @@
   <div class="enterprise-box">
     <div class="enterprise-elheader">
       <div class="enterprise-sliderbox">
-        <img src="http://114.116.21.170:9000/photo/enterprise-storm/%E7%BB%84%2084.png" alt="" />
+        <img src="../../assets/enterprise-storm/bg.png" alt="" />
       </div>
       <div class="head-content">
         <span>CORPORATE STYLE</span>
@@ -196,7 +196,7 @@ export default {
   top: 271px;
   left: 320px;
   span:nth-child(1) {
-    color: #333333;
+    color: #fff;
     font-size: 24px;
 
     font-family: Microsoft YaHei-Bold;
@@ -204,7 +204,7 @@ export default {
   :nth-child(2) {
     padding-top: 27px;
     display: block;
-    color: #333333;
+    color: #fff;
     font-size: 66px;
     font-weight: 700;
     font-family: Microsoft YaHei-Bold;
@@ -213,7 +213,7 @@ export default {
     padding-top: 36px;
     display: block;
     width: 676px;
-    color: #666666;
+    color: #fff;
     font-size: 24px;
     font-weight: 400;
     font-family: Microsoft YaHei-Regular;

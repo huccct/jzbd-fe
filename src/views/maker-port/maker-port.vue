@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="slider-box">
-      <img src="http://114.116.21.170:9000/photo/maker-port/%E7%BB%841.png" alt="组1" />
+      <img src="../../assets/make-port/bg.png" alt="组1" />
     </div>
     <div class="m-btn">
       <el-button type="primary"> 大众创业、万众创新 </el-button>
@@ -308,7 +308,7 @@ export default {
   left: 320px;
 
   .title {
-    color: #333333;
+    color: #fff;
     width: 378px;
     height: 66px;
     font-size: 66px;
@@ -324,7 +324,7 @@ export default {
     font-size: 18px;
     font-family: Microsoft YaHei-Regular, Microsoft YaHei;
     font-weight: 400;
-    color: #999999;
+    color: #fff;
     position: absolute;
     padding-top: 30px;
   }
