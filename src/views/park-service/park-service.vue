@@ -237,12 +237,14 @@ export default {
   :nth-child(1) {
     font-size: 24px;
     font-family: Microsoft YaHei-Bold;
+    color: #ffffff;
+    font-weight: 700;
     // letter-spacing: 12px;
   }
   :nth-child(2) {
     padding-top: 27px;
     display: block;
-    color: #333333;
+    color: #ffffff;
     font-size: 66px;
     font-weight: 700;
     font-family: Microsoft YaHei-Bold;
@@ -252,7 +254,7 @@ export default {
     padding-top: 36px;
     display: block;
     width: 676px;
-    color: #666666;
+    color: #ffffff;
     font-size: 24px;
     font-weight: 400;
     font-family: Microsoft YaHei-Regular;
