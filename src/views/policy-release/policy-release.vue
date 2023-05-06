@@ -2,10 +2,11 @@
   <div class="policeRelease">
     <div class="top">
       <div class="textWrapped">
-        <div class="topTitle">上合新区发展新政</div>
+        <div class="tips">POLICY ANNOUNCEMENTS</div>
+        <div class="topTitle">政策发布</div>
         <div class="topDescription">
-          为助推上合新区高质量发展，8月2日下午，海关税务支持上合新区发展政策发布暨战略合作协议签约仪式
-          在上合国家客厅举行。在发布会上，青岛海关发布支持上合新区发展的“532工程”，旨在将上合 ...
+          发布企业相关政策信息，企业可第一时间查看政策信息，
+          可根据企业自身实际需求，自主查阅相关政策文件。
         </div>
         <div class="detailBtn" @click="toContact">联系我们</div>
       </div>
@@ -336,8 +337,16 @@ contain
     & > .textWrapped {
       // margin-top: 413px;
       // margin-left: 320px;
-      padding-top: 413px;
+      padding-top: 357px;
       padding-left: 320px;
+      & > .tips {
+        width: 276px;
+        height: 26px;
+        font-size: 20px;
+        font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+        font-weight: bold;
+        color: #ffffff;
+      }
       & > .topTitle {
         width: 620px;
         height: 87px;
@@ -345,17 +354,17 @@ contain
         font-family: Microsoft YaHei-Bold, Microsoft YaHei;
         font-weight: bold;
         color: #ffffff;
-        line-height: 27px;
         letter-spacing: 10px;
+        margin-top: 30px;
       }
       & > .topDescription {
-        width: 831px;
+        margin-top: 36px;
+        width: 450px;
         height: 54px;
         font-size: 18px;
         font-family: Microsoft YaHei-Regular, Microsoft YaHei;
         font-weight: 400;
         color: #ffffff;
-        line-height: 30px;
       }
       & > .detailBtn {
         cursor: pointer;
@@ -459,7 +468,7 @@ contain
       }
       & > .policeInfoBoxRg {
         cursor: pointer;
-        padding-left: 50px;
+        padding: 0 50px;
         display: flex;
         flex-direction: column;
         align-items: self-start;
@@ -472,8 +481,14 @@ contain
         opacity: 1;
 
         & > .top {
-          width: 415px;
-          height: 29px;
+          width: 100%;
+          word-break: break-all;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+          // height: 29px;
           font-size: 22px;
           font-family: Microsoft YaHei-Bold, Microsoft YaHei;
           font-weight: bold;

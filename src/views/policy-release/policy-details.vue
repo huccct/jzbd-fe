@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Author: YuShuXiao 949516815@qq.com
+ * @Date: 2023-04-21 23:03:17
+ * @LastEditors: YuShuXiao 949516815@qq.com
+ * @LastEditTime: 2023-05-06 18:23:03
+ * @FilePath: \jzbd-fe\src\views\policy-release\policy-details.vue
+-->
 <template>
   <div>
     <div class="bread">
@@ -15,11 +23,28 @@
       <div class="date">{{ detailsInfo.creatTime }}</div>
       <div class="article" v-html="detailsInfo.specificContent"></div>
     </div>
+    <div class="mediaList">
+      <div
+        v-for="(item, index) in detailsInfo.downloadAddress.split(',')"
+        :key="index"
+        class="mediaItem"
+        @click="downLoad"
+      >
+        <img
+          src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/附件-1.png"
+          alt=""
+        />
+        <div class="mediaDes">
+          <a :href="item" :download="filename(item)">{{ filename(item) }}</a>
+        </div>
+      </div>
+    </div>
     <div class="div" style="height: 60px"></div>
   </div>
 </template>
 <script>
 import { policyDetailInformation } from '@/api/modules/policy';
+import { extractFilename } from '@/utils/sizeConversion';
 export default {
   name: 'JzbdFeMorePoliciesDetails',
   components: {},
@@ -28,6 +53,11 @@ export default {
       artId: 0,
       detailsInfo: {}
     };
+  },
+  computed: {
+    filename() {
+      return url => extractFilename(url);
+    }
   },
   async created() {
     this.artId = this.$route.params.id;
@@ -40,6 +70,9 @@ export default {
     });
     this.detailsInfo = this.$store.state.policy.policyDetailInformation;
     console.log(this.detailsInfo);
+  },
+  methods: {
+    downLoad() {}
   }
 };
 </script>
@@ -49,7 +82,8 @@ export default {
 }
 .main {
   margin-top: 50px;
-  height: 2011px;
+  height: 1750px;
+  overflow-y: auto;
   background-image: none !important;
 
   & .article {
@@ -77,6 +111,32 @@ export default {
     font-family: Microsoft YaHei-Regular, Microsoft YaHei;
     font-weight: 400;
     color: #666666;
+  }
+}
+.mediaList {
+  margin: 50px 0;
+  & > .mediaItem {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    & > img {
+      width: 25px;
+      height: 22px;
+      object-fit: cover;
+    }
+    & > .mediaDes {
+      margin-left: 19px;
+      & > a {
+        font-size: 26px;
+        font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+        font-weight: 400;
+        color: #00a6ff;
+        text-decoration: none;
+      }
+    }
+    &:not(:first-child) {
+      margin-top: 28px;
+    }
   }
 }
 </style>

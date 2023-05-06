@@ -16,6 +16,7 @@
       </div>
     </div>
     <ul class="list_wrapped">
+      <div class="bg"></div>
       <li
         v-for="item in policeInfoList.rows"
         :key="item.policyId"
@@ -47,7 +48,7 @@ export default {
     return {
       iptVal: '',
       policeInfoList: [],
-      pageSize: 3
+      pageSize: 10
     };
   },
   computed: {
@@ -124,6 +125,7 @@ li {
   }
 }
 .list_wrapped {
+  position: relative;
   height: 2189px;
   margin-top: 80px;
   & > .list_item {
@@ -160,6 +162,18 @@ li {
     &:nth-child(1) ~ .list_item {
       margin-top: 20px;
     }
+  }
+  & .bg {
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('http://114.116.21.170:9000/photo/police/上合产业园网站_slices/112.png')
+      no-repeat;
+    background-position: bottom 235px right 0;
+    background-size: contain;
   }
 }
 .pagination {
