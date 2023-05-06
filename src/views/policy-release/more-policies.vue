@@ -11,42 +11,6 @@
 export default {
   name: 'JzbdFeMorePolicies',
   components: {}
-  // data() {
-  //   return {
-  //     iptVal: '',
-  //     policeInfoList: [],
-  //     pageSize: 3
-  //   };
-  // },
-  // computed: {
-  //   removeHtmlTags() {
-  //     return str => str.replace(/<[^>]*>/g, '');
-  //   }
-  // },
-  // async created() {
-  //   await this.$store.dispatch('policy/getPolicyInformation', {
-  //     pageNum: 1,
-  //     pageSize: this.pageSize
-  //   });
-  //   this.policeInfoList = this.$store.state.policy.PolicyInformation;
-  //   console.log(this.policeInfoList);
-  // },
-  // methods: {
-  //   async search() {
-  //     await this.$store.dispatch('policy/getPolicyInformation', {
-  //       policyTitle: this.iptVal
-  //     });
-  //     this.policeInfoList = this.$store.state.policy.PolicyInformation;
-  //   },
-  //   async handleCurrentChange(val) {
-  //     console.log(`当前页: ${val}`);
-  //     await this.$store.dispatch('policy/getPolicyInformation', {
-  //       pageNum: val,
-  //       pageSize: this.pageSize
-  //     });
-  //     this.policeInfoList = this.$store.state.policy.PolicyInformation;
-  //   }
-  // }
 };
 </script>
 <style lang="scss" scoped>
