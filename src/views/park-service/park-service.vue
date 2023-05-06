@@ -8,7 +8,7 @@
   <div class="service-box">
     <div class="service-elheader">
       <div class="service-sliderbox">
-        <img src="http://114.116.21.170:9000/photo/service/%E7%BB%84%2075.png" alt="" />
+        <img src="../../assets/our-service/bg.png" alt="" />
       </div>
       <div class="head-content">
         <span>OUR SERVICE</span>
@@ -237,12 +237,14 @@ export default {
   :nth-child(1) {
     font-size: 24px;
     font-family: Microsoft YaHei-Bold;
+    color: #ffffff;
+    font-weight: 700;
     // letter-spacing: 12px;
   }
   :nth-child(2) {
     padding-top: 27px;
     display: block;
-    color: #333333;
+    color: #ffffff;
     font-size: 66px;
     font-weight: 700;
     font-family: Microsoft YaHei-Bold;
@@ -252,7 +254,7 @@ export default {
     padding-top: 36px;
     display: block;
     width: 676px;
-    color: #666666;
+    color: #ffffff;
     font-size: 24px;
     font-weight: 400;
     font-family: Microsoft YaHei-Regular;
