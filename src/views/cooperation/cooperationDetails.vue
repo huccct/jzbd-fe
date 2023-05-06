@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <div class="si-content">
+    <div v-if="Object.keys(data_list).length" class="si-content">
       <div class="si-content-top">
         <img src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2079.png" alt="" />
         <el-breadcrumb class="el-breadcrumb">
@@ -41,38 +41,30 @@
         <div class="sic-middle-topic2">
           <span>来源：{{ data_list.Now.createBy != null ? data_list.Now.createBy : '未知' }}</span>
           <span>时间：{{ data_list.Now.createTime.slice(0, 10) }}</span>
-          <span>浏览量：{{ data_list.Now.parkInformationPageView }}</span>
+          <span
+            >浏览量：{{
+              data_list.Now.parkInformationPageView != null
+                ? data_list.Now.parkInformationPageView
+                : 0
+            }}</span
+          >
         </div>
         <hr style="margin-top: 22px" />
         <div class="sic-middle-content" v-html="this.data_list.Now.parkInformationContent"></div>
         <div class="sic-middle-bottom">
           <span
-            >上一篇：<span
-              style="color: #00a6ff; cursor: pointer"
-              @click="
-                $router
-                  .push('/park_information/park_information/t/' + data_list.Before.parkId)
-                  .catch(err => err);
-                $router.go(0);
-              "
-              >{{ data_list.Before != null ? data_list.Before.parkInformationTitle : '空' }}</span
-            ></span
+            >上一篇：<span style="color: #00a6ff; cursor: pointer" @click="routerpush('shang')">{{
+              data_list.Before != null ? data_list.Before.parkInformationTitle : '空'
+            }}</span></span
           >
           <span
-            >下一篇：<span
-              style="color: #00a6ff; cursor: pointer"
-              @click="
-                $router
-                  .push('/park_information/park_information/t/' + data_list.After.parkId)
-                  .catch(err => err);
-                $router.go(0);
-              "
-              >{{ data_list.After != null ? data_list.After.parkInformationTitle : '空' }}</span
-            ></span
+            >下一篇：<span style="color: #00a6ff; cursor: pointer" @click="routerpush('xia')">{{
+              data_list.After != null ? data_list.After.parkInformationTitle : '空'
+            }}</span></span
           >
         </div>
         <div class="downbtn">
-          <p>下载资料</p>
+          <p :download="data_url" :href="data_url" @click="downinfo">下载资料</p>
         </div>
       </div>
     </div>
@@ -86,7 +78,8 @@ export default {
   data() {
     return {
       content_id: '',
-      data_list: []
+      data_list: {},
+      data_url: ''
     };
   },
 
@@ -97,35 +90,42 @@ export default {
     });
   },
 
-  beforeCreate() {
+  async beforeCreate() {
     document.documentElement.scrollTop = 0;
     this.content_id = this.$route.params.id;
-    reqDetailsList(this.content_id).then(res => {
+    await reqDetailsList(this.content_id).then(res => {
       console.log(1, res);
       this.data_list = res.data;
-      console.log(2, this.data_list);
+      this.data_url = this.data_list.Now.parkInformationDownloadAddress;
+      console.log(2, this.data_list.Now.parkInformationDownloadAddress);
     });
   },
 
   methods: {
     next() {
-      this.$router
-        .push('/park_information/park_information/t/' + this.data_list.After.parkId)
-        .catch(err => err);
+      this.$router.push('/cooperation/t/' + this.data_list.After.parkId).catch(err => err);
       location.reload();
     },
     beforee() {
-      this.$router
-        .push('/park_information/park_information/t/' + this.data_list.Before.parkId)
-        .catch(err => err);
+      this.$router.push('/cooperation/t/' + this.data_list.Before.parkId).catch(err => err);
       location.reload();
     },
-    async getList() {
-      await reqDetailsList(this.content_id).then(res => {
-        console.log(1, res);
-        this.data_list = res.data;
-        console.log(2, this.data_list);
-      });
+
+    downinfo() {
+      window.open(this.data_url);
+    },
+    routerpush(val) {
+      if (val == 'shang') {
+        if (this.data_list.Before != null) {
+          this.$router.push('/cooperation/t/' + this.data_list.Before.parkId).catch(err => err);
+          this.$router.go(0);
+        }
+      } else {
+        if (this.data_list.After != null) {
+          this.$router.push('/cooperation/t/' + this.data_list.After.parkId).catch(err => err);
+          this.$router.go(0);
+        }
+      }
     }
   }
 };
@@ -147,7 +147,6 @@ export default {
     position: absolute;
     top: 0px;
     width: 100%;
-    min-width: 1900px;
     img {
       width: 100%;
     }
@@ -156,7 +155,6 @@ export default {
     position: absolute;
     top: 99px;
     width: 100%;
-    min-width: 1900px;
     img {
       width: 100%;
     }

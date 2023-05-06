@@ -179,14 +179,17 @@ export default {
       Servicenumber: 1,
       Servicenumber2: '01',
       showService: {},
-      scrollTop: 0
+      scrollTop: 0,
+      page: 0
     };
   },
   async created() {
     await this.$store.dispatch('cooperation/getParkinfoList');
-    // console.log(this.$store.state.cooperation.ParkinfoList)
-    this.Parkinfor = this.$store.state.cooperation.ParkinfoList;
     console.log(this.$store.state.cooperation.ParkinfoList);
+    this.Parkinfor = this.$store.state.cooperation.ParkinfoList;
+    if (this.$store.state.cooperation.ParkinfoList.length > 6) {
+      this.$refs.imgright.style.cursor = 'pointer';
+    }
     // console.log(Math.ceil(this.Parkinfor.length / 6));
     await this.$refs;
     await this.$refs.alldiv.forEach((e, index) => {
@@ -213,9 +216,9 @@ export default {
                   <div class="d-mtime"><span>发表于 ${this.Parkinfor[
                     i + index * 6
                   ].createTime.slice(0, 10)}</span></div>
-                  <div class="d-mdownload" onclick="downURL(${
+                  <div class="d-mdownload" onclick="downURL('${
                     this.Parkinfor[i + index * 6].parkInformationDownloadAddress
-                  })" ><span>下载资料</span></div>
+                  }')"><span>下载资料</span></div>
                   <div class="d-mdocheck" onclick="moreURL(${
                     this.Parkinfor[i + index * 6].parkId
                   })""><span>查看资料</span></div>
@@ -241,6 +244,7 @@ export default {
     // this.$refs.alldiv
     const _this = this;
     window.downURL = function (url) {
+      console.log('window.downURL', url);
       _this.downURL(url);
     };
     window.moreURL = function (id) {
@@ -276,9 +280,11 @@ export default {
           this.$refs.imgleft.style.opacity = 0.4;
           this.$refs.imgleft.style.cursor = 'no-drop';
           this.$refs.imgright.style.opacity = 1;
+          this.$refs.imgright.style.cursor = 'pointer';
         } else if (this.Parkinforpage == allpage - 1) {
           this.$refs.imgright.style.opacity = 0.4;
           this.$refs.imgright.style.cursor = 'no-drop';
+          this.$refs.imgleft.style.cursor = 'pointer';
           this.$refs.imgleft.style.opacity = 1;
         } else {
           this.$refs.imgleft.style.opacity = 1;
@@ -289,10 +295,12 @@ export default {
       }
     },
     downURL(url) {
-      window.location.href = url;
+      console.log(1111);
+      // window.location.href = url;
+      window.open(url);
     },
     moreURL(id) {
-      this.$router.push('/park_information/park_information/t/' + id);
+      this.$router.push('/cooperation/t/' + id);
     },
 
     changeService(index) {
@@ -840,6 +848,7 @@ export default {
             top: 14px;
             left: 96px;
             cursor: pointer;
+            z-index: 99;
           }
         }
       }
