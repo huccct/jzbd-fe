@@ -16,3 +16,11 @@ export const filterSize = size => {
 function pow1024(num) {
   return Math.pow(1024, num);
 }
+
+// 下载链接转换名称
+export function extractFilename(url) {
+  const components = url.split('/');
+  let filename = components[components.length - 1];
+  filename = filename.replace(/^\d+\s*/, '');
+  return filename;
+}
