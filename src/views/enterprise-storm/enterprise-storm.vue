@@ -255,6 +255,7 @@ export default {
   width: 1280px;
   .enterprise-content_one-topic {
     // margin-left: 320px;
+    // z-index: -1;
     div:nth-child(1) {
       p:nth-child(1) {
         color: #007dc0;
@@ -297,7 +298,7 @@ export default {
   // left: 50%;
   left: 0;
   // transform: translateX(-50%);
-  z-index: -1;
+  z-index: 0;
   :nth-child(2) {
     :nth-child(1) {
       position: absolute;
@@ -446,6 +447,7 @@ export default {
       margin-left: 1102px;
     }
   }
+
   .white-outline-button {
     position: absolute;
     width: 180px;
@@ -461,11 +463,9 @@ export default {
 }
 .company {
   position: relative;
-  // margin-left: 320px;
   left: 50%;
   transform: translateX(-50%);
   width: 1280px;
-
   margin-bottom: 240px;
   display: flex;
   align-content: space-between;
