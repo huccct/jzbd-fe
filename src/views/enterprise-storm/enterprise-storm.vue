@@ -93,7 +93,7 @@
         <div class="des">
           {{ item.aboutMessage }}
         </div>
-        <span class="company_one-number">{{ '0' + (index + 2) }}</span>
+        <span class="company_one-number">{{ index + 2 < 10 ? '0' + (index + 2) : index + 2 }}</span>
         <div class="phone">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
           <span class="phone_des">联系方式：</span>
@@ -117,7 +117,9 @@
         </button>
       </div>
     </div>
-    <button class="see_more_last" @click="getEnterpriceAllList">查看更多</button>
+    <button v-if="data_list_isall" class="see_more_last" @click="getEnterpriceAllList">
+      查看更多
+    </button>
   </div>
 </template>
 
@@ -142,6 +144,7 @@ export default {
       },
       data_list: [],
       data_list_page: 1,
+      data_list_isall: true,
       product: '',
       product1: ''
     };
@@ -170,7 +173,12 @@ export default {
         res.rows.forEach(e => {
           this.data_list.push(e);
         });
+        if (res.total <= this.data_list_page * 3 + 1) {
+          this.data_list_isall = false;
+        }
         this.data_list_page = this.data_list_page + 1;
+        console.log(1111, res.total, this.data_list_page * 3 + 1);
+
         // data_list[1].productAndServices[0].productServiceTitle
       });
     },
