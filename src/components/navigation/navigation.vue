@@ -3,7 +3,7 @@
  * @Author: Huccct
  * @Date: 2023-04-12 09:59:54
  * @LastEditors: Huccct
- * @LastEditTime: 2023-05-08 10:21:31
+ * @LastEditTime: 2023-05-08 14:35:49
 -->
 <template>
   <div class="box">
@@ -95,12 +95,16 @@ export default {
   width: 120px;
   font-size: 18px;
   background-color: transparent !important;
+  color: #fff !important;
+  font-weight: lighter;
+  border-bottom-width: 4px !important;
 }
 
 .el-menu-item.is-active,
 .el-submenu.is-active > .el-submenu__title {
   color: #fff !important; /* 修改为自己需要的颜色 */
   border-bottom-color: #fff !important;
+  font-weight: 700;
   // border-bottom-width: 20px !important;
 }
 </style>
