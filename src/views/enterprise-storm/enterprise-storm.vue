@@ -8,7 +8,7 @@
   <div class="enterprise-box">
     <div class="enterprise-elheader">
       <div class="enterprise-sliderbox">
-        <img src="http://114.116.21.170:9000/photo/enterprise-storm/%E7%BB%84%2084.png" alt="" />
+        <img src="../../assets/enterprise-storm/bg.png" alt="" />
       </div>
       <div class="head-content">
         <span>CORPORATE STYLE</span>
@@ -93,7 +93,7 @@
         <div class="des">
           {{ item.aboutMessage }}
         </div>
-        <span class="company_one-number">{{ '0' + (index + 2) }}</span>
+        <span class="company_one-number">{{ index + 2 < 10 ? '0' + (index + 2) : index + 2 }}</span>
         <div class="phone">
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
           <span class="phone_des">联系方式：</span>
@@ -117,7 +117,9 @@
         </button>
       </div>
     </div>
-    <button class="see_more_last">查看更多</button>
+    <button v-if="data_list_isall" class="see_more_last" @click="getEnterpriceAllList">
+      查看更多
+    </button>
   </div>
 </template>
 
@@ -141,17 +143,15 @@ export default {
         desc: ''
       },
       data_list: [],
+      data_list_page: 1,
+      data_list_isall: true,
       product: '',
       product1: ''
     };
   },
 
   mounted() {
-    getEnterpriceAll().then(res => {
-      console.log(res);
-      this.data_list = res.rows;
-      // data_list[1].productAndServices[0].productServiceTitle
-    });
+    this.getEnterpriceAllList();
   },
 
   created() {
@@ -159,6 +159,29 @@ export default {
   },
 
   methods: {
+    getEnterpriceAllList() {
+      let text = 3;
+      if (this.data_list_page == 1) {
+        text = 4;
+      } else {
+        text = 3;
+      }
+      console.log(text);
+      getEnterpriceAll(text, this.data_list_page).then(res => {
+        // this.data_list = res.rows;
+        console.log(res.rows);
+        res.rows.forEach(e => {
+          this.data_list.push(e);
+        });
+        if (res.total <= this.data_list_page * 3 + 1) {
+          this.data_list_isall = false;
+        }
+        this.data_list_page = this.data_list_page + 1;
+        console.log(1111, res.total, this.data_list_page * 3 + 1);
+
+        // data_list[1].productAndServices[0].productServiceTitle
+      });
+    },
     joinStr(idx, met) {
       return this.data_list[idx]?.productAndServices
         ?.map(item => item.productServiceTitle)
@@ -196,7 +219,7 @@ export default {
   top: 271px;
   left: 320px;
   span:nth-child(1) {
-    color: #333333;
+    color: #cccccc;
     font-size: 24px;
 
     font-family: Microsoft YaHei-Bold;
@@ -204,7 +227,7 @@ export default {
   :nth-child(2) {
     padding-top: 27px;
     display: block;
-    color: #333333;
+    color: #ffffff;
     font-size: 66px;
     font-weight: 700;
     font-family: Microsoft YaHei-Bold;
@@ -213,7 +236,7 @@ export default {
     padding-top: 36px;
     display: block;
     width: 676px;
-    color: #666666;
+    color: #ffffff;
     font-size: 24px;
     font-weight: 400;
     font-family: Microsoft YaHei-Regular;
@@ -232,10 +255,15 @@ export default {
   }
 }
 .enterprise-content_one {
-  margin-top: 107px;
+  // margin-top: 107px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   display: inline-block;
+  width: 1280px;
   .enterprise-content_one-topic {
-    margin-left: 320px;
+    // margin-left: 320px;
+    // z-index: -1;
     div:nth-child(1) {
       p:nth-child(1) {
         color: #007dc0;
@@ -274,7 +302,11 @@ export default {
   width: 1280px;
   height: 750px;
   margin-top: 173px;
-  z-index: -1;
+  position: relative;
+  // left: 50%;
+  left: 0;
+  // transform: translateX(-50%);
+  z-index: 0;
   :nth-child(2) {
     :nth-child(1) {
       position: absolute;
@@ -423,6 +455,7 @@ export default {
       margin-left: 1102px;
     }
   }
+
   .white-outline-button {
     position: absolute;
     width: 180px;
@@ -437,14 +470,22 @@ export default {
   }
 }
 .company {
-  margin-left: 320px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   width: 1280px;
-  margin-top: 25px;
   margin-bottom: 240px;
   display: flex;
   align-content: space-between;
+  table-layout: fixed;
+  white-space: normal;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 .see_more_last {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   width: 300px;
   height: 80px;
   background-color: #00a6ff;
@@ -453,7 +494,7 @@ export default {
   font-size: 30px;
   cursor: pointer;
   position: absolute;
-  left: 810px;
+  // left: 810px;
   bottom: -120px;
 }
 
@@ -473,7 +514,7 @@ export default {
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1608);
   border-radius: 0px 0px 0px 0px;
   opacity: 1;
-  margin-right: 25px;
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   & img {

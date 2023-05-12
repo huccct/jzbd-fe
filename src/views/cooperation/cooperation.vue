@@ -79,7 +79,7 @@
       </div>
       <div class="m-demo">
         <div class="m-demo-left">
-          <div class="m-left-div">
+          <div ref="mleftdiv" class="m-left-div" @mouseenter="changeServicegunlun">
             <div v-for="(list, index) in Service" :key="index" ref="demodiv" class="m-left-demo">
               <div class="l"></div>
               <div class="text" @click="changeService(index)">
@@ -87,8 +87,12 @@
               </div>
             </div>
           </div>
-          <div class="m-left-demo-down" @click="changeService(-1)">
-            <img src="http://114.116.21.170:9000/photo/cooperation9.png" alt="" />
+          <div class="m-left-demo-down" @click="changeService(gopagenumber)">
+            <img
+              ref="mleftdemodown"
+              src="http://114.116.21.170:9000/photo/cooperation9.png"
+              alt=""
+            />
           </div>
         </div>
         <div class="m-demo-right">
@@ -179,14 +183,17 @@ export default {
       Servicenumber: 1,
       Servicenumber2: '01',
       showService: {},
-      scrollTop: 0
+      scrollTop: 0,
+      page: 0,
+      gopagenumber: -1
     };
   },
   async created() {
     await this.$store.dispatch('cooperation/getParkinfoList');
-    // console.log(this.$store.state.cooperation.ParkinfoList)
     this.Parkinfor = this.$store.state.cooperation.ParkinfoList;
-    console.log(this.$store.state.cooperation.ParkinfoList);
+    if (this.$store.state.cooperation.ParkinfoList.length > 6) {
+      this.$refs.imgright.style.cursor = 'pointer';
+    }
     // console.log(Math.ceil(this.Parkinfor.length / 6));
     await this.$refs;
     await this.$refs.alldiv.forEach((e, index) => {
@@ -213,9 +220,9 @@ export default {
                   <div class="d-mtime"><span>发表于 ${this.Parkinfor[
                     i + index * 6
                   ].createTime.slice(0, 10)}</span></div>
-                  <div class="d-mdownload" onclick="downURL(${
+                  <div class="d-mdownload" onclick="downURL('${
                     this.Parkinfor[i + index * 6].parkInformationDownloadAddress
-                  })" ><span>下载资料</span></div>
+                  }')"><span>下载资料</span></div>
                   <div class="d-mdocheck" onclick="moreURL(${
                     this.Parkinfor[i + index * 6].parkId
                   })""><span>查看资料</span></div>
@@ -241,6 +248,7 @@ export default {
     // this.$refs.alldiv
     const _this = this;
     window.downURL = function (url) {
+      console.log('window.downURL', url);
       _this.downURL(url);
     };
     window.moreURL = function (id) {
@@ -258,6 +266,7 @@ export default {
         anchorElement.scrollIntoView({ behavior: 'smooth' });
       }
     },
+
     changepage(val) {
       let allpage = Math.ceil(this.Parkinfor.length / 6);
       if (this.Parkinfor.length >= 6) {
@@ -276,9 +285,11 @@ export default {
           this.$refs.imgleft.style.opacity = 0.4;
           this.$refs.imgleft.style.cursor = 'no-drop';
           this.$refs.imgright.style.opacity = 1;
+          this.$refs.imgright.style.cursor = 'pointer';
         } else if (this.Parkinforpage == allpage - 1) {
           this.$refs.imgright.style.opacity = 0.4;
           this.$refs.imgright.style.cursor = 'no-drop';
+          this.$refs.imgleft.style.cursor = 'pointer';
           this.$refs.imgleft.style.opacity = 1;
         } else {
           this.$refs.imgleft.style.opacity = 1;
@@ -289,12 +300,26 @@ export default {
       }
     },
     downURL(url) {
-      window.location.href = url;
+      console.log(1111);
+      // window.location.href = url;
+      window.open(url);
     },
     moreURL(id) {
-      this.$router.push('/park_information/park_information/t/' + id);
+      this.$router.push('/cooperation/t/' + id);
     },
+    changeServicegunlun() {
+      let div = this.$refs.mleftdiv;
+      console.log(div);
 
+      div.addEventListener('wheel', this.handleWheel); // 添加滚轮事件侦听器
+      // console.log(div);
+    },
+    handleWheel(event) {
+      event.preventDefault(); // 阻止默认滚动行为
+      const delta = event.deltaY > 0 ? -1 : 1; // 获取滚轮方向（1:向下，-1:向上）
+      // 处理滚轮事件
+      this.changeService(delta);
+    },
     changeService(index) {
       let a = this.scrollTop;
       if (index == -1) {
@@ -315,19 +340,23 @@ export default {
               inline: 'center'
             });
           }
-        } else {
-          this.$refs.demodiv[0].scrollIntoView({
+        }
+      } else if (index == 1) {
+        if (this.Servicenumber != 1) {
+          this.$refs.demodiv[this.Servicenumber - 1].setAttribute('class', 'm-left-demo');
+          this.Servicenumber--;
+          this.$refs.demodiv[this.Servicenumber - 1].setAttribute(
+            'class',
+            'm-left-demo demoactive'
+          );
+          this.showService = {
+            title: this.Service[this.Servicenumber - 1].title,
+            text: this.Service[this.Servicenumber - 1].text
+          };
+          this.$refs.demodiv[this.Servicenumber - 1].scrollIntoView({
             behavior: 'instant',
             inline: 'center'
           });
-          this.$refs.demodiv[this.Servicenumber - 1].setAttribute('class', 'm-left-demo');
-          this.$refs.demodiv[0].setAttribute('class', 'm-left-demo demoactive');
-          this.Servicenumber = 1;
-          this.Servicenumber2 = `01`;
-          this.showService = {
-            title: this.Service[0].title,
-            text: this.Service[0].text
-          };
         }
       } else {
         this.Servicenumber = index + 1;
@@ -346,7 +375,18 @@ export default {
           });
         }
       }
-      console.log(this.Servicenumber);
+      console.log(6666, this.Servicenumber);
+      if (this.Servicenumber == this.Service.length) {
+        console.log(this.$refs.mleftdemodown);
+        this.$refs.mleftdemodown.style.transform = 'rotate(180deg)';
+        this.gopagenumber = 1;
+        console.log(this.gopagenumber);
+      } else if (this.Servicenumber == 1) {
+        this.$refs.mleftdemodown.style.transform = 'rotate(0deg)';
+        this.gopagenumber = -1;
+        console.log(this.gopagenumber);
+      }
+
       if (this.Servicenumber < 10) {
         this.Servicenumber2 = `0${this.Servicenumber}`;
       } else {
@@ -773,6 +813,7 @@ export default {
         // background: linear-gradient(180deg, #56e8ff 0%, #57c4ff 100%);
         border-radius: 0px 0px 0px 0px;
         z-index: 99;
+
         .m-left-div {
           position: relative;
           top: 18px;
@@ -840,6 +881,7 @@ export default {
             top: 14px;
             left: 96px;
             cursor: pointer;
+            z-index: 99;
           }
         }
       }

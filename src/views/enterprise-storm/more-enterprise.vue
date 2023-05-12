@@ -11,9 +11,9 @@
         {{ data_list.headline?.slice(0, 14)
         }}<span style="color: #00a6ff">{{ data_list.headline?.slice(-4) }}</span>
       </span>
-      <el-button type="primary" class="head-content_contactus" @click="$router.push(`/contact`)"
-        >联系我们</el-button
-      >
+      <!-- <el-button type="primary"
+                 class="head-content_contactus"
+                 @click="$router.push(`/contact`)">联系我们</el-button> -->
     </div>
     <div class="bg-box">
       <div class="introduce">
