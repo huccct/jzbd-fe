@@ -69,7 +69,10 @@
             </div>
             <div class="honor">
               <span>荣誉奖项</span>
-              <span v-html="data_list[0]?.honorMessage.split('；').join(';<br/>')"></span>
+              <span
+                class="honor_win"
+                v-html="data_list[0]?.honorMessage.split(';').join(';<br/>')"
+              ></span>
             </div>
             <button
               class="white-outline-button"
@@ -518,6 +521,7 @@ export default {
   display: flex;
   flex-direction: column;
   & img {
+    height: 280px;
     width: 410px;
     object-fit: cover;
   }
@@ -530,6 +534,10 @@ export default {
     color: #333333;
     margin-left: 20px;
     margin-top: 28px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   & > .company_one-number {
     position: absolute;
@@ -649,5 +657,13 @@ export default {
   display: -webkit-box;
   -webkit-line-clamp: 3; /*想省略几行就写几*/
   -webkit-box-orient: vertical;
+}
+::v-deep .honor_win {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /*想省略几行就写几*/
+  -webkit-box-orient: vertical;
+  // margin-bottom: 10px;
 }
 </style>
