@@ -11,7 +11,7 @@
         <img src="../../assets/our-service/bg.png" alt="" />
       </div>
       <div class="head-content">
-        <span>OUR SERVICE</span>
+        <span>PARK SERVICES</span>
         <span>园区服务</span>
         <span
           >胶州市正加快建设上合组织地方经贸合作示范区，全力打造

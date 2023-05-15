@@ -35,7 +35,7 @@
       <div class="d-head">
         <span id="material">01</span>
         <div class="l"></div>
-        <span>Parkinformation</span>
+        <span>Park information</span>
         <div class="d-title">
           <span>园区资料</span>
         </div>
@@ -72,7 +72,7 @@
       <div class="d-head">
         <span id="industry">02</span>
         <div class="l"></div>
-        <span>Service content of the park</span>
+        <span>Investment information of the park</span>
         <div class="d-title">
           <span>园区招商信息</span>
         </div>
@@ -300,9 +300,15 @@ export default {
       }
     },
     downURL(url) {
-      console.log(1111);
-      // window.location.href = url;
-      window.open(url);
+      if (url == 'null') {
+        this.$message({
+          message: '暂无下载资料',
+          type: 'warning',
+          customClass: 'custom-message'
+        });
+      } else {
+        window.location.href = url;
+      }
     },
     moreURL(id) {
       this.$router.push('/cooperation/t/' + id);
@@ -560,7 +566,7 @@ export default {
       position: absolute;
       top: 437px;
       left: 459px;
-      width: 234px;
+      width: 486px;
       height: 30px;
       font-size: 30px;
       font-family: DIN-Bold, DIN;
@@ -790,7 +796,7 @@ export default {
       }
       span:nth-child(3) {
         top: 137px;
-        width: 409px;
+        width: 560px;
       }
       .d-title {
         span {

@@ -19,7 +19,7 @@
       <div class="d-head">
         <span>01</span>
         <div class="l"></div>
-        <span>Basic information</span>
+        <span>Basic information of the park</span>
         <div class="d-title">
           <span>园区基本情况</span>
         </div>
@@ -377,7 +377,7 @@ export default {
       position: absolute;
       top: 107px;
       left: 459px;
-      width: 260px;
+      width: 416px;
       height: 30px;
       font-size: 30px;
       font-family: D-DIN-Regular, D-DIN;

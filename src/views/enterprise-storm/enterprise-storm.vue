@@ -222,9 +222,9 @@ export default {
   top: 271px;
   left: 320px;
   span:nth-child(1) {
-    color: #cccccc;
+    color: #fff;
     font-size: 24px;
-
+    font-weight: 700;
     font-family: Microsoft YaHei-Bold;
   }
   :nth-child(2) {

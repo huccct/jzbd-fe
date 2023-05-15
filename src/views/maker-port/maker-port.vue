@@ -20,7 +20,7 @@
       <div class="text">
         <span>01</span>
         <span>&emsp;——&emsp;</span>
-        <span>IntroductiontothePark</span><br />
+        <span>Introduction to the Park</span><br />
         <div>厚德创客港</div>
         <br />
         <div>产业园区介绍</div>
@@ -90,7 +90,7 @@
       <div class="service-text">
         <span>02</span>
         <span>&emsp;——&emsp;</span>
-        <span>Servicecontentofthepark</span><br />
+        <span>Service content of the park</span><br />
         <div>园区服务内容</div>
         <div>
           <ul>

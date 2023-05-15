@@ -32,6 +32,7 @@
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "babel-plugin-component": "^1.1.1",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "commitizen": "^4.3.0",
     "commitlint-config-cz": "^0.13.3",
     "cypress": "^9.7.0",
