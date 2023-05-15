@@ -119,11 +119,21 @@ export default {
         if (this.data_list.Before != null) {
           this.$router.push('/cooperation/t/' + this.data_list.Before.parkId).catch(err => err);
           this.$router.go(0);
+        } else {
+          this.$message({
+            message: '这是第一条,没有上一条了',
+            type: 'warning'
+          });
         }
       } else {
         if (this.data_list.After != null) {
           this.$router.push('/cooperation/t/' + this.data_list.After.parkId).catch(err => err);
           this.$router.go(0);
+        } else {
+          this.$message({
+            message: '这是最后一条,没有下一条了',
+            type: 'warning'
+          });
         }
       }
     }

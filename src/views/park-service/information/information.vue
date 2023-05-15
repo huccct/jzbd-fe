@@ -69,24 +69,14 @@
 
         <div class="sic-middle-bottom">
           <span
-            >上一篇：<span
-              style="color: #00a6ff; cursor: pointer"
-              @click="
-                $router.push('/service/information/' + data_list.Before.newsId).catch(err => err);
-                $router.go(0);
-              "
-              >{{ data_list.Before != null ? data_list.Before.newsTitle : '空' }}</span
-            ></span
+            >上一篇：<span style="color: #00a6ff; cursor: pointer" @click="beforee()">{{
+              data_list.Before != null ? data_list.Before.newsTitle : '空'
+            }}</span></span
           >
           <span
-            >下一篇：<span
-              style="color: #00a6ff; cursor: pointer"
-              @click="
-                $router.push('/service/information/' + data_list.After.newsId).catch(err => err);
-                $router.go(0);
-              "
-              >{{ data_list.After != null ? data_list.After.newsTitle : '空' }}</span
-            ></span
+            >下一篇：<span style="color: #00a6ff; cursor: pointer" @click="next()">{{
+              data_list.After != null ? data_list.After.newsTitle : '空'
+            }}</span></span
           >
         </div>
       </div>
@@ -125,18 +115,31 @@ export default {
       // console.log(res);
       this.data_list = res.data;
       if (res.data.Now != null) this.now_list = res.data.Now;
-      // console.log(this.data_list);
     });
   },
 
   methods: {
     next() {
-      this.$router.push('/service/information/' + this.data_list.After.newsId).catch(err => err);
-      location.reload();
+      if (this.data_list.After == null) {
+        this.$message({
+          message: '这是最后一条,没有下一条了',
+          type: 'warning'
+        });
+      } else {
+        this.$router.push('/service/information/' + this.data_list.After.newsId).catch(err => err);
+        location.reload();
+      }
     },
     beforee() {
-      this.$router.push('/service/information/' + this.data_list.Before.newsId).catch(err => err);
-      location.reload();
+      if (this.data_list.Before == null) {
+        this.$message({
+          message: '这是第一条,没有上一条了',
+          type: 'warning'
+        });
+      } else {
+        this.$router.push('/service/information/' + this.data_list.Before.newsId).catch(err => err);
+        location.reload();
+      }
     },
     async getList() {
       await getOneList(this.content_id).then(res => {
