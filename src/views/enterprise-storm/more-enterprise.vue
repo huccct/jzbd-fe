@@ -11,9 +11,6 @@
         {{ data_list.headline?.slice(0, 14)
         }}<span style="color: #00a6ff">{{ data_list.headline?.slice(-4) }}</span>
       </span>
-      <!-- <el-button type="primary"
-                 class="head-content_contactus"
-                 @click="$router.push(`/contact`)">联系我们</el-button> -->
     </div>
     <div class="bg-box">
       <div class="introduce">
@@ -44,17 +41,40 @@
           </div>
           <div class="data">
             <div class="profile">
-              <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 94@2x.png" alt="" />
+              <img
+                v-if="cur === 0"
+                src="http://114.116.21.170:9000/photo/enterprise-storm/组 94@2x.png"
+                alt=""
+              />
+              <img v-else src="http://114.116.21.170:9000/photo/homepage01.png" alt="" />
               <span :style="{ color: cur === 0 ? '#07a9ff' : '' }">企业简介</span>
               <span :style="{ color: cur === 0 ? '#07a9ff' : '' }">Introduction</span>
             </div>
             <div class="honor">
-              <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 95@2x.png" alt="" />
+              <img
+                v-if="cur != 1"
+                src="http://114.116.21.170:9000/photo/enterprise-storm/组 95@2x.png"
+                alt=""
+              />
+              <img
+                v-else
+                src="http://114.116.21.170:9000/photo/enterprise-storm/组 95.png"
+                alt=""
+              />
               <span :style="{ color: cur === 1 ? '#07a9ff' : '' }">荣誉资质</span>
               <span :style="{ color: cur === 1 ? '#07a9ff' : '' }">Honorary</span>
             </div>
             <div class="honor">
-              <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 96@2x.png" alt="" />
+              <img
+                v-if="cur != 2"
+                src="http://114.116.21.170:9000/photo/enterprise-storm/组 96@2x.png"
+                alt=""
+              />
+              <img
+                v-else
+                src="http://114.116.21.170:9000/photo/enterprise-storm/组 96.png"
+                alt=""
+              />
               <span :style="{ color: cur === 2 ? '#07a9ff' : '' }">企业文化</span>
               <span :style="{ color: cur === 2 ? '#07a9ff' : '' }">Culture</span>
             </div>
@@ -111,42 +131,17 @@
         <span>Products and services</span><br />
         <div>产品与服务</div>
       </div>
+      <!-- productAndServices 这个数组只有两个，你咋写这么多 -->
       <div v-if="data_list.productAndServices" class="product-details">
-        <div class="product-details_one left">
-          <span>01</span>
+        <div
+          v-for="(item, index) in data_list.productAndServices"
+          :key="index"
+          class="product-details_one"
+        >
+          <span>{{ `${(index + 1).toString().padStart(2, '0')}` }}</span>
           <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 124@2x.png" alt="" />
-          <span>{{ data_list.productAndServices[0].productServiceTitle }}</span>
-          <span>{{ data_list.productAndServices[0].productServiceExplain }}</span>
-        </div>
-        <div class="product-details_one center">
-          <span>02</span>
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 125@2x.png" alt="" />
-          <span>{{ data_list.productAndServices[1].productServiceTitle }}</span>
-          <span>{{ data_list.productAndServices[1].productServiceExplain }}</span>
-        </div>
-        <div class="product-details_one">
-          <span>03</span>
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 126@2x.png" alt="" />
-          <span>{{ data_list.productAndServices[2].productServiceTitle }}</span>
-          <span>{{ data_list.productAndServices[2].productServiceExplain }}</span>
-        </div>
-        <div class="product-details_one left_one">
-          <span>04</span>
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 127@2x.png" alt="" />
-          <span>{{ data_list.productAndServices[3].productServiceTitle }}</span>
-          <span>{{ data_list.productAndServices[3].productServiceExplain }}</span>
-        </div>
-        <div class="product-details_one center_one">
-          <span>05</span>
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 128@2x.png" alt="" />
-          <span>{{ data_list.productAndServices[4].productServiceTitle }}</span>
-          <span>{{ data_list.productAndServices[4].productServiceExplain }}</span>
-        </div>
-        <div class="product-details_one right_one">
-          <span>06</span>
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 129@2x.png" alt="" />
-          <span>{{ data_list.productAndServices[5].productServiceTitle }}</span>
-          <span>{{ data_list.productAndServices[5].productServiceExplain }}</span>
+          <span>{{ item.productServiceExplain }}</span>
+          <span>{{ item.productServiceTitle }}</span>
         </div>
       </div>
     </div>
@@ -183,7 +178,8 @@
 </template>
 
 <script lang="ts">
-import { getEnterpriceOne } from '@/api/modules/enterprice';
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -202,7 +198,7 @@ export default {
           this.nowpag++;
         }
       },
-      data_list: [],
+      data_list: {},
       nowData: []
     };
   },
@@ -230,18 +226,17 @@ export default {
     }
   },
   async created() {
-    //console.log(this.$route.params.id);
-    await getEnterpriceOne(this.$route.params.id).then(res => {
-      this.data_list = res.data;
-      this.src.push(this.data_list.aboutImg, this.data_list.cultureImg, this.data_list.honorImg);
-      console.log(this.data_list);
-
-      // this.src=this.data_list.map(item=>item)
-    });
+    await this.loadPage();
+    console.log(this.data_list);
   },
   methods: {
     carousel_change(e) {
       this.cur = e;
+    },
+    async loadPage() {
+      const res = await axios.get('/companylist/company/t/' + this.$route.params.id);
+      this.data_list = res.data.data;
+      this.src.push(this.data_list.aboutImg, this.data_list.cultureImg, this.data_list.honorImg);
     }
   }
 };
@@ -368,12 +363,16 @@ export default {
 
     & .des {
       width: 648px;
-      height: 184px;
+      height: 234px; /* 9行文字的高度，每行高度根据line-height属性决定 */
       color: #666666;
       font-size: 16px;
       font-weight: 400;
       line-height: 26px;
       font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 9;
+      -webkit-box-orient: vertical;
     }
     & .data {
       margin-top: 76px;
@@ -447,13 +446,15 @@ export default {
       }
     }
     & > .title {
-      width: 310px;
+      width: 384px;
       height: 24px;
       font-size: 24px;
       font-family: Microsoft YaHei-Bold, Microsoft YaHei;
       font-weight: 700;
       color: #333333;
       line-height: 24px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 
@@ -542,6 +543,7 @@ export default {
   & > .product-details {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 320px;
     & > .left {
       margin-right: 163px;
       margin-left: 320px;
@@ -667,7 +669,7 @@ export default {
   }
 }
 .product-details_one {
-  margin-right: 320px;
+  width: 30%;
   & > span:nth-child(1) {
     position: absolute;
     display: block;
@@ -689,8 +691,8 @@ export default {
   }
   & > span:nth-child(3) {
     display: block;
-    width: 180px;
-    height: 30px;
+    width: 240px;
+    height: 38px;
     font-size: 30px;
     font-family: Microsoft YaHei-Bold, Microsoft YaHei;
     font-weight: 700;
@@ -698,6 +700,9 @@ export default {
     margin-top: 36px;
     margin-left: 78px;
     margin-bottom: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   & > span:nth-child(4) {
     display: block;
@@ -708,6 +713,9 @@ export default {
     font-weight: 400;
     color: #666666;
     margin-left: 78px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 </style>

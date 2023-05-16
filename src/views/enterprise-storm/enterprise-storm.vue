@@ -451,7 +451,6 @@ export default {
     :nth-child(2) {
       position: absolute;
       width: 128px;
-      height: 96px;
       font-size: 16px;
       color: #f2f2f2;
       margin-top: 478px;
