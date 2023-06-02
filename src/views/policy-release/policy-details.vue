@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: YuShuXiao 949516815@qq.com
  * @Date: 2023-04-21 23:03:17
- * @LastEditors: YuShuXiao 949516815@qq.com
- * @LastEditTime: 2023-05-15 10:50:32
+ * @LastEditors: Huccct
+ * @LastEditTime: 2023-06-02 21:07:34
  * @FilePath: \jzbd-fe\src\views\policy-release\policy-details.vue
 -->
 <template>
@@ -30,10 +30,7 @@
         class="mediaItem"
         @click="downLoad"
       >
-        <img
-          src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/附件-1.png"
-          alt=""
-        />
+        <img src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件-1.png" alt="" />
         <div class="mediaDes">
           <a :href="item" :download="filename(item)">{{ filename(item) }}</a>
         </div>

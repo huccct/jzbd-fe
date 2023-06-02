@@ -43,38 +43,30 @@
             <div class="profile">
               <img
                 v-if="cur === 0"
-                src="http://114.116.21.170:9000/photo/enterprise-storm/组 94@2x.png"
+                src="http://47.95.211.240:9000/photo/enterprise-storm/组 94@2x.png"
                 alt=""
               />
-              <img v-else src="http://114.116.21.170:9000/photo/homepage01.png" alt="" />
+              <img v-else src="http://47.95.211.240:9000/photo/homepage01.png" alt="" />
               <span :style="{ color: cur === 0 ? '#07a9ff' : '' }">企业简介</span>
               <span :style="{ color: cur === 0 ? '#07a9ff' : '' }">Introduction</span>
             </div>
             <div class="honor">
               <img
                 v-if="cur != 1"
-                src="http://114.116.21.170:9000/photo/enterprise-storm/组 95@2x.png"
+                src="http://47.95.211.240:9000/photo/enterprise-storm/组 95@2x.png"
                 alt=""
               />
-              <img
-                v-else
-                src="http://114.116.21.170:9000/photo/enterprise-storm/组 95.png"
-                alt=""
-              />
+              <img v-else src="http://47.95.211.240:9000/photo/enterprise-storm/组 95.png" alt="" />
               <span :style="{ color: cur === 1 ? '#07a9ff' : '' }">荣誉资质</span>
               <span :style="{ color: cur === 1 ? '#07a9ff' : '' }">Honorary</span>
             </div>
             <div class="honor">
               <img
                 v-if="cur != 2"
-                src="http://114.116.21.170:9000/photo/enterprise-storm/组 96@2x.png"
+                src="http://47.95.211.240:9000/photo/enterprise-storm/组 96@2x.png"
                 alt=""
               />
-              <img
-                v-else
-                src="http://114.116.21.170:9000/photo/enterprise-storm/组 96.png"
-                alt=""
-              />
+              <img v-else src="http://47.95.211.240:9000/photo/enterprise-storm/组 96.png" alt="" />
               <span :style="{ color: cur === 2 ? '#07a9ff' : '' }">企业文化</span>
               <span :style="{ color: cur === 2 ? '#07a9ff' : '' }">Culture</span>
             </div>
@@ -90,7 +82,7 @@
               :disabled="cur === 0"
               @click="prev()"
             >
-              <img src="http://114.116.21.170:9000/photo/maker-port/left.png" alt="left" />
+              <img src="http://47.95.211.240:9000/photo/maker-port/left.png" alt="left" />
             </div>
             <div
               ref="rightbtn"
@@ -99,7 +91,7 @@
               :disabled="cur === src.length - 1"
               @click="next()"
             >
-              <img src="http://114.116.21.170:9000/photo/maker-port/right.png" alt="right" />
+              <img src="http://47.95.211.240:9000/photo/maker-port/right.png" alt="right" />
             </div>
           </div>
           <el-carousel
@@ -139,7 +131,7 @@
           class="product-details_one"
         >
           <span>{{ `${(index + 1).toString().padStart(2, '0')}` }}</span>
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 124@2x.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/enterprise-storm/组 124@2x.png" alt="" />
           <span>{{ item.productServiceExplain }}</span>
           <span>{{ item.productServiceTitle }}</span>
         </div>
@@ -154,21 +146,21 @@
       </div>
       <div class="box-bgc">
         <div class="bgc_img-one">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 106@2x.png" alt="" />
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 107@2x.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/enterprise-storm/组 106@2x.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/enterprise-storm/组 107@2x.png" alt="" />
         </div>
         <div class="address">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 108@2x.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/enterprise-storm/组 108@2x.png" alt="" />
           <span class="address_des-one">地&nbsp;&nbsp;&nbsp;址：</span>
           <span class="address_des-two">{{ data_list.contactAddress }}</span>
         </div>
         <div class="phone address">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 109@2x.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/enterprise-storm/组 109@2x.png" alt="" />
           <span class="address_des-one">电&nbsp;&nbsp;&nbsp;话：</span>
           <span class="address_des-two">{{ data_list.contactPhone }}</span>
         </div>
         <div class="email address">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 110@2x.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/enterprise-storm/组 110@2x.png" alt="" />
           <span class="address_des-one">邮&nbsp;&nbsp;&nbsp;箱：</span>
           <span class="address_des-two">{{ data_list.contactEmail }}</span>
         </div>

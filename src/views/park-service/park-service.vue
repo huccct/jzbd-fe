@@ -34,23 +34,23 @@
         <div class="service-content_one-content">
           <div class="service-content_one-contentbg">
             <img
-              src="http://114.116.21.170:9000/photo/service/%E8%92%99%E7%89%88%E7%BB%84%204@2x.png"
+              src="http://47.95.211.240:9000/photo/service/%E8%92%99%E7%89%88%E7%BB%84%204@2x.png"
               alt=""
             />
           </div>
           <!-- 上半 -->
           <div class="service-content_one-contenth1">
-            <img src="http://114.116.21.170:9000/photo/service/%E7%BB%84%209@2x.png" alt="" />
-            <img src="http://114.116.21.170:9000/photo/service/%E7%BB%84%2011@2x.png" alt="" />
+            <img src="http://47.95.211.240:9000/photo/service/%E7%BB%84%209@2x.png" alt="" />
+            <img src="http://47.95.211.240:9000/photo/service/%E7%BB%84%2011@2x.png" alt="" />
             <img
-              src="http://114.116.21.170:9000/photo/service/%E8%B7%AF%E5%BE%84%2039@2x.png"
+              src="http://47.95.211.240:9000/photo/service/%E8%B7%AF%E5%BE%84%2039@2x.png"
               alt=""
             />
             <img
-              src="http://114.116.21.170:9000/photo/service/%E8%B7%AF%E5%BE%84%2041@2x.png"
+              src="http://47.95.211.240:9000/photo/service/%E8%B7%AF%E5%BE%84%2041@2x.png"
               alt=""
             />
-            <img src="http://114.116.21.170:9000/photo/service/%E7%BB%84%2012@2x.png" alt="" />
+            <img src="http://47.95.211.240:9000/photo/service/%E7%BB%84%2012@2x.png" alt="" />
           </div>
           <div class="service-content_one-contenth2">
             <span>创业辅导</span>
@@ -62,27 +62,27 @@
           <div class="service-content_one-contenth3">
             <img
               class="contenth3-img1"
-              src="http://114.116.21.170:9000/photo/service/%E7%9B%B4%E7%BA%BF%203@2x.png"
+              src="http://47.95.211.240:9000/photo/service/%E7%9B%B4%E7%BA%BF%203@2x.png"
             />
             <div>
               <img
-                src="http://114.116.21.170:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
+                src="http://47.95.211.240:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
                 alt=""
               />
               <img
-                src="http://114.116.21.170:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
+                src="http://47.95.211.240:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
                 alt=""
               />
               <img
-                src="http://114.116.21.170:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
+                src="http://47.95.211.240:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
                 alt=""
               />
               <img
-                src="http://114.116.21.170:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
+                src="http://47.95.211.240:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
                 alt=""
               />
               <img
-                src="http://114.116.21.170:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
+                src="http://47.95.211.240:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
                 alt=""
               />
             </div>
@@ -97,16 +97,16 @@
           <!-- 下半 -->
           <div class="service-content_one-contenth1" style="margin-top: 106px">
             <img
-              src="http://114.116.21.170:9000/photo/service/%E8%B7%AF%E5%BE%84%2045@2x.png"
+              src="http://47.95.211.240:9000/photo/service/%E8%B7%AF%E5%BE%84%2045@2x.png"
               alt=""
             />
-            <img src="http://114.116.21.170:9000/photo/service/%E7%BB%84%2018@2x.png" alt="" />
-            <img src="http://114.116.21.170:9000/photo/service/%E7%BB%84%2019@2x.png" alt="" />
+            <img src="http://47.95.211.240:9000/photo/service/%E7%BB%84%2018@2x.png" alt="" />
+            <img src="http://47.95.211.240:9000/photo/service/%E7%BB%84%2019@2x.png" alt="" />
             <img
-              src="http://114.116.21.170:9000/photo/service/%E8%B7%AF%E5%BE%84%2052@2x.png"
+              src="http://47.95.211.240:9000/photo/service/%E8%B7%AF%E5%BE%84%2052@2x.png"
               alt=""
             />
-            <img src="http://114.116.21.170:9000/photo/service/%E7%BB%84%2020@2x.png" alt="" />
+            <img src="http://47.95.211.240:9000/photo/service/%E7%BB%84%2020@2x.png" alt="" />
           </div>
           <div class="service-content_one-contenth2">
             <span style="margin-right: 135px">人才引进</span>
@@ -118,27 +118,27 @@
           <div class="service-content_one-contenth3">
             <img
               class="contenth3-img1"
-              src="http://114.116.21.170:9000/photo/service/%E7%9B%B4%E7%BA%BF%203@2x.png"
+              src="http://47.95.211.240:9000/photo/service/%E7%9B%B4%E7%BA%BF%203@2x.png"
             />
             <div>
               <img
-                src="http://114.116.21.170:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
+                src="http://47.95.211.240:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
                 alt=""
               />
               <img
-                src="http://114.116.21.170:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
+                src="http://47.95.211.240:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
                 alt=""
               />
               <img
-                src="http://114.116.21.170:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
+                src="http://47.95.211.240:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
                 alt=""
               />
               <img
-                src="http://114.116.21.170:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
+                src="http://47.95.211.240:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
                 alt=""
               />
               <img
-                src="http://114.116.21.170:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
+                src="http://47.95.211.240:9000/photo/service/%E6%A4%AD%E5%9C%86%2020@2x.png"
                 alt=""
               />
             </div>
@@ -215,7 +215,7 @@ export default {
   display: block;
   height: 1000px;
   text-align: left;
-  // background-image: url('http://114.116.21.170:9000/photo/service/%E7%BB%84%2075.png');
+  // background-image: url('http://47.95.211.240:9000/photo/service/%E7%BB%84%2075.png');
 }
 .service-sliderbox {
   position: absolute;

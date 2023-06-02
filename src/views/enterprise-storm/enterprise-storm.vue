@@ -35,7 +35,7 @@
           <div class="enterprise-content_two">
             <div class="enterprise-content_two-img">
               <img
-                src="http://114.116.21.170:9000/photo/enterprise-storm/photo-1524414139215-35c99f80112d@3x.png"
+                src="http://47.95.211.240:9000/photo/enterprise-storm/photo-1524414139215-35c99f80112d@3x.png"
                 alt=""
               />
             </div>
@@ -46,7 +46,7 @@
               <span id="aboutMessage_first">{{ data_list[0]?.aboutMessage }}</span>
             </div>
             <div class="phone">
-              <img src="http://114.116.21.170:9000/photo/enterprise-storm/电话@2x.png" alt="" />
+              <img src="http://47.95.211.240:9000/photo/enterprise-storm/电话@2x.png" alt="" />
             </div>
             <div class="phonenum">
               <span>联系方式</span>
@@ -55,7 +55,7 @@
             <div class="border"></div>
             <div class="classification">
               <img
-                src="http://114.116.21.170:9000/photo/enterprise-storm/%E7%BB%84%2069@2x.png"
+                src="http://47.95.211.240:9000/photo/enterprise-storm/%E7%BB%84%2069@2x.png"
                 alt=""
               />
             </div>
@@ -65,7 +65,7 @@
             </div>
             <div class="border1"></div>
             <div class="trophy">
-              <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 70@2x.png" alt="" />
+              <img src="http://47.95.211.240:9000/photo/enterprise-storm/组 70@2x.png" alt="" />
             </div>
             <div class="honor">
               <span>荣誉奖项</span>
@@ -98,17 +98,17 @@
         </div>
         <span class="company_one-number">{{ index + 2 < 10 ? '0' + (index + 2) : index + 2 }}</span>
         <div class="phone">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/enterprise-storm/组 59@2x.png" alt="" />
           <span class="phone_des">联系方式：</span>
           <span>{{ data_list[1].contactPhone }}</span>
         </div>
         <div class="classification">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 60@2x.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/enterprise-storm/组 60@2x.png" alt="" />
           <span class="classification_des">主营产品：</span>
           <span class="classification_content">{{ joinStr(index + 1, '、') }}</span>
         </div>
         <div class="honor">
-          <img src="http://114.116.21.170:9000/photo/enterprise-storm/组 61@2x.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/enterprise-storm/组 61@2x.png" alt="" />
           <span class="honor_des">荣誉奖项：</span>
           <span class="classification_content">{{ data_list[1].honorMessage }}</span>
         </div>

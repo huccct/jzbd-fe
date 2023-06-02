@@ -14,7 +14,7 @@
     </div>
     <div class="basic">
       <div class="d-bg">
-        <img src="http://114.116.21.170:9000/photo/home4.png" alt="" />
+        <img src="http://47.95.211.240:9000/photo/home4.png" alt="" />
       </div>
       <div class="d-head">
         <span>01</span>
@@ -34,10 +34,10 @@
       </div>
       <div class="d-changeimg">
         <div ref="imgleft" class="img-left" @click="arrowClick('prev')">
-          <img src="http://114.116.21.170:9000/photo/home2.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/home2.png" alt="" />
         </div>
         <div ref="imgright" class="img-right" @click="arrowClick('next')">
-          <img src="http://114.116.21.170:9000/photo/home3.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/home3.png" alt="" />
         </div>
       </div>
       <div class="d-img">
@@ -86,13 +86,13 @@
           >
             <el-carousel-item v-for="(list, index) in PolicyNews.slice(0, 4)" :key="index">
               <div class="p-imglistdiv">
-                <img src="http://114.116.21.170:9000/photo/home5.png" />
+                <img src="http://47.95.211.240:9000/photo/home5.png" />
                 <div class="p-imglistdivdiv">
                   <div class="title">
                     <p>[{{ list.label }}]</p>
                   </div>
                   <div class="l">
-                    <img src="http://114.116.21.170:9000/photo/home5-.png" alt="" />
+                    <img src="http://47.95.211.240:9000/photo/home5-.png" alt="" />
                   </div>
                   <div class="name">
                     <p>{{ list.policyTitle }}</p>
@@ -151,7 +151,7 @@
       </div>
       <div class="e-show">
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home8.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/home8.png" alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -160,7 +160,7 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home10.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/home10.png" alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -175,7 +175,7 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home9.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/home9.png" alt="" />
         </div>
         <div class="e-div">
           <div class="text">
@@ -186,7 +186,7 @@
           </div>
         </div>
         <div class="e-div">
-          <img src="http://114.116.21.170:9000/photo/home11.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/home11.png" alt="" />
         </div>
       </div>
     </div>
@@ -209,25 +209,25 @@ export default {
       PolicyNews: [],
       Basicimg: [
         {
-          img: 'http://114.116.21.170:9000/photo/home1.png'
+          img: 'http://47.95.211.240:9000/photo/home1.png'
         },
         {
-          img: 'http://114.116.21.170:9000/photo/home1.1.png'
+          img: 'http://47.95.211.240:9000/photo/home1.1.png'
         },
         {
-          img: 'http://114.116.21.170:9000/photo/home1.2.png'
+          img: 'http://47.95.211.240:9000/photo/home1.2.png'
         },
         {
-          img: 'http://114.116.21.170:9000/photo/home1.3.png'
+          img: 'http://47.95.211.240:9000/photo/home1.3.png'
         },
         {
-          img: 'http://114.116.21.170:9000/photo/home1.4.png'
+          img: 'http://47.95.211.240:9000/photo/home1.4.png'
         },
         {
-          img: 'http://114.116.21.170:9000/photo/home1.5.png'
+          img: 'http://47.95.211.240:9000/photo/home1.5.png'
         },
         {
-          img: 'http://114.116.21.170:9000/photo/home1.6.png'
+          img: 'http://47.95.211.240:9000/photo/home1.6.png'
         }
       ],
       Basicimgpage: 0
@@ -544,7 +544,7 @@ export default {
     width: 100%;
     // width: 1900px;
     height: 828px;
-    background-image: url('http://114.116.21.170:9000/photo/home7.png');
+    background-image: url('http://47.95.211.240:9000/photo/home7.png');
     background-size: 100% 100%;
 
     .p-img {
@@ -759,7 +759,7 @@ export default {
           background-color: #ebf4ff;
           outline: none;
           .p-ciactivity {
-            background-image: url('http://114.116.21.170:9000/photo/home6.png');
+            background-image: url('http://47.95.211.240:9000/photo/home6.png');
           }
           .p-title {
             .p-cinumber {
@@ -792,7 +792,7 @@ export default {
       width: 1304px;
       height: 664px;
       background-size: 100%;
-      background-image: url('http://114.116.21.170:9000/photo/home12.png');
+      background-image: url('http://47.95.211.240:9000/photo/home12.png');
       display: flex;
       flex-wrap: wrap;
       text-align: center;

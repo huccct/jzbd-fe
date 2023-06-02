@@ -1,7 +1,7 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-05-04 10:39:53
+ * @LastEditTime: 2023-06-02 21:05:12
  * @LastEditors: Huccct
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
@@ -11,7 +11,7 @@
   <div class="contract">
     <div class="contract-header">
       <div class="sliderbox">
-        <img src="http://114.116.21.170:9000/photo/contract/background.png" alt="" />
+        <img src="http://47.95.211.240:9000/photo/contract/background.png" alt="" />
       </div>
       <div class="text">
         <div class="c-title">CONTACT US</div>
@@ -25,29 +25,29 @@
       </div>
       <div class="contract-logos clearfix">
         <div class="logo first clearfix">
-          <img src="http://114.116.21.170:9000/photo/contract/location.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/contract/location.png" alt="" />
           <p class="p1">园区位置</p>
           <p class="p2">{{ contractText.address }}</p>
         </div>
         <div class="logo">
-          <img src="http://114.116.21.170:9000/photo/contract/person.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/contract/person.png" alt="" />
           <p class="p1">联系人</p>
           <p class="p2">{{ contractText.person }}</p>
         </div>
         <div class="logo">
-          <img src="http://114.116.21.170:9000/photo/contract/phone.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/contract/phone.png" alt="" />
           <p class="p1">联系方式</p>
           <p class="p2">{{ contractText.phone }}</p>
         </div>
         <div class="logo">
-          <img src="http://114.116.21.170:9000/photo/contract/email.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/contract/email.png" alt="" />
           <p class="p1">邮箱</p>
           <p class="p2">{{ contractText.email }}</p>
         </div>
       </div>
       <div class="contract-map">
         <img
-          src="https://restapi.amap.com/v3/staticmap?location=120.095191,36.165253&zoom=12&size=1280%2A484&markers=-1,http://114.116.21.170:9000/photo/contract/location-2.png,0:120.095191,36.165253&key=900b95537e99785a8b0d415ee9160fd1"
+          src="https://restapi.amap.com/v3/staticmap?location=120.095191,36.165253&zoom=12&size=1280%2A484&markers=-1,http://47.95.211.240:9000/photo/contract/location-2.png,0:120.095191,36.165253&key=900b95537e99785a8b0d415ee9160fd1"
           alt=""
         />
       </div>

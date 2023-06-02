@@ -4,7 +4,7 @@
       <div class="h-content"><span>2023园区招商引资，入驻园区，享企业优惠政策</span><br /></div>
       <div class="h-title h-title1">
         <div class="h-logo">
-          <img src="http://114.116.21.170:9000/photo/cooperation2.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/cooperation2.png" alt="" />
         </div>
         <div class="h-text1"><span>产业优惠政策</span></div>
         <div class="l"></div>
@@ -12,13 +12,13 @@
         <div class="h-btn" @click="scrollToAnchor('industry')">
           <span>更多产业</span>
           <div class="h-btn-down">
-            <img src="http://114.116.21.170:9000/photo/cooperation4.png" alt="" />
+            <img src="http://47.95.211.240:9000/photo/cooperation4.png" alt="" />
           </div>
         </div>
       </div>
       <div class="h-title h-title2">
         <div class="h-logo">
-          <img src="http://114.116.21.170:9000/photo/cooperation3.png" alt="" />
+          <img src="http://47.95.211.240:9000/photo/cooperation3.png" alt="" />
         </div>
         <div class="h-text1"><span>园区历史资料</span></div>
         <div class="l"></div>
@@ -26,7 +26,7 @@
         <div class="h-btn" @click="scrollToAnchor('material')">
           <span>更多资料</span>
           <div class="h-btn-down">
-            <img src="http://114.116.21.170:9000/photo/cooperation4.png" alt="" />
+            <img src="http://47.95.211.240:9000/photo/cooperation4.png" alt="" />
           </div>
         </div>
       </div>
@@ -62,10 +62,10 @@
     </div>
     <div class="page">
       <div ref="imgleft" class="left" @click="changepage('prev')">
-        <img src="http://114.116.21.170:9000/photo/cooperation7.png" alt="" />
+        <img src="http://47.95.211.240:9000/photo/cooperation7.png" alt="" />
       </div>
       <div ref="imgright" class="right" @click="changepage('next')">
-        <img src="http://114.116.21.170:9000/photo/cooperation8.png" alt="" />
+        <img src="http://47.95.211.240:9000/photo/cooperation8.png" alt="" />
       </div>
     </div>
     <div class="message">
@@ -90,7 +90,7 @@
           <div class="m-left-demo-down" @click="changeService(gopagenumber)">
             <img
               ref="mleftdemodown"
-              src="http://114.116.21.170:9000/photo/cooperation9.png"
+              src="http://47.95.211.240:9000/photo/cooperation9.png"
               alt=""
             />
           </div>
@@ -106,7 +106,7 @@
             <span>{{ Servicenumber2 }}</span>
           </div>
           <div class="m-right-img2">
-            <img src="http://114.116.21.170:9000/photo/cooperation6.png" alt="" />
+            <img src="http://47.95.211.240:9000/photo/cooperation6.png" alt="" />
           </div>
         </div>
       </div>
@@ -208,7 +208,7 @@ export default {
       for (i = 0; i < k; i++) {
         var imgdiv = `<div class="d-div">
                   <div class="d-logo">
-                    <img src="http://114.116.21.170:9000/photo/cooperation5.png"
+                    <img src="http://47.95.211.240:9000/photo/cooperation5.png"
                          alt="" />
                   </div>
                   <div class="d-mtitle"><span>${
@@ -427,7 +427,7 @@ export default {
     top: 0px;
     left: 0;
     background-repeat: no-repeat;
-    background-image: url('http://114.116.21.170:9000/photo/cooperation1.png');
+    background-image: url('http://47.95.211.240:9000/photo/cooperation1.png');
     .h-content {
       position: relative;
       top: 304px;
