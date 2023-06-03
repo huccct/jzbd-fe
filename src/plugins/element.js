@@ -20,7 +20,11 @@ import {
   Input,
   Upload,
   Progress,
-  Pagination
+  Pagination,
+  Card,
+  Steps,
+  Step,
+  Checkbox
 } from 'element-ui';
 
 Vue.use(Button);
@@ -44,3 +48,8 @@ Vue.use(Input);
 Vue.use(Upload);
 Vue.use(Progress);
 Vue.use(Pagination);
+Vue.use(Card);
+Vue.use(Steps);
+Vue.use(Step);
+Vue.use(Step);
+Vue.use(Checkbox);
