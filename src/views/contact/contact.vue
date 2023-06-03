@@ -1,7 +1,7 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-06-02 21:05:12
+ * @LastEditTime: 2023-06-03 10:18:39
  * @LastEditors: Huccct
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
@@ -47,77 +47,114 @@
             <el-row :gutter="30">
               <el-col :span="8">
                 <el-form-item label="企业名称">
-                  <el-input></el-input>
+                  <el-input placeholder="请输入企业名称"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="成立时间">
-                  <el-input></el-input>
+                  <el-input placeholder="请输入企业成立时间" suffix-icon="el-icon-date"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="法定代表人">
-                  <el-input></el-input>
+                  <el-input placeholder="请输入法定代表人"></el-input>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row :gutter="30">
               <el-col :span="8">
                 <el-form-item label="现注册地址">
-                  <el-input></el-input>
+                  <el-input placeholder="请输入现注册地址"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="联系电话">
-                  <el-input></el-input>
+                  <el-input placeholder="请输入联系电话"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="电子邮箱">
-                  <el-input></el-input>
+                  <el-input placeholder="请输入电子邮箱"></el-input>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row :gutter="30">
               <el-col :span="8">
                 <el-form-item label="入驻时间">
-                  <el-input></el-input>
+                  <el-input placeholder="请输入入驻时间"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="注册资本">
-                  <el-input></el-input>
+                  <el-input placeholder="请输入注册资本">
+                    <template #append>万元</template>
+                  </el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="上年度销售额">
-                  <el-input></el-input>
+                  <el-input placeholder="请输入上年度销售额">
+                    <template #append>万元</template>
+                  </el-input>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row :gutter="30">
               <el-col :span="8">
                 <el-form-item label="资产总额">
-                  <el-input></el-input>
+                  <el-input placeholder="请输入资产总额">
+                    <template #append>万元</template>
+                  </el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="下年度纳税额">
-                  <el-input></el-input>
+                  <el-input placeholder="请输入下年度纳税额">
+                    <template #append>万元</template>
+                  </el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="发展阶段">
                   <br />
-                  <el-checkbox label="研发阶段"></el-checkbox>
-                  <el-checkbox label="推广阶段"></el-checkbox>
-                  <el-checkbox label="成长阶段"></el-checkbox>
+                  <div class="checkbox-container">
+                    <el-checkbox
+                      v-model="options[0].checked"
+                      label="研发阶段"
+                      @change="handleOptionChange(0)"
+                    ></el-checkbox>
+                  </div>
+                  <div class="checkbox-container">
+                    <el-checkbox
+                      v-model="options[1].checked"
+                      label="推广阶段"
+                      @change="handleOptionChange(1)"
+                    ></el-checkbox>
+                  </div>
+                  <div class="checkbox-container">
+                    <el-checkbox
+                      v-model="options[2].checked"
+                      label="成长阶段"
+                      @change="handleOptionChange(2)"
+                    ></el-checkbox>
+                  </div>
+                  <div class="checkbox-container">
+                    <el-checkbox
+                      v-model="options[3].checked"
+                      label="成熟阶段"
+                      @change="handleOptionChange(3)"
+                    ></el-checkbox>
+                  </div>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row>
               <el-form-item label="荣誉资质及项目资金扶金情况">
-                <el-input type="textarea" :rows="6"></el-input>
+                <el-input
+                  type="textarea"
+                  :rows="6"
+                  placeholder="请输入荣誉资质及项目资金扶金情况"
+                ></el-input>
               </el-form-item>
             </el-row>
           </el-form>
@@ -127,24 +164,24 @@
             <el-row :gutter="30">
               <el-col :span="12">
                 <el-form-item label="发明专利">
-                  <el-input type="textarea"></el-input>
+                  <el-input type="textarea" placeholder="请输入发明专利情况"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="12">
                 <el-form-item label="软件著作权">
-                  <el-input type="textarea"></el-input>
+                  <el-input type="textarea" placeholder="请输入软件著作权情况"></el-input>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row :gutter="30">
               <el-col :span="12">
                 <el-form-item label="实用新型专利">
-                  <el-input type="textarea"></el-input>
+                  <el-input type="textarea" placeholder="请输入实用新型专利情况"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="12">
                 <el-form-item label="商标">
-                  <el-input type="textarea"></el-input>
+                  <el-input type="textarea" placeholder="请输入商标情况"></el-input>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -153,81 +190,105 @@
         <div v-show="active === 3" class="step-box3">
           <el-form>
             <el-row v-for="(item, index) in formItems" :key="index">
+              <div class="circle-number">
+                <span>1</span>
+              </div>
               <el-row :gutter="30">
                 <el-col :span="8">
                   <el-form-item label="姓名">
-                    <el-input></el-input>
+                    <el-input placeholder="请输入姓名"></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
                   <el-form-item label="身份证号">
-                    <el-input></el-input>
+                    <el-input placeholder="请输入身份证号"></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
                   <el-form-item label="职务">
-                    <el-input></el-input>
+                    <el-input placeholder="请输入职务"></el-input>
                   </el-form-item>
                 </el-col>
               </el-row>
               <el-row :gutter="30">
                 <el-col :span="8">
                   <el-form-item label="职称">
-                    <el-input></el-input>
+                    <el-input placeholder="请输入职称"></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
                   <el-form-item label="占股比例">
-                    <el-input></el-input>
+                    <el-input placeholder="请输入占股比例">
+                      <template #append> % </template>
+                    </el-input>
                   </el-form-item>
                 </el-col>
               </el-row>
             </el-row>
             <el-row :span="24">
-              <center><el-button @click="addFormItem">新增一个（最多填报三个）</el-button></center>
+              <center>
+                <el-button
+                  v-show="formItems.length < 3"
+                  style="display: block; width: 100%"
+                  icon="el-icon-circle-plus-outline"
+                  @click="addFormItem"
+                  >新增一个（最多填报三个）</el-button
+                >
+              </center>
             </el-row>
           </el-form>
         </div>
         <div v-show="active === 4" class="step-box4">
           <el-form>
             <el-row v-for="(item, index) in formItems" :key="index">
+              <div class="circle-number">
+                <span>1</span>
+              </div>
               <el-row :gutter="30">
                 <el-col :span="8">
                   <el-form-item label="姓名">
-                    <el-input></el-input>
+                    <el-input placeholder="请输入企业名称"></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
                   <el-form-item label="职务">
-                    <el-input></el-input>
+                    <el-input placeholder="请输入职务"></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
                   <el-form-item label="年龄">
-                    <el-input></el-input>
+                    <el-input placeholder="请输入年龄"></el-input>
                   </el-form-item>
                 </el-col>
               </el-row>
               <el-row :gutter="30">
                 <el-col :span="8">
                   <el-form-item label="学历">
-                    <el-input></el-input>
+                    <el-input placeholder="请输入学历,例：本科、硕士研究生、博士研究生"></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
                   <el-form-item label="职称">
-                    <el-input></el-input>
+                    <el-input placeholder="请输入职称"></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
                   <el-form-item label="联系方式">
-                    <el-input></el-input>
+                    <el-input placeholder="请输入联系方式"></el-input>
                   </el-form-item>
                 </el-col>
               </el-row>
             </el-row>
             <el-row :span="24">
-              <center><el-button @click="addFormItem">新增一个（最多填报三个）</el-button></center>
+              <center>
+                <el-button
+                  v-show="formItems.length < 3"
+                  style="display: block; width: 100%"
+                  icon="el-icon-circle-plus-outline"
+                  @click="addFormItem"
+                  >新增一个（最多填报三个）</el-button
+                >
+              </center>
             </el-row>
           </el-form>
         </div>
@@ -237,19 +298,29 @@
               <el-col :span="8">
                 <el-form-item label="发展阶段">
                   <br />
-                  <el-checkbox label="办公用房"></el-checkbox>
-                  <el-checkbox label="生产厂房"></el-checkbox>
+                  <el-checkbox
+                    v-model="options[0].checked"
+                    label="办公用房"
+                    @change="handleOptionChange(0)"
+                  ></el-checkbox>
+                  <el-checkbox
+                    v-model="options[1].checked"
+                    label="生产厂房"
+                    @change="handleOptionChange(1)"
+                  ></el-checkbox>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="面积">
-                  <el-input></el-input>
+                  <el-input placeholder="请输入面积">
+                    <template #append> ㎡</template>
+                  </el-input>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row>
               <el-form-item label="其他需求">
-                <el-input type="textarea" :rows="6"></el-input>
+                <el-input type="textarea" :rows="6" placeholder="请输入其他需求"></el-input>
               </el-form-item>
             </el-row>
           </el-form>
@@ -542,6 +613,12 @@
           </el-form>
         </div>
         <center>
+          <el-button
+            v-show="active !== 1"
+            style="margin-top: 12px; margin-right: 20px"
+            @click="prev"
+            >上一步</el-button
+          >
           <el-button type="primary" style="margin-top: 12px" @click="next">下一步 </el-button>
         </center>
       </div>
@@ -600,10 +677,14 @@ export default {
           field3: ''
         }
       ],
-      activeIndex: '6-1'
+      activeIndex: '6-1',
+      options: [{ checked: false }, { checked: false }, { checked: false }, { checked: false }]
     };
   },
   methods: {
+    prev() {
+      this.active--;
+    },
     next() {
       if (this.active++ > 5) this.active = 1;
     },
@@ -613,12 +694,35 @@ export default {
         field2: '',
         field3: ''
       });
+    },
+    handleOptionChange(index) {
+      // 只允许选择一个选项，取消其他选项的选择
+      this.options.forEach((option, i) => {
+        if (i !== index) {
+          option.checked = false;
+        }
+      });
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.circle-number {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgb(64, 158, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin: 10px 0;
+}
+.checkbox-container {
+  display: inline;
+  margin-left: 15px;
+}
 .step-box6 {
   .uploadInfo_wrapped {
     display: flex;
