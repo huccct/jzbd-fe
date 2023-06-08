@@ -33,7 +33,7 @@ const mutations = {
 
 const actions = {
   async uploadAllInfo({ commit }) {
-    let res = await reqUploadAllInfo();
+    let res = await reqUploadAllInfo({ company: '', fujian: '' });
     console.log(res);
   }
 };

@@ -742,6 +742,14 @@
 <script>
 export default {
   data() {
+    var validateIdCard = (rule, value, callback) => {
+      var pattern = /^\d{17}(\d|X|x)$/;
+      if (pattern.test(value) === true) {
+        callback();
+      } else {
+        callback(new Error('请输入正确的身份证号'));
+      }
+    };
     return {
       part3Len: 1,
       part4Len: 1,
@@ -795,10 +803,10 @@ export default {
         trademark: ''
       },
       intellectualPropertySituationRules: {
-        inventionPatent: [{ required: true, trigger: 'blur' }],
-        softwareCopyright: [{ required: true, trigger: 'blur' }],
-        practicalPatents: [{ required: true, trigger: 'blur' }],
-        trademark: [{ required: true, trigger: 'blur' }]
+        inventionPatent: [{ required: true, trigger: 'blur', message: '请输入发明专利情况' }],
+        softwareCopyright: [{ required: true, trigger: 'blur', message: '请输入软件著作权情况' }],
+        practicalPatents: [{ required: true, trigger: 'blur', message: '请输入实用新型专利情况' }],
+        trademark: [{ required: true, trigger: 'blur', message: '请输入商标情况' }]
       },
       ownershipStructure: [
         { form: { name: '', idCard: '', job: '', professional: '', proportion: '' } },
@@ -808,29 +816,29 @@ export default {
       ownershipStructureRules: [
         {
           form: {
-            name: [{ required: true, trigger: 'blur' }],
-            idCard: [{ required: true, trigger: 'blur' }],
-            job: [{ required: true, trigger: 'blur' }],
-            professional: [{ required: true, trigger: 'blur' }],
-            proportion: [{ required: true, trigger: 'blur' }]
+            name: [{ required: true, trigger: 'blur', message: '请输入姓名' }],
+            idCard: [{ required: true, trigger: 'blur', validator: validateIdCard }],
+            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+            proportion: [{ required: true, trigger: 'blur', message: '请输入占股比例' }]
           }
         },
         {
           form: {
-            name: [{ required: true, trigger: 'blur' }],
-            idCard: [{ required: true, trigger: 'blur' }],
-            job: [{ required: true, trigger: 'blur' }],
-            professional: [{ required: true, trigger: 'blur' }],
-            proportion: [{ required: true, trigger: 'blur' }]
+            name: [{ required: true, trigger: 'blur', message: '请输入姓名' }],
+            idCard: [{ required: true, trigger: 'blur', validator: validateIdCard }],
+            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+            proportion: [{ required: true, trigger: 'blur', message: '请输入占股比例' }]
           }
         },
         {
           form: {
-            name: [{ required: true, trigger: 'blur' }],
-            idCard: [{ required: true, trigger: 'blur' }],
-            job: [{ required: true, trigger: 'blur' }],
-            professional: [{ required: true, trigger: 'blur' }],
-            proportion: [{ required: true, trigger: 'blur' }]
+            name: [{ required: true, trigger: 'blur', message: '请输入姓名' }],
+            idCard: [{ required: true, trigger: 'blur', validator: validateIdCard }],
+            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+            proportion: [{ required: true, trigger: 'blur', message: '请输入占股比例' }]
           }
         }
       ],
@@ -842,32 +850,32 @@ export default {
       highLevelTalentsRules: [
         {
           form: {
-            name: [{ required: true, trigger: 'blur' }],
-            job: [{ required: true, trigger: 'blur' }],
-            age: [{ required: true, trigger: 'blur' }],
-            edBg: [{ required: true, trigger: 'blur' }],
-            professional: [{ required: true, trigger: 'blur' }],
-            contact: [{ required: true, trigger: 'blur' }]
+            name: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
+            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+            age: [{ required: true, trigger: 'blur', message: '请输入年龄' }],
+            edBg: [{ required: true, trigger: 'blur', message: '请输入学历' }],
+            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+            contact: [{ required: true, trigger: 'blur', message: '请输入联系方式' }]
           }
         },
         {
           form: {
-            name: [{ required: true, trigger: 'blur' }],
-            job: [{ required: true, trigger: 'blur' }],
-            age: [{ required: true, trigger: 'blur' }],
-            edBg: [{ required: true, trigger: 'blur' }],
-            professional: [{ required: true, trigger: 'blur' }],
-            contact: [{ required: true, trigger: 'blur' }]
+            name: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
+            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+            age: [{ required: true, trigger: 'blur', message: '请输入年龄' }],
+            edBg: [{ required: true, trigger: 'blur', message: '请输入学历' }],
+            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+            contact: [{ required: true, trigger: 'blur', message: '请输入联系方式' }]
           }
         },
         {
           form: {
-            name: [{ required: true, trigger: 'blur' }],
-            job: [{ required: true, trigger: 'blur' }],
-            age: [{ required: true, trigger: 'blur' }],
-            edBg: [{ required: true, trigger: 'blur' }],
-            professional: [{ required: true, trigger: 'blur' }],
-            contact: [{ required: true, trigger: 'blur' }]
+            name: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
+            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+            age: [{ required: true, trigger: 'blur', message: '请输入年龄' }],
+            edBg: [{ required: true, trigger: 'blur', message: '请输入学历' }],
+            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+            contact: [{ required: true, trigger: 'blur', message: '请输入联系方式' }]
           }
         }
       ],
@@ -883,8 +891,8 @@ export default {
       },
       humanIncubationNeedRules: {
         devOptions: [{ required: true, trigger: 'blur' }],
-        area: [{ required: true, trigger: 'blur' }],
-        other: [{ required: true, trigger: 'blur' }]
+        area: [{ required: true, trigger: 'blur', message: '请输入面积' }],
+        other: [{ required: true, trigger: 'blur', message: '请输入其他需求' }]
       }
     };
   },
