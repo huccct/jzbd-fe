@@ -34,7 +34,7 @@
             <el-step title="附件上传"></el-step>
           </el-steps>
         </el-card>
-        <el-menu :default-active="active" class="el-menu-demo" mode="horizontal">
+        <el-menu :default-active="active.toString()" class="el-menu-demo" mode="horizontal">
           <el-menu-item v-show="active === 1" index="1">企业基本情况</el-menu-item>
           <el-menu-item v-show="active === 2" index="2">知识产权情况</el-menu-item>
           <el-menu-item v-show="active === 3" index="3">股权结构</el-menu-item>
@@ -396,7 +396,7 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="面积" prop="area">
-                  <el-input placeholder="请输入面积">
+                  <el-input v-model="humanIncubationNeed.area" placeholder="请输入面积">
                     <template #append> ㎡</template>
                   </el-input>
                 </el-form-item>
@@ -404,7 +404,12 @@
             </el-row>
             <el-row>
               <el-form-item label="其他需求" prop="other">
-                <el-input type="textarea" :rows="6" placeholder="请输入其他需求"></el-input>
+                <el-input
+                  v-model="humanIncubationNeed.other"
+                  type="textarea"
+                  :rows="6"
+                  placeholder="请输入其他需求"
+                ></el-input>
               </el-form-item>
             </el-row>
           </el-form>
@@ -427,7 +432,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -456,7 +460,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -487,7 +490,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -516,7 +518,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -547,7 +548,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -576,7 +576,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -609,7 +608,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -638,7 +636,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -669,7 +666,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -746,8 +742,6 @@
 <script>
 export default {
   data() {
-    var validatorCompanyName = (rule, value, callback) => {};
-    var validatorSetupTime = (rule, value, callback) => {};
     return {
       part3Len: 1,
       part4Len: 1,
@@ -759,13 +753,6 @@ export default {
       },
       Idx: [1, 2, 3],
       active: 1,
-      formItems: [
-        {
-          field1: '',
-          field2: '',
-          field3: ''
-        }
-      ],
       activeIndex: '6-1',
       companyProfile: {
         companyName: '',
@@ -788,18 +775,18 @@ export default {
         other: ''
       },
       companyProfileRules: {
-        companyName: [{ required: true, trigger: 'blur', validator: validatorCompanyName }],
-        setupTime: [{ required: true, trigger: 'blur', validator: validatorSetupTime }],
-        legalPerson: [{ required: true, trigger: 'blur' }],
-        registeredAddress: [{ required: true, trigger: 'blur' }],
-        phoneNumber: [{ required: true, trigger: 'blur' }],
-        email: [{ required: true, trigger: 'blur' }],
-        checkInTime: [{ required: true, trigger: 'blur' }],
-        registeredCapital: [{ required: true, trigger: 'blur' }],
-        preRevenue: [{ required: true, trigger: 'blur' }],
-        total: [{ required: true, trigger: 'blur' }],
-        nextTax: [{ required: true, trigger: 'blur' }],
-        other: [{ required: true, trigger: 'blur' }]
+        companyName: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
+        setupTime: [{ required: true, trigger: 'blur', message: '请输入成立时间' }],
+        legalPerson: [{ required: true, trigger: 'blur', message: '请输入法定代表人' }],
+        registeredAddress: [{ required: true, trigger: 'blur', message: '请输入现注册地址' }],
+        phoneNumber: [{ required: true, trigger: 'blur', message: '请输入联系电话' }],
+        email: [{ required: true, trigger: 'blur', message: '请输入电子邮箱' }],
+        checkInTime: [{ required: true, trigger: 'blur', message: '请输入入驻时间' }],
+        registeredCapital: [{ required: true, trigger: 'blur', message: '请输入注册资本' }],
+        preRevenue: [{ required: true, trigger: 'blur', message: '请输入上年度销售额' }],
+        total: [{ required: true, trigger: 'blur', message: '请输入资产总额' }],
+        nextTax: [{ required: true, trigger: 'blur', message: '请输入下年度纳税额' }],
+        other: [{ required: true, trigger: 'blur', message: '请输入荣誉资质及项目资金扶金情况' }]
       },
       intellectualPropertySituation: {
         inventionPatent: '',
@@ -901,12 +888,22 @@ export default {
       }
     };
   },
-  mounted() {},
   methods: {
     prev() {
       this.active--;
     },
     next() {
+      if (this.active === 1) {
+        this.$store.commit('contact/setForm1', this.companyProfile);
+      } else if (this.active === 2) {
+        this.$store.commit('contact/setForm2', this.intellectualPropertySituation);
+      } else if (this.active === 3) {
+        this.$store.commit('contact/setForm3', this.ownershipStructure);
+      } else if (this.active === 4) {
+        this.$store.commit('contact/setForm4', this.highLevelTalents);
+      } else if (this.active === 5) {
+        this.$store.commit('contact/setForm5', this.humanIncubationNeed);
+      }
       if (this.active++ > 5) this.active = 1;
     },
     addFormItem(name) {
