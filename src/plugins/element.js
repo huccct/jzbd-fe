@@ -24,7 +24,8 @@ import {
   Card,
   Steps,
   Step,
-  Checkbox
+  Checkbox,
+  DatePicker
 } from 'element-ui';
 
 Vue.use(Button);
@@ -53,3 +54,4 @@ Vue.use(Steps);
 Vue.use(Step);
 Vue.use(Step);
 Vue.use(Checkbox);
+Vue.use(DatePicker);

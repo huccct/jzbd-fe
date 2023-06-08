@@ -43,73 +43,94 @@
           <el-menu-item v-show="active === 6" index="6">附件上传</el-menu-item>
         </el-menu>
         <div v-show="active === 1" class="step-box1">
-          <el-form>
+          <el-form :model="companyProfile" :rules="companyProfileRules">
             <el-row :gutter="30">
               <el-col :span="8">
-                <el-form-item label="企业名称">
-                  <el-input placeholder="请输入企业名称"></el-input>
+                <el-form-item label="企业名称" prop="companyName">
+                  <el-input
+                    v-model="companyProfile.companyName"
+                    placeholder="请输入企业名称"
+                  ></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="成立时间">
-                  <el-input placeholder="请输入企业成立时间" suffix-icon="el-icon-date"></el-input>
+                <el-form-item label="成立时间" style="position: relative" prop="setupTime">
+                  <el-date-picker
+                    v-model="companyProfile.setupTime"
+                    style="width: 100%"
+                    type="date"
+                    placeholder="请选择企业成立的时间"
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="法定代表人">
-                  <el-input placeholder="请输入法定代表人"></el-input>
+                <el-form-item label="法定代表人" prop="legalPerson">
+                  <el-input
+                    v-model="companyProfile.legalPerson"
+                    placeholder="请输入法定代表人"
+                  ></el-input>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row :gutter="30">
               <el-col :span="8">
-                <el-form-item label="现注册地址">
-                  <el-input placeholder="请输入现注册地址"></el-input>
+                <el-form-item label="现注册地址" prop="registeredAddress">
+                  <el-input
+                    v-model="companyProfile.registeredAddress"
+                    placeholder="请输入现注册地址"
+                  ></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="联系电话">
-                  <el-input placeholder="请输入联系电话"></el-input>
+                <el-form-item label="联系电话" prop="phoneNumber">
+                  <el-input
+                    v-model="companyProfile.phoneNumber"
+                    placeholder="请输入联系电话"
+                  ></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="电子邮箱">
-                  <el-input placeholder="请输入电子邮箱"></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row :gutter="30">
-              <el-col :span="8">
-                <el-form-item label="入驻时间">
-                  <el-input placeholder="请输入入驻时间"></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="注册资本">
-                  <el-input placeholder="请输入注册资本">
-                    <template #append>万元</template>
-                  </el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="上年度销售额">
-                  <el-input placeholder="请输入上年度销售额">
-                    <template #append>万元</template>
-                  </el-input>
+                <el-form-item label="电子邮箱" prop="email">
+                  <el-input v-model="companyProfile.email" placeholder="请输入电子邮箱"></el-input>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row :gutter="30">
               <el-col :span="8">
-                <el-form-item label="资产总额">
-                  <el-input placeholder="请输入资产总额">
+                <el-form-item label="入驻时间" prop="checkInTime">
+                  <el-input
+                    v-model="companyProfile.checkInTime"
+                    placeholder="请输入入驻时间"
+                  ></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="注册资本" prop="registeredCapital">
+                  <el-input v-model="companyProfile.registeredCapital" placeholder="请输入注册资本">
                     <template #append>万元</template>
                   </el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="下年度纳税额">
-                  <el-input placeholder="请输入下年度纳税额">
+                <el-form-item label="上年度销售额" prop="preRevenue">
+                  <el-input v-model="companyProfile.preRevenue" placeholder="请输入上年度销售额">
+                    <template #append>万元</template>
+                  </el-input>
+                </el-form-item>
+              </el-col>
+            </el-row>
+            <el-row :gutter="30">
+              <el-col :span="8">
+                <el-form-item label="资产总额" prop="total">
+                  <el-input v-model="companyProfile.total" placeholder="请输入资产总额">
+                    <template #append>万元</template>
+                  </el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="下年度纳税额" prop="nextTax">
+                  <el-input v-model="companyProfile.nextTax" placeholder="请输入下年度纳税额">
                     <template #append>万元</template>
                   </el-input>
                 </el-form-item>
@@ -119,28 +140,28 @@
                   <br />
                   <div class="checkbox-container">
                     <el-checkbox
-                      v-model="options[0].checked"
+                      v-model="companyProfile.devOptions[0].checked"
                       label="研发阶段"
-                      @change="handleOptionChange(0)"
+                      @change="handleOptionChange(0, 1)"
                     ></el-checkbox>
                   </div>
                   <div class="checkbox-container">
                     <el-checkbox
-                      v-model="options[1].checked"
+                      v-model="companyProfile.devOptions[1].checked"
                       label="推广阶段"
-                      @change="handleOptionChange(1)"
+                      @change="handleOptionChange(1, 1)"
                     ></el-checkbox>
                   </div>
                   <div class="checkbox-container">
                     <el-checkbox
-                      v-model="options[2].checked"
+                      v-model="companyProfile.devOptions[2].checked"
                       label="成长阶段"
-                      @change="handleOptionChange(2)"
+                      @change="handleOptionChange(2, 1)"
                     ></el-checkbox>
                   </div>
                   <div class="checkbox-container">
                     <el-checkbox
-                      v-model="options[3].checked"
+                      v-model="companyProfile.devOptions[3].checked"
                       label="成熟阶段"
                       @change="handleOptionChange(3)"
                     ></el-checkbox>
@@ -149,8 +170,9 @@
               </el-col>
             </el-row>
             <el-row>
-              <el-form-item label="荣誉资质及项目资金扶金情况">
+              <el-form-item label="荣誉资质及项目资金扶金情况" prop="other">
                 <el-input
+                  v-model="companyProfile.other"
                   type="textarea"
                   :rows="6"
                   placeholder="请输入荣誉资质及项目资金扶金情况"
@@ -160,28 +182,47 @@
           </el-form>
         </div>
         <div v-show="active === 2" class="step-box2">
-          <el-form>
+          <el-form
+            :model="intellectualPropertySituation"
+            :rules="intellectualPropertySituationRules"
+          >
             <el-row :gutter="30">
               <el-col :span="12">
-                <el-form-item label="发明专利">
-                  <el-input type="textarea" placeholder="请输入发明专利情况"></el-input>
+                <el-form-item label="发明专利" prop="inventionPatent">
+                  <el-input
+                    v-model="intellectualPropertySituation.inventionPatent"
+                    type="textarea"
+                    placeholder="请输入发明专利情况"
+                  ></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="12">
-                <el-form-item label="软件著作权">
-                  <el-input type="textarea" placeholder="请输入软件著作权情况"></el-input>
+                <el-form-item label="软件著作权" prop="softwareCopyright">
+                  <el-input
+                    v-model="intellectualPropertySituation.softwareCopyright"
+                    type="textarea"
+                    placeholder="请输入软件著作权情况"
+                  ></el-input>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row :gutter="30">
               <el-col :span="12">
-                <el-form-item label="实用新型专利">
-                  <el-input type="textarea" placeholder="请输入实用新型专利情况"></el-input>
+                <el-form-item label="实用新型专利" prop="practicalPatents">
+                  <el-input
+                    v-model="intellectualPropertySituation.practicalPatents"
+                    type="textarea"
+                    placeholder="请输入实用新型专利情况"
+                  ></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="12">
-                <el-form-item label="商标">
-                  <el-input type="textarea" placeholder="请输入商标情况"></el-input>
+                <el-form-item label="商标" prop="trademark">
+                  <el-input
+                    v-model="intellectualPropertySituation.trademark"
+                    type="textarea"
+                    placeholder="请输入商标情况"
+                  ></el-input>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -191,7 +232,7 @@
           <el-form>
             <el-row v-for="(item, index) in formItems" :key="index">
               <div class="circle-number">
-                <span>1</span>
+                <span>{{ Idx[index] }}</span>
               </div>
               <el-row :gutter="30">
                 <el-col :span="8">
@@ -242,7 +283,7 @@
           <el-form>
             <el-row v-for="(item, index) in formItems" :key="index">
               <div class="circle-number">
-                <span>1</span>
+                <span>{{ Idx[index] }}</span>
               </div>
               <el-row :gutter="30">
                 <el-col :span="8">
@@ -293,25 +334,25 @@
           </el-form>
         </div>
         <div v-show="active === 5" class="step-box5">
-          <el-form>
+          <el-form :model="humanIncubationNeed" :rules="humanIncubationNeedRules">
             <el-row>
               <el-col :span="8">
-                <el-form-item label="发展阶段">
+                <el-form-item label="发展阶段" prop="devOptions">
                   <br />
                   <el-checkbox
-                    v-model="options[0].checked"
+                    v-model="humanIncubationNeed.devOptions[0].checked"
                     label="办公用房"
-                    @change="handleOptionChange(0)"
+                    @change="handleOptionChange(0, 2)"
                   ></el-checkbox>
                   <el-checkbox
-                    v-model="options[1].checked"
+                    v-model="humanIncubationNeed.devOptions[1].checked"
                     label="生产厂房"
-                    @change="handleOptionChange(1)"
+                    @change="handleOptionChange(1, 2)"
                   ></el-checkbox>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="面积">
+                <el-form-item label="面积" prop="area">
                   <el-input placeholder="请输入面积">
                     <template #append> ㎡</template>
                   </el-input>
@@ -319,7 +360,7 @@
               </el-col>
             </el-row>
             <el-row>
-              <el-form-item label="其他需求">
+              <el-form-item label="其他需求" prop="other">
                 <el-input type="textarea" :rows="6" placeholder="请输入其他需求"></el-input>
               </el-form-item>
             </el-row>
@@ -662,6 +703,8 @@
 <script>
 export default {
   data() {
+    var validatorCompanyName = (rule, value, callback) => {};
+    var validatorSetupTime = (rule, value, callback) => {};
     return {
       contractText: {
         address: '山东省青岛市胶州上合示范区闽江路60号',
@@ -669,6 +712,7 @@ export default {
         phone: '0532-85279551',
         email: 'shqycxcyy@163.com'
       },
+      Idx: [1, 2, 3],
       active: 1,
       formItems: [
         {
@@ -678,7 +722,68 @@ export default {
         }
       ],
       activeIndex: '6-1',
-      options: [{ checked: false }, { checked: false }, { checked: false }, { checked: false }]
+      companyProfile: {
+        companyName: '',
+        setupTime: '',
+        legalPerson: '',
+        registeredAddress: '',
+        phoneNumber: '',
+        email: '',
+        checkInTime: '',
+        registeredCapital: '',
+        preRevenue: '',
+        total: '',
+        nextTax: '',
+        devOptions: [
+          { checked: false },
+          { checked: false },
+          { checked: false },
+          { checked: false }
+        ],
+        other: ''
+      },
+      companyProfileRules: {
+        companyName: [{ required: true, trigger: 'blur', validator: validatorCompanyName }],
+        setupTime: [{ required: true, trigger: 'blur', validator: validatorSetupTime }],
+        legalPerson: [{ required: true, trigger: 'blur' }],
+        registeredAddress: [{ required: true, trigger: 'blur' }],
+        phoneNumber: [{ required: true, trigger: 'blur' }],
+        email: [{ required: true, trigger: 'blur' }],
+        checkInTime: [{ required: true, trigger: 'blur' }],
+        registeredCapital: [{ required: true, trigger: 'blur' }],
+        preRevenue: [{ required: true, trigger: 'blur' }],
+        total: [{ required: true, trigger: 'blur' }],
+        nextTax: [{ required: true, trigger: 'blur' }],
+        other: [{ required: true, trigger: 'blur' }]
+      },
+      intellectualPropertySituation: {
+        inventionPatent: '',
+        softwareCopyright: '',
+        practicalPatents: '',
+        trademark: ''
+      },
+      intellectualPropertySituationRules: {
+        inventionPatent: [{ required: true, trigger: 'blur' }],
+        softwareCopyright: [{ required: true, trigger: 'blur' }],
+        practicalPatents: [{ required: true, trigger: 'blur' }],
+        trademark: [{ required: true, trigger: 'blur' }]
+      },
+      ownershipStructure: [{ field1: {} }, { field2: {} }, { field3: {} }],
+      humanIncubationNeed: {
+        devOptions: [
+          { checked: false },
+          { checked: false },
+          { checked: false },
+          { checked: false }
+        ],
+        area: '',
+        other: ''
+      },
+      humanIncubationNeedRules: {
+        devOptions: [{ required: true, trigger: 'blur' }],
+        area: [{ required: true, trigger: 'blur' }],
+        other: [{ required: true, trigger: 'blur' }]
+      }
     };
   },
   methods: {
@@ -695,19 +800,30 @@ export default {
         field3: ''
       });
     },
-    handleOptionChange(index) {
+    handleOptionChange(index, name) {
       // 只允许选择一个选项，取消其他选项的选择
-      this.options.forEach((option, i) => {
-        if (i !== index) {
-          option.checked = false;
-        }
-      });
+      if (name === 1) {
+        this.companyProfile.devOptions.forEach((option, i) => {
+          if (i !== index) {
+            option.checked = false;
+          }
+        });
+      } else if (name === 2) {
+        this.humanIncubationNeed.devOptions.forEach((option, i) => {
+          if (i !== index) {
+            option.checked = false;
+          }
+        });
+      }
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.el-form-item .el-select {
+  width: 100%;
+}
 .circle-number {
   width: 30px;
   height: 30px;
