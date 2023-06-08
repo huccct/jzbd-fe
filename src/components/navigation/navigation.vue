@@ -3,12 +3,12 @@
  * @Author: Huccct
  * @Date: 2023-04-12 09:59:54
  * @LastEditors: Huccct
- * @LastEditTime: 2023-05-08 14:35:49
+ * @LastEditTime: 2023-06-02 21:08:11
 -->
 <template>
   <div class="box">
     <div class="left">
-      <img src="http://114.116.21.170:9000/photo/Logo.png" alt="logo" />
+      <img src="http://47.95.211.240:9000/photo/Logo.png" alt="logo" />
     </div>
     <div class="right">
       <el-menu

@@ -2,13 +2,13 @@
  * @Description: Stay hungry，Stay foolish
  * @Author: Huccct
  * @Date: 2023-04-12 11:36:59
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-04-24 21:09:42
+ * @LastEditors: Huccct
+ * @LastEditTime: 2023-06-02 21:08:06
 -->
 <template>
   <div class="foot-menu">
     <div class="footer-content-bg">
-      <img src="http://114.116.21.170:9000/photo/%E7%BB%84%2073.png" alt="" />
+      <img src="http://47.95.211.240:9000/photo/%E7%BB%84%2073.png" alt="" />
     </div>
     <div class="footer-content-header">
       <div class="footer-content-menu">

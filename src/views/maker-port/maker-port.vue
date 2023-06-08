@@ -20,7 +20,7 @@
       <div class="text">
         <span>01</span>
         <span>&emsp;——&emsp;</span>
-        <span>IntroductiontothePark</span><br />
+        <span>Introduction to the Park</span><br />
         <div>厚德创客港</div>
         <br />
         <div>产业园区介绍</div>
@@ -58,7 +58,7 @@
             class="icon-left"
             @click="prev()"
           >
-            <img src="http://114.116.21.170:9000/photo/maker-port/left.png" alt="left" />
+            <img src="http://47.95.211.240:9000/photo/maker-port/left.png" alt="left" />
           </el-button>
           <el-button
             :class="{ op: flag_ri1 }"
@@ -68,7 +68,7 @@
             class="icon-right"
             @click="next()"
           >
-            <img src="http://114.116.21.170:9000/photo/maker-port/right.png" alt="right" />
+            <img src="http://47.95.211.240:9000/photo/maker-port/right.png" alt="right" />
           </el-button>
         </div>
         <el-carousel
@@ -90,7 +90,7 @@
       <div class="service-text">
         <span>02</span>
         <span>&emsp;——&emsp;</span>
-        <span>Servicecontentofthepark</span><br />
+        <span>Service content of the park</span><br />
         <div>园区服务内容</div>
         <div>
           <ul>
@@ -120,7 +120,7 @@
           class="icon-left"
           @click="prev2()"
         >
-          <img src="http://114.116.21.170:9000/photo/maker-port/left.png" alt="left" />
+          <img src="http://47.95.211.240:9000/photo/maker-port/left.png" alt="left" />
         </el-button>
         <el-button
           :class="{ op: flag_ri2 }"
@@ -129,7 +129,7 @@
           class="icon-right"
           @click="next2()"
         >
-          <img src="http://114.116.21.170:9000/photo/maker-port/right.png" alt="right" />
+          <img src="http://47.95.211.240:9000/photo/maker-port/right.png" alt="right" />
         </el-button>
       </div>
       <el-carousel
@@ -165,37 +165,37 @@ export default {
       src: [
         {
           id: 1,
-          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2223.png'
+          src: 'http://47.95.211.240:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2223.png'
         },
         {
           id: 2,
-          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2242.png'
+          src: 'http://47.95.211.240:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2242.png'
         },
         {
           id: 3,
-          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2243.png'
+          src: 'http://47.95.211.240:9000/photo/maker-port/%E7%9F%A9%E5%BD%A2243.png'
         }
       ],
       src2: [
         {
           id: 1,
-          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%BB%842.png'
+          src: 'http://47.95.211.240:9000/photo/maker-port/%E7%BB%842.png'
         },
         {
           id: 2,
-          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%BB%843.png'
+          src: 'http://47.95.211.240:9000/photo/maker-port/%E7%BB%843.png'
         },
         {
           id: 3,
-          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%BB%844.png'
+          src: 'http://47.95.211.240:9000/photo/maker-port/%E7%BB%844.png'
         },
         {
           id: 4,
-          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%BB%845.png'
+          src: 'http://47.95.211.240:9000/photo/maker-port/%E7%BB%845.png'
         },
         {
           id: 5,
-          src: 'http://114.116.21.170:9000/photo/maker-port/%E7%BB%846.png'
+          src: 'http://47.95.211.240:9000/photo/maker-port/%E7%BB%846.png'
         }
       ]
     };

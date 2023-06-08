@@ -31,7 +31,7 @@ li {
     width: 100%;
     height: 400px;
     margin-top: -65px;
-    background: url('http://114.116.21.170:9000/photo/police/上合产业园网站_slices/zsBg.png')
+    background: url('http://47.95.211.240:9000/photo/police/上合产业园网站_slices/zsBg.png')
       no-repeat;
     background-size: cover;
   }
@@ -42,7 +42,7 @@ li {
   //   position: absolute;
   //   width: 100%;
   //   height: 100%;
-  //   background: url('http://114.116.21.170:9000/photo/police/上合产业园网站_slices/112.png')
+  //   background: url('http://47.95.211.240:9000/photo/police/上合产业园网站_slices/112.png')
   //     no-repeat;
   //   background-position: bottom 220px right 0;
   //   background-size: contain;

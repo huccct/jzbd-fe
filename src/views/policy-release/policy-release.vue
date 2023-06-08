@@ -26,7 +26,7 @@
         <div class="policeInfoMain">
           <div class="topImg">
             <img
-              src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/VCG211285793655.png"
+              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/VCG211285793655.png"
               alt=""
             />
           </div>
@@ -77,12 +77,12 @@
               <template>
                 <div v-for="(item, index) in uploadInfo" :key="index" class="uploadInfo">
                   <img
-                    src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/附件.png"
+                    src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
                     alt=""
                   />
                   <img
                     class="close"
-                    src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/组_57.png"
+                    src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/组_57.png"
                     alt=""
                     @click="del(item)"
                   />
@@ -91,7 +91,7 @@
                       {{ item.name }}
                       <img
                         v-if="item.progressPercent === 100"
-                        src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/对号（圆圈对号）.png"
+                        src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/对号（圆圈对号）.png"
                       />
                     </div>
                     <el-progress
@@ -120,7 +120,7 @@
                 <div slot="trigger" class="uploadInfo_wrapped">
                   <div style="display: flex; margin-top: 13px">
                     <img
-                      src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/附件.png"
+                      src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
                       alt=""
                     />
                     <div class="chooseFiles">选取文件</div>
@@ -141,7 +141,7 @@
         </div>
         <div v-else class="success">
           <img
-            src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/success.png"
+            src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/success.png"
             alt=""
           />
           <div class="success_des">提交成功！</div>
@@ -331,7 +331,7 @@ contain
     width: 100%;
     height: 1000px;
     margin-top: -65px;
-    background: url('http://114.116.21.170:9000/photo/police/上合产业园网站_slices/VCG41N1163690562.png')
+    background: url('http://47.95.211.240:9000/photo/police/上合产业园网站_slices/VCG41N1163690562.png')
       no-repeat;
     background-size: cover;
     & > .textWrapped {
@@ -521,7 +521,7 @@ contain
   }
   & > .enterpriseInfo {
     height: 850px;
-    background: url(http://114.116.21.170:9000/photo/police/上合产业园网站_slices/bg.png) no-repeat;
+    background: url(http://47.95.211.240:9000/photo/police/上合产业园网站_slices/bg.png) no-repeat;
     background-size: cover;
     padding-top: 100px;
     & .container > .title {
@@ -621,7 +621,7 @@ contain
           left: 19px;
           width: 14px;
           height: 14px;
-          background: url('http://114.116.21.170:9000/photo/police/上合产业园网站_slices/组_57.png')
+          background: url('http://47.95.211.240:9000/photo/police/上合产业园网站_slices/组_57.png')
             no-repeat;
         }
         &:nth-child(1) ~ .uploadInfo {

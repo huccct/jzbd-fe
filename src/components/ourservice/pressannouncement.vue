@@ -7,7 +7,7 @@
 <template>
   <div class="pa-box">
     <!-- <div class="pa-bg">
-      <img src="http://114.116.21.170:9000/photo/service/%E8%B7%AF%E5%BE%84%2069.png" alt="">
+      <img src="http://47.95.211.240:9000/photo/service/%E8%B7%AF%E5%BE%84%2069.png" alt="">
     </div> -->
     <div class="pa-topic">
       <div>
@@ -19,7 +19,7 @@
       <div class="pa-content_left">
         <div>
           <img
-            src="http://114.116.21.170:9000/photo/service/a546ff9406d87b46a9a7dbad6bb84b91e8860ae12028d-CUQjrp.png"
+            src="http://47.95.211.240:9000/photo/service/a546ff9406d87b46a9a7dbad6bb84b91e8860ae12028d-CUQjrp.png"
           />
           <div>{{ list_data2.createTime }}</div>
         </div>
@@ -33,7 +33,7 @@
         </p>
         <!-- <div>
           <img
-            src="http://114.116.21.170:9000/photo/service/a546ff9406d87b46a9a7dbad6bb84b91e8860ae12028d-CUQjrp.png"
+            src="http://47.95.211.240:9000/photo/service/a546ff9406d87b46a9a7dbad6bb84b91e8860ae12028d-CUQjrp.png"
           />
           <div>2022-12-18</div>
         </div>
@@ -143,7 +143,7 @@ export default {
 
 <style lang="scss" scoped>
 .pa-box {
-  background-image: url('http://114.116.21.170:9000/photo/service/%E8%B7%AF%E5%BE%84%2069.png');
+  background-image: url('http://47.95.211.240:9000/photo/service/%E8%B7%AF%E5%BE%84%2069.png');
   background-repeat: no-repeat;
   height: 1165px;
   width: 100%;

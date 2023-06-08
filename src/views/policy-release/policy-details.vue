@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: YuShuXiao 949516815@qq.com
  * @Date: 2023-04-21 23:03:17
- * @LastEditors: YuShuXiao 949516815@qq.com
- * @LastEditTime: 2023-05-06 18:23:03
+ * @LastEditors: Huccct
+ * @LastEditTime: 2023-06-02 21:07:34
  * @FilePath: \jzbd-fe\src\views\policy-release\policy-details.vue
 -->
 <template>
@@ -25,15 +25,12 @@
     </div>
     <div class="mediaList">
       <div
-        v-for="(item, index) in detailsInfo.downloadAddress.split(',')"
+        v-for="(item, index) in detailsInfo.downloadAddress?.split(',')"
         :key="index"
         class="mediaItem"
         @click="downLoad"
       >
-        <img
-          src="http://114.116.21.170:9000/photo/police/上合产业园网站_slices/附件-1.png"
-          alt=""
-        />
+        <img src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件-1.png" alt="" />
         <div class="mediaDes">
           <a :href="item" :download="filename(item)">{{ filename(item) }}</a>
         </div>
@@ -82,9 +79,8 @@ export default {
 }
 .main {
   margin-top: 50px;
-  height: 1750px;
-  overflow-y: auto;
-  background-image: none !important;
+  // height: 1750px;
+  // overflow-y: auto;
 
   & .article {
     margin-top: 52px;
@@ -114,7 +110,7 @@ export default {
   }
 }
 .mediaList {
-  margin: 50px 0;
+  margin: 50px 0 150px 0;
   & > .mediaItem {
     cursor: pointer;
     display: flex;

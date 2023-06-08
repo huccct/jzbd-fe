@@ -2,13 +2,10 @@
   <div class="service-information">
     <div class="si-top">
       <div class="si-top1">
-        <img
-          src="http://114.116.21.170:9000/photo/service/information/VCG211187142439.png"
-          alt=""
-        />
+        <img src="http://47.95.211.240:9000/photo/service/information/VCG211187142439.png" alt="" />
       </div>
       <div class="si-top2">
-        <img src="http://114.116.21.170:9000/photo/cooperation-2.3.png" alt="" />
+        <img src="http://47.95.211.240:9000/photo/cooperation-2.3.png" alt="" />
         <div class="si-title">
           <span>ATRACT INVESTMENT</span>
           <p>招商合作>></p>
@@ -17,7 +14,7 @@
     </div>
     <div v-if="Object.keys(data_list).length" class="si-content">
       <div class="si-content-top">
-        <img src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2079.png" alt="" />
+        <img src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2079.png" alt="" />
         <el-breadcrumb class="el-breadcrumb">
           <el-breadcrumb-item :to="{ path: '/cooperation' }">招商合作</el-breadcrumb-item>
           <el-breadcrumb-item>详细资料</el-breadcrumb-item>
@@ -27,13 +24,13 @@
       <div class="si-content-middle">
         <div class="sic-middle-topic">
           <img
-            src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2080.png"
+            src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2080.png"
             alt=""
             @click="beforee()"
           />
           <span>{{ data_list.Now.parkInformationTitle }}</span>
           <img
-            src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2081.png"
+            src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2081.png"
             alt=""
             @click="next()"
           />

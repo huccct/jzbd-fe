@@ -8,18 +8,15 @@
   <div class="service-information">
     <div class="si-top">
       <div class="si-top1">
-        <img
-          src="http://114.116.21.170:9000/photo/service/information/VCG211187142439.png"
-          alt=""
-        />
+        <img src="http://47.95.211.240:9000/photo/service/information/VCG211187142439.png" alt="" />
       </div>
       <div class="si-top2">
-        <img src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2078.png" alt="" />
+        <img src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2078.png" alt="" />
       </div>
     </div>
     <div class="si-content">
       <div class="si-content-top">
-        <img src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2079.png" alt="" />
+        <img src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2079.png" alt="" />
         <el-breadcrumb class="el-breadcrumb" separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item :to="{ path: '/service' }">园区服务</el-breadcrumb-item>
@@ -31,13 +28,13 @@
       <div class="si-content-middle">
         <div class="sic-middle-topic">
           <img
-            src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2080.png"
+            src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2080.png"
             alt=""
             @click="beforee()"
           />
           <span>{{ now_list.newsTitle }}</span>
           <img
-            src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2081.png"
+            src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2081.png"
             alt=""
             @click="next()"
           />
@@ -48,9 +45,9 @@
           <span>浏览量：{{ now_list.pageViews }}</span>
           <span
             >分享：<img
-              src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2043.png"
+              src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2043.png"
               alt="" />&nbsp;&nbsp;<img
-              src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2044.png"
+              src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2044.png"
               alt=""
           /></span>
         </div>
@@ -60,7 +57,7 @@
             12月30日，上合新区发出首张个体工商户经营者变更营业执照。个体工商户谢女士在上合新区市场监管窗口申请办理个体工商户经营者变更登记，用了不到半个小时的时间就完成了相关办理手续。她拿着现场颁发的营业执照表示：“现在太方便了，这么短时间就能变更到经营者了，实在是太省心省时了。”
           </p>
           <img
-            src="http://114.116.21.170:9000/photo/service/information/c05bf273d90c1d651621defa03e0776f_202212140900142692.png"
+            src="http://47.95.211.240:9000/photo/service/information/c05bf273d90c1d651621defa03e0776f_202212140900142692.png"
             alt=""
           />
           <p>

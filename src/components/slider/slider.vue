@@ -17,10 +17,10 @@
     </el-carousel>
     <div class="slider-arrows">
       <span class="slider-arrow slider-arrow-prev" @click="prev">
-        <img src="http://114.116.21.170:9000/photo/aleft.png" class="fas fa-chevron-left" />
+        <img src="http://47.95.211.240:9000/photo/aleft.png" class="fas fa-chevron-left" />
       </span>
       <span class="slider-arrow slider-arrow-next" @click="next">
-        <img src="http://114.116.21.170:9000/photo/aright.png" class="fas fa-chevron-right" />
+        <img src="http://47.95.211.240:9000/photo/aright.png" class="fas fa-chevron-right" />
       </span>
     </div>
     <div class="slider-index1">{{ (currentIndex + 1).toString().padStart(2, '0') }}</div>
@@ -34,11 +34,11 @@ export default {
   data() {
     return {
       items: [
-        { id: 1, src: 'http://114.116.21.170:9000/photo/slider1.png' },
-        { id: 2, src: 'http://114.116.21.170:9000/photo/slider2.png' },
-        { id: 3, src: 'http://114.116.21.170:9000/photo/slider3.png' },
-        { id: 4, src: 'http://114.116.21.170:9000/photo/slider4.png' },
-        { id: 5, src: 'http://114.116.21.170:9000/photo/slider5.png' }
+        { id: 1, src: 'http://47.95.211.240:9000/photo/slider1.png' },
+        { id: 2, src: 'http://47.95.211.240:9000/photo/slider2.png' },
+        { id: 3, src: 'http://47.95.211.240:9000/photo/slider3.png' },
+        { id: 4, src: 'http://47.95.211.240:9000/photo/slider4.png' },
+        { id: 5, src: 'http://47.95.211.240:9000/photo/slider5.png' }
       ],
       height: '1000px',
       currentIndex: 0,
@@ -47,10 +47,10 @@ export default {
   },
   computed: {
     prevArrow() {
-      return `<img src="http://114.116.21.170:9000/photo/aleft.png">`;
+      return `<img src="http://47.95.211.240:9000/photo/aleft.png">`;
     },
     nextArrow() {
-      return `<img src="http://114.116.21.170:9000/photo/aright.png">`;
+      return `<img src="http://47.95.211.240:9000/photo/aright.png">`;
     }
   },
   methods: {

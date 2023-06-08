@@ -8,19 +8,16 @@
   <div class="service-information">
     <div class="si-top">
       <div class="si-top1">
-        <img
-          src="http://114.116.21.170:9000/photo/service/information/VCG211187142439.png"
-          alt=""
-        />
+        <img src="http://47.95.211.240:9000/photo/service/information/VCG211187142439.png" alt="" />
       </div>
       <div class="si-top2">
-        <img src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2078.png" alt="" />
+        <img src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2078.png" alt="" />
       </div>
       <p class="xwgg">新闻公告</p>
     </div>
     <div class="si-content">
       <div class="si-content-top">
-        <img src="http://114.116.21.170:9000/photo/service/information/%E7%BB%84%2079.png" alt="" />
+        <img src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2079.png" alt="" />
         <el-breadcrumb class="el-breadcrumb" separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item :to="{ path: '/service' }">园区服务</el-breadcrumb-item>
