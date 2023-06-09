@@ -123,10 +123,10 @@
         <span>Products and services</span><br />
         <div>产品与服务</div>
       </div>
-      <!-- productAndServices 这个数组只有两个，你咋写这么多 -->
-      <div v-if="data_list.productAndServices" class="product-details">
+      <!-- productAndServices 这个数组只有两个，你咋写这么多 ---- 谁跟你说数组只有两个的！ -->
+      <div v-if="data_list.productandserviceList" class="product-details">
         <div
-          v-for="(item, index) in data_list.productAndServices"
+          v-for="(item, index) in data_list.productandserviceList"
           :key="index"
           class="product-details_one"
         >
@@ -220,6 +220,7 @@ export default {
   async created() {
     await this.loadPage();
     console.log(this.data_list);
+    console.log(this.data_list.productandserviceList);
   },
   methods: {
     carousel_change(e) {
