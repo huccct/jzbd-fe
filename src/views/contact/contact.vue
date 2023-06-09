@@ -34,7 +34,7 @@
             <el-step title="附件上传"></el-step>
           </el-steps>
         </el-card>
-        <el-menu :default-active="active" class="el-menu-demo" mode="horizontal">
+        <el-menu :default-active="active.toString()" class="el-menu-demo" mode="horizontal">
           <el-menu-item v-show="active === 1" index="1">企业基本情况</el-menu-item>
           <el-menu-item v-show="active === 2" index="2">知识产权情况</el-menu-item>
           <el-menu-item v-show="active === 3" index="3">股权结构</el-menu-item>
@@ -229,109 +229,152 @@
           </el-form>
         </div>
         <div v-show="active === 3" class="step-box3">
-          <el-form>
-            <el-row v-for="(item, index) in formItems" :key="index">
+          <el-form
+            v-for="(item, index) in part3Len"
+            :key="index"
+            :model="ownershipStructure[index]"
+            :rules="ownershipStructureRules[index]"
+          >
+            <el-row>
               <div class="circle-number">
                 <span>{{ Idx[index] }}</span>
               </div>
               <el-row :gutter="30">
                 <el-col :span="8">
-                  <el-form-item label="姓名">
-                    <el-input placeholder="请输入姓名"></el-input>
+                  <el-form-item label="姓名" prop="form.name">
+                    <el-input
+                      v-model="ownershipStructure[index].form.name"
+                      placeholder="请输入姓名"
+                    ></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                  <el-form-item label="身份证号">
-                    <el-input placeholder="请输入身份证号"></el-input>
+                  <el-form-item label="身份证号" prop="form.idCard">
+                    <el-input
+                      v-model="ownershipStructure[index].form.idCard"
+                      placeholder="请输入身份证号"
+                    ></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                  <el-form-item label="职务">
-                    <el-input placeholder="请输入职务"></el-input>
+                  <el-form-item label="职务" prop="form.job">
+                    <el-input
+                      v-model="ownershipStructure[index].form.job"
+                      placeholder="请输入职务"
+                    ></el-input>
                   </el-form-item>
                 </el-col>
               </el-row>
               <el-row :gutter="30">
                 <el-col :span="8">
-                  <el-form-item label="职称">
-                    <el-input placeholder="请输入职称"></el-input>
+                  <el-form-item label="职称" prop="form.professional">
+                    <el-input
+                      v-model="ownershipStructure[index].form.professional"
+                      placeholder="请输入职称"
+                    ></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                  <el-form-item label="占股比例">
-                    <el-input placeholder="请输入占股比例">
+                  <el-form-item label="占股比例" prop="form.proportion">
+                    <el-input
+                      v-model="ownershipStructure[index].form.proportion"
+                      placeholder="请输入占股比例"
+                    >
                       <template #append> % </template>
                     </el-input>
                   </el-form-item>
                 </el-col>
               </el-row>
             </el-row>
-            <el-row :span="24">
-              <center>
-                <el-button
-                  v-show="formItems.length < 3"
-                  style="display: block; width: 100%"
-                  icon="el-icon-circle-plus-outline"
-                  @click="addFormItem"
-                  >新增一个（最多填报三个）</el-button
-                >
-              </center>
-            </el-row>
           </el-form>
+          <el-row :span="24">
+            <center>
+              <el-button
+                v-show="part3Len < 3"
+                style="display: block; width: 100%"
+                icon="el-icon-circle-plus-outline"
+                @click="addFormItem(0)"
+                >新增一个（最多填报三个）</el-button
+              >
+            </center>
+          </el-row>
         </div>
         <div v-show="active === 4" class="step-box4">
-          <el-form>
-            <el-row v-for="(item, index) in formItems" :key="index">
+          <el-form
+            v-for="(item, index) in part4Len"
+            :key="index"
+            :model="highLevelTalents[index]"
+            :rules="highLevelTalentsRules[index]"
+          >
+            <el-row>
               <div class="circle-number">
                 <span>{{ Idx[index] }}</span>
               </div>
               <el-row :gutter="30">
                 <el-col :span="8">
-                  <el-form-item label="姓名">
-                    <el-input placeholder="请输入企业名称"></el-input>
+                  <el-form-item label="姓名" prop="form.name">
+                    <el-input
+                      v-model="highLevelTalents[index].form.name"
+                      placeholder="请输入企业名称"
+                    ></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                  <el-form-item label="职务">
-                    <el-input placeholder="请输入职务"></el-input>
+                  <el-form-item label="职务" prop="form.job">
+                    <el-input
+                      v-model="highLevelTalents[index].form.job"
+                      placeholder="请输入职务"
+                    ></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                  <el-form-item label="年龄">
-                    <el-input placeholder="请输入年龄"></el-input>
+                  <el-form-item label="年龄" prop="form.age">
+                    <el-input
+                      v-model="highLevelTalents[index].form.age"
+                      placeholder="请输入年龄"
+                    ></el-input>
                   </el-form-item>
                 </el-col>
               </el-row>
               <el-row :gutter="30">
                 <el-col :span="8">
-                  <el-form-item label="学历">
-                    <el-input placeholder="请输入学历,例：本科、硕士研究生、博士研究生"></el-input>
+                  <el-form-item label="学历" prop="form.edBg">
+                    <el-input
+                      v-model="highLevelTalents[index].form.edBg"
+                      placeholder="请输入学历,例：本科、硕士研究生、博士研究生"
+                    ></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                  <el-form-item label="职称">
-                    <el-input placeholder="请输入职称"></el-input>
+                  <el-form-item label="职称" prop="form.professional">
+                    <el-input
+                      v-model="highLevelTalents[index].form.professional"
+                      placeholder="请输入职称"
+                    ></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                  <el-form-item label="联系方式">
-                    <el-input placeholder="请输入联系方式"></el-input>
+                  <el-form-item label="联系方式" prop="form.contact">
+                    <el-input
+                      v-model="highLevelTalents[index].form.contact"
+                      placeholder="请输入联系方式"
+                    ></el-input>
                   </el-form-item>
                 </el-col>
               </el-row>
             </el-row>
-            <el-row :span="24">
-              <center>
-                <el-button
-                  v-show="formItems.length < 3"
-                  style="display: block; width: 100%"
-                  icon="el-icon-circle-plus-outline"
-                  @click="addFormItem"
-                  >新增一个（最多填报三个）</el-button
-                >
-              </center>
-            </el-row>
           </el-form>
+          <el-row :span="24">
+            <center>
+              <el-button
+                v-show="part4Len < 3"
+                style="display: block; width: 100%"
+                icon="el-icon-circle-plus-outline"
+                @click="addFormItem(1)"
+                >新增一个（最多填报三个）</el-button
+              >
+            </center>
+          </el-row>
         </div>
         <div v-show="active === 5" class="step-box5">
           <el-form :model="humanIncubationNeed" :rules="humanIncubationNeedRules">
@@ -353,7 +396,7 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="面积" prop="area">
-                  <el-input placeholder="请输入面积">
+                  <el-input v-model="humanIncubationNeed.area" placeholder="请输入面积">
                     <template #append> ㎡</template>
                   </el-input>
                 </el-form-item>
@@ -361,7 +404,12 @@
             </el-row>
             <el-row>
               <el-form-item label="其他需求" prop="other">
-                <el-input type="textarea" :rows="6" placeholder="请输入其他需求"></el-input>
+                <el-input
+                  v-model="humanIncubationNeed.other"
+                  type="textarea"
+                  :rows="6"
+                  placeholder="请输入其他需求"
+                ></el-input>
               </el-form-item>
             </el-row>
           </el-form>
@@ -384,7 +432,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -413,7 +460,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -444,7 +490,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -473,7 +518,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -504,7 +548,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -533,7 +576,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -566,7 +608,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -595,7 +636,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -626,7 +666,6 @@
                         class="upload_policy"
                         multiple
                         :show-file-list="false"
-                        :http-request="uploadFiles"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                       >
@@ -703,9 +742,17 @@
 <script>
 export default {
   data() {
-    var validatorCompanyName = (rule, value, callback) => {};
-    var validatorSetupTime = (rule, value, callback) => {};
+    var validateIdCard = (rule, value, callback) => {
+      var pattern = /^\d{17}(\d|X|x)$/;
+      if (pattern.test(value) === true) {
+        callback();
+      } else {
+        callback(new Error('请输入正确的身份证号'));
+      }
+    };
     return {
+      part3Len: 1,
+      part4Len: 1,
       contractText: {
         address: '山东省青岛市胶州上合示范区闽江路60号',
         person: '李先生',
@@ -714,13 +761,6 @@ export default {
       },
       Idx: [1, 2, 3],
       active: 1,
-      formItems: [
-        {
-          field1: '',
-          field2: '',
-          field3: ''
-        }
-      ],
       activeIndex: '6-1',
       companyProfile: {
         companyName: '',
@@ -743,18 +783,18 @@ export default {
         other: ''
       },
       companyProfileRules: {
-        companyName: [{ required: true, trigger: 'blur', validator: validatorCompanyName }],
-        setupTime: [{ required: true, trigger: 'blur', validator: validatorSetupTime }],
-        legalPerson: [{ required: true, trigger: 'blur' }],
-        registeredAddress: [{ required: true, trigger: 'blur' }],
-        phoneNumber: [{ required: true, trigger: 'blur' }],
-        email: [{ required: true, trigger: 'blur' }],
-        checkInTime: [{ required: true, trigger: 'blur' }],
-        registeredCapital: [{ required: true, trigger: 'blur' }],
-        preRevenue: [{ required: true, trigger: 'blur' }],
-        total: [{ required: true, trigger: 'blur' }],
-        nextTax: [{ required: true, trigger: 'blur' }],
-        other: [{ required: true, trigger: 'blur' }]
+        companyName: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
+        setupTime: [{ required: true, trigger: 'blur', message: '请输入成立时间' }],
+        legalPerson: [{ required: true, trigger: 'blur', message: '请输入法定代表人' }],
+        registeredAddress: [{ required: true, trigger: 'blur', message: '请输入现注册地址' }],
+        phoneNumber: [{ required: true, trigger: 'blur', message: '请输入联系电话' }],
+        email: [{ required: true, trigger: 'blur', message: '请输入电子邮箱' }],
+        checkInTime: [{ required: true, trigger: 'blur', message: '请输入入驻时间' }],
+        registeredCapital: [{ required: true, trigger: 'blur', message: '请输入注册资本' }],
+        preRevenue: [{ required: true, trigger: 'blur', message: '请输入上年度销售额' }],
+        total: [{ required: true, trigger: 'blur', message: '请输入资产总额' }],
+        nextTax: [{ required: true, trigger: 'blur', message: '请输入下年度纳税额' }],
+        other: [{ required: true, trigger: 'blur', message: '请输入荣誉资质及项目资金扶金情况' }]
       },
       intellectualPropertySituation: {
         inventionPatent: '',
@@ -763,12 +803,82 @@ export default {
         trademark: ''
       },
       intellectualPropertySituationRules: {
-        inventionPatent: [{ required: true, trigger: 'blur' }],
-        softwareCopyright: [{ required: true, trigger: 'blur' }],
-        practicalPatents: [{ required: true, trigger: 'blur' }],
-        trademark: [{ required: true, trigger: 'blur' }]
+        inventionPatent: [{ required: true, trigger: 'blur', message: '请输入发明专利情况' }],
+        softwareCopyright: [{ required: true, trigger: 'blur', message: '请输入软件著作权情况' }],
+        practicalPatents: [{ required: true, trigger: 'blur', message: '请输入实用新型专利情况' }],
+        trademark: [{ required: true, trigger: 'blur', message: '请输入商标情况' }]
       },
-      ownershipStructure: [{ field1: {} }, { field2: {} }, { field3: {} }],
+      ownershipStructure: [
+        { form: { name: '', idCard: '', job: '', professional: '', proportion: '' } },
+        { form: { name: '', idCard: '', job: '', professional: '', proportion: '' } },
+        { form: { name: '', idCard: '', job: '', professional: '', proportion: '' } }
+      ],
+      ownershipStructureRules: [
+        {
+          form: {
+            name: [{ required: true, trigger: 'blur', message: '请输入姓名' }],
+            idCard: [{ required: true, trigger: 'blur', validator: validateIdCard }],
+            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+            proportion: [{ required: true, trigger: 'blur', message: '请输入占股比例' }]
+          }
+        },
+        {
+          form: {
+            name: [{ required: true, trigger: 'blur', message: '请输入姓名' }],
+            idCard: [{ required: true, trigger: 'blur', validator: validateIdCard }],
+            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+            proportion: [{ required: true, trigger: 'blur', message: '请输入占股比例' }]
+          }
+        },
+        {
+          form: {
+            name: [{ required: true, trigger: 'blur', message: '请输入姓名' }],
+            idCard: [{ required: true, trigger: 'blur', validator: validateIdCard }],
+            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+            proportion: [{ required: true, trigger: 'blur', message: '请输入占股比例' }]
+          }
+        }
+      ],
+      highLevelTalents: [
+        { form: { name: '', job: '', age: '', edBg: '', professional: '', contact: '' } },
+        { form: { name: '', job: '', age: '', edBg: '', professional: '', contact: '' } },
+        { form: { name: '', job: '', age: '', edBg: '', professional: '', contact: '' } }
+      ],
+      highLevelTalentsRules: [
+        {
+          form: {
+            name: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
+            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+            age: [{ required: true, trigger: 'blur', message: '请输入年龄' }],
+            edBg: [{ required: true, trigger: 'blur', message: '请输入学历' }],
+            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+            contact: [{ required: true, trigger: 'blur', message: '请输入联系方式' }]
+          }
+        },
+        {
+          form: {
+            name: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
+            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+            age: [{ required: true, trigger: 'blur', message: '请输入年龄' }],
+            edBg: [{ required: true, trigger: 'blur', message: '请输入学历' }],
+            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+            contact: [{ required: true, trigger: 'blur', message: '请输入联系方式' }]
+          }
+        },
+        {
+          form: {
+            name: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
+            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+            age: [{ required: true, trigger: 'blur', message: '请输入年龄' }],
+            edBg: [{ required: true, trigger: 'blur', message: '请输入学历' }],
+            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+            contact: [{ required: true, trigger: 'blur', message: '请输入联系方式' }]
+          }
+        }
+      ],
       humanIncubationNeed: {
         devOptions: [
           { checked: false },
@@ -781,8 +891,8 @@ export default {
       },
       humanIncubationNeedRules: {
         devOptions: [{ required: true, trigger: 'blur' }],
-        area: [{ required: true, trigger: 'blur' }],
-        other: [{ required: true, trigger: 'blur' }]
+        area: [{ required: true, trigger: 'blur', message: '请输入面积' }],
+        other: [{ required: true, trigger: 'blur', message: '请输入其他需求' }]
       }
     };
   },
@@ -791,14 +901,25 @@ export default {
       this.active--;
     },
     next() {
+      if (this.active === 1) {
+        this.$store.commit('contact/setForm1', this.companyProfile);
+      } else if (this.active === 2) {
+        this.$store.commit('contact/setForm2', this.intellectualPropertySituation);
+      } else if (this.active === 3) {
+        this.$store.commit('contact/setForm3', this.ownershipStructure);
+      } else if (this.active === 4) {
+        this.$store.commit('contact/setForm4', this.highLevelTalents);
+      } else if (this.active === 5) {
+        this.$store.commit('contact/setForm5', this.humanIncubationNeed);
+      }
       if (this.active++ > 5) this.active = 1;
     },
-    addFormItem() {
-      this.formItems.push({
-        field1: '',
-        field2: '',
-        field3: ''
-      });
+    addFormItem(name) {
+      if (name === 0) {
+        this.part3Len++;
+      } else if (name === 1) {
+        this.part4Len++;
+      }
     },
     handleOptionChange(index, name) {
       // 只允许选择一个选项，取消其他选项的选择
