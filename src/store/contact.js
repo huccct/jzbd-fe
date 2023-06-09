@@ -7,7 +7,11 @@ const state = {
   part4Form: [],
   part5Form: {},
   part6Form: {},
-  companyCond: {}
+  companyCond: {},
+  successPageOptions: {
+    isSuccess: false,
+    count: 3
+  }
 };
 
 const mutations = {
@@ -71,15 +75,30 @@ const actions = {
         idx2 = index + 1;
       }
     });
+    var date = new Date(establishmentDate);
+    var year = date.getFullYear();
+    var month = (date.getMonth() + 1).toString().padStart(2, '0');
+    var day = date.getDate().toString().padStart(2, '0');
+
+    // 拼接成 yyyy-mm-dd 格式
+    var formattedDate = year + '-' + month + '-' + day;
+
+    var date1 = new Date(moveInDate);
+    var year1 = date1.getFullYear();
+    var month1 = (date1.getMonth() + 1).toString().padStart(2, '0');
+    var day1 = date1.getDate().toString().padStart(2, '0');
+
+    // 拼接成 yyyy-mm-dd 格式
+    var formattedDate1 = year1 + '-' + month1 + '-' + day1;
     const data = {
       company: {
         companyName,
-        establishmentDate,
+        establishmentDate: formattedDate,
         legalRepresentative,
         registeredAddress,
         contactNumber,
         email,
-        moveInDate,
+        moveInDate: formattedDate1,
         registeredCapital,
         previousYearSales,
         totalAssets,
@@ -101,6 +120,17 @@ const actions = {
     console.log(data);
     let res = await reqUploadAllInfo(data);
     console.log(res);
+    if (res.code === 200) {
+      this._vm.$message.success('提交成功');
+      state.successPageOptions.isSuccess = true;
+      const timer = setInterval(() => {
+        state.successPageOptions.count--;
+        if (state.successPageOptions.count <= 0) {
+          clearInterval(timer);
+          window.location.reload();
+        }
+      }, 1000);
+    }
   }
 };
 const getters = {};
