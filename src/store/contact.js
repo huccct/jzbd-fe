@@ -5,7 +5,9 @@ const state = {
   part2Form: {},
   part3Form: [],
   part4Form: [],
-  part5Form: {}
+  part5Form: {},
+  part6Form: {},
+  companyCond: {}
 };
 
 const mutations = {
@@ -28,12 +30,76 @@ const mutations = {
   setForm5(state, data) {
     state.part5Form = data;
     console.log('res5', state.part5Form);
+  },
+  setForm6(state, data) {
+    state.part6Form = data;
+    console.log('res6', state.part6Form);
+  },
+  setEstablished(state, data) {
+    state.companyCond = data;
+    console.log('res7', state.companyCond);
   }
 };
 
 const actions = {
   async uploadAllInfo({ commit }) {
-    let res = await reqUploadAllInfo({ company: '', fujian: '' });
+    let {
+      companyName,
+      establishmentDate,
+      legalRepresentative,
+      registeredAddress,
+      contactNumber,
+      email,
+      moveInDate,
+      registeredCapital,
+      previousYearSales,
+      totalAssets,
+      nextYearTaxAmount,
+      developmentStage1,
+      honorsAndProjectFunding
+    } = state.part1Form;
+    let { developmentStage2, area, otherRequirements } = state.part5Form;
+    let idx1 = '';
+    let idx2 = '';
+    developmentStage1.forEach((item, index) => {
+      if (item.checked === true) {
+        idx1 = index + 1;
+      }
+    });
+    developmentStage2.forEach((item, index) => {
+      if (item.checked === true) {
+        idx2 = index + 1;
+      }
+    });
+    const data = {
+      company: {
+        companyName,
+        establishmentDate,
+        legalRepresentative,
+        registeredAddress,
+        contactNumber,
+        email,
+        moveInDate,
+        registeredCapital,
+        previousYearSales,
+        totalAssets,
+        nextYearTaxAmount,
+        developmentStage1: idx1,
+        developmentStage2: idx2,
+        honorsAndProjectFunding,
+        ...state.part2Form,
+        ownershipStructureList: state.part3Form,
+        highLevelTalentsList: state.part4Form,
+        area,
+        otherRequirements,
+        ...state.companyCond
+      },
+      fujian: {
+        ...state.part6Form
+      }
+    };
+    console.log(data);
+    let res = await reqUploadAllInfo(data);
     console.log(res);
   }
 };
