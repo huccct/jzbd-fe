@@ -64,7 +64,7 @@
         </div>
       </router-link>
     </div>
-    <div class="policy">
+    <!-- <div class="policy">
       <div class="d-head">
         <span>02</span>
         <div class="l"></div>
@@ -139,10 +139,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="excellent">
       <div class="d-head">
-        <span>03</span>
+        <span>02</span>
         <div class="l"></div>
         <span>Excellent enterprise</span>
         <div class="d-title">
@@ -778,7 +778,8 @@ export default {
     width: 100%;
     // width: 1900px;
     height: 1050px;
-
+    background-image: url('http://47.95.211.240:9000/photo/home7.png');
+    background-size: 100% 100%;
     .d-head {
       span {
         width: auto;

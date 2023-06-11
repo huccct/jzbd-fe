@@ -1,8 +1,8 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-06-11 11:14:51
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-06-11 17:46:54
+ * @LastEditors: Huccct
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
  * 初心不变，意志坚定
@@ -1647,6 +1647,7 @@ export default {
 }
 .contract-logos {
   margin-top: 141px;
+  display: flex;
 }
 .contract-logos .logo {
   text-align: center;
