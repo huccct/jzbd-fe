@@ -13,14 +13,15 @@
       <div class="si-top2">
         <img src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2078.png" alt="" />
       </div>
-      <p class="xwgg">新闻公告</p>
+      <p class="policy">POLICY NEWS</p>
+      <p class="xwgg">政策新闻>></p>
     </div>
     <div class="si-content">
       <div class="si-content-top">
         <img src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2079.png" alt="" />
         <el-breadcrumb class="el-breadcrumb" separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: '/service' }">园区服务</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/policy-release' }">政策新闻</el-breadcrumb-item>
           <el-breadcrumb-item>新闻公告</el-breadcrumb-item>
         </el-breadcrumb>
         <hr />
@@ -76,7 +77,7 @@ export default {
 
   methods: {
     godetails(index) {
-      this.$router.push('/service/information/' + index);
+      this.$router.push('/policy-release/information/' + index);
     },
     async handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
@@ -122,15 +123,15 @@ export default {
   .xwgg {
     text-align: left;
     position: absolute;
-    left: 321px;
+    left: 420px;
     top: 220px;
-    width: 304px;
-    height: 87px;
-    font-size: 66px;
+    width: 194px;
+    height: 35px;
+    font-size: 35px;
     font-family: Microsoft YaHei-Bold, Microsoft YaHei;
-    font-weight: bold;
+    font-weight: 700;
     color: #ffffff;
-    line-height: 27px;
+    line-height: 35px;
     // letter-spacing: 200px;
   }
 }
@@ -202,5 +203,18 @@ export default {
   width: 594px;
   margin: 0 auto;
   height: 160px;
+}
+.policy {
+  text-align: left;
+  position: absolute;
+  left: 420px;
+  top: 180px;
+  width: 142px;
+  height: 20px;
+  font-size: 20px;
+  font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 20px;
 }
 </style>

@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: YuShuXiao 949516815@qq.com
  * @Date: 2023-04-21 23:03:17
- * @LastEditors: Huccct
- * @LastEditTime: 2023-06-02 21:07:34
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-06-11 10:38:42
  * @FilePath: \jzbd-fe\src\views\policy-release\policy-details.vue
 -->
 <template>
@@ -11,11 +11,11 @@
     <div class="bread">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ path: '/policy-release' }">政策发布</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/policy-release' }">政策新闻</el-breadcrumb-item>
         <el-breadcrumb-item :to="{ path: '/policy-release/more-policies/list' }"
           >更多政策</el-breadcrumb-item
         >
-        <el-breadcrumb-item :to="{ path: '/policy-release/details' }">详情</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/policy-release/details' }">政策详情</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="main">

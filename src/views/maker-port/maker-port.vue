@@ -96,9 +96,9 @@
           <ul>
             <li :class="{ liHover: flag3 === 0 }" @click="setActiveItem(0)">创业培训</li>
             <li :class="{ liHover: flag3 === 1 }" @click="setActiveItem(1)">科技指导</li>
-            <li :class="{ liHover: flag3 === 2 }" @click="setActiveItem(2)">软件开发</li>
-            <li :class="{ liHover: flag3 === 3 }" @click="setActiveItem(3)">融资众筹</li>
-            <li :class="{ liHover: flag3 === 4 }" @click="setActiveItem(4)">项目孵化</li>
+            <!-- <li :class="{ liHover: flag3 === 2 }" @click="setActiveItem(2)">软件开发</li>
+            <li :class="{ liHover: flag3 === 3 }" @click="setActiveItem(3)">融资众筹</li> -->
+            <li :class="{ liHover: flag3 === 2 }" @click="setActiveItem(2)">项目孵化</li>
           </ul>
         </div>
       </div>
@@ -187,14 +187,6 @@ export default {
         },
         {
           id: 3,
-          src: 'http://47.95.211.240:9000/photo/maker-port/%E7%BB%844.png'
-        },
-        {
-          id: 4,
-          src: 'http://47.95.211.240:9000/photo/maker-port/%E7%BB%845.png'
-        },
-        {
-          id: 5,
           src: 'http://47.95.211.240:9000/photo/maker-port/%E7%BB%846.png'
         }
       ]

@@ -2,8 +2,8 @@
   <div class="policeRelease">
     <div class="top">
       <div class="textWrapped">
-        <div class="tips">POLICY ANNOUNCEMENTS</div>
-        <div class="topTitle">政策发布</div>
+        <div class="tips">POLICY NEWS</div>
+        <div class="topTitle">政策新闻</div>
         <div class="topDescription">
           发布企业相关政策信息，企业可第一时间查看政策信息，
           可根据企业自身实际需求，自主查阅相关政策文件。
@@ -18,7 +18,7 @@
           <div class="titrg">Policy information</div>
         </div>
         <div class="description">
-          <div class="deslf">政策信息</div>
+          <div class="deslf">园区政策</div>
           <div class="desrg" @click="$router.push(`/policy-release/more-policies/list`)">
             更多政策>>
           </div>
@@ -54,14 +54,15 @@
         </div>
       </div>
     </div>
-    <div class="enterpriseInfo">
+    <Pressannouncement style="margin-top: 84px"></Pressannouncement>
+    <!-- <div class="enterpriseInfo">
       <div class="container">
         <div class="title">
           <div class="titlf">02</div>
           <div class="titrg">Enterprise information</div>
         </div>
         <div class="description">企业信息</div>
-        <!-- 表单区域 -->
+        
         <div v-if="!isSuccess" class="enterpriseInfoForm">
           <el-form ref="form" :model="form" label-width="90px" :label-position="labelPosition">
             <el-form-item label="企业名称:">
@@ -148,17 +149,20 @@
           <div class="jump">页面自动 跳转 等待时间：{{ count }}秒</div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div style="height: 160px"></div>
   </div>
 </template>
 
 <script>
+import Pressannouncement from '@/components/ourservice/pressannouncement.vue';
 import { filterSize } from '@/utils/sizeConversion';
 import { uploadCompany, uploadFile } from '@/api/modules/policy';
 export default {
   name: 'JzbdFePolicyRelease',
-  components: {},
+  components: {
+    Pressannouncement
+  },
   data() {
     return {
       form: {

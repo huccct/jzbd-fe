@@ -1,6 +1,14 @@
+<!--
+ * @Author: hayyot
+ * @Date: 2023-04-15 20:17:03
+ * @Description: 铁沸物
+ * @FilePath: \jzbd-fe\src\views\policy-release\more-policies.vue
+-->
 <template>
   <div class="more_policies">
-    <div class="top"></div>
+    <div class="top">
+      <p class="top_title">政策新闻</p>
+    </div>
 
     <div class="container">
       <router-view></router-view>
@@ -34,6 +42,22 @@ li {
     background: url('http://47.95.211.240:9000/photo/police/上合产业园网站_slices/zsBg.png')
       no-repeat;
     background-size: cover;
+  }
+  .top_title {
+    position: absolute;
+    left: 321px;
+    top: 208px;
+    // z-index: 999;
+    width: 320px;
+    height: 66px;
+    font-size: 66px;
+    font-family: Microsoft YaHei-Bold, Microsoft YaHei;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 66px;
+    letter-spacing: 11px;
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
   }
   // & .bg {
   //   z-index: -1;
