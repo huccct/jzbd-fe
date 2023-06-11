@@ -1,7 +1,7 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-06-03 10:18:39
+ * @LastEditTime: 2023-06-09 21:14:32
  * @LastEditors: Huccct
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
@@ -24,683 +24,1078 @@
           <p>01&nbsp;<span></span>&nbsp;<span> Enterprise settled apply</span></p>
           <p>企业入驻申请</p>
         </div>
-        <el-card style="margin: 30px 0">
-          <el-steps :active="active">
-            <el-step title="企业基本情况"> </el-step>
-            <el-step title="知识产权情况"></el-step>
-            <el-step title="股权结构"></el-step>
-            <el-step title="高层次人才需求"></el-step>
-            <el-step title="人孵需求"></el-step>
-            <el-step title="附件上传"></el-step>
-          </el-steps>
-        </el-card>
-        <el-menu :default-active="active.toString()" class="el-menu-demo" mode="horizontal">
-          <el-menu-item v-show="active === 1" index="1">企业基本情况</el-menu-item>
-          <el-menu-item v-show="active === 2" index="2">知识产权情况</el-menu-item>
-          <el-menu-item v-show="active === 3" index="3">股权结构</el-menu-item>
-          <el-menu-item v-show="active === 4" index="4">高层次人才需求</el-menu-item>
-          <el-menu-item v-show="active === 5" index="5">人孵需求</el-menu-item>
-          <el-menu-item v-show="active === 6" index="6">附件上传</el-menu-item>
-        </el-menu>
-        <div v-show="active === 1" class="step-box1">
-          <el-form :model="companyProfile" :rules="companyProfileRules">
-            <el-row :gutter="30">
-              <el-col :span="8">
-                <el-form-item label="企业名称" prop="companyName">
-                  <el-input
-                    v-model="companyProfile.companyName"
-                    placeholder="请输入企业名称"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="成立时间" style="position: relative" prop="setupTime">
-                  <el-date-picker
-                    v-model="companyProfile.setupTime"
-                    style="width: 100%"
-                    type="date"
-                    placeholder="请选择企业成立的时间"
-                  >
-                  </el-date-picker>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="法定代表人" prop="legalPerson">
-                  <el-input
-                    v-model="companyProfile.legalPerson"
-                    placeholder="请输入法定代表人"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row :gutter="30">
-              <el-col :span="8">
-                <el-form-item label="现注册地址" prop="registeredAddress">
-                  <el-input
-                    v-model="companyProfile.registeredAddress"
-                    placeholder="请输入现注册地址"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="联系电话" prop="phoneNumber">
-                  <el-input
-                    v-model="companyProfile.phoneNumber"
-                    placeholder="请输入联系电话"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="电子邮箱" prop="email">
-                  <el-input v-model="companyProfile.email" placeholder="请输入电子邮箱"></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row :gutter="30">
-              <el-col :span="8">
-                <el-form-item label="入驻时间" prop="checkInTime">
-                  <el-input
-                    v-model="companyProfile.checkInTime"
-                    placeholder="请输入入驻时间"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="注册资本" prop="registeredCapital">
-                  <el-input v-model="companyProfile.registeredCapital" placeholder="请输入注册资本">
-                    <template #append>万元</template>
-                  </el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="上年度销售额" prop="preRevenue">
-                  <el-input v-model="companyProfile.preRevenue" placeholder="请输入上年度销售额">
-                    <template #append>万元</template>
-                  </el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row :gutter="30">
-              <el-col :span="8">
-                <el-form-item label="资产总额" prop="total">
-                  <el-input v-model="companyProfile.total" placeholder="请输入资产总额">
-                    <template #append>万元</template>
-                  </el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="下年度纳税额" prop="nextTax">
-                  <el-input v-model="companyProfile.nextTax" placeholder="请输入下年度纳税额">
-                    <template #append>万元</template>
-                  </el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="发展阶段">
-                  <br />
-                  <div class="checkbox-container">
-                    <el-checkbox
-                      v-model="companyProfile.devOptions[0].checked"
-                      label="研发阶段"
-                      @change="handleOptionChange(0, 1)"
-                    ></el-checkbox>
-                  </div>
-                  <div class="checkbox-container">
-                    <el-checkbox
-                      v-model="companyProfile.devOptions[1].checked"
-                      label="推广阶段"
-                      @change="handleOptionChange(1, 1)"
-                    ></el-checkbox>
-                  </div>
-                  <div class="checkbox-container">
-                    <el-checkbox
-                      v-model="companyProfile.devOptions[2].checked"
-                      label="成长阶段"
-                      @change="handleOptionChange(2, 1)"
-                    ></el-checkbox>
-                  </div>
-                  <div class="checkbox-container">
-                    <el-checkbox
-                      v-model="companyProfile.devOptions[3].checked"
-                      label="成熟阶段"
-                      @change="handleOptionChange(3)"
-                    ></el-checkbox>
-                  </div>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-form-item label="荣誉资质及项目资金扶金情况" prop="other">
-                <el-input
-                  v-model="companyProfile.other"
-                  type="textarea"
-                  :rows="6"
-                  placeholder="请输入荣誉资质及项目资金扶金情况"
-                ></el-input>
-              </el-form-item>
-            </el-row>
-          </el-form>
-        </div>
-        <div v-show="active === 2" class="step-box2">
-          <el-form
-            :model="intellectualPropertySituation"
-            :rules="intellectualPropertySituationRules"
-          >
-            <el-row :gutter="30">
-              <el-col :span="12">
-                <el-form-item label="发明专利" prop="inventionPatent">
-                  <el-input
-                    v-model="intellectualPropertySituation.inventionPatent"
-                    type="textarea"
-                    placeholder="请输入发明专利情况"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="12">
-                <el-form-item label="软件著作权" prop="softwareCopyright">
-                  <el-input
-                    v-model="intellectualPropertySituation.softwareCopyright"
-                    type="textarea"
-                    placeholder="请输入软件著作权情况"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row :gutter="30">
-              <el-col :span="12">
-                <el-form-item label="实用新型专利" prop="practicalPatents">
-                  <el-input
-                    v-model="intellectualPropertySituation.practicalPatents"
-                    type="textarea"
-                    placeholder="请输入实用新型专利情况"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="12">
-                <el-form-item label="商标" prop="trademark">
-                  <el-input
-                    v-model="intellectualPropertySituation.trademark"
-                    type="textarea"
-                    placeholder="请输入商标情况"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-          </el-form>
-        </div>
-        <div v-show="active === 3" class="step-box3">
-          <el-form
-            v-for="(item, index) in part3Len"
-            :key="index"
-            :model="ownershipStructure[index]"
-            :rules="ownershipStructureRules[index]"
-          >
-            <el-row>
-              <div class="circle-number">
-                <span>{{ Idx[index] }}</span>
-              </div>
+        <template v-if="!$store.state.contact.successPageOptions.isSuccess">
+          <el-card style="margin: 30px 0">
+            <el-steps :active="active">
+              <el-step title="企业基本情况"> </el-step>
+              <el-step title="知识产权情况"></el-step>
+              <el-step title="股权结构"></el-step>
+              <el-step title="高层次人才需求"></el-step>
+              <el-step title="人孵需求"></el-step>
+              <el-step title="附件上传"></el-step>
+            </el-steps>
+          </el-card>
+          <el-menu :default-active="active.toString()" class="el-menu-demo" mode="horizontal">
+            <el-menu-item v-show="active === 1" index="1">企业基本情况</el-menu-item>
+            <el-menu-item v-show="active === 2" index="2">知识产权情况</el-menu-item>
+            <el-menu-item v-show="active === 3" index="3">股权结构</el-menu-item>
+            <el-menu-item v-show="active === 4" index="4">高层次人才需求</el-menu-item>
+            <el-menu-item v-show="active === 5" index="5">人孵需求</el-menu-item>
+            <el-menu-item v-show="active === 6" index="6">附件上传</el-menu-item>
+          </el-menu>
+          <div v-show="active === 1" class="step-box1">
+            <el-form :model="companyProfile" :rules="companyProfileRules">
               <el-row :gutter="30">
                 <el-col :span="8">
-                  <el-form-item label="姓名" prop="form.name">
+                  <el-form-item label="企业名称" prop="companyName">
                     <el-input
-                      v-model="ownershipStructure[index].form.name"
-                      placeholder="请输入姓名"
-                    ></el-input>
-                  </el-form-item>
-                </el-col>
-                <el-col :span="8">
-                  <el-form-item label="身份证号" prop="form.idCard">
-                    <el-input
-                      v-model="ownershipStructure[index].form.idCard"
-                      placeholder="请输入身份证号"
-                    ></el-input>
-                  </el-form-item>
-                </el-col>
-                <el-col :span="8">
-                  <el-form-item label="职务" prop="form.job">
-                    <el-input
-                      v-model="ownershipStructure[index].form.job"
-                      placeholder="请输入职务"
-                    ></el-input>
-                  </el-form-item>
-                </el-col>
-              </el-row>
-              <el-row :gutter="30">
-                <el-col :span="8">
-                  <el-form-item label="职称" prop="form.professional">
-                    <el-input
-                      v-model="ownershipStructure[index].form.professional"
-                      placeholder="请输入职称"
-                    ></el-input>
-                  </el-form-item>
-                </el-col>
-                <el-col :span="8">
-                  <el-form-item label="占股比例" prop="form.proportion">
-                    <el-input
-                      v-model="ownershipStructure[index].form.proportion"
-                      placeholder="请输入占股比例"
-                    >
-                      <template #append> % </template>
-                    </el-input>
-                  </el-form-item>
-                </el-col>
-              </el-row>
-            </el-row>
-          </el-form>
-          <el-row :span="24">
-            <center>
-              <el-button
-                v-show="part3Len < 3"
-                style="display: block; width: 100%"
-                icon="el-icon-circle-plus-outline"
-                @click="addFormItem(0)"
-                >新增一个（最多填报三个）</el-button
-              >
-            </center>
-          </el-row>
-        </div>
-        <div v-show="active === 4" class="step-box4">
-          <el-form
-            v-for="(item, index) in part4Len"
-            :key="index"
-            :model="highLevelTalents[index]"
-            :rules="highLevelTalentsRules[index]"
-          >
-            <el-row>
-              <div class="circle-number">
-                <span>{{ Idx[index] }}</span>
-              </div>
-              <el-row :gutter="30">
-                <el-col :span="8">
-                  <el-form-item label="姓名" prop="form.name">
-                    <el-input
-                      v-model="highLevelTalents[index].form.name"
+                      v-model="companyProfile.companyName"
                       placeholder="请输入企业名称"
                     ></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                  <el-form-item label="职务" prop="form.job">
-                    <el-input
-                      v-model="highLevelTalents[index].form.job"
-                      placeholder="请输入职务"
-                    ></el-input>
+                  <el-form-item
+                    label="成立时间"
+                    style="position: relative"
+                    prop="establishmentDate"
+                  >
+                    <el-date-picker
+                      v-model="companyProfile.establishmentDate"
+                      style="width: 100%"
+                      type="date"
+                      placeholder="请选择企业成立的时间"
+                    >
+                    </el-date-picker>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                  <el-form-item label="年龄" prop="form.age">
+                  <el-form-item label="法定代表人" prop="legalRepresentative">
                     <el-input
-                      v-model="highLevelTalents[index].form.age"
-                      placeholder="请输入年龄"
+                      v-model="companyProfile.legalRepresentative"
+                      placeholder="请输入法定代表人"
                     ></el-input>
                   </el-form-item>
                 </el-col>
               </el-row>
               <el-row :gutter="30">
                 <el-col :span="8">
-                  <el-form-item label="学历" prop="form.edBg">
+                  <el-form-item label="现注册地址" prop="registeredAddress">
                     <el-input
-                      v-model="highLevelTalents[index].form.edBg"
-                      placeholder="请输入学历,例：本科、硕士研究生、博士研究生"
+                      v-model="companyProfile.registeredAddress"
+                      placeholder="请输入现注册地址"
                     ></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                  <el-form-item label="职称" prop="form.professional">
+                  <el-form-item label="联系电话" prop="contactNumber">
                     <el-input
-                      v-model="highLevelTalents[index].form.professional"
-                      placeholder="请输入职称"
+                      v-model="companyProfile.contactNumber"
+                      placeholder="请输入联系电话"
                     ></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                  <el-form-item label="联系方式" prop="form.contact">
+                  <el-form-item label="电子邮箱" prop="email">
                     <el-input
-                      v-model="highLevelTalents[index].form.contact"
-                      placeholder="请输入联系方式"
+                      v-model="companyProfile.email"
+                      placeholder="请输入电子邮箱"
                     ></el-input>
                   </el-form-item>
                 </el-col>
               </el-row>
-            </el-row>
-          </el-form>
-          <el-row :span="24">
-            <center>
-              <el-button
-                v-show="part4Len < 3"
-                style="display: block; width: 100%"
-                icon="el-icon-circle-plus-outline"
-                @click="addFormItem(1)"
-                >新增一个（最多填报三个）</el-button
-              >
-            </center>
-          </el-row>
-        </div>
-        <div v-show="active === 5" class="step-box5">
-          <el-form :model="humanIncubationNeed" :rules="humanIncubationNeedRules">
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="发展阶段" prop="devOptions">
-                  <br />
-                  <el-checkbox
-                    v-model="humanIncubationNeed.devOptions[0].checked"
-                    label="办公用房"
-                    @change="handleOptionChange(0, 2)"
-                  ></el-checkbox>
-                  <el-checkbox
-                    v-model="humanIncubationNeed.devOptions[1].checked"
-                    label="生产厂房"
-                    @change="handleOptionChange(1, 2)"
-                  ></el-checkbox>
+              <el-row :gutter="30">
+                <el-col :span="8">
+                  <el-form-item label="入驻时间" prop="moveInDate">
+                    <el-date-picker
+                      v-model="companyProfile.moveInDate"
+                      placeholder="请输入入驻时间"
+                      type="date"
+                      style="width: 100%"
+                    >
+                    </el-date-picker>
+                  </el-form-item>
+                </el-col>
+                <el-col :span="8">
+                  <el-form-item label="注册资本" prop="registeredCapital">
+                    <el-input
+                      v-model="companyProfile.registeredCapital"
+                      placeholder="请输入注册资本"
+                    >
+                      <template #append>万元</template>
+                    </el-input>
+                  </el-form-item>
+                </el-col>
+                <el-col :span="8">
+                  <el-form-item label="上年度销售额" prop="previousYearSales">
+                    <el-input
+                      v-model="companyProfile.previousYearSales"
+                      placeholder="请输入上年度销售额"
+                    >
+                      <template #append>万元</template>
+                    </el-input>
+                  </el-form-item>
+                </el-col>
+              </el-row>
+              <el-row :gutter="30">
+                <el-col :span="8">
+                  <el-form-item label="资产总额" prop="totalAssets">
+                    <el-input v-model="companyProfile.totalAssets" placeholder="请输入资产总额">
+                      <template #append>万元</template>
+                    </el-input>
+                  </el-form-item>
+                </el-col>
+                <el-col :span="8">
+                  <el-form-item label="下年度纳税额" prop="nextYearTaxAmount">
+                    <el-input
+                      v-model="companyProfile.nextYearTaxAmount"
+                      placeholder="请输入下年度纳税额"
+                    >
+                      <template #append>万元</template>
+                    </el-input>
+                  </el-form-item>
+                </el-col>
+                <el-col :span="8">
+                  <el-form-item label="发展阶段">
+                    <br />
+                    <div class="checkbox-container">
+                      <el-checkbox
+                        v-model="companyProfile.developmentStage1[0].checked"
+                        label="研发阶段"
+                        @change="handleOptionChange(0, 1)"
+                      ></el-checkbox>
+                    </div>
+                    <div class="checkbox-container">
+                      <el-checkbox
+                        v-model="companyProfile.developmentStage1[1].checked"
+                        label="推广阶段"
+                        @change="handleOptionChange(1, 1)"
+                      ></el-checkbox>
+                    </div>
+                    <div class="checkbox-container">
+                      <el-checkbox
+                        v-model="companyProfile.developmentStage1[2].checked"
+                        label="成长阶段"
+                        @change="handleOptionChange(2, 1)"
+                      ></el-checkbox>
+                    </div>
+                    <div class="checkbox-container">
+                      <el-checkbox
+                        v-model="companyProfile.developmentStage1[3].checked"
+                        label="成熟阶段"
+                        @change="handleOptionChange(3)"
+                      ></el-checkbox>
+                    </div>
+                  </el-form-item>
+                </el-col>
+              </el-row>
+              <el-row>
+                <el-form-item label="荣誉资质及项目资金扶金情况" prop="honorsAndProjectFunding">
+                  <el-input
+                    v-model="companyProfile.honorsAndProjectFunding"
+                    type="textarea"
+                    :rows="6"
+                    placeholder="请输入荣誉资质及项目资金扶金情况"
+                  ></el-input>
                 </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="面积" prop="area">
-                  <el-input v-model="humanIncubationNeed.area" placeholder="请输入面积">
-                    <template #append> ㎡</template>
-                  </el-input>
+              </el-row>
+            </el-form>
+          </div>
+          <div v-show="active === 2" class="step-box2">
+            <el-form
+              :model="intellectualPropertySituation"
+              :rules="intellectualPropertySituationRules"
+            >
+              <el-row :gutter="30">
+                <el-col :span="12">
+                  <el-form-item label="发明专利" prop="inventionPatents">
+                    <el-input
+                      v-model="intellectualPropertySituation.inventionPatents"
+                      type="textarea"
+                      placeholder="请输入发明专利情况"
+                    ></el-input>
+                  </el-form-item>
+                </el-col>
+                <el-col :span="12">
+                  <el-form-item label="软件著作权" prop="softwareCopyrights">
+                    <el-input
+                      v-model="intellectualPropertySituation.softwareCopyrights"
+                      type="textarea"
+                      placeholder="请输入软件著作权情况"
+                    ></el-input>
+                  </el-form-item>
+                </el-col>
+              </el-row>
+              <el-row :gutter="30">
+                <el-col :span="12">
+                  <el-form-item label="实用新型专利" prop="utilityModelPatents">
+                    <el-input
+                      v-model="intellectualPropertySituation.utilityModelPatents"
+                      type="textarea"
+                      placeholder="请输入实用新型专利情况"
+                    ></el-input>
+                  </el-form-item>
+                </el-col>
+                <el-col :span="12">
+                  <el-form-item label="商标" prop="trademark">
+                    <el-input
+                      v-model="intellectualPropertySituation.trademark"
+                      type="textarea"
+                      placeholder="请输入商标情况"
+                    ></el-input>
+                  </el-form-item>
+                </el-col>
+              </el-row>
+            </el-form>
+          </div>
+          <div v-show="active === 3" class="step-box3">
+            <el-form
+              v-for="(item, index) in part3Len"
+              :key="index"
+              :model="ownershipStructure[index]"
+              :rules="ownershipStructureRules[index]"
+            >
+              <el-row>
+                <div class="circle-number">
+                  <span>{{ Idx[index] }}</span>
+                </div>
+                <el-row :gutter="30">
+                  <el-col :span="8">
+                    <el-form-item label="姓名" prop="equityOwnerName">
+                      <el-input
+                        v-model="ownershipStructure[index].equityOwnerName"
+                        placeholder="请输入姓名"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="身份证号" prop="equityOwnerIdCard">
+                      <el-input
+                        v-model="ownershipStructure[index].equityOwnerIdCard"
+                        placeholder="请输入身份证号"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="职务" prop="equityOwnerTitle">
+                      <el-input
+                        v-model="ownershipStructure[index].equityOwnerPosition"
+                        placeholder="请输入职务"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+                <el-row :gutter="30">
+                  <el-col :span="8">
+                    <el-form-item label="职称" prop="equityOwnerTitle">
+                      <el-input
+                        v-model="ownershipStructure[index].equityOwnerTitle"
+                        placeholder="请输入职称"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="占股比例" prop="equitySharePercentage">
+                      <el-input
+                        v-model="ownershipStructure[index].equitySharePercentage"
+                        placeholder="请输入占股比例"
+                      >
+                        <template #append> % </template>
+                      </el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+              </el-row>
+            </el-form>
+            <el-row :span="24">
+              <center>
+                <el-button
+                  v-show="part3Len < 3"
+                  style="display: block; width: 100%"
+                  icon="el-icon-circle-plus-outline"
+                  @click="addFormItem(0)"
+                  >新增一个（最多填报三个）</el-button
+                >
+              </center>
+            </el-row>
+          </div>
+          <div v-show="active === 4" class="step-box4">
+            <el-form
+              v-for="(item, index) in part4Len"
+              :key="index"
+              :model="highLevelTalents[index]"
+              :rules="highLevelTalentsRules[index]"
+            >
+              <el-row>
+                <div class="circle-number">
+                  <span>{{ Idx[index] }}</span>
+                </div>
+                <el-row :gutter="30">
+                  <el-col :span="8">
+                    <el-form-item label="姓名" prop="name">
+                      <el-input
+                        v-model="highLevelTalents[index].name"
+                        placeholder="请输入企业名称"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="职务" prop="position">
+                      <el-input
+                        v-model="highLevelTalents[index].position"
+                        placeholder="请输入职务"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="年龄" prop="age">
+                      <el-input
+                        v-model="highLevelTalents[index].age"
+                        placeholder="请输入年龄"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+                <el-row :gutter="30">
+                  <el-col :span="8">
+                    <el-form-item label="学历" prop="education">
+                      <el-input
+                        v-model="highLevelTalents[index].education"
+                        placeholder="请输入学历,例：本科、硕士研究生、博士研究生"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="职称" prop="title">
+                      <el-input
+                        v-model="highLevelTalents[index].title"
+                        placeholder="请输入职称"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="联系方式" prop="contact">
+                      <el-input
+                        v-model="highLevelTalents[index].contact"
+                        placeholder="请输入联系方式"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+              </el-row>
+            </el-form>
+            <el-row :span="24">
+              <center>
+                <el-button
+                  v-show="part4Len < 3"
+                  style="display: block; width: 100%"
+                  icon="el-icon-circle-plus-outline"
+                  @click="addFormItem(1)"
+                  >新增一个（最多填报三个）</el-button
+                >
+              </center>
+            </el-row>
+          </div>
+          <div v-show="active === 5" class="step-box5">
+            <el-form :model="humanIncubationNeed" :rules="humanIncubationNeedRules">
+              <el-row>
+                <el-col :span="8">
+                  <el-form-item label="发展阶段" prop="developmentStage2">
+                    <br />
+                    <el-checkbox
+                      v-model="humanIncubationNeed.developmentStage2[0].checked"
+                      label="办公用房"
+                      @change="handleOptionChange(0, 2)"
+                    ></el-checkbox>
+                    <el-checkbox
+                      v-model="humanIncubationNeed.developmentStage2[1].checked"
+                      label="生产厂房"
+                      @change="handleOptionChange(1, 2)"
+                    ></el-checkbox>
+                  </el-form-item>
+                </el-col>
+                <el-col :span="8">
+                  <el-form-item label="面积" prop="area">
+                    <el-input v-model="humanIncubationNeed.area" placeholder="请输入面积">
+                      <template #append> ㎡</template>
+                    </el-input>
+                  </el-form-item>
+                </el-col>
+              </el-row>
+              <el-row>
+                <el-form-item label="其他需求" prop="otherRequirements">
+                  <el-input
+                    v-model="humanIncubationNeed.otherRequirements"
+                    type="textarea"
+                    :rows="6"
+                    placeholder="请输入其他需求"
+                  ></el-input>
                 </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-form-item label="其他需求" prop="other">
-                <el-input
-                  v-model="humanIncubationNeed.other"
-                  type="textarea"
-                  :rows="6"
-                  placeholder="请输入其他需求"
-                ></el-input>
-              </el-form-item>
-            </el-row>
-          </el-form>
+              </el-row>
+            </el-form>
+          </div>
+          <div v-show="active === 6" class="step-box6">
+            <el-form>
+              <el-row>
+                <el-col :span="2">
+                  <el-menu :default-active="activeIndex">
+                    <el-menu-item index="6-1" @click="changeIndex(0)">已成立企业</el-menu-item>
+                    <el-menu-item index="6-2" @click="changeIndex(1)">未成立企业</el-menu-item>
+                  </el-menu>
+                </el-col>
+                <el-col v-show="activeIndex === '6-1'" :span="22">
+                  <el-row style="margin-left: 160px">
+                    <el-col :span="12"
+                      ><el-form-item label="公司简介"
+                        ><br />
+                        <!-- 上传文件回显列表 -->
+                        <template>
+                          <div
+                            v-for="(item, index) in AttachmentUpload.companyProfile.uploadInfo"
+                            :key="index"
+                            class="uploadInfo"
+                          >
+                            <img
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                              alt=""
+                            />
+                            <img
+                              class="close"
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/组_57.png"
+                              alt=""
+                              @click="del(item, 'companyProfile')"
+                            />
+                            <div class="upload_rg">
+                              <div class="fileName">
+                                {{ item.name }}
+                                <img
+                                  v-if="item.progressPercent === 100"
+                                  src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/对号（圆圈对号）.png"
+                                />
+                              </div>
+                              <el-progress
+                                v-if="item.progressPercent !== 100"
+                                style="width: 260px; height: 6px"
+                                :percentage="item.progressPercent"
+                                color="#00CC06"
+                                :show-text="false"
+                                :auto-upload="false"
+                              />
+                              <div v-else class="fileSize">
+                                {{ filterS(item.size) }}
+                              </div>
+                            </div>
+                          </div>
+                        </template>
+                        <el-upload
+                          ref="upload"
+                          class="upload_policy"
+                          multiple
+                          :show-file-list="false"
+                          :http-request="params => uploadFiles(params, 'companyProfile')"
+                          action="https://jsonplaceholder.typicode.com/posts/"
+                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
+                        >
+                          <div slot="trigger" class="uploadInfo_wrapped">
+                            <div style="display: flex; margin-top: 13px">
+                              <img
+                                src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                                alt=""
+                              />
+                              <div class="chooseFiles">选取文件</div>
+                            </div>
+                          </div>
+                          <div slot="tip" class="el-upload__tip">
+                            请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
+                              style="color: #0e7fdb"
+                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                            >
+                          </div>
+                        </el-upload></el-form-item
+                      ></el-col
+                    >
+                    <el-col :span="12">
+                      <el-form-item label="法定人代表身份证复印件"
+                        ><br />
+                        <template>
+                          <div
+                            v-for="(item, index) in AttachmentUpload.identificationCard.uploadInfo"
+                            :key="index"
+                            class="uploadInfo"
+                          >
+                            <img
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                              alt=""
+                            />
+                            <img
+                              class="close"
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/组_57.png"
+                              alt=""
+                              @click="del(item, 'identificationCard')"
+                            />
+                            <div class="upload_rg">
+                              <div class="fileName">
+                                {{ item.name }}
+                                <img
+                                  v-if="item.progressPercent === 100"
+                                  src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/对号（圆圈对号）.png"
+                                />
+                              </div>
+                              <el-progress
+                                v-if="item.progressPercent !== 100"
+                                style="width: 260px; height: 6px"
+                                :percentage="item.progressPercent"
+                                color="#00CC06"
+                                :show-text="false"
+                                :auto-upload="false"
+                              />
+                              <div v-else class="fileSize">
+                                {{ filterS(item.size) }}
+                              </div>
+                            </div>
+                          </div>
+                        </template>
+                        <el-upload
+                          ref="upload"
+                          class="upload_policy"
+                          multiple
+                          :show-file-list="false"
+                          :http-request="params => uploadFiles(params, 'identificationCard')"
+                          action="https://jsonplaceholder.typicode.com/posts/"
+                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
+                        >
+                          <div slot="trigger" class="uploadInfo_wrapped">
+                            <div style="display: flex; margin-top: 13px">
+                              <img
+                                src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                                alt=""
+                              />
+                              <div class="chooseFiles">选取文件</div>
+                            </div>
+                          </div>
+                          <div slot="tip" class="el-upload__tip">
+                            请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
+                              style="color: #0e7fdb"
+                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                            >
+                          </div>
+                        </el-upload></el-form-item
+                      >
+                    </el-col>
+                  </el-row>
+                  <el-row style="margin-left: 160px">
+                    <el-col :span="12">
+                      <el-form-item label="三证合一营业执照复印件"
+                        ><br />
+                        <template>
+                          <div
+                            v-for="(item, index) in AttachmentUpload.businessLicense.uploadInfo"
+                            :key="index"
+                            class="uploadInfo"
+                          >
+                            <img
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                              alt=""
+                            />
+                            <img
+                              class="close"
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/组_57.png"
+                              alt=""
+                              @click="del(item, businessLicense)"
+                            />
+                            <div class="upload_rg">
+                              <div class="fileName">
+                                {{ item.name }}
+                                <img
+                                  v-if="item.progressPercent === 100"
+                                  src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/对号（圆圈对号）.png"
+                                />
+                              </div>
+                              <el-progress
+                                v-if="item.progressPercent !== 100"
+                                style="width: 260px; height: 6px"
+                                :percentage="item.progressPercent"
+                                color="#00CC06"
+                                :show-text="false"
+                                :auto-upload="false"
+                              />
+                              <div v-else class="fileSize">
+                                {{ filterS(item.size) }}
+                              </div>
+                            </div>
+                          </div>
+                        </template>
+                        <el-upload
+                          ref="upload"
+                          class="upload_policy"
+                          multiple
+                          :show-file-list="false"
+                          :http-request="params => uploadFiles(params, 'businessLicense')"
+                          action="https://jsonplaceholder.typicode.com/posts/"
+                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
+                        >
+                          <div slot="trigger" class="uploadInfo_wrapped">
+                            <div style="display: flex; margin-top: 13px">
+                              <img
+                                src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                                alt=""
+                              />
+                              <div class="chooseFiles">选取文件</div>
+                            </div>
+                          </div>
+                          <div slot="tip" class="el-upload__tip">
+                            请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
+                              style="color: #0e7fdb"
+                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                            >
+                          </div>
+                        </el-upload></el-form-item
+                      >
+                    </el-col>
+                    <el-col :span="12">
+                      <el-form-item label="企业相关资质证书(如有)"
+                        ><br />
+                        <template>
+                          <div
+                            v-for="(item, index) in AttachmentUpload.qualificationCertificate
+                              .uploadInfo"
+                            :key="index"
+                            class="uploadInfo"
+                          >
+                            <img
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                              alt=""
+                            />
+                            <img
+                              class="close"
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/组_57.png"
+                              alt=""
+                              @click="del(item, 'qualificationCertificate')"
+                            />
+                            <div class="upload_rg">
+                              <div class="fileName">
+                                {{ item.name }}
+                                <img
+                                  v-if="item.progressPercent === 100"
+                                  src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/对号（圆圈对号）.png"
+                                />
+                              </div>
+                              <el-progress
+                                v-if="item.progressPercent !== 100"
+                                style="width: 260px; height: 6px"
+                                :percentage="item.progressPercent"
+                                color="#00CC06"
+                                :show-text="false"
+                                :auto-upload="false"
+                              />
+                              <div v-else class="fileSize">
+                                {{ filterS(item.size) }}
+                              </div>
+                            </div>
+                          </div>
+                        </template>
+                        <el-upload
+                          ref="upload"
+                          class="upload_policy"
+                          multiple
+                          :show-file-list="false"
+                          :http-request="params => uploadFiles(params, 'qualificationCertificate')"
+                          action="https://jsonplaceholder.typicode.com/posts/"
+                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
+                        >
+                          <div slot="trigger" class="uploadInfo_wrapped">
+                            <div style="display: flex; margin-top: 13px">
+                              <img
+                                src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                                alt=""
+                              />
+                              <div class="chooseFiles">选取文件</div>
+                            </div>
+                          </div>
+                          <div slot="tip" class="el-upload__tip">
+                            请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
+                              style="color: #0e7fdb"
+                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                            >
+                          </div>
+                        </el-upload></el-form-item
+                      ></el-col
+                    >
+                  </el-row>
+                  <el-row style="margin-left: 160px">
+                    <el-col :span="12">
+                      <el-form-item label="上一年度财务报表(如有)"
+                        ><br />
+                        <template>
+                          <div
+                            v-for="(item, index) in AttachmentUpload.financialStatement.uploadInfo"
+                            :key="index"
+                            class="uploadInfo"
+                          >
+                            <img
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                              alt=""
+                            />
+                            <img
+                              class="close"
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/组_57.png"
+                              alt=""
+                              @click="del(item, 'financialStatement')"
+                            />
+                            <div class="upload_rg">
+                              <div class="fileName">
+                                {{ item.name }}
+                                <img
+                                  v-if="item.progressPercent === 100"
+                                  src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/对号（圆圈对号）.png"
+                                />
+                              </div>
+                              <el-progress
+                                v-if="item.progressPercent !== 100"
+                                style="width: 260px; height: 6px"
+                                :percentage="item.progressPercent"
+                                color="#00CC06"
+                                :show-text="false"
+                                :auto-upload="false"
+                              />
+                              <div v-else class="fileSize">
+                                {{ filterS(item.size) }}
+                              </div>
+                            </div>
+                          </div>
+                        </template>
+                        <el-upload
+                          ref="upload"
+                          class="upload_policy"
+                          multiple
+                          :show-file-list="false"
+                          :http-request="params => uploadFiles(params, 'financialStatement')"
+                          action="https://jsonplaceholder.typicode.com/posts/"
+                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
+                        >
+                          <div slot="trigger" class="uploadInfo_wrapped">
+                            <div style="display: flex; margin-top: 13px">
+                              <img
+                                src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                                alt=""
+                              />
+                              <div class="chooseFiles">选取文件</div>
+                            </div>
+                          </div>
+                          <div slot="tip" class="el-upload__tip">
+                            请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
+                              style="color: #0e7fdb"
+                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                            >
+                          </div>
+                        </el-upload></el-form-item
+                      ></el-col
+                    >
+                    <el-col :span="12">
+                      <el-form-item label="高层次人才履历证书"
+                        ><br />
+                        <template>
+                          <div
+                            v-for="(item, index) in AttachmentUpload.resumeTalents.uploadInfo"
+                            :key="index"
+                            class="uploadInfo"
+                          >
+                            <img
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                              alt=""
+                            />
+                            <img
+                              class="close"
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/组_57.png"
+                              alt=""
+                              @click="del(item, 'resumeTalents')"
+                            />
+                            <div class="upload_rg">
+                              <div class="fileName">
+                                {{ item.name }}
+                                <img
+                                  v-if="item.progressPercent === 100"
+                                  src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/对号（圆圈对号）.png"
+                                />
+                              </div>
+                              <el-progress
+                                v-if="item.progressPercent !== 100"
+                                style="width: 260px; height: 6px"
+                                :percentage="item.progressPercent"
+                                color="#00CC06"
+                                :show-text="false"
+                                :auto-upload="false"
+                              />
+                              <div v-else class="fileSize">
+                                {{ filterS(item.size) }}
+                              </div>
+                            </div>
+                          </div>
+                        </template>
+                        <el-upload
+                          ref="upload"
+                          class="upload_policy"
+                          multiple
+                          :show-file-list="false"
+                          :http-request="params => uploadFiles(params, 'resumeTalents')"
+                          action="https://jsonplaceholder.typicode.com/posts/"
+                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
+                        >
+                          <div slot="trigger" class="uploadInfo_wrapped">
+                            <div style="display: flex; margin-top: 13px">
+                              <img
+                                src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                                alt=""
+                              />
+                              <div class="chooseFiles">选取文件</div>
+                            </div>
+                          </div>
+                          <div slot="tip" class="el-upload__tip">
+                            请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
+                              style="color: #0e7fdb"
+                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                            >
+                          </div>
+                        </el-upload></el-form-item
+                      ></el-col
+                    >
+                  </el-row>
+                </el-col>
+                <el-col v-show="activeIndex === '6-2'" :span="22">
+                  <el-row style="margin-left: 160px">
+                    <el-col :span="12"
+                      ><el-form-item label="入孵申请书"
+                        ><br />
+                        <template>
+                          <div
+                            v-for="(item, index) in AttachmentUpload.applicationForm.uploadInfo"
+                            :key="index"
+                            class="uploadInfo"
+                          >
+                            <img
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                              alt=""
+                            />
+                            <img
+                              class="close"
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/组_57.png"
+                              alt=""
+                              @click="del(item, 'applicationForm')"
+                            />
+                            <div class="upload_rg">
+                              <div class="fileName">
+                                {{ item.name }}
+                                <img
+                                  v-if="item.progressPercent === 100"
+                                  src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/对号（圆圈对号）.png"
+                                />
+                              </div>
+                              <el-progress
+                                v-if="item.progressPercent !== 100"
+                                style="width: 260px; height: 6px"
+                                :percentage="item.progressPercent"
+                                color="#00CC06"
+                                :show-text="false"
+                                :auto-upload="false"
+                              />
+                              <div v-else class="fileSize">
+                                {{ filterS(item.size) }}
+                              </div>
+                            </div>
+                          </div>
+                        </template>
+                        <el-upload
+                          ref="upload"
+                          class="upload_policy"
+                          multiple
+                          :show-file-list="false"
+                          :http-request="params => uploadFiles(params, 'applicationForm')"
+                          action="https://jsonplaceholder.typicode.com/posts/"
+                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
+                        >
+                          <div slot="trigger" class="uploadInfo_wrapped">
+                            <div style="display: flex; margin-top: 13px">
+                              <img
+                                src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                                alt=""
+                              />
+                              <div class="chooseFiles">选取文件</div>
+                            </div>
+                          </div>
+                          <div slot="tip" class="el-upload__tip">
+                            请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
+                              style="color: #0e7fdb"
+                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                            >
+                          </div>
+                        </el-upload></el-form-item
+                      ></el-col
+                    >
+                    <el-col :span="12">
+                      <el-form-item label="项目主要情况概述"
+                        ><br />
+                        <template>
+                          <div
+                            v-for="(item, index) in AttachmentUpload.mainSituation.uploadInfo"
+                            :key="index"
+                            class="uploadInfo"
+                          >
+                            <img
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                              alt=""
+                            />
+                            <img
+                              class="close"
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/组_57.png"
+                              alt=""
+                              @click="del(item, 'mainSituation')"
+                            />
+                            <div class="upload_rg">
+                              <div class="fileName">
+                                {{ item.name }}
+                                <img
+                                  v-if="item.progressPercent === 100"
+                                  src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/对号（圆圈对号）.png"
+                                />
+                              </div>
+                              <el-progress
+                                v-if="item.progressPercent !== 100"
+                                style="width: 260px; height: 6px"
+                                :percentage="item.progressPercent"
+                                color="#00CC06"
+                                :show-text="false"
+                                :auto-upload="false"
+                              />
+                              <div v-else class="fileSize">
+                                {{ filterS(item.size) }}
+                              </div>
+                            </div>
+                          </div>
+                        </template>
+                        <el-upload
+                          ref="upload"
+                          class="upload_policy"
+                          multiple
+                          :show-file-list="false"
+                          :http-request="params => uploadFiles(params, 'mainSituation')"
+                          action="https://jsonplaceholder.typicode.com/posts/"
+                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
+                        >
+                          <div slot="trigger" class="uploadInfo_wrapped">
+                            <div style="display: flex; margin-top: 13px">
+                              <img
+                                src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                                alt=""
+                              />
+                              <div class="chooseFiles">选取文件</div>
+                            </div>
+                          </div>
+                          <div slot="tip" class="el-upload__tip">
+                            请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
+                              style="color: #0e7fdb"
+                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                            >
+                          </div>
+                        </el-upload></el-form-item
+                      >
+                    </el-col>
+                  </el-row>
+                  <el-row style="margin-left: 160px">
+                    <el-col :span="12">
+                      <el-form-item label="项目负责人身份证复印件及履历介绍"
+                        ><br />
+                        <template>
+                          <div
+                            v-for="(item, index) in AttachmentUpload.cardCurriculumVitae.uploadInfo"
+                            :key="index"
+                            class="uploadInfo"
+                          >
+                            <img
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                              alt=""
+                            />
+                            <img
+                              class="close"
+                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/组_57.png"
+                              alt=""
+                              @click="del(item, 'cardCurriculumVitae')"
+                            />
+                            <div class="upload_rg">
+                              <div class="fileName">
+                                {{ item.name }}
+                                <img
+                                  v-if="item.progressPercent === 100"
+                                  src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/对号（圆圈对号）.png"
+                                />
+                              </div>
+                              <el-progress
+                                v-if="item.progressPercent !== 100"
+                                style="width: 260px; height: 6px"
+                                :percentage="item.progressPercent"
+                                color="#00CC06"
+                                :show-text="false"
+                                :auto-upload="false"
+                              />
+                              <div v-else class="fileSize">
+                                {{ filterS(item.size) }}
+                              </div>
+                            </div>
+                          </div>
+                        </template>
+                        <el-upload
+                          ref="upload"
+                          class="upload_policy"
+                          multiple
+                          :show-file-list="false"
+                          :http-request="params => uploadFiles(params, 'cardCurriculumVitae')"
+                          action="https://jsonplaceholder.typicode.com/posts/"
+                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
+                        >
+                          <div slot="trigger" class="uploadInfo_wrapped">
+                            <div style="display: flex; margin-top: 13px">
+                              <img
+                                src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
+                                alt=""
+                              />
+                              <div class="chooseFiles">选取文件</div>
+                            </div>
+                          </div>
+                          <div slot="tip" class="el-upload__tip">
+                            请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
+                              style="color: #0e7fdb"
+                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                            >
+                          </div>
+                        </el-upload></el-form-item
+                      >
+                    </el-col>
+                  </el-row>
+                </el-col>
+              </el-row>
+            </el-form>
+          </div>
+          <center>
+            <el-button
+              v-show="active !== 1"
+              style="margin-top: 12px; margin-right: 20px"
+              @click="prev"
+              >上一步</el-button
+            >
+            <el-button type="primary" style="margin-top: 12px" @click="next">{{
+              active === 6 ? '提交' : '下一步'
+            }}</el-button>
+          </center>
+        </template>
+        <div v-else class="success">
+          <img
+            src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/success.png"
+            alt=""
+          />
+          <div class="success_des">提交成功！</div>
+          <div class="jump">
+            页面自动 跳转 等待时间：{{ $store.state.contact.successPageOptions.count }}秒
+          </div>
         </div>
-        <div v-show="active === 6" class="step-box6">
-          <el-form>
-            <el-row>
-              <el-col :span="2">
-                <el-menu :default-active="activeIndex">
-                  <el-menu-item index="6-1" @click="activeIndex = '6-1'">已成立企业</el-menu-item>
-                  <el-menu-item index="6-2" @click="activeIndex = '6-2'">未成立企业</el-menu-item>
-                </el-menu>
-              </el-col>
-              <el-col v-show="activeIndex === '6-1'" :span="22">
-                <el-row style="margin-left: 160px">
-                  <el-col :span="12"
-                    ><el-form-item label="公司简介"
-                      ><br /><el-upload
-                        ref="upload"
-                        class="upload_policy"
-                        multiple
-                        :show-file-list="false"
-                        action="https://jsonplaceholder.typicode.com/posts/"
-                        accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
-                      >
-                        <div slot="trigger" class="uploadInfo_wrapped">
-                          <div style="display: flex; margin-top: 13px">
-                            <img
-                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
-                              alt=""
-                            />
-                            <div class="chooseFiles">选取文件</div>
-                          </div>
-                        </div>
-                        <div slot="tip" class="el-upload__tip">
-                          请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
-                            style="color: #0e7fdb"
-                            >rar、zip、jpg、png、pdf、ppt 的文件</span
-                          >
-                        </div>
-                      </el-upload></el-form-item
-                    ></el-col
-                  >
-                  <el-col :span="12">
-                    <el-form-item label="法定人代表身份证复印件"
-                      ><br /><el-upload
-                        ref="upload"
-                        class="upload_policy"
-                        multiple
-                        :show-file-list="false"
-                        action="https://jsonplaceholder.typicode.com/posts/"
-                        accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
-                      >
-                        <div slot="trigger" class="uploadInfo_wrapped">
-                          <div style="display: flex; margin-top: 13px">
-                            <img
-                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
-                              alt=""
-                            />
-                            <div class="chooseFiles">选取文件</div>
-                          </div>
-                        </div>
-                        <div slot="tip" class="el-upload__tip">
-                          请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
-                            style="color: #0e7fdb"
-                            >rar、zip、jpg、png、pdf、ppt 的文件</span
-                          >
-                        </div>
-                      </el-upload></el-form-item
-                    >
-                  </el-col>
-                </el-row>
-                <el-row style="margin-left: 160px">
-                  <el-col :span="12">
-                    <el-form-item label="三证合一营业执照复印件"
-                      ><br /><el-upload
-                        ref="upload"
-                        class="upload_policy"
-                        multiple
-                        :show-file-list="false"
-                        action="https://jsonplaceholder.typicode.com/posts/"
-                        accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
-                      >
-                        <div slot="trigger" class="uploadInfo_wrapped">
-                          <div style="display: flex; margin-top: 13px">
-                            <img
-                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
-                              alt=""
-                            />
-                            <div class="chooseFiles">选取文件</div>
-                          </div>
-                        </div>
-                        <div slot="tip" class="el-upload__tip">
-                          请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
-                            style="color: #0e7fdb"
-                            >rar、zip、jpg、png、pdf、ppt 的文件</span
-                          >
-                        </div>
-                      </el-upload></el-form-item
-                    >
-                  </el-col>
-                  <el-col :span="12">
-                    <el-form-item label="企业相关资质证书(如有)"
-                      ><br /><el-upload
-                        ref="upload"
-                        class="upload_policy"
-                        multiple
-                        :show-file-list="false"
-                        action="https://jsonplaceholder.typicode.com/posts/"
-                        accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
-                      >
-                        <div slot="trigger" class="uploadInfo_wrapped">
-                          <div style="display: flex; margin-top: 13px">
-                            <img
-                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
-                              alt=""
-                            />
-                            <div class="chooseFiles">选取文件</div>
-                          </div>
-                        </div>
-                        <div slot="tip" class="el-upload__tip">
-                          请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
-                            style="color: #0e7fdb"
-                            >rar、zip、jpg、png、pdf、ppt 的文件</span
-                          >
-                        </div>
-                      </el-upload></el-form-item
-                    ></el-col
-                  >
-                </el-row>
-                <el-row style="margin-left: 160px">
-                  <el-col :span="12">
-                    <el-form-item label="上一年度财务报表(如有)"
-                      ><br /><el-upload
-                        ref="upload"
-                        class="upload_policy"
-                        multiple
-                        :show-file-list="false"
-                        action="https://jsonplaceholder.typicode.com/posts/"
-                        accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
-                      >
-                        <div slot="trigger" class="uploadInfo_wrapped">
-                          <div style="display: flex; margin-top: 13px">
-                            <img
-                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
-                              alt=""
-                            />
-                            <div class="chooseFiles">选取文件</div>
-                          </div>
-                        </div>
-                        <div slot="tip" class="el-upload__tip">
-                          请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
-                            style="color: #0e7fdb"
-                            >rar、zip、jpg、png、pdf、ppt 的文件</span
-                          >
-                        </div>
-                      </el-upload></el-form-item
-                    ></el-col
-                  >
-                  <el-col :span="12">
-                    <el-form-item label="高层次人才履历证书"
-                      ><br /><el-upload
-                        ref="upload"
-                        class="upload_policy"
-                        multiple
-                        :show-file-list="false"
-                        action="https://jsonplaceholder.typicode.com/posts/"
-                        accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
-                      >
-                        <div slot="trigger" class="uploadInfo_wrapped">
-                          <div style="display: flex; margin-top: 13px">
-                            <img
-                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
-                              alt=""
-                            />
-                            <div class="chooseFiles">选取文件</div>
-                          </div>
-                        </div>
-                        <div slot="tip" class="el-upload__tip">
-                          请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
-                            style="color: #0e7fdb"
-                            >rar、zip、jpg、png、pdf、ppt 的文件</span
-                          >
-                        </div>
-                      </el-upload></el-form-item
-                    ></el-col
-                  >
-                </el-row>
-              </el-col>
-              <el-col v-show="activeIndex === '6-2'" :span="22">
-                <el-row style="margin-left: 160px">
-                  <el-col :span="12"
-                    ><el-form-item label="入孵申请书"
-                      ><br /><el-upload
-                        ref="upload"
-                        class="upload_policy"
-                        multiple
-                        :show-file-list="false"
-                        action="https://jsonplaceholder.typicode.com/posts/"
-                        accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
-                      >
-                        <div slot="trigger" class="uploadInfo_wrapped">
-                          <div style="display: flex; margin-top: 13px">
-                            <img
-                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
-                              alt=""
-                            />
-                            <div class="chooseFiles">选取文件</div>
-                          </div>
-                        </div>
-                        <div slot="tip" class="el-upload__tip">
-                          请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
-                            style="color: #0e7fdb"
-                            >rar、zip、jpg、png、pdf、ppt 的文件</span
-                          >
-                        </div>
-                      </el-upload></el-form-item
-                    ></el-col
-                  >
-                  <el-col :span="12">
-                    <el-form-item label="项目主要情况概述"
-                      ><br /><el-upload
-                        ref="upload"
-                        class="upload_policy"
-                        multiple
-                        :show-file-list="false"
-                        action="https://jsonplaceholder.typicode.com/posts/"
-                        accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
-                      >
-                        <div slot="trigger" class="uploadInfo_wrapped">
-                          <div style="display: flex; margin-top: 13px">
-                            <img
-                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
-                              alt=""
-                            />
-                            <div class="chooseFiles">选取文件</div>
-                          </div>
-                        </div>
-                        <div slot="tip" class="el-upload__tip">
-                          请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
-                            style="color: #0e7fdb"
-                            >rar、zip、jpg、png、pdf、ppt 的文件</span
-                          >
-                        </div>
-                      </el-upload></el-form-item
-                    >
-                  </el-col>
-                </el-row>
-                <el-row style="margin-left: 160px">
-                  <el-col :span="12">
-                    <el-form-item label="项目负责人身份证复印件及履历介绍"
-                      ><br /><el-upload
-                        ref="upload"
-                        class="upload_policy"
-                        multiple
-                        :show-file-list="false"
-                        action="https://jsonplaceholder.typicode.com/posts/"
-                        accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
-                      >
-                        <div slot="trigger" class="uploadInfo_wrapped">
-                          <div style="display: flex; margin-top: 13px">
-                            <img
-                              src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/附件.png"
-                              alt=""
-                            />
-                            <div class="chooseFiles">选取文件</div>
-                          </div>
-                        </div>
-                        <div slot="tip" class="el-upload__tip">
-                          请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
-                            style="color: #0e7fdb"
-                            >rar、zip、jpg、png、pdf、ppt 的文件</span
-                          >
-                        </div>
-                      </el-upload></el-form-item
-                    >
-                  </el-col>
-                </el-row>
-              </el-col>
-            </el-row>
-          </el-form>
-        </div>
-        <center>
-          <el-button
-            v-show="active !== 1"
-            style="margin-top: 12px; margin-right: 20px"
-            @click="prev"
-            >上一步</el-button
-          >
-          <el-button type="primary" style="margin-top: 12px" @click="next">下一步 </el-button>
-        </center>
       </div>
       <div class="part-two">
         <div class="contract-content">
@@ -740,6 +1135,8 @@
   </div>
 </template>
 <script>
+import { uploadCompany, uploadFile } from '@/api/modules/policy';
+import { filterSize } from '@/utils/sizeConversion';
 export default {
   data() {
     var validateIdCard = (rule, value, callback) => {
@@ -764,139 +1161,220 @@ export default {
       activeIndex: '6-1',
       companyProfile: {
         companyName: '',
-        setupTime: '',
-        legalPerson: '',
+        establishmentDate: '',
+        legalRepresentative: '',
         registeredAddress: '',
-        phoneNumber: '',
+        contactNumber: '',
         email: '',
-        checkInTime: '',
+        moveInDate: '',
         registeredCapital: '',
-        preRevenue: '',
-        total: '',
-        nextTax: '',
-        devOptions: [
+        previousYearSales: '',
+        totalAssets: '',
+        nextYearTaxAmount: '',
+        developmentStage1: [
           { checked: false },
           { checked: false },
           { checked: false },
           { checked: false }
         ],
-        other: ''
+        honorsAndProjectFunding: ''
       },
       companyProfileRules: {
         companyName: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
-        setupTime: [{ required: true, trigger: 'blur', message: '请输入成立时间' }],
-        legalPerson: [{ required: true, trigger: 'blur', message: '请输入法定代表人' }],
+        establishmentDate: [{ required: true, trigger: 'blur', message: '请输入成立时间' }],
+        legalRepresentative: [{ required: true, trigger: 'blur', message: '请输入法定代表人' }],
         registeredAddress: [{ required: true, trigger: 'blur', message: '请输入现注册地址' }],
-        phoneNumber: [{ required: true, trigger: 'blur', message: '请输入联系电话' }],
+        contactNumber: [{ required: true, trigger: 'blur', message: '请输入联系电话' }],
         email: [{ required: true, trigger: 'blur', message: '请输入电子邮箱' }],
-        checkInTime: [{ required: true, trigger: 'blur', message: '请输入入驻时间' }],
+        moveInDate: [{ required: true, trigger: 'blur', message: '请输入入驻时间' }],
         registeredCapital: [{ required: true, trigger: 'blur', message: '请输入注册资本' }],
-        preRevenue: [{ required: true, trigger: 'blur', message: '请输入上年度销售额' }],
-        total: [{ required: true, trigger: 'blur', message: '请输入资产总额' }],
-        nextTax: [{ required: true, trigger: 'blur', message: '请输入下年度纳税额' }],
-        other: [{ required: true, trigger: 'blur', message: '请输入荣誉资质及项目资金扶金情况' }]
+        previousYearSales: [{ required: true, trigger: 'blur', message: '请输入上年度销售额' }],
+        totalAssets: [{ required: true, trigger: 'blur', message: '请输入资产总额' }],
+        nextYearTaxAmount: [{ required: true, trigger: 'blur', message: '请输入下年度纳税额' }],
+        honorsAndProjectFunding: [
+          { required: true, trigger: 'blur', message: '请输入荣誉资质及项目资金扶金情况' }
+        ]
       },
       intellectualPropertySituation: {
-        inventionPatent: '',
-        softwareCopyright: '',
-        practicalPatents: '',
+        inventionPatents: '',
+        softwareCopyrights: '',
+        utilityModelPatents: '',
         trademark: ''
       },
       intellectualPropertySituationRules: {
-        inventionPatent: [{ required: true, trigger: 'blur', message: '请输入发明专利情况' }],
-        softwareCopyright: [{ required: true, trigger: 'blur', message: '请输入软件著作权情况' }],
-        practicalPatents: [{ required: true, trigger: 'blur', message: '请输入实用新型专利情况' }],
+        inventionPatents: [{ required: true, trigger: 'blur', message: '请输入发明专利情况' }],
+        softwareCopyrights: [{ required: true, trigger: 'blur', message: '请输入软件著作权情况' }],
+        utilityModelPatents: [
+          { required: true, trigger: 'blur', message: '请输入实用新型专利情况' }
+        ],
         trademark: [{ required: true, trigger: 'blur', message: '请输入商标情况' }]
       },
       ownershipStructure: [
-        { form: { name: '', idCard: '', job: '', professional: '', proportion: '' } },
-        { form: { name: '', idCard: '', job: '', professional: '', proportion: '' } },
-        { form: { name: '', idCard: '', job: '', professional: '', proportion: '' } }
+        {
+          equityOwnerName: '',
+          equityOwnerIdCard: '',
+          equityOwnerPosition: '',
+          equityOwnerTitle: '',
+          equitySharePercentage: ''
+        },
+        {
+          equityOwnerName: '',
+          equityOwnerIdCard: '',
+          equityOwnerPosition: '',
+          equityOwnerTitle: '',
+          equitySharePercentage: ''
+        },
+        {
+          equityOwnerName: '',
+          equityOwnerIdCard: '',
+          equityOwnerPosition: '',
+          equityOwnerTitle: '',
+          equitySharePercentage: ''
+        }
       ],
       ownershipStructureRules: [
         {
-          form: {
-            name: [{ required: true, trigger: 'blur', message: '请输入姓名' }],
-            idCard: [{ required: true, trigger: 'blur', validator: validateIdCard }],
-            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
-            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
-            proportion: [{ required: true, trigger: 'blur', message: '请输入占股比例' }]
-          }
+          equityOwnerName: [{ required: true, trigger: 'blur', message: '请输入姓名' }],
+          equityOwnerIdCard: [{ required: true, trigger: 'blur', validator: validateIdCard }],
+          equityOwnerPosition: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+          equityOwnerTitle: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+          equitySharePercentage: [{ required: true, trigger: 'blur', message: '请输入占股比例' }]
         },
         {
-          form: {
-            name: [{ required: true, trigger: 'blur', message: '请输入姓名' }],
-            idCard: [{ required: true, trigger: 'blur', validator: validateIdCard }],
-            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
-            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
-            proportion: [{ required: true, trigger: 'blur', message: '请输入占股比例' }]
-          }
+          equityOwnerName: [{ required: true, trigger: 'blur', message: '请输入姓名' }],
+          equityOwnerIdCard: [{ required: true, trigger: 'blur', validator: validateIdCard }],
+          equityOwnerPosition: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+          equityOwnerTitle: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+          equitySharePercentage: [{ required: true, trigger: 'blur', message: '请输入占股比例' }]
         },
         {
-          form: {
-            name: [{ required: true, trigger: 'blur', message: '请输入姓名' }],
-            idCard: [{ required: true, trigger: 'blur', validator: validateIdCard }],
-            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
-            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
-            proportion: [{ required: true, trigger: 'blur', message: '请输入占股比例' }]
-          }
+          equityOwnerName: [{ required: true, trigger: 'blur', message: '请输入姓名' }],
+          equityOwnerIdCard: [{ required: true, trigger: 'blur', validator: validateIdCard }],
+          equityOwnerPosition: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+          equityOwnerTitle: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+          equitySharePercentage: [{ required: true, trigger: 'blur', message: '请输入占股比例' }]
         }
       ],
       highLevelTalents: [
-        { form: { name: '', job: '', age: '', edBg: '', professional: '', contact: '' } },
-        { form: { name: '', job: '', age: '', edBg: '', professional: '', contact: '' } },
-        { form: { name: '', job: '', age: '', edBg: '', professional: '', contact: '' } }
+        { name: '', position: '', age: '', education: '', title: '', contact: '' },
+        { name: '', position: '', age: '', education: '', title: '', contact: '' },
+        { name: '', position: '', age: '', education: '', title: '', contact: '' }
       ],
       highLevelTalentsRules: [
         {
-          form: {
-            name: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
-            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
-            age: [{ required: true, trigger: 'blur', message: '请输入年龄' }],
-            edBg: [{ required: true, trigger: 'blur', message: '请输入学历' }],
-            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
-            contact: [{ required: true, trigger: 'blur', message: '请输入联系方式' }]
-          }
+          name: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
+          position: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+          age: [{ required: true, trigger: 'blur', message: '请输入年龄' }],
+          education: [{ required: true, trigger: 'blur', message: '请输入学历' }],
+          title: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+          contact: [{ required: true, trigger: 'blur', message: '请输入联系方式' }]
         },
         {
-          form: {
-            name: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
-            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
-            age: [{ required: true, trigger: 'blur', message: '请输入年龄' }],
-            edBg: [{ required: true, trigger: 'blur', message: '请输入学历' }],
-            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
-            contact: [{ required: true, trigger: 'blur', message: '请输入联系方式' }]
-          }
+          name: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
+          position: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+          age: [{ required: true, trigger: 'blur', message: '请输入年龄' }],
+          education: [{ required: true, trigger: 'blur', message: '请输入学历' }],
+          title: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+          contact: [{ required: true, trigger: 'blur', message: '请输入联系方式' }]
         },
         {
-          form: {
-            name: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
-            job: [{ required: true, trigger: 'blur', message: '请输入职务' }],
-            age: [{ required: true, trigger: 'blur', message: '请输入年龄' }],
-            edBg: [{ required: true, trigger: 'blur', message: '请输入学历' }],
-            professional: [{ required: true, trigger: 'blur', message: '请输入职称' }],
-            contact: [{ required: true, trigger: 'blur', message: '请输入联系方式' }]
-          }
+          name: [{ required: true, trigger: 'blur', message: '请输入企业名称' }],
+          position: [{ required: true, trigger: 'blur', message: '请输入职务' }],
+          age: [{ required: true, trigger: 'blur', message: '请输入年龄' }],
+          education: [{ required: true, trigger: 'blur', message: '请输入学历' }],
+          title: [{ required: true, trigger: 'blur', message: '请输入职称' }],
+          contact: [{ required: true, trigger: 'blur', message: '请输入联系方式' }]
         }
       ],
       humanIncubationNeed: {
-        devOptions: [
+        developmentStage2: [
           { checked: false },
           { checked: false },
           { checked: false },
           { checked: false }
         ],
         area: '',
-        other: ''
+        otherRequirements: ''
       },
       humanIncubationNeedRules: {
-        devOptions: [{ required: true, trigger: 'blur' }],
+        developmentStage2: [{ required: true, trigger: 'blur' }],
         area: [{ required: true, trigger: 'blur', message: '请输入面积' }],
-        other: [{ required: true, trigger: 'blur', message: '请输入其他需求' }]
+        otherRequirements: [{ required: true, trigger: 'blur', message: '请输入其他需求' }]
+      },
+      // 文件上传数据
+      AttachmentUpload: {
+        companyProfile: {
+          uploadInfo: [],
+          fileList: []
+        },
+        identificationCard: {
+          uploadInfo: [],
+          fileList: []
+        },
+        businessLicense: {
+          uploadInfo: [],
+          fileList: []
+        },
+        qualificationCertificate: {
+          uploadInfo: [],
+          fileList: []
+        },
+        financialStatement: {
+          uploadInfo: [],
+          fileList: []
+        },
+        resumeTalents: {
+          uploadInfo: [],
+          fileList: []
+        },
+        applicationForm: {
+          uploadInfo: [],
+          fileList: []
+        },
+        mainSituation: {
+          uploadInfo: [],
+          fileList: []
+        },
+        cardCurriculumVitae: {
+          uploadInfo: [],
+          fileList: []
+        }
+      },
+      uploadInfo: {
+        companyProfileUrl: '',
+        identificationCardUrl: '',
+        businessLicenseUrl: '',
+        qualificationCertificateUrl: '',
+        financialStatementUrl: '',
+        resumeTalentsUrl: '',
+        applicationFormUrl: '',
+        mainSituationUrl: '',
+        cardCurriculumVitaeUrl: ''
+      },
+      urlMap: {
+        companyProfile: 'companyProfile',
+        identificationCard: 'legalRepresentativeIdCopy',
+        businessLicense: 'businessLicenseCopy',
+        qualificationCertificate: 'relatedQualificationCert',
+        financialStatement: 'previousYearFinancialReport',
+        resumeTalents: 'highLevelTalentResume',
+        applicationForm: 'incubationApplication',
+        mainSituation: 'projectOverview',
+        cardCurriculumVitae: 'projectLeaderIdCopy'
+      },
+      companyCond: {
+        isEstablished: 0
       }
     };
   },
   methods: {
+    changeIndex(num) {
+      if (num === 0) {
+        this.activeIndex = '6-1';
+      } else {
+        this.activeIndex = '6-2';
+      }
+    },
     prev() {
       this.active--;
     },
@@ -911,8 +1389,16 @@ export default {
         this.$store.commit('contact/setForm4', this.highLevelTalents);
       } else if (this.active === 5) {
         this.$store.commit('contact/setForm5', this.humanIncubationNeed);
+      } else if (this.active === 6) {
+        this.companyCond.isEstablished = this.activeIndex === '6-1' ? 0 : 1;
+        this.$store.commit('contact/setEstablished', this.companyCond);
+        this.$store.commit('contact/setForm6', this.uploadInfo);
       }
-      if (this.active++ > 5) this.active = 1;
+      // if (this.active++ > 5) this.active = 1;
+      this.active++;
+      if (this.active === 7) {
+        this.$store.dispatch('contact/uploadAllInfo');
+      }
     },
     addFormItem(name) {
       if (name === 0) {
@@ -924,18 +1410,62 @@ export default {
     handleOptionChange(index, name) {
       // 只允许选择一个选项，取消其他选项的选择
       if (name === 1) {
-        this.companyProfile.devOptions.forEach((option, i) => {
+        this.companyProfile.developmentStage1.forEach((option, i) => {
           if (i !== index) {
             option.checked = false;
           }
         });
       } else if (name === 2) {
-        this.humanIncubationNeed.devOptions.forEach((option, i) => {
+        this.humanIncubationNeed.developmentStage2.forEach((option, i) => {
           if (i !== index) {
             option.checked = false;
           }
         });
       }
+    },
+    // 文件处理
+    filterS(size) {
+      return filterSize(size);
+    },
+    del(file, uploadInfoName) {
+      this.AttachmentUpload[uploadInfoName].uploadInfo = this.AttachmentUpload[
+        uploadInfoName
+      ].uploadInfo.filter(item => item !== file);
+      this.uploadInfo[this.urlMap[uploadInfoName]] = this.AttachmentUpload[
+        uploadInfoName
+      ].uploadInfo
+        .map(item => item.url)
+        .join(',');
+    },
+    async uploadFiles(param, uploadInfoName) {
+      const file = param.file;
+      if (file.size >= 10485760) {
+        this.$message.error('文件不能超过10M！');
+        return;
+      }
+      file.progressPercent = 0;
+      this.AttachmentUpload[uploadInfoName].uploadInfo.push(file);
+      const formData = new FormData();
+      formData.append('file', file);
+      const { url } = await uploadFile(formData, {
+        onUploadProgress: progress => {
+          // 格式化成百分数
+          this.AttachmentUpload[uploadInfoName].uploadInfo = this.AttachmentUpload[
+            uploadInfoName
+          ].uploadInfo.map(item => {
+            item === file &&
+              (item.progressPercent = Math.floor((progress.loaded / progress.total) * 100));
+            return item;
+          });
+        }
+      });
+      file.url = url;
+      console.log(uploadInfoName);
+      this.uploadInfo[this.urlMap[uploadInfoName]] = this.AttachmentUpload[
+        uploadInfoName
+      ].uploadInfo
+        .map(item => item.url)
+        .join(',');
     }
   }
 };
@@ -984,7 +1514,7 @@ export default {
     z-index: 999;
     position: relative;
     // margin-top: 19px;
-    width: 699px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -995,6 +1525,7 @@ export default {
     }
     & > .upload_rg {
       flex: 1;
+      padding-right: 100px;
       margin-left: 20px;
       display: flex;
       flex-direction: column;
@@ -1049,6 +1580,31 @@ export default {
   width: 1280px;
   margin: 0 320px;
   margin-top: 101px;
+  & .success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    & > div {
+      flex: 1;
+    }
+    & > .success_des {
+      font-size: 40px;
+      font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+      font-weight: 400;
+      color: #333333;
+      line-height: 32px;
+      margin-top: 31px;
+      margin-bottom: 40px;
+    }
+    & > .jump {
+      font-size: 18px;
+      font-family: Microsoft YaHei-Regular, Microsoft YaHei;
+      font-weight: 400;
+      color: #333333;
+      line-height: 32px;
+    }
+  }
 }
 .contract-content {
   p:nth-child(1) {
