@@ -11,9 +11,9 @@
     </div> -->
     <div class="pa-topic">
       <div>
-        <p>02&nbsp;<span></span>&nbsp;<span>Press announcement</span></p>
+        <p>02&nbsp;<span></span>&nbsp;<span>Parks News</span></p>
       </div>
-      <p>新闻公告</p>
+      <p>政策新闻</p>
     </div>
     <div class="pa-content">
       <div class="pa-content_left">
@@ -23,11 +23,19 @@
           />
           <div>{{ list_data2.createTime }}</div>
         </div>
-        <p @click="$router.push('/service/information/' + list_data2.newsId).catch(err => err)">
+        <p
+          @click="
+            $router.push('/policy-release/information/' + list_data2.newsId).catch(err => err)
+          "
+        >
           {{ list_data2.newsTitle }}
         </p>
         <hr />
-        <p @click="$router.push('/service/information/' + list_data2.newsId).catch(err => err)">
+        <p
+          @click="
+            $router.push('/policy-release/information/' + list_data2.newsId).catch(err => err)
+          "
+        >
           {{ list_data2.newsTitle }}>
           {{ list_data2.remark }}
         </p>
@@ -42,24 +50,30 @@
         <p>
           近日，记者在高新区资阳石油钢管有限公司了解到，今年国家管网重点工程已经保供完成，正在进行社会市场管线的生产工作...
         </p> -->
-        <button @click="$router.push('/service/list').catch(err => err)">详情>></button>
+        <button @click="$router.push('/policy-release/list').catch(err => err)">详情>></button>
       </div>
       <div class="pa-content_right">
         <div v-for="item in list_data.slice(1)" :key="item.newsId" class="pa-content_right1">
           <div>
-            <span @click="$router.push('/service/information/' + item.newsId).catch(err => err)">{{
-              item.createTime.slice(5, 10).replace('-', '/')
-            }}</span>
-            <span @click="$router.push('/service/information/' + item.newsId).catch(err => err)">{{
-              item.createTime.slice(0, 4)
-            }}</span>
+            <span
+              @click="$router.push('/policy-release/information/' + item.newsId).catch(err => err)"
+              >{{ item.createTime.slice(5, 10).replace('-', '/') }}</span
+            >
+            <span
+              @click="$router.push('/policy-release/information/' + item.newsId).catch(err => err)"
+              >{{ item.createTime.slice(0, 4) }}</span
+            >
           </div>
           <div></div>
           <div>
-            <p @click="$router.push('/service/information/' + item.newsId).catch(err => err)">
+            <p
+              @click="$router.push('/policy-release/information/' + item.newsId).catch(err => err)"
+            >
               {{ item.newsTitle }}
             </p>
-            <p @click="$router.push('/service/information/' + item.newsId).catch(err => err)">
+            <p
+              @click="$router.push('/policy-release/information/' + item.newsId).catch(err => err)"
+            >
               {{ item.remark }}
             </p>
           </div>

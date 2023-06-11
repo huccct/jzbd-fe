@@ -152,7 +152,8 @@
           </div>
         </div>
       </div>
-      <Pressannouncement style="margin-top: 84px"></Pressannouncement>
+      <div style="height: 200px"></div>
+      <!-- <Pressannouncement style="margin-top: 84px"></Pressannouncement> -->
       <!-- <div class="service-content_one-contenth2"></div> -->
     </div>
   </div>

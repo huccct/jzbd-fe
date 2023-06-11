@@ -1,8 +1,8 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-06-09 21:14:32
- * @LastEditors: Huccct
+ * @LastEditTime: 2023-06-11 11:14:51
+ * @LastEditors: Please set LastEditors
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
  * 初心不变，意志坚定
@@ -1111,7 +1111,7 @@
           <div class="logo">
             <img src="http://47.95.211.240:9000/photo/contract/person.png" alt="" />
             <p class="p1">联系人</p>
-            <p class="p2">{{ contractText.person }}</p>
+            <p class="p2">{{ contractText.contacts }}</p>
           </div>
           <div class="logo">
             <img src="http://47.95.211.240:9000/photo/contract/phone.png" alt="" />
@@ -1135,6 +1135,7 @@
   </div>
 </template>
 <script>
+import { connectUsDetail } from '@/api/modules/contact';
 import { uploadCompany, uploadFile } from '@/api/modules/policy';
 import { filterSize } from '@/utils/sizeConversion';
 export default {
@@ -1151,10 +1152,10 @@ export default {
       part3Len: 1,
       part4Len: 1,
       contractText: {
-        address: '山东省青岛市胶州上合示范区闽江路60号',
-        person: '李先生',
-        phone: '0532-85279551',
-        email: 'shqycxcyy@163.com'
+        address: '',
+        contacts: '',
+        phone: '',
+        email: ''
       },
       Idx: [1, 2, 3],
       active: 1,
@@ -1366,6 +1367,13 @@ export default {
         isEstablished: 0
       }
     };
+  },
+  async mounted() {
+    await connectUsDetail().then(res => {
+      console.log(res);
+      this.contractText = res.data;
+      console.log(this.contractText);
+    });
   },
   methods: {
     changeIndex(num) {

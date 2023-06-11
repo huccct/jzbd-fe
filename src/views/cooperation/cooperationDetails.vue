@@ -7,8 +7,8 @@
       <div class="si-top2">
         <img src="http://47.95.211.240:9000/photo/cooperation-2.3.png" alt="" />
         <div class="si-title">
-          <span>ATRACT INVESTMENT</span>
-          <p>招商合作>></p>
+          <span>Park information</span>
+          <p>园区资料>></p>
         </div>
       </div>
     </div>
@@ -16,8 +16,8 @@
       <div class="si-content-top">
         <img src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2079.png" alt="" />
         <el-breadcrumb class="el-breadcrumb">
-          <el-breadcrumb-item :to="{ path: '/cooperation' }">招商合作</el-breadcrumb-item>
-          <el-breadcrumb-item>详细资料</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/cooperation' }">园区资料</el-breadcrumb-item>
+          <el-breadcrumb-item>资料详情</el-breadcrumb-item>
         </el-breadcrumb>
         <hr />
       </div>

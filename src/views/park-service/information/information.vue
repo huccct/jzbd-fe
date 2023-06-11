@@ -19,8 +19,8 @@
         <img src="http://47.95.211.240:9000/photo/service/information/%E7%BB%84%2079.png" alt="" />
         <el-breadcrumb class="el-breadcrumb" separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: '/service' }">园区服务</el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: '/service/list' }">新闻公告</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/policy-release' }">政策新闻</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/policy-release/list' }">新闻公告</el-breadcrumb-item>
           <el-breadcrumb-item>详情</el-breadcrumb-item>
         </el-breadcrumb>
         <hr />
@@ -123,7 +123,9 @@ export default {
           type: 'warning'
         });
       } else {
-        this.$router.push('/service/information/' + this.data_list.After.newsId).catch(err => err);
+        this.$router
+          .push('/policy-release/information/' + this.data_list.After.newsId)
+          .catch(err => err);
         location.reload();
       }
     },
@@ -134,7 +136,9 @@ export default {
           type: 'warning'
         });
       } else {
-        this.$router.push('/service/information/' + this.data_list.Before.newsId).catch(err => err);
+        this.$router
+          .push('/policy-release/information/' + this.data_list.Before.newsId)
+          .catch(err => err);
         location.reload();
       }
     },

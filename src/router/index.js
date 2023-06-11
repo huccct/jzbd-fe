@@ -26,14 +26,14 @@ const routes = [
   { path: '/', component: home },
   { path: '/service', component: ParkService },
   {
-    path: '/service/list',
+    path: '/policy-release/list',
     component: Sercicedetails,
     meta: {
       keepAlive: true // 不需要缓存
     }
   },
   {
-    path: '/service/information/:id',
+    path: '/policy-release/information/:id',
     component: Serviceinformation,
     meta: {
       keepAlive: true // 不需要缓存
