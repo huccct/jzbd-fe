@@ -24,12 +24,10 @@
           <span>园区基本情况</span>
         </div>
         <div class="d-title2">
-          <span>青岛上合企业创新产业园</span>
+          <span>{{ title }}</span>
         </div>
         <div class="d-text">
-          <span
-            >青岛上合企业创新产业园是胶州湾发展集团围绕上合示范区建设总体方案，重点打造的科技企业孵化园区，地理位置优越，交通便利。项目总投资约2亿元，建筑面积52625.43平方米，目前已建成含办公区的总面积为46788.22平方米的工业厂房10栋（包含6座单层厂房和4座双层厂房）和5837.21平方米的办公楼1栋。办公楼内配有餐厅、多功能会议室、技术成果展馆、公共活动区、健身房等。办公楼的建成，使园区彻底实现从单一的厂房租赁到众创空间、孵化器、加速器、专业园区完整产业生态链。</span
-          >
+          <span>{{ text }}</span>
         </div>
       </div>
       <div class="d-changeimg">
@@ -230,15 +228,18 @@ export default {
           img: 'http://47.95.211.240:9000/photo/home1.6.png'
         }
       ],
-      Basicimgpage: 0
+      Basicimgpage: 0,
+      title: this.$store.state.home.title,
+      text: this.$store.state.home.text
     };
   },
   async created() {
-    await this.$store.dispatch('home/getNewsPolicy');
-    this.PolicyNews = this.$store.state.home.PolicyNews;
-    this.$nextTick(() => {
-      this.$refs.cilist[0].className = 'p-cidiv p-cidivadd';
-    });
+    // await this.$store.dispatch('home/getNewsPolicy');
+    // this.PolicyNews = this.$store.state.home.PolicyNews;
+    // this.$nextTick(() => {
+    //   this.$refs.cilist[0].className = 'p-cidiv p-cidivadd';
+    // });
+    await this.$store.dispatch('home/getHomeInfo');
   },
   methods: {
     arrowClick(val) {

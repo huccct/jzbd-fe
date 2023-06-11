@@ -1,6 +1,8 @@
-import { reqNewsPolicy } from '@/api/modules/home';
+import { reqNewsPolicy, reqGetHomeInfo } from '@/api/modules/home';
 const state = {
-  PolicyNews: []
+  PolicyNews: [],
+  title: '',
+  text: ''
 };
 
 const mutations = {};
@@ -12,6 +14,14 @@ const actions = {
       state.PolicyNews = res.rows;
     } else {
       console.log('err');
+    }
+  },
+  async getHomeInfo() {
+    let res = await reqGetHomeInfo();
+    // console.log(res);
+    if (res.code === 200) {
+      state.text = res.data.text;
+      state.title = res.data.title;
     }
   }
 };
