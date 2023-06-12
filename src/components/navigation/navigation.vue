@@ -3,7 +3,7 @@
  * @Author: Huccct
  * @Date: 2023-04-12 09:59:54
  * @LastEditors: Huccct
- * @LastEditTime: 2023-06-11 17:25:59
+ * @LastEditTime: 2023-06-12 15:31:18
 -->
 <template>
   <div class="box">
@@ -25,7 +25,7 @@
         <el-menu-item index="/enterprise-storm">企业风采</el-menu-item>
         <el-menu-item index="/maker-port">厚德创客港</el-menu-item>
         <el-menu-item index="/cooperation">招商合作</el-menu-item>
-        <el-menu-item index="/policy-release">政策发布</el-menu-item>
+        <el-menu-item index="/policy-release">政策新闻</el-menu-item>
         <el-menu-item index="/contact">联系我们</el-menu-item>
       </el-menu>
     </div>

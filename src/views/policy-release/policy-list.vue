@@ -4,7 +4,7 @@
       <div class="bread">
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: '/policy-release' }">政策发布</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/policy-release' }">政策新闻</el-breadcrumb-item>
           <el-breadcrumb-item :to="{ path: '/policy-release/more-policies' }"
             >更多政策</el-breadcrumb-item
           >
