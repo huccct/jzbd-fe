@@ -229,8 +229,8 @@ export default {
         }
       ],
       Basicimgpage: 0,
-      title: this.$store.state.home.title,
-      text: this.$store.state.home.text
+      title: '',
+      text: ''
     };
   },
   async created() {
@@ -240,6 +240,9 @@ export default {
     //   this.$refs.cilist[0].className = 'p-cidiv p-cidivadd';
     // });
     await this.$store.dispatch('home/getHomeInfo');
+    this.title = this.$store.state.home.title;
+    this.text = this.$store.state.home.text;
+    // console.log(this.title, this.text);
   },
   methods: {
     arrowClick(val) {
