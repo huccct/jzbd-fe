@@ -1,8 +1,8 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-06-11 17:46:54
- * @LastEditors: Huccct
+ * @LastEditTime: 2023-06-12 11:30:58
+ * @LastEditors: YuShuXiao 949516815@qq.com
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
  * 初心不变，意志坚定
@@ -1125,10 +1125,7 @@
           </div>
         </div>
         <div class="contract-map">
-          <img
-            src="https://restapi.amap.com/v3/staticmap?location=120.095191,36.165253&zoom=12&size=1280%2A484&markers=-1,http://47.95.211.240:9000/photo/contract/location-2.png,0:120.095191,36.165253&key=900b95537e99785a8b0d415ee9160fd1"
-            alt=""
-          />
+          <img :src="contractText.jwd" alt="" />
         </div>
       </div>
     </div>
