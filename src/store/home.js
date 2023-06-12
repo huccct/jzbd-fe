@@ -2,13 +2,16 @@ import { reqNewsPolicy, reqGetHomeInfo } from '@/api/modules/home';
 const state = {
   PolicyNews: [],
   title: '',
-  text: ''
+  text: '',
+  imgList: []
 };
 
 const mutations = {
   CHANGEINFO(state, data) {
     state.title = data.title;
     state.text = data.text;
+    var arr = data.imgUrl.split(',');
+    state.imgList = arr;
   }
 };
 
