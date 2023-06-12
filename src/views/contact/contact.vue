@@ -1081,9 +1081,13 @@
               @click="prev"
               >上一步</el-button
             >
-            <el-button type="primary" style="margin-top: 12px" @click="next">{{
-              active === 6 ? '提交' : '下一步'
-            }}</el-button>
+            <el-button
+              type="primary"
+              style="margin-top: 12px"
+              :disabled="companyProfile.companyName ? false : true"
+              @click="next"
+              >{{ active === 6 ? '提交' : '下一步' }}</el-button
+            >
           </center>
         </template>
         <div v-else class="success">
@@ -1383,7 +1387,7 @@ export default {
     prev() {
       this.active--;
     },
-    next() {
+    async next() {
       if (this.active === 1) {
         this.$store.commit('contact/setForm1', this.companyProfile);
       } else if (this.active === 2) {
@@ -1402,7 +1406,8 @@ export default {
       // if (this.active++ > 5) this.active = 1;
       this.active++;
       if (this.active === 7) {
-        this.$store.dispatch('contact/uploadAllInfo');
+        await this.$store.dispatch('contact/uploadAllInfo');
+        this.active = 1;
       }
     },
     addFormItem(name) {

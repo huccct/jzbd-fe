@@ -12,7 +12,7 @@
       @change="handleCarouselChange"
     >
       <el-carousel-item v-for="(item, index) in items" :key="index">
-        <img :src="item" alt="" />
+        <img :src="item.src" alt="" />
       </el-carousel-item>
     </el-carousel>
     <div class="slider-arrows">
@@ -33,7 +33,13 @@ import { debounce } from 'lodash';
 export default {
   data() {
     return {
-      items: [],
+      items: [
+        { id: 1, src: 'http://47.95.211.240:9000/photo/slider1.png' },
+        { id: 2, src: 'http://47.95.211.240:9000/photo/slider2.png' },
+        { id: 3, src: 'http://47.95.211.240:9000/photo/slider3.png' },
+        { id: 4, src: 'http://47.95.211.240:9000/photo/slider4.png' },
+        { id: 5, src: 'http://47.95.211.240:9000/photo/slider5.png' }
+      ],
       height: '1000px',
       currentIndex: 0,
       isAnimating: false
@@ -47,12 +53,7 @@ export default {
       return `<img src="http://47.95.211.240:9000/photo/aright.png">`;
     }
   },
-  async mounted() {
-    await this.$store.dispatch('home/getHomeInfo');
-    // console.log(this.$store.state.home.imgList);
-    this.items = this.$store.state.home.imgList;
-    console.log(this.items);
-  },
+
   methods: {
     handleCarouselChange(index) {
       if (this.isAnimating) {

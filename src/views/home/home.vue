@@ -48,7 +48,7 @@
           class="my-carousel"
         >
           <el-carousel-item v-for="(list, index) in Basicimg" :key="index">
-            <img class="imgshow" :src="list.img" />
+            <img class="imgshow" :src="list" />
           </el-carousel-item>
         </el-carousel>
       </div>
@@ -205,29 +205,7 @@ export default {
   data() {
     return {
       PolicyNews: [],
-      Basicimg: [
-        {
-          img: 'http://47.95.211.240:9000/photo/home1.png'
-        },
-        {
-          img: 'http://47.95.211.240:9000/photo/home1.1.png'
-        },
-        {
-          img: 'http://47.95.211.240:9000/photo/home1.2.png'
-        },
-        {
-          img: 'http://47.95.211.240:9000/photo/home1.3.png'
-        },
-        {
-          img: 'http://47.95.211.240:9000/photo/home1.4.png'
-        },
-        {
-          img: 'http://47.95.211.240:9000/photo/home1.5.png'
-        },
-        {
-          img: 'http://47.95.211.240:9000/photo/home1.6.png'
-        }
-      ],
+      Basicimg: [],
       Basicimgpage: 0,
       title: '',
       text: ''
@@ -242,6 +220,7 @@ export default {
     await this.$store.dispatch('home/getHomeInfo');
     this.title = this.$store.state.home.title;
     this.text = this.$store.state.home.text;
+    this.Basicimg = this.$store.state.home.imgList;
     // console.log(this.title, this.text);
   },
   methods: {

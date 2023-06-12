@@ -130,6 +130,8 @@ const actions = {
           window.location.reload();
         }
       }, 1000);
+    } else {
+      this._vm.$message.error('提交失败，请检查信息是否填写正确！');
     }
   }
 };
