@@ -1,7 +1,7 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-06-14 14:08:00
+ * @LastEditTime: 2023-06-14 21:07:43
  * @LastEditors: Huccct
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
@@ -1185,7 +1185,7 @@ export default {
       }
     };
     var emailVerify = (rule, value, callback) => {
-      var pattern = /^\w+([-+.]\w+)@\w+([-.]\w+).\w+([-.]\w+)*$/;
+      var pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       if (value === '') {
         callback(new Error('请输入电子邮箱'));
         flag.email = false;
