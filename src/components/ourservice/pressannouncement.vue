@@ -18,9 +18,7 @@
     <div class="pa-content">
       <div class="pa-content_left">
         <div>
-          <img
-            src="http://47.95.211.240:9000/photo/service/a546ff9406d87b46a9a7dbad6bb84b91e8860ae12028d-CUQjrp.png"
-          />
+          <img style="width: 538px; height: 380px" :src="list_data2.newsImg" />
           <div>{{ list_data2.createTime }}</div>
         </div>
         <p
@@ -147,7 +145,7 @@ export default {
       this.list_data = res.rows;
       this.list_data2 = res.rows[0];
       this.list_data2.createTime = res.rows[0].createTime.slice(0, 10);
-      // console.log(this.list_data2);
+      console.log(this.list_data2);
     });
   },
 
