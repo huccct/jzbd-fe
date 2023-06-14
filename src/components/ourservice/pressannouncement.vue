@@ -13,7 +13,7 @@
       <div>
         <p>02&nbsp;<span></span>&nbsp;<span>Parks News</span></p>
       </div>
-      <p>政策新闻</p>
+      <p>园区新闻</p>
     </div>
     <div class="pa-content">
       <div class="pa-content_left">
