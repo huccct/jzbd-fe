@@ -148,16 +148,18 @@
         </div>
       </div>
       <div class="e-show">
-        <div class="e-div">
-          <img src="http://47.95.211.240:9000/photo/home8.png" alt="" />
-        </div>
-        <div class="e-div">
-          <div class="text">
-            <span> 青岛能蜂电气</span>
-            <p>青岛能蜂电气有限公司，主营信息系统集成服务等。</p>
+        <template v-for="item in ExcellentEnterprise.slice(0, 2)">
+          <div :key="item.companyImg" class="e-div">
+            <img :src="item.companyImg" alt="" />
           </div>
-        </div>
-        <div class="e-div">
+          <div :key="item.companyId" class="e-div">
+            <div class="text">
+              <span> {{ item.companyCname }}</span>
+              <p>{{ item.aboutTitle }}</p>
+            </div>
+          </div>
+        </template>
+        <!-- <div class="e-div">
           <img src="http://47.95.211.240:9000/photo/home10.png" alt="" />
         </div>
         <div class="e-div">
@@ -165,17 +167,20 @@
             <span>同方工业青岛分公司</span>
             <p>同方工业青岛分公司，主营软件开发；货物进出口、技术进出口等。</p>
           </div>
-        </div>
-        <div class="e-div">
-          <div class="text">
-            <span>青岛联盈创科</span>
-            <p>青岛联盈创科精密仪器有限公司，主营绘图、计算及测量仪器制造等。</p>
+        </div> -->
+
+        <template v-for="item in ExcellentEnterprise.slice(2, 4)">
+          <div :key="item.companyId" class="e-div">
+            <div class="text">
+              <span>{{ item.companyCname }}</span>
+              <p>{{ item.aboutTitle }}</p>
+            </div>
           </div>
-        </div>
-        <div class="e-div">
-          <img src="http://47.95.211.240:9000/photo/home9.png" alt="" />
-        </div>
-        <div class="e-div">
+          <div :key="item.companyImg" class="e-div">
+            <img :src="item.companyImg" alt="" />
+          </div>
+        </template>
+        <!-- <div class="e-div">
           <div class="text">
             <span>青岛格林维尔</span>
             <p>
@@ -185,7 +190,7 @@
         </div>
         <div class="e-div">
           <img src="http://47.95.211.240:9000/photo/home11.png" alt="" />
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -208,7 +213,8 @@ export default {
       Basicimg: [],
       Basicimgpage: 0,
       title: '',
-      text: ''
+      text: '',
+      ExcellentEnterprise: []
     };
   },
   async created() {
@@ -218,9 +224,11 @@ export default {
     //   this.$refs.cilist[0].className = 'p-cidiv p-cidivadd';
     // });
     await this.$store.dispatch('home/getHomeInfo');
+    await this.$store.dispatch('home/getExcellentEnterprise');
     this.title = this.$store.state.home.title;
     this.text = this.$store.state.home.text;
     this.Basicimg = this.$store.state.home.imgList;
+    this.ExcellentEnterprise = this.$store.state.home.excellentEnterprise;
     // console.log(this.title, this.text);
   },
   methods: {
