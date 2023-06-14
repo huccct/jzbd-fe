@@ -11,7 +11,7 @@
       :arrow="'never'"
       @change="handleCarouselChange"
     >
-      <el-carousel-item v-for="item in items" :key="item.id">
+      <el-carousel-item v-for="(item, index) in items" :key="index">
         <img :src="item.src" alt="" />
       </el-carousel-item>
     </el-carousel>
@@ -53,6 +53,7 @@ export default {
       return `<img src="http://47.95.211.240:9000/photo/aright.png">`;
     }
   },
+
   methods: {
     handleCarouselChange(index) {
       if (this.isAnimating) {

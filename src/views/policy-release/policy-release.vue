@@ -18,7 +18,7 @@
           <div class="titrg">Policy information</div>
         </div>
         <div class="description">
-          <div class="deslf">园区政策</div>
+          <div class="deslf">政策发布</div>
           <div class="desrg" @click="$router.push(`/policy-release/more-policies/list`)">
             更多政策>>
           </div>

@@ -1,8 +1,8 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-06-11 11:14:51
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-06-14 14:08:00
+ * @LastEditors: Huccct
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
  * 初心不变，意志坚定
@@ -91,6 +91,7 @@
                   <el-form-item label="联系电话" prop="contactNumber">
                     <el-input
                       v-model="companyProfile.contactNumber"
+                      maxlength="11"
                       placeholder="请输入联系电话"
                     ></el-input>
                   </el-form-item>
@@ -1081,9 +1082,28 @@
               @click="prev"
               >上一步</el-button
             >
-            <el-button type="primary" style="margin-top: 12px" @click="next">{{
-              active === 6 ? '提交' : '下一步'
-            }}</el-button>
+            <el-button
+              type="primary"
+              style="margin-top: 12px"
+              :disabled="
+                flag.phone &&
+                flag.email &&
+                companyProfile.companyName &&
+                companyProfile.establishmentDate &&
+                companyProfile.legalRepresentative &&
+                companyProfile.registeredAddress &&
+                companyProfile.moveInDate &&
+                companyProfile.registeredCapital &&
+                companyProfile.previousYearSales &&
+                companyProfile.totalAssets &&
+                companyProfile.nextYearTaxAmount &&
+                companyProfile.honorsAndProjectFunding
+                  ? false
+                  : true
+              "
+              @click="next"
+              >{{ active === 6 ? '提交' : '下一步' }}</el-button
+            >
           </center>
         </template>
         <div v-else class="success">
@@ -1125,10 +1145,7 @@
           </div>
         </div>
         <div class="contract-map">
-          <img
-            src="https://restapi.amap.com/v3/staticmap?location=120.095191,36.165253&zoom=12&size=1280%2A484&markers=-1,http://47.95.211.240:9000/photo/contract/location-2.png,0:120.095191,36.165253&key=900b95537e99785a8b0d415ee9160fd1"
-            alt=""
-          />
+          <img :src="contractText.jwd" alt="" />
         </div>
       </div>
     </div>
@@ -1140,6 +1157,10 @@ import { uploadCompany, uploadFile } from '@/api/modules/policy';
 import { filterSize } from '@/utils/sizeConversion';
 export default {
   data() {
+    var flag = {
+      phone: false,
+      email: false
+    };
     var validateIdCard = (rule, value, callback) => {
       var pattern = /^\d{17}(\d|X|x)$/;
       if (pattern.test(value) === true) {
@@ -1148,9 +1169,41 @@ export default {
         callback(new Error('请输入正确的身份证号'));
       }
     };
+    var cellphoneVerify = (rule, value, callback) => {
+      var pattern = /^[1][3-9]\d{9}$/;
+      if (value === '') {
+        callback(new Error('请输入手机号'));
+        flag.phone = false;
+      } else {
+        if (pattern.test(value) === true) {
+          callback();
+          flag.phone = true;
+        } else {
+          callback(new Error('请输入正确的手机号'));
+          flag.phone = false;
+        }
+      }
+    };
+    var emailVerify = (rule, value, callback) => {
+      var pattern = /^\w+([-+.]\w+)@\w+([-.]\w+).\w+([-.]\w+)*$/;
+      if (value === '') {
+        callback(new Error('请输入电子邮箱'));
+        flag.email = false;
+      } else {
+        if (pattern.test(value) === true) {
+          callback();
+          flag.email = true;
+        } else {
+          callback(new Error('请输入正确的电子邮箱'));
+          flag.email = false;
+        }
+      }
+      // console.log('email', demo);
+    };
     return {
       part3Len: 1,
       part4Len: 1,
+      flag,
       contractText: {
         address: '',
         contacts: '',
@@ -1185,8 +1238,8 @@ export default {
         establishmentDate: [{ required: true, trigger: 'blur', message: '请输入成立时间' }],
         legalRepresentative: [{ required: true, trigger: 'blur', message: '请输入法定代表人' }],
         registeredAddress: [{ required: true, trigger: 'blur', message: '请输入现注册地址' }],
-        contactNumber: [{ required: true, trigger: 'blur', message: '请输入联系电话' }],
-        email: [{ required: true, trigger: 'blur', message: '请输入电子邮箱' }],
+        contactNumber: [{ required: true, trigger: 'blur', validator: cellphoneVerify }],
+        email: [{ required: true, trigger: 'blur', validator: emailVerify }],
         moveInDate: [{ required: true, trigger: 'blur', message: '请输入入驻时间' }],
         registeredCapital: [{ required: true, trigger: 'blur', message: '请输入注册资本' }],
         previousYearSales: [{ required: true, trigger: 'blur', message: '请输入上年度销售额' }],
@@ -1386,7 +1439,7 @@ export default {
     prev() {
       this.active--;
     },
-    next() {
+    async next() {
       if (this.active === 1) {
         this.$store.commit('contact/setForm1', this.companyProfile);
       } else if (this.active === 2) {
@@ -1405,7 +1458,8 @@ export default {
       // if (this.active++ > 5) this.active = 1;
       this.active++;
       if (this.active === 7) {
-        this.$store.dispatch('contact/uploadAllInfo');
+        await this.$store.dispatch('contact/uploadAllInfo');
+        this.active = 1;
       }
     },
     addFormItem(name) {
@@ -1647,6 +1701,7 @@ export default {
 }
 .contract-logos {
   margin-top: 141px;
+  display: flex;
 }
 .contract-logos .logo {
   text-align: center;
