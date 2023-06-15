@@ -3,7 +3,7 @@
  * @Author: Huccct
  * @Date: 2023-04-12 11:36:59
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-06-15 08:25:53
+ * @LastEditTime: 2023-06-15 15:15:23
 -->
 <template>
   <div class="foot-menu">
@@ -91,7 +91,7 @@ export default {
     contactUs().then(res => {
       // console.log(res);
       this.contactInfo = res.data;
-      console.log(this.contactInfo);
+      // console.log(this.contactInfo);
     });
   }
 };

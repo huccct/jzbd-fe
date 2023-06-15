@@ -146,7 +146,9 @@ export default {
       this.list_data2 = res.rows[0];
       this.list_data2.createTime = res.rows[0].createTime.slice(0, 10);
       // console.log(this.list_data2);
-      this.list_data2.newsImg = this.list_data2.newsImg.split(',')[0];
+      if (this.list_data2.newsImg != null) {
+        this.list_data2.newsImg = this.list_data2.newsImg.split(',')[0];
+      }
       // console.log(this.list_data2.newsImg.split(',')[0]);
     });
   },
