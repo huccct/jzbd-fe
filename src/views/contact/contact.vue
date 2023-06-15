@@ -1,7 +1,7 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-06-14 21:07:43
+ * @LastEditTime: 2023-06-15 16:20:14
  * @LastEditors: Huccct
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
@@ -602,7 +602,7 @@
                               class="close"
                               src="http://47.95.211.240:9000/photo/police/上合产业园网站_slices/组_57.png"
                               alt=""
-                              @click="del(item, businessLicense)"
+                              @click="del(item, 'businessLicense')"
                             />
                             <div class="upload_rg">
                               <div class="fileName">
