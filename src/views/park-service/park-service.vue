@@ -206,7 +206,7 @@ export default {
   // text-align: center;
 }
 .service-box {
-  width: 100%;
+  width: 1920px;
   // display: flex;
   // align-items: center;
   // justify-content: center;
@@ -223,7 +223,7 @@ export default {
   z-index: -1;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 1920px;
   height: 1000px;
   img {
     width: 100%;
@@ -309,12 +309,12 @@ export default {
   }
   .service-content_one-content {
     margin-top: 85px;
-    width: 100%;
+    width: 1920px;
     .service-content_one-contentbg {
       position: absolute;
       // margin-top: -10px;
       // width: 1900px;
-      width: 100%;
+      width: 1920px;
       img {
         width: 100%;
       }
@@ -346,13 +346,13 @@ export default {
     .service-content_one-contenth3 {
       height: 1px;
       // width: 1900px;
-      width: 100%;
+      width: 1920px;
       margin-top: 68px;
       .contenth3-img1 {
         position: absolute;
         // width: 100%;
         // width: 1900px;
-        width: 100%;
+        width: 1920px;
       }
       div {
         position: relative;
