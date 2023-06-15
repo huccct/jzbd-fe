@@ -2,8 +2,8 @@
  * @Description: Stay hungry，Stay foolish
  * @Author: Huccct
  * @Date: 2023-04-11 10:37:48
- * @LastEditors: Huccct
- * @LastEditTime: 2023-04-24 21:50:59
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-06-15 08:26:14
 -->
 <template>
   <div id="app">
@@ -26,7 +26,7 @@ export default {
     return {};
   },
   created() {
-    new DevicePixelRatio().init();
+    // new DevicePixelRatio().init();
   }
 };
 </script>
