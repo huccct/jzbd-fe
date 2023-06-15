@@ -2,8 +2,8 @@
  * @Description: Stay hungry，Stay foolish
  * @Author: Huccct
  * @Date: 2023-04-12 11:36:59
- * @LastEditors: Huccct
- * @LastEditTime: 2023-06-02 21:08:06
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-06-15 08:25:53
 -->
 <template>
   <div class="foot-menu">
@@ -24,9 +24,9 @@
     <div class="footer-content-main">
       <div class="left">
         <span>联系我们</span>
-        <span>电话：0532-85279551</span>
-        <span>邮箱：shqycxcyy@163.com</span>
-        <span>地址：山东省青岛市胶州上合示范区闽江路60号</span>
+        <span>电话：{{ contactInfo.phone }}</span>
+        <span>邮箱：{{ contactInfo.email }}</span>
+        <span>地址：{{ contactInfo.address }}</span>
       </div>
     </div>
     <div class="divider">
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import { contactUs } from '@/api/modules/home';
+
 export default {
   name: 'bottom',
   data() {
@@ -81,8 +83,16 @@ export default {
           name: '青岛市人力资源和社会保障局',
           src: 'https://hrss.qingdao.gov.cn/'
         }
-      ]
+      ],
+      contactInfo: {}
     };
+  },
+  mounted() {
+    contactUs().then(res => {
+      // console.log(res);
+      this.contactInfo = res.data;
+      console.log(this.contactInfo);
+    });
   }
 };
 </script>

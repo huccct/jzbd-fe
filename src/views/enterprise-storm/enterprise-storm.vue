@@ -158,7 +158,7 @@ export default {
   },
 
   created() {
-    new DevicePixelRatio().init();
+    // new DevicePixelRatio().init();
   },
 
   methods: {
