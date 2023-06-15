@@ -43,7 +43,7 @@
             <div class="rg">{{ item.policyTitle }}</div>
           </div>
           <div
-            v-for="item in policeInfoList.rows?.slice(-5)"
+            v-for="item in policeInfoList.rows?.slice(4, 8)"
             :key="item.policyId"
             class="policeInfoBoxRg"
             @click="goDetails(item.policyId)"
