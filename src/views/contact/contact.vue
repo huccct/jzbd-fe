@@ -1,7 +1,7 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-06-16 16:12:27
+ * @LastEditTime: 2023-06-16 19:27:55
  * @LastEditors: Huccct
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
@@ -495,7 +495,6 @@
                           :show-file-list="false"
                           :http-request="params => uploadFiles(params, 'companyProfile')"
                           action="https://jsonplaceholder.typicode.com/posts/"
-                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                         >
                           <div slot="trigger" class="uploadInfo_wrapped">
                             <div style="display: flex; margin-top: 13px">
@@ -509,7 +508,7 @@
                           <div slot="tip" class="el-upload__tip">
                             请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
                               style="color: #0e7fdb"
-                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                              >rar、zip、jpg、png、pdf、ppt、docx、xlsx 的文件</span
                             >
                           </div>
                         </el-upload></el-form-item
@@ -563,7 +562,6 @@
                           :show-file-list="false"
                           :http-request="params => uploadFiles(params, 'identificationCard')"
                           action="https://jsonplaceholder.typicode.com/posts/"
-                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                         >
                           <div slot="trigger" class="uploadInfo_wrapped">
                             <div style="display: flex; margin-top: 13px">
@@ -577,7 +575,7 @@
                           <div slot="tip" class="el-upload__tip">
                             请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
                               style="color: #0e7fdb"
-                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                              >rar、zip、jpg、png、pdf、ppt、docx、xlsx 的文件</span
                             >
                           </div>
                         </el-upload></el-form-item
@@ -633,7 +631,6 @@
                           :show-file-list="false"
                           :http-request="params => uploadFiles(params, 'businessLicense')"
                           action="https://jsonplaceholder.typicode.com/posts/"
-                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                         >
                           <div slot="trigger" class="uploadInfo_wrapped">
                             <div style="display: flex; margin-top: 13px">
@@ -647,7 +644,7 @@
                           <div slot="tip" class="el-upload__tip">
                             请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
                               style="color: #0e7fdb"
-                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                              >rar、zip、jpg、png、pdf、ppt、docx、xlsx 的文件</span
                             >
                           </div>
                         </el-upload></el-form-item
@@ -702,7 +699,6 @@
                           :show-file-list="false"
                           :http-request="params => uploadFiles(params, 'qualificationCertificate')"
                           action="https://jsonplaceholder.typicode.com/posts/"
-                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                         >
                           <div slot="trigger" class="uploadInfo_wrapped">
                             <div style="display: flex; margin-top: 13px">
@@ -716,7 +712,7 @@
                           <div slot="tip" class="el-upload__tip">
                             请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
                               style="color: #0e7fdb"
-                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                              >rar、zip、jpg、png、pdf、ppt、docx、xlsx 的文件</span
                             >
                           </div>
                         </el-upload></el-form-item
@@ -772,7 +768,6 @@
                           :show-file-list="false"
                           :http-request="params => uploadFiles(params, 'financialStatement')"
                           action="https://jsonplaceholder.typicode.com/posts/"
-                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                         >
                           <div slot="trigger" class="uploadInfo_wrapped">
                             <div style="display: flex; margin-top: 13px">
@@ -786,7 +781,7 @@
                           <div slot="tip" class="el-upload__tip">
                             请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
                               style="color: #0e7fdb"
-                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                              >rar、zip、jpg、png、pdf、ppt、docx、xlsx 的文件</span
                             >
                           </div>
                         </el-upload></el-form-item
@@ -840,7 +835,6 @@
                           :show-file-list="false"
                           :http-request="params => uploadFiles(params, 'resumeTalents')"
                           action="https://jsonplaceholder.typicode.com/posts/"
-                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                         >
                           <div slot="trigger" class="uploadInfo_wrapped">
                             <div style="display: flex; margin-top: 13px">
@@ -854,7 +848,7 @@
                           <div slot="tip" class="el-upload__tip">
                             请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
                               style="color: #0e7fdb"
-                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                              >rar、zip、jpg、png、pdf、ppt、docx、xlsx 的文件</span
                             >
                           </div>
                         </el-upload></el-form-item
@@ -912,7 +906,6 @@
                           :show-file-list="false"
                           :http-request="params => uploadFiles(params, 'applicationForm')"
                           action="https://jsonplaceholder.typicode.com/posts/"
-                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                         >
                           <div slot="trigger" class="uploadInfo_wrapped">
                             <div style="display: flex; margin-top: 13px">
@@ -926,7 +919,7 @@
                           <div slot="tip" class="el-upload__tip">
                             请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
                               style="color: #0e7fdb"
-                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                              >rar、zip、jpg、png、pdf、ppt、docx、xlsx 的文件</span
                             >
                           </div>
                         </el-upload></el-form-item
@@ -980,7 +973,6 @@
                           :show-file-list="false"
                           :http-request="params => uploadFiles(params, 'mainSituation')"
                           action="https://jsonplaceholder.typicode.com/posts/"
-                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                         >
                           <div slot="trigger" class="uploadInfo_wrapped">
                             <div style="display: flex; margin-top: 13px">
@@ -994,7 +986,7 @@
                           <div slot="tip" class="el-upload__tip">
                             请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
                               style="color: #0e7fdb"
-                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                              >rar、zip、jpg、png、pdf、ppt、docx、xlsx 的文件</span
                             >
                           </div>
                         </el-upload></el-form-item
@@ -1050,7 +1042,6 @@
                           :show-file-list="false"
                           :http-request="params => uploadFiles(params, 'cardCurriculumVitae')"
                           action="https://jsonplaceholder.typicode.com/posts/"
-                          accept=".zip,.rar,.jpg,.png,.ppt,.pdf"
                         >
                           <div slot="trigger" class="uploadInfo_wrapped">
                             <div style="display: flex; margin-top: 13px">
@@ -1064,7 +1055,7 @@
                           <div slot="tip" class="el-upload__tip">
                             请上传 大小不超过 <span style="color: #0e7fdb">10MB</span> 格式为：<span
                               style="color: #0e7fdb"
-                              >rar、zip、jpg、png、pdf、ppt 的文件</span
+                              >rar、zip、jpg、png、pdf、ppt、docx、xlsx 的文件</span
                             >
                           </div>
                         </el-upload></el-form-item
