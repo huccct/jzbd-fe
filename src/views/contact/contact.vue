@@ -1,7 +1,7 @@
 <!--
  * @Author: 袁十一
  * @Date: 2023-04-12 16:34:50
- * @LastEditTime: 2023-06-15 16:20:14
+ * @LastEditTime: 2023-06-16 16:12:27
  * @LastEditors: Huccct
  * @Description: 联系我们页面
  * @FilePath: \jzbd-fe\src\views\contact\contact.vue
@@ -278,7 +278,7 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
-                    <el-form-item label="职务" prop="equityOwnerTitle">
+                    <el-form-item label="职务" prop="equityOwnerPosition">
                       <el-input
                         v-model="ownershipStructure[index].equityOwnerPosition"
                         placeholder="请输入职务"
